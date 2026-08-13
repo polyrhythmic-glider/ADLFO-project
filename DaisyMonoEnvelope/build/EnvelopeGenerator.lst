@@ -1,0 +1,1328 @@
+ARM GAS  /tmp/ccrbfHRz.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"EnvelopeGenerator.cpp"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "EnvelopeGenerator.cpp"
+  19              		.section	.text._ZN17EnvelopeGenerator4InitEf,"ax",%progbits
+  20              		.align	1
+  21              		.p2align 2,,3
+  22              		.global	_ZN17EnvelopeGenerator4InitEf
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	_ZN17EnvelopeGenerator4InitEf:
+  28              	.LVL0:
+  29              	.LFB548:
+   1:EnvelopeGenerator.cpp **** #include "EnvelopeGenerator.h"
+   2:EnvelopeGenerator.cpp **** 
+   3:EnvelopeGenerator.cpp **** namespace
+   4:EnvelopeGenerator.cpp **** {
+   5:EnvelopeGenerator.cpp **** constexpr float kFallbackUpdateRate = 1000.0f;
+   6:EnvelopeGenerator.cpp **** constexpr float kMinimumStageTime   = 0.000001f;
+   7:EnvelopeGenerator.cpp **** 
+   8:EnvelopeGenerator.cpp **** float Clamp01(float value)
+   9:EnvelopeGenerator.cpp **** {
+  10:EnvelopeGenerator.cpp ****     if(value < 0.0f)
+  11:EnvelopeGenerator.cpp ****         return 0.0f;
+  12:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+  13:EnvelopeGenerator.cpp ****         return 1.0f;
+  14:EnvelopeGenerator.cpp ****     return value;
+  15:EnvelopeGenerator.cpp **** }
+  16:EnvelopeGenerator.cpp **** } // namespace
+  17:EnvelopeGenerator.cpp **** 
+  18:EnvelopeGenerator.cpp **** void EnvelopeGenerator::Init(float updateRate)
+  19:EnvelopeGenerator.cpp **** {
+  30              		.loc 1 19 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  20:EnvelopeGenerator.cpp ****     update_rate_ = updateRate > 0.0f ? updateRate : kFallbackUpdateRate;
+  35              		.loc 1 20 5 view .LVU1
+  36              		.loc 1 20 38 is_stmt 0 view .LVU2
+  37 0000 B5EEC00A 		vcmpe.f32	s0, #0
+  38 0004 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ARM GAS  /tmp/ccrbfHRz.s 			page 2
+
+
+  39 0008 19DD     		ble	.L6
+  40              	.LBB11:
+  41              	.LBB12:
+  21:EnvelopeGenerator.cpp ****     stage_       = Stage::Idle;
+  22:EnvelopeGenerator.cpp ****     curve_       = CurveType::Logarithmic;
+  23:EnvelopeGenerator.cpp ****     value_       = 0.0f;
+  24:EnvelopeGenerator.cpp ****     phase_       = 0.0f;
+  25:EnvelopeGenerator.cpp ****     rise_time_   = 0.1f;
+  26:EnvelopeGenerator.cpp ****     fall_time_   = 0.1f;
+  27:EnvelopeGenerator.cpp ****     cycling_     = false;
+  28:EnvelopeGenerator.cpp ****     UpdatePhaseIncrements();
+  29:EnvelopeGenerator.cpp **** }
+  30:EnvelopeGenerator.cpp **** 
+  31:EnvelopeGenerator.cpp **** void EnvelopeGenerator::Trigger()
+  32:EnvelopeGenerator.cpp **** {
+  33:EnvelopeGenerator.cpp ****     // In LFO il trigger riporta il ciclo all'inizio, utile per sincronizzarlo.
+  34:EnvelopeGenerator.cpp ****     // In AD è accettato solo da Idle: un ciclo già in corso non viene interrotto.
+  35:EnvelopeGenerator.cpp ****     if(cycling_)
+  36:EnvelopeGenerator.cpp ****     {
+  37:EnvelopeGenerator.cpp ****         stage_ = Stage::Rise;
+  38:EnvelopeGenerator.cpp ****         phase_ = 0.0f;
+  39:EnvelopeGenerator.cpp ****         value_ = 0.0f;
+  40:EnvelopeGenerator.cpp ****     }
+  41:EnvelopeGenerator.cpp ****     else if(stage_ == Stage::Idle)
+  42:EnvelopeGenerator.cpp ****     {
+  43:EnvelopeGenerator.cpp ****         stage_ = Stage::Rise;
+  44:EnvelopeGenerator.cpp ****         phase_ = 0.0f;
+  45:EnvelopeGenerator.cpp ****         value_ = 0.0f;
+  46:EnvelopeGenerator.cpp ****     }
+  47:EnvelopeGenerator.cpp **** }
+  48:EnvelopeGenerator.cpp **** 
+  49:EnvelopeGenerator.cpp **** void EnvelopeGenerator::SetCycling(bool enabled)
+  50:EnvelopeGenerator.cpp **** {
+  51:EnvelopeGenerator.cpp ****     if(enabled == cycling_)
+  52:EnvelopeGenerator.cpp ****         return;
+  53:EnvelopeGenerator.cpp **** 
+  54:EnvelopeGenerator.cpp ****     cycling_ = enabled;
+  55:EnvelopeGenerator.cpp ****     phase_   = 0.0f;
+  56:EnvelopeGenerator.cpp ****     value_   = 0.0f;
+  57:EnvelopeGenerator.cpp **** 
+  58:EnvelopeGenerator.cpp ****     // Entrando in LFO si parte subito da zero. Tornando in AD si forza Idle.
+  59:EnvelopeGenerator.cpp ****     stage_ = cycling_ ? Stage::Rise : Stage::Idle;
+  60:EnvelopeGenerator.cpp **** }
+  61:EnvelopeGenerator.cpp **** 
+  62:EnvelopeGenerator.cpp **** void EnvelopeGenerator::SetRiseTime(float seconds)
+  63:EnvelopeGenerator.cpp **** {
+  64:EnvelopeGenerator.cpp ****     rise_time_ = seconds > kMinimumStageTime ? seconds : kMinimumStageTime;
+  65:EnvelopeGenerator.cpp ****     rise_phase_increment_ = 1.0f / (rise_time_ * update_rate_);
+  66:EnvelopeGenerator.cpp **** }
+  67:EnvelopeGenerator.cpp **** 
+  68:EnvelopeGenerator.cpp **** void EnvelopeGenerator::SetFallTime(float seconds)
+  69:EnvelopeGenerator.cpp **** {
+  70:EnvelopeGenerator.cpp ****     fall_time_ = seconds > kMinimumStageTime ? seconds : kMinimumStageTime;
+  71:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+  72:EnvelopeGenerator.cpp **** }
+  73:EnvelopeGenerator.cpp **** 
+  74:EnvelopeGenerator.cpp **** void EnvelopeGenerator::SetCurve(CurveType curve)
+ARM GAS  /tmp/ccrbfHRz.s 			page 3
+
+
+  75:EnvelopeGenerator.cpp **** {
+  76:EnvelopeGenerator.cpp ****     curve_ = curve;
+  77:EnvelopeGenerator.cpp **** }
+  78:EnvelopeGenerator.cpp **** 
+  79:EnvelopeGenerator.cpp **** float EnvelopeGenerator::Process()
+  80:EnvelopeGenerator.cpp **** {
+  81:EnvelopeGenerator.cpp ****     switch(stage_)
+  82:EnvelopeGenerator.cpp ****     {
+  83:EnvelopeGenerator.cpp ****         case Stage::Idle:
+  84:EnvelopeGenerator.cpp ****             value_ = 0.0f;
+  85:EnvelopeGenerator.cpp ****             break;
+  86:EnvelopeGenerator.cpp **** 
+  87:EnvelopeGenerator.cpp ****         case Stage::Rise:
+  88:EnvelopeGenerator.cpp ****         {
+  89:EnvelopeGenerator.cpp ****             // L'incremento è precomputato quando cambia il tempo: nel callback
+  90:EnvelopeGenerator.cpp ****             // restano soltanto curve, somme e confronti. Rise parte da zero.
+  91:EnvelopeGenerator.cpp ****             value_ = ApplyCurve(phase_);
+  92:EnvelopeGenerator.cpp ****             phase_ += rise_phase_increment_;
+  93:EnvelopeGenerator.cpp **** 
+  94:EnvelopeGenerator.cpp ****             if(phase_ >= 1.0f)
+  95:EnvelopeGenerator.cpp ****             {
+  96:EnvelopeGenerator.cpp ****                 // Fall con fase zero produrrà esattamente il picco 1.0.
+  97:EnvelopeGenerator.cpp ****                 phase_ = 0.0f;
+  98:EnvelopeGenerator.cpp ****                 stage_ = Stage::Fall;
+  99:EnvelopeGenerator.cpp ****             }
+ 100:EnvelopeGenerator.cpp ****         }
+ 101:EnvelopeGenerator.cpp ****         break;
+ 102:EnvelopeGenerator.cpp **** 
+ 103:EnvelopeGenerator.cpp ****         case Stage::Fall:
+ 104:EnvelopeGenerator.cpp ****         {
+ 105:EnvelopeGenerator.cpp ****             // Fall usa l'inverso della stessa curva crescente selezionata.
+ 106:EnvelopeGenerator.cpp ****             value_ = 1.0f - ApplyCurve(phase_);
+ 107:EnvelopeGenerator.cpp ****             phase_ += fall_phase_increment_;
+ 108:EnvelopeGenerator.cpp **** 
+ 109:EnvelopeGenerator.cpp ****             if(phase_ >= 1.0f)
+ 110:EnvelopeGenerator.cpp ****             {
+ 111:EnvelopeGenerator.cpp ****                 phase_ = 0.0f;
+ 112:EnvelopeGenerator.cpp ****                 value_ = 0.0f;
+ 113:EnvelopeGenerator.cpp ****                 stage_ = cycling_ ? Stage::Rise : Stage::Idle;
+ 114:EnvelopeGenerator.cpp ****             }
+ 115:EnvelopeGenerator.cpp ****         }
+ 116:EnvelopeGenerator.cpp ****         break;
+ 117:EnvelopeGenerator.cpp ****     }
+ 118:EnvelopeGenerator.cpp **** 
+ 119:EnvelopeGenerator.cpp ****     return Clamp01(value_);
+ 120:EnvelopeGenerator.cpp **** }
+ 121:EnvelopeGenerator.cpp **** 
+ 122:EnvelopeGenerator.cpp **** float EnvelopeGenerator::GetValue() const
+ 123:EnvelopeGenerator.cpp **** {
+ 124:EnvelopeGenerator.cpp ****     return value_;
+ 125:EnvelopeGenerator.cpp **** }
+ 126:EnvelopeGenerator.cpp **** 
+ 127:EnvelopeGenerator.cpp **** Stage EnvelopeGenerator::GetStage() const
+ 128:EnvelopeGenerator.cpp **** {
+ 129:EnvelopeGenerator.cpp ****     return stage_;
+ 130:EnvelopeGenerator.cpp **** }
+ 131:EnvelopeGenerator.cpp **** 
+ARM GAS  /tmp/ccrbfHRz.s 			page 4
+
+
+ 132:EnvelopeGenerator.cpp **** bool EnvelopeGenerator::IsCycling() const
+ 133:EnvelopeGenerator.cpp **** {
+ 134:EnvelopeGenerator.cpp ****     return cycling_;
+ 135:EnvelopeGenerator.cpp **** }
+ 136:EnvelopeGenerator.cpp **** 
+ 137:EnvelopeGenerator.cpp **** void EnvelopeGenerator::UpdatePhaseIncrements()
+ 138:EnvelopeGenerator.cpp **** {
+ 139:EnvelopeGenerator.cpp ****     // Come nel motore a segmenti di Mutable Instruments Peaks, l'avanzamento
+ 140:EnvelopeGenerator.cpp ****     // usa un passo di fase esplicito. Qui viene calcolato quando cambia il
+ 141:EnvelopeGenerator.cpp ****     // parametro, così il callback deve soltanto accumularlo.
+ 142:EnvelopeGenerator.cpp ****     rise_phase_increment_ = 1.0f / (rise_time_ * update_rate_);
+  42              		.loc 1 142 48 view .LVU3
+  43 000a 9FED0F7A 		vldr.32	s14, .L8
+  44              		.loc 1 142 34 view .LVU4
+  45 000e F7EE006A 		vmov.f32	s13, #1.0e+0
+  46              		.loc 1 142 48 view .LVU5
+  47 0012 20EE077A 		vmul.f32	s14, s0, s14
+  48              		.loc 1 142 34 view .LVU6
+  49 0016 C6EE877A 		vdiv.f32	s15, s13, s14
+  50              	.LVL1:
+  51              	.L2:
+  52              		.loc 1 142 34 view .LVU7
+  53              	.LBE12:
+  54              	.LBE11:
+  21:EnvelopeGenerator.cpp ****     stage_       = Stage::Idle;
+  55              		.loc 1 21 18 view .LVU8
+  56 001a 0023     		movs	r3, #0
+  23:EnvelopeGenerator.cpp ****     phase_       = 0.0f;
+  57              		.loc 1 23 18 view .LVU9
+  58 001c 0021     		movs	r1, #0
+  25:EnvelopeGenerator.cpp ****     fall_time_   = 0.1f;
+  59              		.loc 1 25 18 view .LVU10
+  60 001e 0B4A     		ldr	r2, .L8+4
+  20:EnvelopeGenerator.cpp ****     stage_       = Stage::Idle;
+  61              		.loc 1 20 18 discriminator 4 view .LVU11
+  62 0020 80ED080A 		vstr.32	s0, [r0, #32]
+  21:EnvelopeGenerator.cpp ****     curve_       = CurveType::Logarithmic;
+  63              		.loc 1 21 5 is_stmt 1 view .LVU12
+  22:EnvelopeGenerator.cpp ****     value_       = 0.0f;
+  64              		.loc 1 22 5 view .LVU13
+  23:EnvelopeGenerator.cpp ****     phase_       = 0.0f;
+  65              		.loc 1 23 18 is_stmt 0 view .LVU14
+  66 0024 8160     		str	r1, [r0, #8]	@ float
+  24:EnvelopeGenerator.cpp ****     rise_time_   = 0.1f;
+  67              		.loc 1 24 18 view .LVU15
+  68 0026 C160     		str	r1, [r0, #12]	@ float
+  25:EnvelopeGenerator.cpp ****     fall_time_   = 0.1f;
+  69              		.loc 1 25 18 view .LVU16
+  70 0028 0261     		str	r2, [r0, #16]	@ float
+  26:EnvelopeGenerator.cpp ****     cycling_     = false;
+  71              		.loc 1 26 18 view .LVU17
+  72 002a 4261     		str	r2, [r0, #20]	@ float
+  27:EnvelopeGenerator.cpp ****     UpdatePhaseIncrements();
+  73              		.loc 1 27 18 view .LVU18
+  74 002c 80F82430 		strb	r3, [r0, #36]
+  75              	.LBB15:
+  76              	.LBB13:
+ARM GAS  /tmp/ccrbfHRz.s 			page 5
+
+
+  77              		.loc 1 142 27 view .LVU19
+  78 0030 C0ED067A 		vstr.32	s15, [r0, #24]
+ 143:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+  79              		.loc 1 143 27 view .LVU20
+  80 0034 C0ED077A 		vstr.32	s15, [r0, #28]
+  81              	.LBE13:
+  82              	.LBE15:
+  21:EnvelopeGenerator.cpp ****     curve_       = CurveType::Logarithmic;
+  83              		.loc 1 21 18 view .LVU21
+  84 0038 C0E90033 		strd	r3, r3, [r0]
+  23:EnvelopeGenerator.cpp ****     phase_       = 0.0f;
+  85              		.loc 1 23 5 is_stmt 1 view .LVU22
+  24:EnvelopeGenerator.cpp ****     rise_time_   = 0.1f;
+  86              		.loc 1 24 5 view .LVU23
+  25:EnvelopeGenerator.cpp ****     fall_time_   = 0.1f;
+  87              		.loc 1 25 5 view .LVU24
+  26:EnvelopeGenerator.cpp ****     cycling_     = false;
+  88              		.loc 1 26 5 view .LVU25
+  27:EnvelopeGenerator.cpp ****     UpdatePhaseIncrements();
+  89              		.loc 1 27 5 view .LVU26
+  28:EnvelopeGenerator.cpp **** }
+  90              		.loc 1 28 5 view .LVU27
+  91              	.LVL2:
+  92              	.LBB16:
+  93              	.LBI11:
+ 137:EnvelopeGenerator.cpp **** {
+  94              		.loc 1 137 6 view .LVU28
+  95              	.LBB14:
+ 142:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+  96              		.loc 1 142 5 view .LVU29
+  97              		.loc 1 143 5 view .LVU30
+  98              		.loc 1 143 5 is_stmt 0 view .LVU31
+  99              	.LBE14:
+ 100              	.LBE16:
+  29:EnvelopeGenerator.cpp **** 
+ 101              		.loc 1 29 1 view .LVU32
+ 102 003c 7047     		bx	lr
+ 103              	.LVL3:
+ 104              	.L6:
+  29:EnvelopeGenerator.cpp **** 
+ 105              		.loc 1 29 1 view .LVU33
+ 106 003e DFED047A 		vldr.32	s15, .L8+8
+  20:EnvelopeGenerator.cpp ****     stage_       = Stage::Idle;
+ 107              		.loc 1 20 38 discriminator 2 view .LVU34
+ 108 0042 9FED040A 		vldr.32	s0, .L8+12
+ 109              	.LVL4:
+  20:EnvelopeGenerator.cpp ****     stage_       = Stage::Idle;
+ 110              		.loc 1 20 38 discriminator 2 view .LVU35
+ 111 0046 E8E7     		b	.L2
+ 112              	.L9:
+ 113              		.align	2
+ 114              	.L8:
+ 115 0048 CDCCCC3D 		.word	1036831949
+ 116 004c CDCCCC3D 		.word	1036831949
+ 117 0050 0AD7233C 		.word	1008981770
+ 118 0054 00007A44 		.word	1148846080
+ 119              		.cfi_endproc
+ARM GAS  /tmp/ccrbfHRz.s 			page 6
+
+
+ 120              	.LFE548:
+ 122              		.section	.text._ZN17EnvelopeGenerator7TriggerEv,"ax",%progbits
+ 123              		.align	1
+ 124              		.p2align 2,,3
+ 125              		.global	_ZN17EnvelopeGenerator7TriggerEv
+ 126              		.syntax unified
+ 127              		.thumb
+ 128              		.thumb_func
+ 130              	_ZN17EnvelopeGenerator7TriggerEv:
+ 131              	.LVL5:
+ 132              	.LFB549:
+  32:EnvelopeGenerator.cpp ****     // In LFO il trigger riporta il ciclo all'inizio, utile per sincronizzarlo.
+ 133              		.loc 1 32 1 is_stmt 1 view -0
+ 134              		.cfi_startproc
+ 135              		@ args = 0, pretend = 0, frame = 0
+ 136              		@ frame_needed = 0, uses_anonymous_args = 0
+ 137              		@ link register save eliminated.
+  35:EnvelopeGenerator.cpp ****     {
+ 138              		.loc 1 35 5 view .LVU37
+ 139 0000 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 140 0004 0BB9     		cbnz	r3, .L13
+  41:EnvelopeGenerator.cpp ****     {
+ 141              		.loc 1 41 10 view .LVU38
+ 142 0006 0368     		ldr	r3, [r0]
+ 143 0008 2BB9     		cbnz	r3, .L17
+ 144              	.L13:
+  37:EnvelopeGenerator.cpp ****         phase_ = 0.0f;
+ 145              		.loc 1 37 9 view .LVU39
+  38:EnvelopeGenerator.cpp ****         value_ = 0.0f;
+ 146              		.loc 1 38 16 is_stmt 0 view .LVU40
+ 147 000a 0023     		movs	r3, #0
+  37:EnvelopeGenerator.cpp ****         phase_ = 0.0f;
+ 148              		.loc 1 37 16 view .LVU41
+ 149 000c 0122     		movs	r2, #1
+  38:EnvelopeGenerator.cpp ****         value_ = 0.0f;
+ 150              		.loc 1 38 16 view .LVU42
+ 151 000e C360     		str	r3, [r0, #12]	@ float
+  37:EnvelopeGenerator.cpp ****         phase_ = 0.0f;
+ 152              		.loc 1 37 16 view .LVU43
+ 153 0010 0260     		str	r2, [r0]
+  38:EnvelopeGenerator.cpp ****         value_ = 0.0f;
+ 154              		.loc 1 38 9 is_stmt 1 view .LVU44
+  39:EnvelopeGenerator.cpp ****     }
+ 155              		.loc 1 39 9 view .LVU45
+  39:EnvelopeGenerator.cpp ****     }
+ 156              		.loc 1 39 16 is_stmt 0 view .LVU46
+ 157 0012 8360     		str	r3, [r0, #8]	@ float
+ 158 0014 7047     		bx	lr
+ 159              	.L17:
+  47:EnvelopeGenerator.cpp **** 
+ 160              		.loc 1 47 1 view .LVU47
+ 161 0016 7047     		bx	lr
+ 162              		.cfi_endproc
+ 163              	.LFE549:
+ 165              		.section	.text._ZN17EnvelopeGenerator10SetCyclingEb,"ax",%progbits
+ 166              		.align	1
+ 167              		.p2align 2,,3
+ARM GAS  /tmp/ccrbfHRz.s 			page 7
+
+
+ 168              		.global	_ZN17EnvelopeGenerator10SetCyclingEb
+ 169              		.syntax unified
+ 170              		.thumb
+ 171              		.thumb_func
+ 173              	_ZN17EnvelopeGenerator10SetCyclingEb:
+ 174              	.LVL6:
+ 175              	.LFB550:
+  50:EnvelopeGenerator.cpp ****     if(enabled == cycling_)
+ 176              		.loc 1 50 1 is_stmt 1 view -0
+ 177              		.cfi_startproc
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+  51:EnvelopeGenerator.cpp ****         return;
+ 181              		.loc 1 51 5 view .LVU49
+ 182 0000 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 183 0004 8B42     		cmp	r3, r1
+ 184 0006 05D0     		beq	.L18
+  54:EnvelopeGenerator.cpp ****     phase_   = 0.0f;
+ 185              		.loc 1 54 5 view .LVU50
+  55:EnvelopeGenerator.cpp ****     value_   = 0.0f;
+ 186              		.loc 1 55 14 is_stmt 0 view .LVU51
+ 187 0008 0023     		movs	r3, #0
+  54:EnvelopeGenerator.cpp ****     phase_   = 0.0f;
+ 188              		.loc 1 54 14 view .LVU52
+ 189 000a 80F82410 		strb	r1, [r0, #36]
+  55:EnvelopeGenerator.cpp ****     value_   = 0.0f;
+ 190              		.loc 1 55 5 is_stmt 1 view .LVU53
+  59:EnvelopeGenerator.cpp **** }
+ 191              		.loc 1 59 23 is_stmt 0 view .LVU54
+ 192 000e 0160     		str	r1, [r0]
+  55:EnvelopeGenerator.cpp ****     value_   = 0.0f;
+ 193              		.loc 1 55 14 view .LVU55
+ 194 0010 C360     		str	r3, [r0, #12]	@ float
+  56:EnvelopeGenerator.cpp **** 
+ 195              		.loc 1 56 5 is_stmt 1 view .LVU56
+  56:EnvelopeGenerator.cpp **** 
+ 196              		.loc 1 56 14 is_stmt 0 view .LVU57
+ 197 0012 8360     		str	r3, [r0, #8]	@ float
+  59:EnvelopeGenerator.cpp **** }
+ 198              		.loc 1 59 5 is_stmt 1 view .LVU58
+ 199              	.L18:
+  60:EnvelopeGenerator.cpp **** 
+ 200              		.loc 1 60 1 is_stmt 0 view .LVU59
+ 201 0014 7047     		bx	lr
+ 202              		.cfi_endproc
+ 203              	.LFE550:
+ 205 0016 00BF     		.section	.text._ZN17EnvelopeGenerator11SetRiseTimeEf,"ax",%progbits
+ 206              		.align	1
+ 207              		.p2align 2,,3
+ 208              		.global	_ZN17EnvelopeGenerator11SetRiseTimeEf
+ 209              		.syntax unified
+ 210              		.thumb
+ 211              		.thumb_func
+ 213              	_ZN17EnvelopeGenerator11SetRiseTimeEf:
+ 214              	.LVL7:
+ 215              	.LFB551:
+ARM GAS  /tmp/ccrbfHRz.s 			page 8
+
+
+  63:EnvelopeGenerator.cpp ****     rise_time_ = seconds > kMinimumStageTime ? seconds : kMinimumStageTime;
+ 216              		.loc 1 63 1 is_stmt 1 view -0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220              		@ link register save eliminated.
+  64:EnvelopeGenerator.cpp ****     rise_phase_increment_ = 1.0f / (rise_time_ * update_rate_);
+ 221              		.loc 1 64 5 view .LVU61
+ 222 0000 9FED0A7A 		vldr.32	s14, .L21
+  65:EnvelopeGenerator.cpp **** }
+ 223              		.loc 1 65 34 is_stmt 0 view .LVU62
+ 224 0004 F7EE006A 		vmov.f32	s13, #1.0e+0
+  65:EnvelopeGenerator.cpp **** }
+ 225              		.loc 1 65 48 view .LVU63
+ 226 0008 D0ED087A 		vldr.32	s15, [r0, #32]
+ 227 000c B4EEC70A 		vcmpe.f32	s0, s14
+ 228 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 229 0014 30FE070A 		vselgt.f32	s0, s0, s14
+ 230              	.LVL8:
+  65:EnvelopeGenerator.cpp **** }
+ 231              		.loc 1 65 48 view .LVU64
+ 232 0018 60EE277A 		vmul.f32	s15, s0, s15
+  64:EnvelopeGenerator.cpp ****     rise_phase_increment_ = 1.0f / (rise_time_ * update_rate_);
+ 233              		.loc 1 64 16 discriminator 4 view .LVU65
+ 234 001c 80ED040A 		vstr.32	s0, [r0, #16]
+  65:EnvelopeGenerator.cpp **** }
+ 235              		.loc 1 65 5 is_stmt 1 view .LVU66
+  65:EnvelopeGenerator.cpp **** }
+ 236              		.loc 1 65 34 is_stmt 0 view .LVU67
+ 237 0020 86EEA77A 		vdiv.f32	s14, s13, s15
+  65:EnvelopeGenerator.cpp **** }
+ 238              		.loc 1 65 27 view .LVU68
+ 239 0024 80ED067A 		vstr.32	s14, [r0, #24]
+  66:EnvelopeGenerator.cpp **** 
+ 240              		.loc 1 66 1 view .LVU69
+ 241 0028 7047     		bx	lr
+ 242              	.L22:
+ 243 002a 00BF     		.align	2
+ 244              	.L21:
+ 245 002c BD378635 		.word	897988541
+ 246              		.cfi_endproc
+ 247              	.LFE551:
+ 249              		.section	.text._ZN17EnvelopeGenerator11SetFallTimeEf,"ax",%progbits
+ 250              		.align	1
+ 251              		.p2align 2,,3
+ 252              		.global	_ZN17EnvelopeGenerator11SetFallTimeEf
+ 253              		.syntax unified
+ 254              		.thumb
+ 255              		.thumb_func
+ 257              	_ZN17EnvelopeGenerator11SetFallTimeEf:
+ 258              	.LVL9:
+ 259              	.LFB552:
+  69:EnvelopeGenerator.cpp ****     fall_time_ = seconds > kMinimumStageTime ? seconds : kMinimumStageTime;
+ 260              		.loc 1 69 1 is_stmt 1 view -0
+ 261              		.cfi_startproc
+ 262              		@ args = 0, pretend = 0, frame = 0
+ 263              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccrbfHRz.s 			page 9
+
+
+ 264              		@ link register save eliminated.
+  70:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+ 265              		.loc 1 70 5 view .LVU71
+ 266 0000 9FED0A7A 		vldr.32	s14, .L24
+  71:EnvelopeGenerator.cpp **** }
+ 267              		.loc 1 71 34 is_stmt 0 view .LVU72
+ 268 0004 F7EE006A 		vmov.f32	s13, #1.0e+0
+  71:EnvelopeGenerator.cpp **** }
+ 269              		.loc 1 71 48 view .LVU73
+ 270 0008 D0ED087A 		vldr.32	s15, [r0, #32]
+ 271 000c B4EEC70A 		vcmpe.f32	s0, s14
+ 272 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 273 0014 30FE070A 		vselgt.f32	s0, s0, s14
+ 274              	.LVL10:
+  71:EnvelopeGenerator.cpp **** }
+ 275              		.loc 1 71 48 view .LVU74
+ 276 0018 60EE277A 		vmul.f32	s15, s0, s15
+  70:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+ 277              		.loc 1 70 16 discriminator 4 view .LVU75
+ 278 001c 80ED050A 		vstr.32	s0, [r0, #20]
+  71:EnvelopeGenerator.cpp **** }
+ 279              		.loc 1 71 5 is_stmt 1 view .LVU76
+  71:EnvelopeGenerator.cpp **** }
+ 280              		.loc 1 71 34 is_stmt 0 view .LVU77
+ 281 0020 86EEA77A 		vdiv.f32	s14, s13, s15
+  71:EnvelopeGenerator.cpp **** }
+ 282              		.loc 1 71 27 view .LVU78
+ 283 0024 80ED077A 		vstr.32	s14, [r0, #28]
+  72:EnvelopeGenerator.cpp **** 
+ 284              		.loc 1 72 1 view .LVU79
+ 285 0028 7047     		bx	lr
+ 286              	.L25:
+ 287 002a 00BF     		.align	2
+ 288              	.L24:
+ 289 002c BD378635 		.word	897988541
+ 290              		.cfi_endproc
+ 291              	.LFE552:
+ 293              		.section	.text._ZN17EnvelopeGenerator8SetCurveE9CurveType,"ax",%progbits
+ 294              		.align	1
+ 295              		.p2align 2,,3
+ 296              		.global	_ZN17EnvelopeGenerator8SetCurveE9CurveType
+ 297              		.syntax unified
+ 298              		.thumb
+ 299              		.thumb_func
+ 301              	_ZN17EnvelopeGenerator8SetCurveE9CurveType:
+ 302              	.LVL11:
+ 303              	.LFB553:
+  75:EnvelopeGenerator.cpp ****     curve_ = curve;
+ 304              		.loc 1 75 1 is_stmt 1 view -0
+ 305              		.cfi_startproc
+ 306              		@ args = 0, pretend = 0, frame = 0
+ 307              		@ frame_needed = 0, uses_anonymous_args = 0
+ 308              		@ link register save eliminated.
+  76:EnvelopeGenerator.cpp **** }
+ 309              		.loc 1 76 5 view .LVU81
+  76:EnvelopeGenerator.cpp **** }
+ 310              		.loc 1 76 12 is_stmt 0 view .LVU82
+ARM GAS  /tmp/ccrbfHRz.s 			page 10
+
+
+ 311 0000 4160     		str	r1, [r0, #4]
+  77:EnvelopeGenerator.cpp **** 
+ 312              		.loc 1 77 1 view .LVU83
+ 313 0002 7047     		bx	lr
+ 314              		.cfi_endproc
+ 315              	.LFE553:
+ 317              		.section	.text._ZN17EnvelopeGenerator7ProcessEv,"ax",%progbits
+ 318              		.align	1
+ 319              		.p2align 2,,3
+ 320              		.global	_ZN17EnvelopeGenerator7ProcessEv
+ 321              		.syntax unified
+ 322              		.thumb
+ 323              		.thumb_func
+ 325              	_ZN17EnvelopeGenerator7ProcessEv:
+ 326              	.LVL12:
+ 327              	.LFB554:
+  80:EnvelopeGenerator.cpp ****     switch(stage_)
+ 328              		.loc 1 80 1 is_stmt 1 view -0
+ 329              		.cfi_startproc
+ 330              		@ args = 0, pretend = 0, frame = 0
+ 331              		@ frame_needed = 0, uses_anonymous_args = 0
+ 332              		@ link register save eliminated.
+  81:EnvelopeGenerator.cpp ****     {
+ 333              		.loc 1 81 5 view .LVU85
+  81:EnvelopeGenerator.cpp ****     {
+ 334              		.loc 1 81 12 is_stmt 0 view .LVU86
+ 335 0000 0368     		ldr	r3, [r0]
+  81:EnvelopeGenerator.cpp ****     {
+ 336              		.loc 1 81 5 view .LVU87
+ 337 0002 012B     		cmp	r3, #1
+ 338 0004 46D0     		beq	.L28
+ 339 0006 022B     		cmp	r3, #2
+ 340 0008 0CD0     		beq	.L29
+ 341 000a 002B     		cmp	r3, #0
+ 342 000c 38D1     		bne	.L30
+  83:EnvelopeGenerator.cpp ****             value_ = 0.0f;
+ 343              		.loc 1 83 9 is_stmt 1 view .LVU88
+  84:EnvelopeGenerator.cpp ****             break;
+ 344              		.loc 1 84 13 view .LVU89
+  84:EnvelopeGenerator.cpp ****             break;
+ 345              		.loc 1 84 20 is_stmt 0 view .LVU90
+ 346 000e 0023     		movs	r3, #0
+ 347 0010 8360     		str	r3, [r0, #8]	@ float
+  85:EnvelopeGenerator.cpp **** 
+ 348              		.loc 1 85 13 is_stmt 1 view .LVU91
+ 349              	.L31:
+ 350              	.LBB33:
+ 351              	.LBB34:
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 352              		.loc 1 11 16 is_stmt 0 view .LVU92
+ 353 0012 9FED490A 		vldr.32	s0, .L51
+ 354              	.L42:
+ 355              	.LBE34:
+ 356              	.LBE33:
+ 119:EnvelopeGenerator.cpp **** }
+ 357              		.loc 1 119 5 is_stmt 1 view .LVU93
+ 358              	.LVL13:
+ARM GAS  /tmp/ccrbfHRz.s 			page 11
+
+
+ 359              	.LBB38:
+ 360              	.LBI33:
+   8:EnvelopeGenerator.cpp **** {
+ 361              		.loc 1 8 7 view .LVU94
+ 362              	.LBB35:
+  10:EnvelopeGenerator.cpp ****         return 0.0f;
+ 363              		.loc 1 10 5 view .LVU95
+ 364              	.LBE35:
+ 365              	.LBE38:
+ 366              	.LBB39:
+ 367              	.LBB40:
+ 368              	.LBB41:
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 369              		.loc 1 11 16 is_stmt 0 view .LVU96
+ 370 0016 0023     		movs	r3, #0
+ 371              	.LVL14:
+ 372              	.L44:
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 373              		.loc 1 11 16 view .LVU97
+ 374              	.LBE41:
+ 375              	.LBE40:
+ 376              	.LBE39:
+ 377              	.LBB51:
+ 378              	.LBB36:
+  12:EnvelopeGenerator.cpp ****         return 1.0f;
+ 379              		.loc 1 12 5 is_stmt 1 view .LVU98
+ 380 0018 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 381 001c 002B     		cmp	r3, #0
+ 382 001e 00FE270A 		vseleq.f32	s0, s0, s15
+ 383              	.LVL15:
+  12:EnvelopeGenerator.cpp ****         return 1.0f;
+ 384              		.loc 1 12 5 is_stmt 0 view .LVU99
+ 385 0022 7047     		bx	lr
+ 386              	.LVL16:
+ 387              	.L29:
+  12:EnvelopeGenerator.cpp ****         return 1.0f;
+ 388              		.loc 1 12 5 view .LVU100
+ 389              	.LBE36:
+ 390              	.LBE51:
+ 103:EnvelopeGenerator.cpp ****         {
+ 391              		.loc 1 103 9 is_stmt 1 view .LVU101
+ 104:EnvelopeGenerator.cpp ****             // Fall usa l'inverso della stessa curva crescente selezionata.
+ 392              		.loc 1 104 9 view .LVU102
+ 106:EnvelopeGenerator.cpp ****             phase_ += fall_phase_increment_;
+ 393              		.loc 1 106 13 view .LVU103
+ 106:EnvelopeGenerator.cpp ****             phase_ += fall_phase_increment_;
+ 394              		.loc 1 106 39 is_stmt 0 view .LVU104
+ 395 0024 D0ED037A 		vldr.32	s15, [r0, #12]
+ 396              	.LVL17:
+ 397              	.LBB52:
+ 398              	.LBI39:
+ 144:EnvelopeGenerator.cpp **** }
+ 145:EnvelopeGenerator.cpp **** 
+ 146:EnvelopeGenerator.cpp **** float EnvelopeGenerator::ApplyCurve(float phase) const
+ 399              		.loc 1 146 7 is_stmt 1 view .LVU105
+ 147:EnvelopeGenerator.cpp **** {
+ 148:EnvelopeGenerator.cpp ****     phase = Clamp01(phase);
+ARM GAS  /tmp/ccrbfHRz.s 			page 12
+
+
+ 400              		.loc 1 148 5 view .LVU106
+ 401              	.LBB44:
+ 402              	.LBI40:
+   8:EnvelopeGenerator.cpp **** {
+ 403              		.loc 1 8 7 view .LVU107
+ 404              	.LBB42:
+  10:EnvelopeGenerator.cpp ****         return 0.0f;
+ 405              		.loc 1 10 5 view .LVU108
+ 406 0028 F5EEC07A 		vcmpe.f32	s15, #0
+ 407 002c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 408 0030 5CD4     		bmi	.L46
+  12:EnvelopeGenerator.cpp ****         return 1.0f;
+ 409              		.loc 1 12 5 view .LVU109
+ 410 0032 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 411 0036 F4EEC07A 		vcmpe.f32	s15, s0
+ 412 003a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 413 003e 30FE270A 		vselgt.f32	s0, s0, s15
+ 414              	.L38:
+ 415              	.LVL18:
+  12:EnvelopeGenerator.cpp ****         return 1.0f;
+ 416              		.loc 1 12 5 is_stmt 0 view .LVU110
+ 417              	.LBE42:
+ 418              	.LBE44:
+ 149:EnvelopeGenerator.cpp **** 
+ 150:EnvelopeGenerator.cpp ****     // Famiglia concava/lineare/convessa analoga alle tabelle di Peaks, qui
+ 151:EnvelopeGenerator.cpp ****     // calcolata con cubiche per rispettare le curve richieste senza lookup table
+ 152:EnvelopeGenerator.cpp ****     // né powf nel callback del timer.
+ 153:EnvelopeGenerator.cpp ****     switch(curve_)
+ 419              		.loc 1 153 5 is_stmt 1 view .LVU111
+ 420              	.LBB45:
+ 421              		.loc 1 153 12 is_stmt 0 view .LVU112
+ 422 0042 4368     		ldr	r3, [r0, #4]
+ 423              		.loc 1 153 5 view .LVU113
+ 424 0044 002B     		cmp	r3, #0
+ 425 0046 57D0     		beq	.L39
+ 426 0048 022B     		cmp	r3, #2
+ 427 004a 03D1     		bne	.L40
+ 428              	.LBB46:
+ 154:EnvelopeGenerator.cpp ****     {
+ 155:EnvelopeGenerator.cpp ****         case CurveType::Linear: return phase;
+ 156:EnvelopeGenerator.cpp **** 
+ 157:EnvelopeGenerator.cpp ****         case CurveType::Exponential: return phase * phase * phase;
+ 429              		.loc 1 157 9 is_stmt 1 view .LVU114
+ 430              		.loc 1 157 38 view .LVU115
+ 431              		.loc 1 157 51 is_stmt 0 view .LVU116
+ 432 004c 20EE007A 		vmul.f32	s14, s0, s0
+ 433              		.loc 1 157 61 view .LVU117
+ 434 0050 20EE070A 		vmul.f32	s0, s0, s14
+ 435              	.LVL19:
+ 436              	.L40:
+ 437              		.loc 1 157 61 view .LVU118
+ 438              	.LBE46:
+ 439              	.LBE45:
+ 440              	.LBE52:
+ 107:EnvelopeGenerator.cpp **** 
+ 441              		.loc 1 107 20 view .LVU119
+ 442 0054 D0ED076A 		vldr.32	s13, [r0, #28]
+ARM GAS  /tmp/ccrbfHRz.s 			page 13
+
+
+ 106:EnvelopeGenerator.cpp ****             phase_ += fall_phase_increment_;
+ 443              		.loc 1 106 27 discriminator 1 view .LVU120
+ 444 0058 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 107:EnvelopeGenerator.cpp **** 
+ 445              		.loc 1 107 20 view .LVU121
+ 446 005c 77EEA67A 		vadd.f32	s15, s15, s13
+ 106:EnvelopeGenerator.cpp ****             phase_ += fall_phase_increment_;
+ 447              		.loc 1 106 27 discriminator 1 view .LVU122
+ 448 0060 37EE400A 		vsub.f32	s0, s14, s0
+ 109:EnvelopeGenerator.cpp ****             {
+ 449              		.loc 1 109 13 view .LVU123
+ 450 0064 F4EEC77A 		vcmpe.f32	s15, s14
+ 106:EnvelopeGenerator.cpp ****             phase_ += fall_phase_increment_;
+ 451              		.loc 1 106 20 discriminator 1 view .LVU124
+ 452 0068 80ED020A 		vstr.32	s0, [r0, #8]
+ 107:EnvelopeGenerator.cpp **** 
+ 453              		.loc 1 107 13 is_stmt 1 view .LVU125
+ 109:EnvelopeGenerator.cpp ****             {
+ 454              		.loc 1 109 13 view .LVU126
+ 455 006c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 456 0070 3FDB     		blt	.L49
+ 111:EnvelopeGenerator.cpp ****                 value_ = 0.0f;
+ 457              		.loc 1 111 17 view .LVU127
+ 111:EnvelopeGenerator.cpp ****                 value_ = 0.0f;
+ 458              		.loc 1 111 24 is_stmt 0 view .LVU128
+ 459 0072 0023     		movs	r3, #0
+ 113:EnvelopeGenerator.cpp ****             }
+ 460              		.loc 1 113 35 view .LVU129
+ 461 0074 90F82420 		ldrb	r2, [r0, #36]	@ zero_extendqisi2
+ 111:EnvelopeGenerator.cpp ****                 value_ = 0.0f;
+ 462              		.loc 1 111 24 view .LVU130
+ 463 0078 C360     		str	r3, [r0, #12]	@ float
+ 112:EnvelopeGenerator.cpp ****                 stage_ = cycling_ ? Stage::Rise : Stage::Idle;
+ 464              		.loc 1 112 17 is_stmt 1 view .LVU131
+ 112:EnvelopeGenerator.cpp ****                 stage_ = cycling_ ? Stage::Rise : Stage::Idle;
+ 465              		.loc 1 112 24 is_stmt 0 view .LVU132
+ 466 007a 8360     		str	r3, [r0, #8]	@ float
+ 113:EnvelopeGenerator.cpp ****             }
+ 467              		.loc 1 113 17 is_stmt 1 view .LVU133
+ 113:EnvelopeGenerator.cpp ****             }
+ 468              		.loc 1 113 35 is_stmt 0 view .LVU134
+ 469 007c 0260     		str	r2, [r0]
+ 470 007e C8E7     		b	.L31
+ 471              	.L30:
+ 119:EnvelopeGenerator.cpp **** }
+ 472              		.loc 1 119 5 is_stmt 1 view .LVU135
+ 119:EnvelopeGenerator.cpp **** }
+ 473              		.loc 1 119 19 is_stmt 0 view .LVU136
+ 474 0080 90ED020A 		vldr.32	s0, [r0, #8]
+ 475              	.LVL20:
+ 476              	.LBB53:
+   8:EnvelopeGenerator.cpp **** {
+ 477              		.loc 1 8 7 is_stmt 1 view .LVU137
+ 478              	.LBB37:
+  10:EnvelopeGenerator.cpp ****         return 0.0f;
+ 479              		.loc 1 10 5 view .LVU138
+ 480 0084 B5EEC00A 		vcmpe.f32	s0, #0
+ARM GAS  /tmp/ccrbfHRz.s 			page 14
+
+
+ 481 0088 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 482 008c 4AD5     		bpl	.L50
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 483              		.loc 1 11 16 is_stmt 0 view .LVU139
+ 484 008e 9FED2A0A 		vldr.32	s0, .L51
+ 485              	.LVL21:
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 486              		.loc 1 11 16 view .LVU140
+ 487              	.LBE37:
+ 488              	.LBE53:
+ 120:EnvelopeGenerator.cpp **** 
+ 489              		.loc 1 120 1 view .LVU141
+ 490 0092 7047     		bx	lr
+ 491              	.L28:
+  87:EnvelopeGenerator.cpp ****         {
+ 492              		.loc 1 87 9 is_stmt 1 view .LVU142
+  88:EnvelopeGenerator.cpp ****             // L'incremento è precomputato quando cambia il tempo: nel callback
+ 493              		.loc 1 88 9 view .LVU143
+  91:EnvelopeGenerator.cpp ****             phase_ += rise_phase_increment_;
+ 494              		.loc 1 91 13 view .LVU144
+  91:EnvelopeGenerator.cpp ****             phase_ += rise_phase_increment_;
+ 495              		.loc 1 91 32 is_stmt 0 view .LVU145
+ 496 0094 D0ED037A 		vldr.32	s15, [r0, #12]
+ 497              	.LVL22:
+ 498              	.LBB54:
+ 499              	.LBI54:
+ 146:EnvelopeGenerator.cpp **** {
+ 500              		.loc 1 146 7 is_stmt 1 view .LVU146
+ 148:EnvelopeGenerator.cpp **** 
+ 501              		.loc 1 148 5 view .LVU147
+ 502              	.LBB55:
+ 503              	.LBI55:
+   8:EnvelopeGenerator.cpp **** {
+ 504              		.loc 1 8 7 view .LVU148
+ 505              	.LBB56:
+  10:EnvelopeGenerator.cpp ****         return 0.0f;
+ 506              		.loc 1 10 5 view .LVU149
+ 507 0098 F5EEC07A 		vcmpe.f32	s15, #0
+ 508 009c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 509 00a0 21D4     		bmi	.L45
+  12:EnvelopeGenerator.cpp ****         return 1.0f;
+ 510              		.loc 1 12 5 view .LVU150
+ 511 00a2 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 512 00a6 F4EEC07A 		vcmpe.f32	s15, s0
+ 513 00aa F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 514 00ae 30FE270A 		vselgt.f32	s0, s0, s15
+ 515              	.L32:
+ 516              	.LVL23:
+  12:EnvelopeGenerator.cpp ****         return 1.0f;
+ 517              		.loc 1 12 5 is_stmt 0 view .LVU151
+ 518              	.LBE56:
+ 519              	.LBE55:
+ 153:EnvelopeGenerator.cpp ****     {
+ 520              		.loc 1 153 5 is_stmt 1 view .LVU152
+ 521              	.LBB58:
+ 153:EnvelopeGenerator.cpp ****     {
+ 522              		.loc 1 153 12 is_stmt 0 view .LVU153
+ARM GAS  /tmp/ccrbfHRz.s 			page 15
+
+
+ 523 00b2 4368     		ldr	r3, [r0, #4]
+ 153:EnvelopeGenerator.cpp ****     {
+ 524              		.loc 1 153 5 view .LVU154
+ 525 00b4 5BB3     		cbz	r3, .L33
+ 526 00b6 022B     		cmp	r3, #2
+ 527 00b8 03D1     		bne	.L34
+ 528              	.LBB59:
+ 529              		.loc 1 157 9 is_stmt 1 view .LVU155
+ 530              		.loc 1 157 38 view .LVU156
+ 531              		.loc 1 157 51 is_stmt 0 view .LVU157
+ 532 00ba 20EE007A 		vmul.f32	s14, s0, s0
+ 533              		.loc 1 157 61 view .LVU158
+ 534 00be 20EE070A 		vmul.f32	s0, s0, s14
+ 535              	.LVL24:
+ 536              	.L34:
+ 537              		.loc 1 157 61 view .LVU159
+ 538              	.LBE59:
+ 539              	.LBE58:
+ 540              	.LBE54:
+  92:EnvelopeGenerator.cpp **** 
+ 541              		.loc 1 92 20 view .LVU160
+ 542 00c2 D0ED066A 		vldr.32	s13, [r0, #24]
+  94:EnvelopeGenerator.cpp ****             {
+ 543              		.loc 1 94 13 view .LVU161
+ 544 00c6 B7EE007A 		vmov.f32	s14, #1.0e+0
+  91:EnvelopeGenerator.cpp ****             phase_ += rise_phase_increment_;
+ 545              		.loc 1 91 20 discriminator 1 view .LVU162
+ 546 00ca 80ED020A 		vstr.32	s0, [r0, #8]
+  92:EnvelopeGenerator.cpp **** 
+ 547              		.loc 1 92 13 is_stmt 1 view .LVU163
+  92:EnvelopeGenerator.cpp **** 
+ 548              		.loc 1 92 20 is_stmt 0 view .LVU164
+ 549 00ce 77EEA67A 		vadd.f32	s15, s15, s13
+  94:EnvelopeGenerator.cpp ****             {
+ 550              		.loc 1 94 13 is_stmt 1 view .LVU165
+ 551 00d2 F4EEC77A 		vcmpe.f32	s15, s14
+ 552 00d6 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 553 00da 0ADB     		blt	.L49
+  97:EnvelopeGenerator.cpp ****                 stage_ = Stage::Fall;
+ 554              		.loc 1 97 17 view .LVU166
+  97:EnvelopeGenerator.cpp ****                 stage_ = Stage::Fall;
+ 555              		.loc 1 97 24 is_stmt 0 view .LVU167
+ 556 00dc 0022     		movs	r2, #0
+  98:EnvelopeGenerator.cpp ****             }
+ 557              		.loc 1 98 24 view .LVU168
+ 558 00de 0223     		movs	r3, #2
+  97:EnvelopeGenerator.cpp ****                 stage_ = Stage::Fall;
+ 559              		.loc 1 97 24 view .LVU169
+ 560 00e0 C260     		str	r2, [r0, #12]	@ float
+  98:EnvelopeGenerator.cpp ****             }
+ 561              		.loc 1 98 17 is_stmt 1 view .LVU170
+  98:EnvelopeGenerator.cpp ****             }
+ 562              		.loc 1 98 24 is_stmt 0 view .LVU171
+ 563 00e2 0360     		str	r3, [r0]
+ 564 00e4 97E7     		b	.L42
+ 565              	.LVL25:
+ 566              	.L45:
+ARM GAS  /tmp/ccrbfHRz.s 			page 16
+
+
+ 567              	.LBB64:
+ 568              	.LBB62:
+ 569              	.LBB57:
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 570              		.loc 1 11 16 view .LVU172
+ 571 00e6 9FED140A 		vldr.32	s0, .L51
+ 572 00ea E2E7     		b	.L32
+ 573              	.LVL26:
+ 574              	.L46:
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 575              		.loc 1 11 16 view .LVU173
+ 576              	.LBE57:
+ 577              	.LBE62:
+ 578              	.LBE64:
+ 579              	.LBB65:
+ 580              	.LBB49:
+ 581              	.LBB43:
+ 582 00ec 9FED120A 		vldr.32	s0, .L51
+ 583 00f0 A7E7     		b	.L38
+ 584              	.LVL27:
+ 585              	.L49:
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 586              		.loc 1 11 16 view .LVU174
+ 587              	.LBE43:
+ 588              	.LBE49:
+ 589              	.LBE65:
+  92:EnvelopeGenerator.cpp **** 
+ 590              		.loc 1 92 20 view .LVU175
+ 591 00f2 C0ED037A 		vstr.32	s15, [r0, #12]
+ 592 00f6 8EE7     		b	.L42
+ 593              	.LVL28:
+ 594              	.L39:
+ 595              	.LBB66:
+ 596              	.LBB50:
+ 597              	.LBB48:
+ 158:EnvelopeGenerator.cpp **** 
+ 159:EnvelopeGenerator.cpp ****         case CurveType::Logarithmic:
+ 598              		.loc 1 159 9 is_stmt 1 view .LVU176
+ 160:EnvelopeGenerator.cpp ****         {
+ 599              		.loc 1 160 9 view .LVU177
+ 600              	.LBB47:
+ 161:EnvelopeGenerator.cpp ****             const float inverse = 1.0f - phase;
+ 601              		.loc 1 161 13 view .LVU178
+ 602              		.loc 1 161 25 is_stmt 0 view .LVU179
+ 603 00f8 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 604 00fc 36EEC07A 		vsub.f32	s14, s13, s0
+ 605              	.LVL29:
+ 162:EnvelopeGenerator.cpp ****             return 1.0f - (inverse * inverse * inverse);
+ 606              		.loc 1 162 13 is_stmt 1 view .LVU180
+ 607              		.loc 1 162 36 is_stmt 0 view .LVU181
+ 608 0100 27EE076A 		vmul.f32	s12, s14, s14
+ 609              		.loc 1 162 55 view .LVU182
+ 610 0104 E7EE466A 		vfms.f32	s13, s14, s12
+ 611 0108 B0EE660A 		vmov.f32	s0, s13
+ 612              	.LVL30:
+ 613              		.loc 1 162 55 view .LVU183
+ 614 010c A2E7     		b	.L40
+ARM GAS  /tmp/ccrbfHRz.s 			page 17
+
+
+ 615              	.LVL31:
+ 616              	.L33:
+ 617              		.loc 1 162 55 view .LVU184
+ 618              	.LBE47:
+ 619              	.LBE48:
+ 620              	.LBE50:
+ 621              	.LBE66:
+ 622              	.LBB67:
+ 623              	.LBB63:
+ 624              	.LBB61:
+ 159:EnvelopeGenerator.cpp ****         {
+ 625              		.loc 1 159 9 is_stmt 1 view .LVU185
+ 160:EnvelopeGenerator.cpp ****             const float inverse = 1.0f - phase;
+ 626              		.loc 1 160 9 view .LVU186
+ 627              	.LBB60:
+ 161:EnvelopeGenerator.cpp ****             return 1.0f - (inverse * inverse * inverse);
+ 628              		.loc 1 161 13 view .LVU187
+ 161:EnvelopeGenerator.cpp ****             return 1.0f - (inverse * inverse * inverse);
+ 629              		.loc 1 161 25 is_stmt 0 view .LVU188
+ 630 010e F7EE006A 		vmov.f32	s13, #1.0e+0
+ 631 0112 36EEC07A 		vsub.f32	s14, s13, s0
+ 632              	.LVL32:
+ 633              		.loc 1 162 13 is_stmt 1 view .LVU189
+ 634              		.loc 1 162 36 is_stmt 0 view .LVU190
+ 635 0116 27EE076A 		vmul.f32	s12, s14, s14
+ 636              		.loc 1 162 55 view .LVU191
+ 637 011a E7EE466A 		vfms.f32	s13, s14, s12
+ 638 011e B0EE660A 		vmov.f32	s0, s13
+ 639              	.LVL33:
+ 640              		.loc 1 162 55 view .LVU192
+ 641 0122 CEE7     		b	.L34
+ 642              	.LVL34:
+ 643              	.L50:
+ 644              		.loc 1 162 55 view .LVU193
+ 645 0124 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 646 0128 B4EEE70A 		vcmpe.f32	s0, s15
+ 647 012c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 648 0130 CCBF     		ite	gt
+ 649 0132 0123     		movgt	r3, #1
+ 650 0134 0023     		movle	r3, #0
+ 651 0136 6FE7     		b	.L44
+ 652              	.L52:
+ 653              		.align	2
+ 654              	.L51:
+ 655 0138 00000000 		.word	0
+ 656              	.LBE60:
+ 657              	.LBE61:
+ 658              	.LBE63:
+ 659              	.LBE67:
+ 660              		.cfi_endproc
+ 661              	.LFE554:
+ 663              		.section	.text._ZNK17EnvelopeGenerator8GetValueEv,"ax",%progbits
+ 664              		.align	1
+ 665              		.p2align 2,,3
+ 666              		.global	_ZNK17EnvelopeGenerator8GetValueEv
+ 667              		.syntax unified
+ 668              		.thumb
+ARM GAS  /tmp/ccrbfHRz.s 			page 18
+
+
+ 669              		.thumb_func
+ 671              	_ZNK17EnvelopeGenerator8GetValueEv:
+ 672              	.LVL35:
+ 673              	.LFB555:
+ 123:EnvelopeGenerator.cpp ****     return value_;
+ 674              		.loc 1 123 1 is_stmt 1 view -0
+ 675              		.cfi_startproc
+ 676              		@ args = 0, pretend = 0, frame = 0
+ 677              		@ frame_needed = 0, uses_anonymous_args = 0
+ 678              		@ link register save eliminated.
+ 124:EnvelopeGenerator.cpp **** }
+ 679              		.loc 1 124 5 view .LVU195
+ 125:EnvelopeGenerator.cpp **** 
+ 680              		.loc 1 125 1 is_stmt 0 view .LVU196
+ 681 0000 90ED020A 		vldr.32	s0, [r0, #8]
+ 682 0004 7047     		bx	lr
+ 683              		.cfi_endproc
+ 684              	.LFE555:
+ 686 0006 00BF     		.section	.text._ZNK17EnvelopeGenerator8GetStageEv,"ax",%progbits
+ 687              		.align	1
+ 688              		.p2align 2,,3
+ 689              		.global	_ZNK17EnvelopeGenerator8GetStageEv
+ 690              		.syntax unified
+ 691              		.thumb
+ 692              		.thumb_func
+ 694              	_ZNK17EnvelopeGenerator8GetStageEv:
+ 695              	.LVL36:
+ 696              	.LFB556:
+ 128:EnvelopeGenerator.cpp ****     return stage_;
+ 697              		.loc 1 128 1 is_stmt 1 view -0
+ 698              		.cfi_startproc
+ 699              		@ args = 0, pretend = 0, frame = 0
+ 700              		@ frame_needed = 0, uses_anonymous_args = 0
+ 701              		@ link register save eliminated.
+ 129:EnvelopeGenerator.cpp **** }
+ 702              		.loc 1 129 5 view .LVU198
+ 130:EnvelopeGenerator.cpp **** 
+ 703              		.loc 1 130 1 is_stmt 0 view .LVU199
+ 704 0000 0068     		ldr	r0, [r0]
+ 705              	.LVL37:
+ 130:EnvelopeGenerator.cpp **** 
+ 706              		.loc 1 130 1 view .LVU200
+ 707 0002 7047     		bx	lr
+ 708              		.cfi_endproc
+ 709              	.LFE556:
+ 711              		.section	.text._ZNK17EnvelopeGenerator9IsCyclingEv,"ax",%progbits
+ 712              		.align	1
+ 713              		.p2align 2,,3
+ 714              		.global	_ZNK17EnvelopeGenerator9IsCyclingEv
+ 715              		.syntax unified
+ 716              		.thumb
+ 717              		.thumb_func
+ 719              	_ZNK17EnvelopeGenerator9IsCyclingEv:
+ 720              	.LVL38:
+ 721              	.LFB557:
+ 133:EnvelopeGenerator.cpp ****     return cycling_;
+ 722              		.loc 1 133 1 is_stmt 1 view -0
+ARM GAS  /tmp/ccrbfHRz.s 			page 19
+
+
+ 723              		.cfi_startproc
+ 724              		@ args = 0, pretend = 0, frame = 0
+ 725              		@ frame_needed = 0, uses_anonymous_args = 0
+ 726              		@ link register save eliminated.
+ 134:EnvelopeGenerator.cpp **** }
+ 727              		.loc 1 134 5 view .LVU202
+ 135:EnvelopeGenerator.cpp **** 
+ 728              		.loc 1 135 1 is_stmt 0 view .LVU203
+ 729 0000 90F82400 		ldrb	r0, [r0, #36]	@ zero_extendqisi2
+ 730              	.LVL39:
+ 135:EnvelopeGenerator.cpp **** 
+ 731              		.loc 1 135 1 view .LVU204
+ 732 0004 7047     		bx	lr
+ 733              		.cfi_endproc
+ 734              	.LFE557:
+ 736 0006 00BF     		.section	.text._ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv,"ax",%progbits
+ 737              		.align	1
+ 738              		.p2align 2,,3
+ 739              		.global	_ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv
+ 740              		.syntax unified
+ 741              		.thumb
+ 742              		.thumb_func
+ 744              	_ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv:
+ 745              	.LVL40:
+ 746              	.LFB558:
+ 138:EnvelopeGenerator.cpp ****     // Come nel motore a segmenti di Mutable Instruments Peaks, l'avanzamento
+ 747              		.loc 1 138 1 is_stmt 1 view -0
+ 748              		.cfi_startproc
+ 749              		@ args = 0, pretend = 0, frame = 0
+ 750              		@ frame_needed = 0, uses_anonymous_args = 0
+ 751              		@ link register save eliminated.
+ 142:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+ 752              		.loc 1 142 5 view .LVU206
+ 142:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+ 753              		.loc 1 142 50 is_stmt 0 view .LVU207
+ 754 0000 D0ED087A 		vldr.32	s15, [r0, #32]
+ 142:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+ 755              		.loc 1 142 34 view .LVU208
+ 756 0004 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 143:EnvelopeGenerator.cpp **** }
+ 757              		.loc 1 143 48 view .LVU209
+ 758 0008 90ED056A 		vldr.32	s12, [r0, #20]
+ 142:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+ 759              		.loc 1 142 48 view .LVU210
+ 760 000c 90ED047A 		vldr.32	s14, [r0, #16]
+ 761 0010 27EE877A 		vmul.f32	s14, s15, s14
+ 143:EnvelopeGenerator.cpp **** }
+ 762              		.loc 1 143 48 view .LVU211
+ 763 0014 67EE867A 		vmul.f32	s15, s15, s12
+ 142:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+ 764              		.loc 1 142 34 view .LVU212
+ 765 0018 86EE876A 		vdiv.f32	s12, s13, s14
+ 143:EnvelopeGenerator.cpp **** }
+ 766              		.loc 1 143 34 view .LVU213
+ 767 001c 86EEA77A 		vdiv.f32	s14, s13, s15
+ 142:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
+ 768              		.loc 1 142 27 view .LVU214
+ARM GAS  /tmp/ccrbfHRz.s 			page 20
+
+
+ 769 0020 80ED066A 		vstr.32	s12, [r0, #24]
+ 143:EnvelopeGenerator.cpp **** }
+ 770              		.loc 1 143 5 is_stmt 1 view .LVU215
+ 143:EnvelopeGenerator.cpp **** }
+ 771              		.loc 1 143 27 is_stmt 0 view .LVU216
+ 772 0024 80ED077A 		vstr.32	s14, [r0, #28]
+ 144:EnvelopeGenerator.cpp **** 
+ 773              		.loc 1 144 1 view .LVU217
+ 774 0028 7047     		bx	lr
+ 775              		.cfi_endproc
+ 776              	.LFE558:
+ 778 002a 00BF     		.section	.text._ZNK17EnvelopeGenerator10ApplyCurveEf,"ax",%progbits
+ 779              		.align	1
+ 780              		.p2align 2,,3
+ 781              		.global	_ZNK17EnvelopeGenerator10ApplyCurveEf
+ 782              		.syntax unified
+ 783              		.thumb
+ 784              		.thumb_func
+ 786              	_ZNK17EnvelopeGenerator10ApplyCurveEf:
+ 787              	.LVL41:
+ 788              	.LFB559:
+ 147:EnvelopeGenerator.cpp ****     phase = Clamp01(phase);
+ 789              		.loc 1 147 1 is_stmt 1 view -0
+ 790              		.cfi_startproc
+ 791              		@ args = 0, pretend = 0, frame = 0
+ 792              		@ frame_needed = 0, uses_anonymous_args = 0
+ 793              		@ link register save eliminated.
+ 148:EnvelopeGenerator.cpp **** 
+ 794              		.loc 1 148 5 view .LVU219
+ 795              	.LBB68:
+ 796              	.LBI68:
+   8:EnvelopeGenerator.cpp **** {
+ 797              		.loc 1 8 7 view .LVU220
+ 798              	.LBB69:
+  10:EnvelopeGenerator.cpp ****         return 0.0f;
+ 799              		.loc 1 10 5 view .LVU221
+ 800 0000 B5EEC00A 		vcmpe.f32	s0, #0
+ 801 0004 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 802 0008 1CD4     		bmi	.L61
+  12:EnvelopeGenerator.cpp ****         return 1.0f;
+ 803              		.loc 1 12 5 view .LVU222
+ 804 000a F7EE007A 		vmov.f32	s15, #1.0e+0
+ 805 000e B4EEE70A 		vcmpe.f32	s0, s15
+ 806 0012 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 807 0016 37FE800A 		vselgt.f32	s0, s15, s0
+ 808              	.LVL42:
+ 809              	.L58:
+  12:EnvelopeGenerator.cpp ****         return 1.0f;
+ 810              		.loc 1 12 5 is_stmt 0 view .LVU223
+ 811              	.LBE69:
+ 812              	.LBE68:
+ 153:EnvelopeGenerator.cpp ****     {
+ 813              		.loc 1 153 5 is_stmt 1 view .LVU224
+ 814              	.LBB71:
+ 153:EnvelopeGenerator.cpp ****     {
+ 815              		.loc 1 153 12 is_stmt 0 view .LVU225
+ 816 001a 4368     		ldr	r3, [r0, #4]
+ARM GAS  /tmp/ccrbfHRz.s 			page 21
+
+
+ 153:EnvelopeGenerator.cpp ****     {
+ 817              		.loc 1 153 5 view .LVU226
+ 818 001c 3BB1     		cbz	r3, .L59
+ 819 001e 022B     		cmp	r3, #2
+ 820 0020 00D0     		beq	.L62
+ 821              	.LBE71:
+ 163:EnvelopeGenerator.cpp ****         }
+ 164:EnvelopeGenerator.cpp ****     }
+ 165:EnvelopeGenerator.cpp **** 
+ 166:EnvelopeGenerator.cpp ****     return phase;
+ 167:EnvelopeGenerator.cpp **** }
+ 822              		.loc 1 167 1 view .LVU227
+ 823 0022 7047     		bx	lr
+ 824              	.L62:
+ 825              	.LBB74:
+ 826              	.LBB72:
+ 157:EnvelopeGenerator.cpp **** 
+ 827              		.loc 1 157 9 is_stmt 1 view .LVU228
+ 157:EnvelopeGenerator.cpp **** 
+ 828              		.loc 1 157 38 view .LVU229
+ 157:EnvelopeGenerator.cpp **** 
+ 829              		.loc 1 157 51 is_stmt 0 view .LVU230
+ 830 0024 60EE007A 		vmul.f32	s15, s0, s0
+ 157:EnvelopeGenerator.cpp **** 
+ 831              		.loc 1 157 61 view .LVU231
+ 832 0028 20EE270A 		vmul.f32	s0, s0, s15
+ 833              	.LVL43:
+ 157:EnvelopeGenerator.cpp **** 
+ 834              		.loc 1 157 61 view .LVU232
+ 835 002c 7047     		bx	lr
+ 836              	.LVL44:
+ 837              	.L59:
+ 159:EnvelopeGenerator.cpp ****         {
+ 838              		.loc 1 159 9 is_stmt 1 view .LVU233
+ 160:EnvelopeGenerator.cpp ****             const float inverse = 1.0f - phase;
+ 839              		.loc 1 160 9 view .LVU234
+ 840              	.LBB73:
+ 161:EnvelopeGenerator.cpp ****             return 1.0f - (inverse * inverse * inverse);
+ 841              		.loc 1 161 13 view .LVU235
+ 161:EnvelopeGenerator.cpp ****             return 1.0f - (inverse * inverse * inverse);
+ 842              		.loc 1 161 25 is_stmt 0 view .LVU236
+ 843 002e B7EE007A 		vmov.f32	s14, #1.0e+0
+ 844 0032 77EE407A 		vsub.f32	s15, s14, s0
+ 845              	.LVL45:
+ 162:EnvelopeGenerator.cpp ****         }
+ 846              		.loc 1 162 13 is_stmt 1 view .LVU237
+ 162:EnvelopeGenerator.cpp ****         }
+ 847              		.loc 1 162 55 is_stmt 0 view .LVU238
+ 848 0036 67EEE76A 		vnmul.f32	s13, s15, s15
+ 849 003a A7EEA67A 		vfma.f32	s14, s15, s13
+ 850 003e B0EE470A 		vmov.f32	s0, s14
+ 851              	.LVL46:
+ 162:EnvelopeGenerator.cpp ****         }
+ 852              		.loc 1 162 55 view .LVU239
+ 853              	.LBE73:
+ 854              	.LBE72:
+ 855              	.LBE74:
+ARM GAS  /tmp/ccrbfHRz.s 			page 22
+
+
+ 856              		.loc 1 167 1 view .LVU240
+ 857 0042 7047     		bx	lr
+ 858              	.LVL47:
+ 859              	.L61:
+ 860              	.LBB75:
+ 861              	.LBB70:
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 862              		.loc 1 11 16 view .LVU241
+ 863 0044 9FED010A 		vldr.32	s0, .L63
+ 864              	.LVL48:
+  11:EnvelopeGenerator.cpp ****     if(value > 1.0f)
+ 865              		.loc 1 11 16 view .LVU242
+ 866 0048 E7E7     		b	.L58
+ 867              	.L64:
+ 868 004a 00BF     		.align	2
+ 869              	.L63:
+ 870 004c 00000000 		.word	0
+ 871              	.LBE70:
+ 872              	.LBE75:
+ 873              		.cfi_endproc
+ 874              	.LFE559:
+ 876              		.text
+ 877              	.Letext0:
+ 878              		.file 2 "/usr/include/newlib/c++/14.2.1/cmath"
+ 879              		.file 3 "/usr/include/newlib/c++/14.2.1/bits/std_abs.h"
+ 880              		.file 4 "/usr/include/newlib/math.h"
+ 881              		.file 5 "/usr/include/newlib/c++/14.2.1/math.h"
+ 882              		.file 6 "EnvelopeGenerator.h"
+ 883              		.file 7 "/usr/include/newlib/c++/14.2.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h"
+ARM GAS  /tmp/ccrbfHRz.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 EnvelopeGenerator.cpp
+     /tmp/ccrbfHRz.s:20     .text._ZN17EnvelopeGenerator4InitEf:00000000 $t
+     /tmp/ccrbfHRz.s:27     .text._ZN17EnvelopeGenerator4InitEf:00000000 _ZN17EnvelopeGenerator4InitEf
+     /tmp/ccrbfHRz.s:115    .text._ZN17EnvelopeGenerator4InitEf:00000048 $d
+     /tmp/ccrbfHRz.s:123    .text._ZN17EnvelopeGenerator7TriggerEv:00000000 $t
+     /tmp/ccrbfHRz.s:130    .text._ZN17EnvelopeGenerator7TriggerEv:00000000 _ZN17EnvelopeGenerator7TriggerEv
+     /tmp/ccrbfHRz.s:166    .text._ZN17EnvelopeGenerator10SetCyclingEb:00000000 $t
+     /tmp/ccrbfHRz.s:173    .text._ZN17EnvelopeGenerator10SetCyclingEb:00000000 _ZN17EnvelopeGenerator10SetCyclingEb
+     /tmp/ccrbfHRz.s:206    .text._ZN17EnvelopeGenerator11SetRiseTimeEf:00000000 $t
+     /tmp/ccrbfHRz.s:213    .text._ZN17EnvelopeGenerator11SetRiseTimeEf:00000000 _ZN17EnvelopeGenerator11SetRiseTimeEf
+     /tmp/ccrbfHRz.s:245    .text._ZN17EnvelopeGenerator11SetRiseTimeEf:0000002c $d
+     /tmp/ccrbfHRz.s:250    .text._ZN17EnvelopeGenerator11SetFallTimeEf:00000000 $t
+     /tmp/ccrbfHRz.s:257    .text._ZN17EnvelopeGenerator11SetFallTimeEf:00000000 _ZN17EnvelopeGenerator11SetFallTimeEf
+     /tmp/ccrbfHRz.s:289    .text._ZN17EnvelopeGenerator11SetFallTimeEf:0000002c $d
+     /tmp/ccrbfHRz.s:294    .text._ZN17EnvelopeGenerator8SetCurveE9CurveType:00000000 $t
+     /tmp/ccrbfHRz.s:301    .text._ZN17EnvelopeGenerator8SetCurveE9CurveType:00000000 _ZN17EnvelopeGenerator8SetCurveE9CurveType
+     /tmp/ccrbfHRz.s:318    .text._ZN17EnvelopeGenerator7ProcessEv:00000000 $t
+     /tmp/ccrbfHRz.s:325    .text._ZN17EnvelopeGenerator7ProcessEv:00000000 _ZN17EnvelopeGenerator7ProcessEv
+     /tmp/ccrbfHRz.s:655    .text._ZN17EnvelopeGenerator7ProcessEv:00000138 $d
+     /tmp/ccrbfHRz.s:664    .text._ZNK17EnvelopeGenerator8GetValueEv:00000000 $t
+     /tmp/ccrbfHRz.s:671    .text._ZNK17EnvelopeGenerator8GetValueEv:00000000 _ZNK17EnvelopeGenerator8GetValueEv
+     /tmp/ccrbfHRz.s:687    .text._ZNK17EnvelopeGenerator8GetStageEv:00000000 $t
+     /tmp/ccrbfHRz.s:694    .text._ZNK17EnvelopeGenerator8GetStageEv:00000000 _ZNK17EnvelopeGenerator8GetStageEv
+     /tmp/ccrbfHRz.s:712    .text._ZNK17EnvelopeGenerator9IsCyclingEv:00000000 $t
+     /tmp/ccrbfHRz.s:719    .text._ZNK17EnvelopeGenerator9IsCyclingEv:00000000 _ZNK17EnvelopeGenerator9IsCyclingEv
+     /tmp/ccrbfHRz.s:737    .text._ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv:00000000 $t
+     /tmp/ccrbfHRz.s:744    .text._ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv:00000000 _ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv
+     /tmp/ccrbfHRz.s:779    .text._ZNK17EnvelopeGenerator10ApplyCurveEf:00000000 $t
+     /tmp/ccrbfHRz.s:786    .text._ZNK17EnvelopeGenerator10ApplyCurveEf:00000000 _ZNK17EnvelopeGenerator10ApplyCurveEf
+     /tmp/ccrbfHRz.s:870    .text._ZNK17EnvelopeGenerator10ApplyCurveEf:0000004c $d
+
+NO UNDEFINED SYMBOLS
