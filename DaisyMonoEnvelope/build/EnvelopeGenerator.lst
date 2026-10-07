@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccrbfHRz.s 			page 1
+ARM GAS  /tmp/cc5h2h1P.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
   36              		.loc 1 20 38 is_stmt 0 view .LVU2
   37 0000 B5EEC00A 		vcmpe.f32	s0, #0
   38 0004 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-ARM GAS  /tmp/ccrbfHRz.s 			page 2
+ARM GAS  /tmp/cc5h2h1P.s 			page 2
 
 
   39 0008 19DD     		ble	.L6
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
   72:EnvelopeGenerator.cpp **** }
   73:EnvelopeGenerator.cpp **** 
   74:EnvelopeGenerator.cpp **** void EnvelopeGenerator::SetCurve(CurveType curve)
-ARM GAS  /tmp/ccrbfHRz.s 			page 3
+ARM GAS  /tmp/cc5h2h1P.s 			page 3
 
 
   75:EnvelopeGenerator.cpp **** {
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  129:EnvelopeGenerator.cpp ****     return stage_;
  130:EnvelopeGenerator.cpp **** }
  131:EnvelopeGenerator.cpp **** 
-ARM GAS  /tmp/ccrbfHRz.s 			page 4
+ARM GAS  /tmp/cc5h2h1P.s 			page 4
 
 
  132:EnvelopeGenerator.cpp **** bool EnvelopeGenerator::IsCycling() const
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
   74 002c 80F82430 		strb	r3, [r0, #36]
   75              	.LBB15:
   76              	.LBB13:
-ARM GAS  /tmp/ccrbfHRz.s 			page 5
+ARM GAS  /tmp/cc5h2h1P.s 			page 5
 
 
   77              		.loc 1 142 27 view .LVU19
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  117 0050 0AD7233C 		.word	1008981770
  118 0054 00007A44 		.word	1148846080
  119              		.cfi_endproc
-ARM GAS  /tmp/ccrbfHRz.s 			page 6
+ARM GAS  /tmp/cc5h2h1P.s 			page 6
 
 
  120              	.LFE548:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  165              		.section	.text._ZN17EnvelopeGenerator10SetCyclingEb,"ax",%progbits
  166              		.align	1
  167              		.p2align 2,,3
-ARM GAS  /tmp/ccrbfHRz.s 			page 7
+ARM GAS  /tmp/cc5h2h1P.s 			page 7
 
 
  168              		.global	_ZN17EnvelopeGenerator10SetCyclingEb
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  213              	_ZN17EnvelopeGenerator11SetRiseTimeEf:
  214              	.LVL7:
  215              	.LFB551:
-ARM GAS  /tmp/ccrbfHRz.s 			page 8
+ARM GAS  /tmp/cc5h2h1P.s 			page 8
 
 
   63:EnvelopeGenerator.cpp ****     rise_time_ = seconds > kMinimumStageTime ? seconds : kMinimumStageTime;
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  261              		.cfi_startproc
  262              		@ args = 0, pretend = 0, frame = 0
  263              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccrbfHRz.s 			page 9
+ARM GAS  /tmp/cc5h2h1P.s 			page 9
 
 
  264              		@ link register save eliminated.
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  309              		.loc 1 76 5 view .LVU81
   76:EnvelopeGenerator.cpp **** }
  310              		.loc 1 76 12 is_stmt 0 view .LVU82
-ARM GAS  /tmp/ccrbfHRz.s 			page 10
+ARM GAS  /tmp/cc5h2h1P.s 			page 10
 
 
  311 0000 4160     		str	r1, [r0, #4]
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  119:EnvelopeGenerator.cpp **** }
  357              		.loc 1 119 5 is_stmt 1 view .LVU93
  358              	.LVL13:
-ARM GAS  /tmp/ccrbfHRz.s 			page 11
+ARM GAS  /tmp/cc5h2h1P.s 			page 11
 
 
  359              	.LBB38:
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  399              		.loc 1 146 7 is_stmt 1 view .LVU105
  147:EnvelopeGenerator.cpp **** {
  148:EnvelopeGenerator.cpp ****     phase = Clamp01(phase);
-ARM GAS  /tmp/ccrbfHRz.s 			page 12
+ARM GAS  /tmp/cc5h2h1P.s 			page 12
 
 
  400              		.loc 1 148 5 view .LVU106
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  107:EnvelopeGenerator.cpp **** 
  441              		.loc 1 107 20 view .LVU119
  442 0054 D0ED076A 		vldr.32	s13, [r0, #28]
-ARM GAS  /tmp/ccrbfHRz.s 			page 13
+ARM GAS  /tmp/cc5h2h1P.s 			page 13
 
 
  106:EnvelopeGenerator.cpp ****             phase_ += fall_phase_increment_;
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
   10:EnvelopeGenerator.cpp ****         return 0.0f;
  479              		.loc 1 10 5 view .LVU138
  480 0084 B5EEC00A 		vcmpe.f32	s0, #0
-ARM GAS  /tmp/ccrbfHRz.s 			page 14
+ARM GAS  /tmp/cc5h2h1P.s 			page 14
 
 
  481 0088 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  521              	.LBB58:
  153:EnvelopeGenerator.cpp ****     {
  522              		.loc 1 153 12 is_stmt 0 view .LVU153
-ARM GAS  /tmp/ccrbfHRz.s 			page 15
+ARM GAS  /tmp/cc5h2h1P.s 			page 15
 
 
  523 00b2 4368     		ldr	r3, [r0, #4]
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  564 00e4 97E7     		b	.L42
  565              	.LVL25:
  566              	.L45:
-ARM GAS  /tmp/ccrbfHRz.s 			page 16
+ARM GAS  /tmp/cc5h2h1P.s 			page 16
 
 
  567              	.LBB64:
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  612              	.LVL30:
  613              		.loc 1 162 55 view .LVU183
  614 010c A2E7     		b	.L40
-ARM GAS  /tmp/ccrbfHRz.s 			page 17
+ARM GAS  /tmp/cc5h2h1P.s 			page 17
 
 
  615              	.LVL31:
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  666              		.global	_ZNK17EnvelopeGenerator8GetValueEv
  667              		.syntax unified
  668              		.thumb
-ARM GAS  /tmp/ccrbfHRz.s 			page 18
+ARM GAS  /tmp/cc5h2h1P.s 			page 18
 
 
  669              		.thumb_func
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  721              	.LFB557:
  133:EnvelopeGenerator.cpp ****     return cycling_;
  722              		.loc 1 133 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccrbfHRz.s 			page 19
+ARM GAS  /tmp/cc5h2h1P.s 			page 19
 
 
  723              		.cfi_startproc
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  767 001c 86EEA77A 		vdiv.f32	s14, s13, s15
  142:EnvelopeGenerator.cpp ****     fall_phase_increment_ = 1.0f / (fall_time_ * update_rate_);
  768              		.loc 1 142 27 view .LVU214
-ARM GAS  /tmp/ccrbfHRz.s 			page 20
+ARM GAS  /tmp/cc5h2h1P.s 			page 20
 
 
  769 0020 80ED066A 		vstr.32	s12, [r0, #24]
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  153:EnvelopeGenerator.cpp ****     {
  815              		.loc 1 153 12 is_stmt 0 view .LVU225
  816 001a 4368     		ldr	r3, [r0, #4]
-ARM GAS  /tmp/ccrbfHRz.s 			page 21
+ARM GAS  /tmp/cc5h2h1P.s 			page 21
 
 
  153:EnvelopeGenerator.cpp ****     {
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  853              	.LBE73:
  854              	.LBE72:
  855              	.LBE74:
-ARM GAS  /tmp/ccrbfHRz.s 			page 22
+ARM GAS  /tmp/cc5h2h1P.s 			page 22
 
 
  856              		.loc 1 167 1 view .LVU240
@@ -1290,39 +1290,39 @@ ARM GAS  /tmp/ccrbfHRz.s 			page 1
  881              		.file 5 "/usr/include/newlib/c++/14.2.1/math.h"
  882              		.file 6 "EnvelopeGenerator.h"
  883              		.file 7 "/usr/include/newlib/c++/14.2.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h"
-ARM GAS  /tmp/ccrbfHRz.s 			page 23
+ARM GAS  /tmp/cc5h2h1P.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 EnvelopeGenerator.cpp
-     /tmp/ccrbfHRz.s:20     .text._ZN17EnvelopeGenerator4InitEf:00000000 $t
-     /tmp/ccrbfHRz.s:27     .text._ZN17EnvelopeGenerator4InitEf:00000000 _ZN17EnvelopeGenerator4InitEf
-     /tmp/ccrbfHRz.s:115    .text._ZN17EnvelopeGenerator4InitEf:00000048 $d
-     /tmp/ccrbfHRz.s:123    .text._ZN17EnvelopeGenerator7TriggerEv:00000000 $t
-     /tmp/ccrbfHRz.s:130    .text._ZN17EnvelopeGenerator7TriggerEv:00000000 _ZN17EnvelopeGenerator7TriggerEv
-     /tmp/ccrbfHRz.s:166    .text._ZN17EnvelopeGenerator10SetCyclingEb:00000000 $t
-     /tmp/ccrbfHRz.s:173    .text._ZN17EnvelopeGenerator10SetCyclingEb:00000000 _ZN17EnvelopeGenerator10SetCyclingEb
-     /tmp/ccrbfHRz.s:206    .text._ZN17EnvelopeGenerator11SetRiseTimeEf:00000000 $t
-     /tmp/ccrbfHRz.s:213    .text._ZN17EnvelopeGenerator11SetRiseTimeEf:00000000 _ZN17EnvelopeGenerator11SetRiseTimeEf
-     /tmp/ccrbfHRz.s:245    .text._ZN17EnvelopeGenerator11SetRiseTimeEf:0000002c $d
-     /tmp/ccrbfHRz.s:250    .text._ZN17EnvelopeGenerator11SetFallTimeEf:00000000 $t
-     /tmp/ccrbfHRz.s:257    .text._ZN17EnvelopeGenerator11SetFallTimeEf:00000000 _ZN17EnvelopeGenerator11SetFallTimeEf
-     /tmp/ccrbfHRz.s:289    .text._ZN17EnvelopeGenerator11SetFallTimeEf:0000002c $d
-     /tmp/ccrbfHRz.s:294    .text._ZN17EnvelopeGenerator8SetCurveE9CurveType:00000000 $t
-     /tmp/ccrbfHRz.s:301    .text._ZN17EnvelopeGenerator8SetCurveE9CurveType:00000000 _ZN17EnvelopeGenerator8SetCurveE9CurveType
-     /tmp/ccrbfHRz.s:318    .text._ZN17EnvelopeGenerator7ProcessEv:00000000 $t
-     /tmp/ccrbfHRz.s:325    .text._ZN17EnvelopeGenerator7ProcessEv:00000000 _ZN17EnvelopeGenerator7ProcessEv
-     /tmp/ccrbfHRz.s:655    .text._ZN17EnvelopeGenerator7ProcessEv:00000138 $d
-     /tmp/ccrbfHRz.s:664    .text._ZNK17EnvelopeGenerator8GetValueEv:00000000 $t
-     /tmp/ccrbfHRz.s:671    .text._ZNK17EnvelopeGenerator8GetValueEv:00000000 _ZNK17EnvelopeGenerator8GetValueEv
-     /tmp/ccrbfHRz.s:687    .text._ZNK17EnvelopeGenerator8GetStageEv:00000000 $t
-     /tmp/ccrbfHRz.s:694    .text._ZNK17EnvelopeGenerator8GetStageEv:00000000 _ZNK17EnvelopeGenerator8GetStageEv
-     /tmp/ccrbfHRz.s:712    .text._ZNK17EnvelopeGenerator9IsCyclingEv:00000000 $t
-     /tmp/ccrbfHRz.s:719    .text._ZNK17EnvelopeGenerator9IsCyclingEv:00000000 _ZNK17EnvelopeGenerator9IsCyclingEv
-     /tmp/ccrbfHRz.s:737    .text._ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv:00000000 $t
-     /tmp/ccrbfHRz.s:744    .text._ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv:00000000 _ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv
-     /tmp/ccrbfHRz.s:779    .text._ZNK17EnvelopeGenerator10ApplyCurveEf:00000000 $t
-     /tmp/ccrbfHRz.s:786    .text._ZNK17EnvelopeGenerator10ApplyCurveEf:00000000 _ZNK17EnvelopeGenerator10ApplyCurveEf
-     /tmp/ccrbfHRz.s:870    .text._ZNK17EnvelopeGenerator10ApplyCurveEf:0000004c $d
+     /tmp/cc5h2h1P.s:20     .text._ZN17EnvelopeGenerator4InitEf:00000000 $t
+     /tmp/cc5h2h1P.s:27     .text._ZN17EnvelopeGenerator4InitEf:00000000 _ZN17EnvelopeGenerator4InitEf
+     /tmp/cc5h2h1P.s:115    .text._ZN17EnvelopeGenerator4InitEf:00000048 $d
+     /tmp/cc5h2h1P.s:123    .text._ZN17EnvelopeGenerator7TriggerEv:00000000 $t
+     /tmp/cc5h2h1P.s:130    .text._ZN17EnvelopeGenerator7TriggerEv:00000000 _ZN17EnvelopeGenerator7TriggerEv
+     /tmp/cc5h2h1P.s:166    .text._ZN17EnvelopeGenerator10SetCyclingEb:00000000 $t
+     /tmp/cc5h2h1P.s:173    .text._ZN17EnvelopeGenerator10SetCyclingEb:00000000 _ZN17EnvelopeGenerator10SetCyclingEb
+     /tmp/cc5h2h1P.s:206    .text._ZN17EnvelopeGenerator11SetRiseTimeEf:00000000 $t
+     /tmp/cc5h2h1P.s:213    .text._ZN17EnvelopeGenerator11SetRiseTimeEf:00000000 _ZN17EnvelopeGenerator11SetRiseTimeEf
+     /tmp/cc5h2h1P.s:245    .text._ZN17EnvelopeGenerator11SetRiseTimeEf:0000002c $d
+     /tmp/cc5h2h1P.s:250    .text._ZN17EnvelopeGenerator11SetFallTimeEf:00000000 $t
+     /tmp/cc5h2h1P.s:257    .text._ZN17EnvelopeGenerator11SetFallTimeEf:00000000 _ZN17EnvelopeGenerator11SetFallTimeEf
+     /tmp/cc5h2h1P.s:289    .text._ZN17EnvelopeGenerator11SetFallTimeEf:0000002c $d
+     /tmp/cc5h2h1P.s:294    .text._ZN17EnvelopeGenerator8SetCurveE9CurveType:00000000 $t
+     /tmp/cc5h2h1P.s:301    .text._ZN17EnvelopeGenerator8SetCurveE9CurveType:00000000 _ZN17EnvelopeGenerator8SetCurveE9CurveType
+     /tmp/cc5h2h1P.s:318    .text._ZN17EnvelopeGenerator7ProcessEv:00000000 $t
+     /tmp/cc5h2h1P.s:325    .text._ZN17EnvelopeGenerator7ProcessEv:00000000 _ZN17EnvelopeGenerator7ProcessEv
+     /tmp/cc5h2h1P.s:655    .text._ZN17EnvelopeGenerator7ProcessEv:00000138 $d
+     /tmp/cc5h2h1P.s:664    .text._ZNK17EnvelopeGenerator8GetValueEv:00000000 $t
+     /tmp/cc5h2h1P.s:671    .text._ZNK17EnvelopeGenerator8GetValueEv:00000000 _ZNK17EnvelopeGenerator8GetValueEv
+     /tmp/cc5h2h1P.s:687    .text._ZNK17EnvelopeGenerator8GetStageEv:00000000 $t
+     /tmp/cc5h2h1P.s:694    .text._ZNK17EnvelopeGenerator8GetStageEv:00000000 _ZNK17EnvelopeGenerator8GetStageEv
+     /tmp/cc5h2h1P.s:712    .text._ZNK17EnvelopeGenerator9IsCyclingEv:00000000 $t
+     /tmp/cc5h2h1P.s:719    .text._ZNK17EnvelopeGenerator9IsCyclingEv:00000000 _ZNK17EnvelopeGenerator9IsCyclingEv
+     /tmp/cc5h2h1P.s:737    .text._ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv:00000000 $t
+     /tmp/cc5h2h1P.s:744    .text._ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv:00000000 _ZN17EnvelopeGenerator21UpdatePhaseIncrementsEv
+     /tmp/cc5h2h1P.s:779    .text._ZNK17EnvelopeGenerator10ApplyCurveEf:00000000 $t
+     /tmp/cc5h2h1P.s:786    .text._ZNK17EnvelopeGenerator10ApplyCurveEf:00000000 _ZNK17EnvelopeGenerator10ApplyCurveEf
+     /tmp/cc5h2h1P.s:870    .text._ZNK17EnvelopeGenerator10ApplyCurveEf:0000004c $d
 
 NO UNDEFINED SYMBOLS

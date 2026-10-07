@@ -7,23 +7,15 @@
 #include "dev/oled_ssd130x.h"
 
 #include "EnvelopeGenerator.h"
+#include "PanelControls.h"
+#include "OledUi.h"
 
 using namespace daisy;
 
 namespace HardwarePins
 {
-// I nomi Dn sono quelli reali di libDaisy per Daisy Seed/Seed3.
-constexpr auto Encoder1A      = seed::D0;
-constexpr auto Encoder1B      = seed::D1;
-constexpr auto Encoder1Switch = seed::D2;
-
-constexpr auto Encoder2A      = seed::D3;
-constexpr auto Encoder2B      = seed::D4;
-constexpr auto Encoder2Switch = seed::D5;
-
 constexpr auto TriggerInput = seed::D6;
 
-constexpr auto Potentiometer = seed::A0; // Alias analogico di D15.
 constexpr auto CvInput       = seed::A1; // Alias analogico di D16.
 
 constexpr auto I2cScl = seed::D11;
@@ -48,7 +40,6 @@ constexpr float kEncoderStep = 0.02f;
 
 // Escursione massima di SYMMETRY nel dominio logaritmico normalizzato.
 constexpr float kSymmetryDepth = 0.35f;
-constexpr float kSmoothingAmount = 0.01f;
 constexpr float kCvSmoothingAmount = 0.02f;
 
 // Il partitore 100k/47k produce circa 3,20 V con 10 V al jack:
@@ -56,12 +47,11 @@ constexpr float kCvSmoothingAmount = 0.02f;
 constexpr float kCvAdcFullScale = 0.97f;
 constexpr float kCvTimeDepth = 0.35f;
 
-constexpr uint32_t kDisplayPeriodMs = 50; // Circa 20 aggiornamenti al secondo.
+constexpr uint32_t kDisplayPeriodMs = 150; // Lascia tempo ai controlli a 100 kHz.
 constexpr float kLongPressTimeMs = 750.0f;
 
 constexpr uint8_t kOledI2cAddress = 0x3C;
 
-constexpr float kOutputMaximum = 1.0f;
 constexpr uint16_t kDacMaximumCode = 4095;
 
 static_assert(kEnvelopeUpdateRateHz % kEncoderScanRateHz == 0,
@@ -70,8 +60,7 @@ static_assert(kEnvelopeUpdateRateHz % kEncoderScanRateHz == 0,
 
 enum class AdcChannel : uint8_t
 {
-    SymmetryPot = 0,
-    TimeCv,
+    TimeCv = 0,
     Count
 };
 
@@ -87,7 +76,7 @@ class BufferedSSD1306I2CTransport
         Config()
         {
             i2c_config.periph = I2CHandle::Config::Peripheral::I2C_1;
-            i2c_config.speed = I2CHandle::Config::Speed::I2C_400KHZ;
+            i2c_config.speed = I2CHandle::Config::Speed::I2C_100KHZ;
             i2c_config.mode = I2CHandle::Config::Mode::I2C_MASTER;
             i2c_config.pin_config.scl = HardwarePins::I2cScl;
             i2c_config.pin_config.sda = HardwarePins::I2cSda;
@@ -150,24 +139,6 @@ enum class MenuItem : uint8_t
     Count
 };
 
-// Mailbox scritta soltanto dall'interrupt a 1 kHz e consumata dal main loop
-// con gli IRQ brevemente sospesi. Gli scatti non vanno persi durante il refresh.
-struct EncoderMailbox
-{
-    volatile int32_t encoder1_delta = 0;
-    volatile int32_t encoder2_delta = 0;
-
-    volatile bool encoder1_pressed_event = false;
-    volatile bool encoder1_released_event = false;
-    volatile bool encoder2_pressed_event = false;
-    volatile bool encoder2_released_event = false;
-
-    volatile bool encoder1_down = false;
-    volatile bool encoder2_down = false;
-    volatile uint32_t encoder1_held_ms = 0;
-    volatile uint32_t encoder2_held_ms = 0;
-};
-
 struct EncoderSnapshot
 {
     int32_t encoder1_delta = 0;
@@ -187,13 +158,17 @@ struct EncoderSnapshot
 struct Application
 {
     DaisySeed        hardware;
-    Encoder          encoder1;
-    Encoder          encoder2;
+    panel::Controls  panel_controls;
+    std::array<panel::Events, panel::kColumns> panel_events{};
+    int32_t panel_positions[panel::kColumns]{};
+    float output_level = 1.0f;
+    ui::EncoderView encoder_view;
+    ui::Shortcut shortcut;
+    bool encoder4_click_armed = false;
     GateIn            trigger_input;
     Display          display;
     TimerHandle      envelope_timer;
     EnvelopeGenerator envelope;
-    EncoderMailbox   encoder_mailbox;
 
     float rise_normalized = Settings::kInitialTimeNormalized;
     float fall_normalized = Settings::kInitialTimeNormalized;
@@ -338,66 +313,52 @@ void UpdateEnvelopeTimes(Application& application)
 
 void ScanEncodersFromTimer(Application& application)
 {
-    application.encoder1.Debounce();
-    application.encoder2.Debounce();
-
-    application.encoder_mailbox.encoder1_delta
-        += application.encoder1.Increment();
-    application.encoder_mailbox.encoder2_delta
-        += application.encoder2.Increment();
-
-    if(application.encoder1.RisingEdge())
-        application.encoder_mailbox.encoder1_pressed_event = true;
-    if(application.encoder1.FallingEdge())
-        application.encoder_mailbox.encoder1_released_event = true;
-    if(application.encoder2.RisingEdge())
-        application.encoder_mailbox.encoder2_pressed_event = true;
-    if(application.encoder2.FallingEdge())
-        application.encoder_mailbox.encoder2_released_event = true;
-
-    application.encoder_mailbox.encoder1_down
-        = application.encoder1.Pressed();
-    application.encoder_mailbox.encoder2_down
-        = application.encoder2.Pressed();
-    application.encoder_mailbox.encoder1_held_ms
-        = static_cast<uint32_t>(application.encoder1.TimeHeldMs());
-    application.encoder_mailbox.encoder2_held_ms
-        = static_cast<uint32_t>(application.encoder2.TimeHeldMs());
+    application.panel_controls.Scan();
 }
 
 EncoderSnapshot ConsumeEncoderSnapshot(Application& application)
 {
+    const auto frame = application.panel_controls.Consume();
+    application.panel_events = frame.events;
+    application.shortcut = frame.shortcut;
+    const auto& first = application.panel_events[0];
+    const auto& second = application.panel_events[1];
     EncoderSnapshot snapshot;
-    ScopedIrqBlocker irq_blocker;
-
-    snapshot.encoder1_delta = application.encoder_mailbox.encoder1_delta;
-    snapshot.encoder2_delta = application.encoder_mailbox.encoder2_delta;
-    snapshot.encoder1_pressed_event
-        = application.encoder_mailbox.encoder1_pressed_event;
-    snapshot.encoder1_released_event
-        = application.encoder_mailbox.encoder1_released_event;
-    snapshot.encoder2_pressed_event
-        = application.encoder_mailbox.encoder2_pressed_event;
-    snapshot.encoder2_released_event
-        = application.encoder_mailbox.encoder2_released_event;
-    snapshot.encoder1_down = application.encoder_mailbox.encoder1_down;
-    snapshot.encoder2_down = application.encoder_mailbox.encoder2_down;
-    snapshot.encoder1_held_ms = application.encoder_mailbox.encoder1_held_ms;
-    snapshot.encoder2_held_ms = application.encoder_mailbox.encoder2_held_ms;
-
-    application.encoder_mailbox.encoder1_delta = 0;
-    application.encoder_mailbox.encoder2_delta = 0;
-    application.encoder_mailbox.encoder1_pressed_event = false;
-    application.encoder_mailbox.encoder1_released_event = false;
-    application.encoder_mailbox.encoder2_pressed_event = false;
-    application.encoder_mailbox.encoder2_released_event = false;
-
+    snapshot.encoder1_delta = first.delta;
+    snapshot.encoder2_delta = second.delta;
+    snapshot.encoder1_pressed_event = first.pressed;
+    snapshot.encoder2_pressed_event = second.pressed;
+    snapshot.encoder1_released_event = first.released;
+    snapshot.encoder2_released_event = second.released;
+    snapshot.encoder1_down = first.down;
+    snapshot.encoder2_down = second.down;
+    snapshot.encoder1_held_ms = first.held_ms;
+    snapshot.encoder2_held_ms = second.held_ms;
     return snapshot;
 }
 
 void ProcessControls(Application& application)
 {
     const EncoderSnapshot encoders = ConsumeEncoderSnapshot(application);
+
+    const float raw_cv = daisysp::fclamp(
+        application.hardware.adc.GetFloat(
+            static_cast<uint8_t>(AdcChannel::TimeCv)),
+        0.0f,
+        1.0f);
+    application.smoothed_cv += Settings::kCvSmoothingAmount
+                               * (raw_cv - application.smoothed_cv);
+    application.normalized_cv = daisysp::fclamp(
+        application.smoothed_cv / Settings::kCvAdcFullScale, 0.0f, 1.0f);
+    UpdateEnvelopeTimes(application);
+
+    if(application.encoder_view.Process(application.panel_events, application.shortcut))
+    {
+        application.encoder1_long_press_handled = true;
+        application.encoder2_long_press_handled = true;
+        application.encoder4_click_armed = false;
+        return;
+    }
 
     // Mantiene visibile l'ultimo movimento non nullo tra due refresh OLED.
     if(encoders.encoder1_delta != 0)
@@ -434,25 +395,40 @@ void ProcessControls(Application& application)
         MoveMenuSelection(application, encoders.encoder2_delta);
     }
 
-    // Formula di smoothing intenzionalmente semplice e facile da regolare.
-    const float raw_pot = daisysp::fclamp(
-        application.hardware.adc.GetFloat(
-            static_cast<uint8_t>(AdcChannel::SymmetryPot)),
-        0.0f,
-        1.0f);
-    application.smoothed_pot
-        += Settings::kSmoothingAmount * (raw_pot - application.smoothed_pot);
+    for(size_t i = 0; i < panel::kColumns; ++i)
+        application.panel_positions[i] += application.panel_events[i].delta;
 
-    const float raw_cv = daisysp::fclamp(
-        application.hardware.adc.GetFloat(
-            static_cast<uint8_t>(AdcChannel::TimeCv)),
-        0.0f,
-        1.0f);
-    application.smoothed_cv += Settings::kCvSmoothingAmount
-                               * (raw_cv - application.smoothed_cv);
-    application.normalized_cv = daisysp::fclamp(
-        application.smoothed_cv / Settings::kCvAdcFullScale, 0.0f, 1.0f);
-    UpdateEnvelopeTimes(application);
+    if(application.screen_page == ScreenPage::Main)
+    {
+        application.smoothed_pot = daisysp::fclamp(
+            application.smoothed_pot + application.panel_events[2].delta * Settings::kEncoderStep,
+            0.0f, 1.0f);
+        if(application.panel_events[2].clicks)
+            application.smoothed_pot = 0.5f;
+        float level = daisysp::fclamp(
+            application.output_level + application.panel_events[3].delta * Settings::kEncoderStep,
+            0.0f, 1.0f);
+        if(application.panel_events[3].pressed)
+            application.encoder4_click_armed = true;
+        if(application.panel_events[3].released)
+        {
+            if(application.encoder4_click_armed) level = 1.0f;
+            application.encoder4_click_armed = false;
+        }
+        {
+            ScopedIrqBlocker lock;
+            application.output_level = level;
+        }
+    }
+    if(application.panel_events[0].button_presses)
+        TriggerEnvelope(application);
+    if(application.panel_events[1].button_presses & 1)
+        SetCycling(application, !application.cycling);
+    for(uint32_t i = 0; i < application.panel_events[2].button_presses % 3; ++i)
+        CycleCurve(application);
+    if(application.panel_events[3].button_presses & 1)
+        application.screen_page = application.screen_page == ScreenPage::Main
+            ? ScreenPage::Menu : ScreenPage::Main;
 
     // Encoder 1: una pressione breve viene riconosciuta al rilascio. In questo
     // modo la stessa pressione può diventare lunga senza lanciare prima l'AD.
@@ -517,11 +493,27 @@ void InitDisplay(Application& application)
     auto& i2c = config.driver_config.transport_config.i2c_config;
     i2c.periph = I2CHandle::Config::Peripheral::I2C_1;
     i2c.mode = I2CHandle::Config::Mode::I2C_MASTER;
-    i2c.speed = I2CHandle::Config::Speed::I2C_400KHZ;
+    i2c.speed = I2CHandle::Config::Speed::I2C_100KHZ;
     i2c.pin_config.scl = HardwarePins::I2cScl;
     i2c.pin_config.sda = HardwarePins::I2cSda;
     config.driver_config.transport_config.i2c_address
         = Settings::kOledI2cAddress;
+
+    // Stessi pin e velocita del test OLED verificato sulla breadboard.
+    System::Delay(200);
+    I2CHandle probe;
+    probe.Init(i2c);
+    const uint8_t addresses[] = {Settings::kOledI2cAddress, 0x3D};
+    for(uint8_t address : addresses)
+    {
+        uint8_t nop[] = {0x00, 0xE3};
+        if(probe.TransmitBlocking(address, nop, sizeof(nop), 20)
+           == I2CHandle::Result::OK)
+        {
+            config.driver_config.transport_config.i2c_address = address;
+            break;
+        }
+    }
 
     application.display.Init(config);
     application.display.Fill(false);
@@ -542,29 +534,6 @@ void WriteDisplayText(Display& display,
 {
     display.SetCursor(x, y);
     display.WriteString(text, Font_6x8, true);
-}
-
-void FormatTime(float seconds, char* destination, size_t destination_size)
-{
-    if(seconds < 1.0f)
-    {
-        const uint32_t milliseconds
-            = static_cast<uint32_t>(seconds * 1000.0f + 0.5f);
-        std::snprintf(destination,
-                      destination_size,
-                      "%lu ms",
-                      static_cast<unsigned long>(milliseconds));
-    }
-    else
-    {
-        const uint32_t hundredths
-            = static_cast<uint32_t>(seconds * 100.0f + 0.5f);
-        std::snprintf(destination,
-                      destination_size,
-                      "%lu.%02lu s",
-                      static_cast<unsigned long>(hundredths / 100),
-                      static_cast<unsigned long>(hundredths % 100));
-    }
 }
 
 void UpdateMenuDisplay(Application& application)
@@ -598,35 +567,15 @@ void UpdateMenuDisplay(Application& application)
     application.display.Update();
 }
 
-void DrawEncoderIcon(Display& display, uint8_t center_x)
-{
-    // Freccia a due punte sopra una piccola manopola stilizzata.
-    display.DrawLine(center_x - 13, 11, center_x + 13, 11, true);
-    display.DrawLine(center_x - 13, 11, center_x - 9, 8, true);
-    display.DrawLine(center_x - 13, 11, center_x - 9, 14, true);
-    display.DrawLine(center_x + 13, 11, center_x + 9, 8, true);
-    display.DrawLine(center_x + 13, 11, center_x + 9, 14, true);
-    display.DrawCircle(center_x, 23, 8, true);
-    display.DrawLine(center_x, 23, center_x + 4, 19, true);
-}
-
 void UpdateControlsHelpDisplay(Application& application)
 {
     application.display.Fill(false);
-    WriteDisplayText(application.display, 13, 0, "CONTROLS  E2=BACK");
-
-    DrawEncoderIcon(application.display, 31);
-    DrawEncoderIcon(application.display, 96);
-    WriteDisplayText(application.display, 25, 32, "E1");
-    WriteDisplayText(application.display, 90, 32, "E2");
-
-    WriteDisplayText(application.display, 2, 40, "ROT:RISE");
-    WriteDisplayText(application.display, 68, 40, "ROT:FALL");
-    WriteDisplayText(application.display, 2, 48, "TAP:TRG");
-    WriteDisplayText(application.display, 68, 48, "TAP:CUR");
-    WriteDisplayText(application.display, 2, 56, "HLD:MODE");
-    WriteDisplayText(application.display, 68, 56, "HLD:MENU");
-
+    WriteDisplayLine(application.display, 0, "E1 RISE  E2 FALL");
+    WriteDisplayLine(application.display, 1, "E3 SYM   E4 LEVEL");
+    WriteDisplayLine(application.display, 2, "B1 TRIG  B2 AD/LFO");
+    WriteDisplayLine(application.display, 3, "B3 CURVE B4 MENU");
+    WriteDisplayLine(application.display, 4, "E3/E4 TAP: RESET");
+    WriteDisplayLine(application.display, 5, "E2 TAP: BACK");
     application.display.Update();
 }
 
@@ -634,36 +583,17 @@ void UpdateEncoderDebugDisplay(Application& application)
 {
     char line[22];
     application.display.Fill(false);
-
-    WriteDisplayLine(application.display, 0, "DEBUG ENCODERS");
-
-    std::snprintf(line,
-                  sizeof(line),
-                  "E1 pos: %ld",
-                  static_cast<long>(application.encoder1_position));
-    WriteDisplayLine(application.display, 1, line);
-
-    std::snprintf(line,
-                  sizeof(line),
-                  "E2 pos: %ld",
-                  static_cast<long>(application.encoder2_position));
-    WriteDisplayLine(application.display, 2, line);
-
-    std::snprintf(line,
-                  sizeof(line),
-                  "Last: %+ld %+ld",
-                  static_cast<long>(application.last_encoder1_delta),
-                  static_cast<long>(application.last_encoder2_delta));
-    WriteDisplayLine(application.display, 3, line);
-
-    std::snprintf(line,
-                  sizeof(line),
-                  "SW: E1 %s E2 %s",
-                  application.encoder1_button_down ? "ON" : "OFF",
-                  application.encoder2_button_down ? "ON" : "OFF");
-    WriteDisplayLine(application.display, 4, line);
-
-    WriteDisplayLine(application.display, 5, "E2 TAP: back");
+    WriteDisplayLine(application.display, 0, "ENC POS / SW / BUTTON");
+    for(size_t i = 0; i < panel::kColumns; ++i)
+    {
+        std::snprintf(line, sizeof(line), "%u:%ld S:%u B:%u",
+                      static_cast<unsigned>(i + 1),
+                      static_cast<long>(application.panel_positions[i]),
+                      application.panel_events[i].down ? 1u : 0u,
+                      application.panel_events[i].button_down ? 1u : 0u);
+        WriteDisplayLine(application.display, i + 1, line);
+    }
+    WriteDisplayLine(application.display, 5, "E2 TAP: BACK");
     application.display.Update();
 }
 
@@ -672,59 +602,30 @@ void UpdateMainDisplay(Application& application)
     float output_value;
     {
         ScopedIrqBlocker irq_blocker;
-        output_value = application.envelope.GetValue();
+        output_value = application.envelope.GetValue() * application.output_level;
     }
 
-    char line[22];
-    char time_text[12];
-
-    application.display.Fill(false);
-
-    std::snprintf(line,
-                  sizeof(line),
-                  "E1 Mode: %s",
-                  application.cycling ? "LFO" : "AD");
-    WriteDisplayLine(application.display, 0, line);
-
-    FormatTime(application.effective_rise_seconds,
-               time_text,
-               sizeof(time_text));
-    std::snprintf(line, sizeof(line), "E1 Rise: %s", time_text);
-    WriteDisplayLine(application.display, 1, line);
-
-    FormatTime(application.effective_fall_seconds,
-               time_text,
-               sizeof(time_text));
-    std::snprintf(line, sizeof(line), "E2 Fall: %s", time_text);
-    WriteDisplayLine(application.display, 2, line);
-
-    std::snprintf(
-        line, sizeof(line), "E2 Curve: %s", CurveName(application.curve));
-    WriteDisplayLine(application.display, 3, line);
-
-    const uint32_t cv_hundredths = static_cast<uint32_t>(
-        daisysp::fclamp(application.normalized_cv, 0.0f, 1.0f) * 100.0f
-        + 0.5f);
-    const uint32_t output_hundredths = static_cast<uint32_t>(
-        daisysp::fclamp(output_value, 0.0f, 1.0f) * 100.0f + 0.5f);
-    std::snprintf(line,
-                  sizeof(line),
-                  "CV:%c.%c%c Out:%c.%c%c",
-                  static_cast<int>('0' + cv_hundredths / 100),
-                  static_cast<int>('0' + (cv_hundredths / 10) % 10),
-                  static_cast<int>('0' + cv_hundredths % 10),
-                  static_cast<int>('0' + output_hundredths / 100),
-                  static_cast<int>('0' + (output_hundredths / 10) % 10),
-                  static_cast<int>('0' + output_hundredths % 10));
-    WriteDisplayLine(application.display, 4, line);
-
-    WriteDisplayLine(application.display, 5, "E2 Hold: MENU");
-
+    ui::DrawMain(application.display,
+                 application.effective_rise_seconds, application.effective_fall_seconds,
+                 output_value, application.smoothed_pot, application.output_level,
+                 application.normalized_cv, application.cycling, CurveName(application.curve));
     application.display.Update();
 }
 
 void UpdateDisplay(Application& application)
 {
+    if(application.encoder_view.active)
+    {
+        bool down[4], buttons[4];
+        for(unsigned i = 0; i < 4; ++i)
+        {
+            down[i] = application.panel_events[i].down;
+            buttons[i] = application.panel_events[i].button_down;
+        }
+        ui::DrawEncoders(application.display, application.encoder_view.values, down, buttons);
+        application.display.Update();
+        return;
+    }
     switch(application.screen_page)
     {
         case ScreenPage::Main:
@@ -755,13 +656,13 @@ void EnvelopeTimerCallback(void* context)
         ScanEncodersFromTimer(*application);
     }
 
-    // GateIn è pensato per il circuito BJT invertente documentato in WIRING.md.
+    // GateIn usa il circuito BJT invertente documentato in ../wiring/SCHEMI.md.
     // In AD avvia da Idle; in LFO riallinea immediatamente il ciclo a zero.
     if(application->trigger_input.Trig())
         application->envelope.Trigger();
 
     const float value = daisysp::fclamp(
-        application->envelope.Process() * Settings::kOutputMaximum,
+        application->envelope.Process() * application->output_level,
         0.0f,
         1.0f);
     const uint16_t dac_code = static_cast<uint16_t>(
@@ -826,29 +727,17 @@ int main(void)
 {
     app.hardware.Init();
 
-    app.encoder1.Init(HardwarePins::Encoder1A,
-                      HardwarePins::Encoder1B,
-                      HardwarePins::Encoder1Switch);
-    app.encoder2.Init(HardwarePins::Encoder2A,
-                      HardwarePins::Encoder2B,
-                      HardwarePins::Encoder2Switch);
+    app.panel_controls.Init();
     app.trigger_input.Init(HardwarePins::TriggerInput);
 
     AdcChannelConfig
         adc_config[static_cast<uint8_t>(AdcChannel::Count)];
-    adc_config[static_cast<uint8_t>(AdcChannel::SymmetryPot)]
-        .InitSingle(HardwarePins::Potentiometer);
     adc_config[static_cast<uint8_t>(AdcChannel::TimeCv)]
         .InitSingle(HardwarePins::CvInput);
     app.hardware.adc.Init(
         adc_config, static_cast<uint8_t>(AdcChannel::Count));
     app.hardware.adc.Start();
     System::Delay(10);
-    app.smoothed_pot = daisysp::fclamp(
-        app.hardware.adc.GetFloat(
-            static_cast<uint8_t>(AdcChannel::SymmetryPot)),
-        0.0f,
-        1.0f);
     app.smoothed_cv = daisysp::fclamp(
         app.hardware.adc.GetFloat(static_cast<uint8_t>(AdcChannel::TimeCv)),
         0.0f,

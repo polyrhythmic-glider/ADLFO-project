@@ -234,7 +234,8 @@ build/main.o: main.cpp \
  ../../DaisyExamples/DaisySP/Source/Utility/metro.h \
  ../../DaisyExamples/DaisySP/Source/Utility/samplehold.h \
  ../../DaisyExamples/DaisySP/Source/Utility/smooth_random.h \
- ../../DaisyExamples/libDaisy/src/dev/oled_ssd130x.h EnvelopeGenerator.h
+ ../../DaisyExamples/libDaisy/src/dev/oled_ssd130x.h EnvelopeGenerator.h \
+ PanelControls.h EncoderView.h OledUi.h
 ../../DaisyExamples/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
 ../../DaisyExamples/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h:
 ../../DaisyExamples/libDaisy/Drivers/CMSIS/Include/core_cm7.h:
@@ -472,3 +473,6 @@ build/main.o: main.cpp \
 ../../DaisyExamples/DaisySP/Source/Utility/smooth_random.h:
 ../../DaisyExamples/libDaisy/src/dev/oled_ssd130x.h:
 EnvelopeGenerator.h:
+PanelControls.h:
+EncoderView.h:
+OledUi.h:
