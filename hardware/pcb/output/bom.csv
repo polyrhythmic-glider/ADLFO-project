@@ -1,0 +1,115 @@
+Reference,Value / candidate,Footprint,Side,Group,Notes
+U1,Daisy Seed (socketed),seed,B,SYSTEM,"2 x 20 sockets, 2.54 mm pitch; row spacing 15.24 mm; USB toward right in panel view."
+U2,MCP4728-E/UN,msop10,B,SYSTEM,
+U3,MCP6004-I/SL,soic14,B,SYSTEM,
+U4,TL074CDR,soic14,B,SYSTEM,Dual supply; nominal non-inverting gain 2.5. Feedback before output resistor.
+U5,R-78E5.0-0.5,recom,B,SYSTEM,500 mA rated converter; actual rail budget to measure.
+J13,EURORACK 2x5 keyed,idc10,B,SYSTEM,Red stripe = pins 1/2 = -12 V. Key orientation must match cable.
+J14,OLED SSD1306 128x64,oled,F,SYSTEM,"Assumed module GND/VCC/SCL/SDA, 0.96 inch; measure actual glass, PCB and connector before release."
+D1,SS14,sma,B,SYSTEM,Pad 1 cathode: protected positive rail.
+D2,SS14,sma,B,SYSTEM,Pad 1 cathode: raw negative rail.
+D3,SS14,sma,B,SYSTEM,Blocks reverse feed from USB into 5 V converter; check specific Seed revision.
+C1,10uF 50V X7R,c0805,B,SYSTEM,Allow for MLCC DC bias; 1206 may be needed after part selection.
+C2,10uF 50V X7R,c0805,B,SYSTEM,
+C3,10uF 10V X7R,c0805,B,SYSTEM,
+C4,10uF 10V X7R,c0805,B,SYSTEM,
+C5,100nF,c0805,B,SYSTEM,
+C6,10uF 10V X7R,c0805,B,SYSTEM,
+C7,100nF,c0805,B,SYSTEM,
+C8,100nF 50V,c0805,B,SYSTEM,
+C9,100nF 50V,c0805,B,SYSTEM,
+R1,4.7k,r0805,B,SYSTEM,
+R2,4.7k,r0805,B,SYSTEM,
+TP1,GND,testpoint,B,SYSTEM,
+TP2,+12VA,testpoint,B,SYSTEM,
+TP3,-12VA,testpoint,B,SYSTEM,
+TP4,+5V_SEED,testpoint,B,SYSTEM,
+TP5,+3V3,testpoint,B,SYSTEM,
+ENC1,RISE,encoder,F,CH1,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
+SW1,CH 1,button,F,CH1,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
+J1,TRIG1,jack,F,CH1,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+J2,CV1,jack,F,CH1,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+J3,OUT1,jack,F,CH1,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+R101,100k,r0805,B,CH1,
+R102,1M,r0805,B,CH1,
+R103,47k,r0805,B,CH1,
+Q1,MMBT3904,sot23,B,CH1,
+D101,1N4148W,sod123,B,CH1,
+R104,100k 0.1%,r0805,B,CH1,
+R105,33k 0.1%,r0805,B,CH1,
+R106,10k,r0805,B,CH1,
+C101,10nF,c0805,B,CH1,
+D102,BAT54S,sot23,B,CH1,
+R107,1k,r0805,B,CH1,
+C102,1nF,c0805,B,CH1,
+R108,10k,r0805,B,CH1,
+R109,10k 0.1%,r0805,B,CH1,
+R110,15k 0.1%,r0805,B,CH1,
+R111,2.2k 0.5W,r2010,B,CH1,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
+TP11,DAC1,testpoint,B,CH1,
+ENC2,FALL,encoder,F,CH2,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
+SW2,CH 2,button,F,CH2,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
+J4,TRIG2,jack,F,CH2,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+J5,CV2,jack,F,CH2,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+J6,OUT2,jack,F,CH2,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+R201,100k,r0805,B,CH2,
+R202,1M,r0805,B,CH2,
+R203,47k,r0805,B,CH2,
+Q2,MMBT3904,sot23,B,CH2,
+D201,1N4148W,sod123,B,CH2,
+R204,100k 0.1%,r0805,B,CH2,
+R205,33k 0.1%,r0805,B,CH2,
+R206,10k,r0805,B,CH2,
+C201,10nF,c0805,B,CH2,
+D202,BAT54S,sot23,B,CH2,
+R207,1k,r0805,B,CH2,
+C202,1nF,c0805,B,CH2,
+R208,10k,r0805,B,CH2,
+R209,10k 0.1%,r0805,B,CH2,
+R210,15k 0.1%,r0805,B,CH2,
+R211,2.2k 0.5W,r2010,B,CH2,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
+TP12,DAC2,testpoint,B,CH2,
+ENC3,SYMMETRY,encoder,F,CH3,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
+SW3,CH 3,button,F,CH3,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
+J7,TRIG3,jack,F,CH3,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+J8,CV3,jack,F,CH3,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+J9,OUT3,jack,F,CH3,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+R301,100k,r0805,B,CH3,
+R302,1M,r0805,B,CH3,
+R303,47k,r0805,B,CH3,
+Q3,MMBT3904,sot23,B,CH3,
+D301,1N4148W,sod123,B,CH3,
+R304,100k 0.1%,r0805,B,CH3,
+R305,33k 0.1%,r0805,B,CH3,
+R306,10k,r0805,B,CH3,
+C301,10nF,c0805,B,CH3,
+D302,BAT54S,sot23,B,CH3,
+R307,1k,r0805,B,CH3,
+C302,1nF,c0805,B,CH3,
+R308,10k,r0805,B,CH3,
+R309,10k 0.1%,r0805,B,CH3,
+R310,15k 0.1%,r0805,B,CH3,
+R311,2.2k 0.5W,r2010,B,CH3,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
+TP13,DAC3,testpoint,B,CH3,
+ENC4,LEVEL,encoder,F,CH4,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
+SW4,CH 4,button,F,CH4,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
+J10,TRIG4,jack,F,CH4,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+J11,CV4,jack,F,CH4,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+J12,OUT4,jack,F,CH4,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
+R401,100k,r0805,B,CH4,
+R402,1M,r0805,B,CH4,
+R403,47k,r0805,B,CH4,
+Q4,MMBT3904,sot23,B,CH4,
+D401,1N4148W,sod123,B,CH4,
+R404,100k 0.1%,r0805,B,CH4,
+R405,33k 0.1%,r0805,B,CH4,
+R406,10k,r0805,B,CH4,
+C401,10nF,c0805,B,CH4,
+D402,BAT54S,sot23,B,CH4,
+R407,1k,r0805,B,CH4,
+C402,1nF,c0805,B,CH4,
+R408,10k,r0805,B,CH4,
+R409,10k 0.1%,r0805,B,CH4,
+R410,15k 0.1%,r0805,B,CH4,
+R411,2.2k 0.5W,r2010,B,CH4,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
+TP14,DAC4,testpoint,B,CH4,
