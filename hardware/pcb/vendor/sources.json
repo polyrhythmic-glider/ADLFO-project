@@ -1,0 +1,62 @@
+{
+  "encoder.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Rotary_Encoder.pretty/RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm.kicad_mod",
+    "sha256": "faaee6adcbf878c34242a334a135d7d81399dd5484b19c55f495958f2aa9b731"
+  },
+  "button.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Button_Switch_THT.pretty/SW_PUSH_6mm_H9.5mm.kicad_mod",
+    "sha256": "55dcf7c5b9ba866f9a6edd3fe4bdc403189d320f2f5405c8bba28fdafea71612"
+  },
+  "r0805.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Resistor_SMD.pretty/R_0805_2012Metric.kicad_mod",
+    "sha256": "34ef5a7238e8aa2622071b1ded0ce1aaaf9fd5fd2fa2d5e9914f8ee250ac3f7c"
+  },
+  "r2010.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Resistor_SMD.pretty/R_2010_5025Metric.kicad_mod",
+    "sha256": "748fc94031101ac20a47135171c4bb414bb1137f64675180cb5ab7110fb82ce6"
+  },
+  "c0805.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Capacitor_SMD.pretty/C_0805_2012Metric.kicad_mod",
+    "sha256": "99fff2e6692af4126feb9f9ebdfd454834bf414b13d04be0d075dffc23cfbd02"
+  },
+  "soic14.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Package_SO.pretty/SOIC-14_3.9x8.7mm_P1.27mm.kicad_mod",
+    "sha256": "e79ced5edb179990da39505bb2e1eff62da520f56809bacdd9e816293cc4cacd"
+  },
+  "msop10.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Package_SO.pretty/MSOP-10_3x3mm_P0.5mm.kicad_mod",
+    "sha256": "af57156439279f1fdc555bc72a8e1ea9b3a1cd8bb4c5705f073ae4fe799bd113"
+  },
+  "sot23.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Package_TO_SOT_SMD.pretty/SOT-23.kicad_mod",
+    "sha256": "db5b998f0d36708205a4b8edc0db1501deb0246a81b52e9cb036cfd58b7570d3"
+  },
+  "sod123.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Diode_SMD.pretty/D_SOD-123.kicad_mod",
+    "sha256": "3ee0bc152d3460e3683968eea208534fa5e99b1d2d38a003a05b4b04ccd641af"
+  },
+  "sma.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Diode_SMD.pretty/D_SMA.kicad_mod",
+    "sha256": "4806e1c384f374a6c7ebe2da466c8861b31683031bea42889cbb873c2937bd56"
+  },
+  "idc10.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Connector_IDC.pretty/IDC-Header_2x05_P2.54mm_Vertical.kicad_mod",
+    "sha256": "8203eeead7654ea20d7d4d73511eba52f0fcffee1c5de81b2f18503e70afd6db"
+  },
+  "KICAD-LICENSE.md": {
+    "url": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/LICENSE.md",
+    "sha256": "285b027a721577d0bc0198f36e948c6c282ddaa4b58fef8ed826749576eb0aef"
+  },
+  "recom-datasheet.pdf": {
+    "url": "https://recom-power.com/pdf/Innoline/R-78E-0.5.pdf",
+    "sha256": "d3855b95007832c025518b4ee2073697aabee0b6be311484ea9a1aa7b3c53b96"
+  },
+  "jack.kicad_mod": {
+    "url": "https://raw.githubusercontent.com/clacktronics/AudioJacks/main/AudioJacks.pretty/Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical.kicad_mod",
+    "sha256": "9f54f81d8f0152e77082746b47158c297c84154dd6fbe0b459ef147a86b10678"
+  },
+  "AUDIOJACKS-LICENSE": {
+    "url": "https://raw.githubusercontent.com/clacktronics/AudioJacks/main/LICENSE",
+    "sha256": "b97cfc57745a140ad456ab5418a8a1ac7369fcbbfd115d8b7fca9c64d9e15334"
+  }
+}
