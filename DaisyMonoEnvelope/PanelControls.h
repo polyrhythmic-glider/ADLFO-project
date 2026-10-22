@@ -2,12 +2,11 @@
 
 #include "daisy_seed.h"
 #include <array>
-#include "EncoderView.h"
+#include "UiInput.h"
 
 namespace panel
 {
-constexpr size_t kColumns = 4;
-constexpr size_t kJacksPerColumn = 3;
+constexpr size_t kColumns = ui::kEncoders;
 
 // Physical positions only; electrical jack roles belong to the I/O backend.
 struct ColumnPins
@@ -21,21 +20,6 @@ constexpr ColumnPins kPins[kColumns] = {
     {daisy::seed::D3, daisy::seed::D4, daisy::seed::D5, daisy::seed::D24},
     {daisy::seed::D7, daisy::seed::D8, daisy::seed::D9, daisy::seed::D26},
     {daisy::seed::D10, daisy::seed::D13, daisy::seed::D14, daisy::seed::D27},
-};
-
-struct Events
-{
-    int32_t delta = 0;
-    uint32_t clicks = 0;
-    uint32_t button_presses = 0;
-    bool pressed = false, released = false, down = false, button_down = false;
-    uint32_t held_ms = 0;
-};
-
-struct Frame
-{
-    std::array<Events, kColumns> events;
-    ui::Shortcut shortcut;
 };
 
 class Controls
@@ -54,6 +38,7 @@ class Controls
     // Called only by the 1 kHz control interrupt.
     void Scan()
     {
+        const uint32_t now = daisy::System::GetNow();
         for(size_t i = 0; i < kColumns; ++i)
         {
             auto& e = encoders_[i];
@@ -66,34 +51,30 @@ class Controls
             // compensiamo qui il verso, sia per i parametri sia per il test.
             const int32_t increment = e.Increment();
             pending.delta += (i == 2) ? -increment : increment;
-            pending.pressed |= e.RisingEdge();
-            pending.released |= e.FallingEdge();
-            pending.clicks += e.RisingEdge() ? 1 : 0;
+            presses_[i].Scan(e.RisingEdge(), e.FallingEdge(), now, pending);
             pending.button_presses += b.RisingEdge() ? 1 : 0;
-            pending.down = e.Pressed();
             pending.button_down = b.Pressed();
-            pending.held_ms = static_cast<uint32_t>(e.TimeHeldMs());
         }
-        chord_.Scan(pending_[0].down, pending_[3].down);
+        chord_.Scan(pending_[0].down, pending_[3].down, now);
     }
 
-    Frame Consume()
+    ui::Frame Consume()
     {
         daisy::ScopedIrqBlocker lock;
-        Frame result{pending_, chord_.Consume()};
+        ui::Frame result{pending_, chord_.Consume()};
         for(auto& e : pending_)
         {
             e.delta = 0;
-            e.clicks = e.button_presses = 0;
-            e.pressed = e.released = false;
+            e.taps = e.long_presses = e.button_presses = 0;
         }
         return result;
     }
 
   private:
     ui::Chord chord_;
+    ui::Press presses_[kColumns];
     daisy::Encoder encoders_[kColumns];
     daisy::Switch buttons_[kColumns];
-    std::array<Events, kColumns> pending_{};
+    std::array<ui::Events, kColumns> pending_{};
 };
 } // namespace panel

@@ -46,6 +46,14 @@ void EnvelopeGenerator::Trigger()
     }
 }
 
+void EnvelopeGenerator::Stop()
+{
+    cycling_ = false;
+    stage_ = Stage::Idle;
+    phase_ = 0.0f;
+    value_ = 0.0f;
+}
+
 void EnvelopeGenerator::SetCycling(bool enabled)
 {
     if(enabled == cycling_)

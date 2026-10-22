@@ -1,104 +1,58 @@
-# Firmware ADLFO
+# Firmware ADLFO — quattro canali
 
-Il firmware attuale genera **un solo inviluppo AD/LFO** e gestisce quattro
-encoder cliccabili, quattro tasti e OLED. La migrazione al quad DAC MCP4728
-non è ancora implementata.
+VA/VB/VC/VD = OUT1/2/3/4, nominalmente 0–2 V. Quattro AD/LFO indipendenti;
+ognuno mantiene tempi, simmetria, livello, curva e destinazione CV durante l’uso.
+Avvio/reset: tutti in AD a zero; impostazioni non salvate in memoria permanente.
 
-Tutta la documentazione hardware è in [wiring/](../wiring/README.md):
-[schemi](../wiring/SCHEMI.md), [BOM](../wiring/BOM.md) e
-[controlli](../wiring/CONTROLLI.md).
+- B1/B2/B3/B4 selezionano direttamente CH 1/2/3/4, corrispondenti a OUT1/2/3/4,
+  anche nelle impostazioni. Nessuna pagina CHANNEL o funzione alternativa sui pulsanti.
+- Ruota E1/E2: Rise/Fall; E3: simmetria; E4: livello del canale selezionato.
+- Click E1: trigger AD / risincronizzazione LFO. Pressione lunga E1 (almeno 750 ms,
+  azione al rilascio): AD/LFO. Click E2: curva; tenerlo premuto non apre il menu.
+- Click E3/E4: reset simmetria al 50% / livello al 100%.
+- **E1 + E4 tenuti insieme per 900 ms: impostazioni.** La combinazione non attiva
+  trigger, cambio modo o reset. Rilascia entrambi prima di usarla di nuovo.
 
-## Funzioni presenti
+Schermata principale: **CH 1–4** grande in alto, modo/curva e uscita corrente a destra;
+Rise/Fall con unità al centro, simmetria/livello in basso.
+[Anteprima delle schermate](ui-preview.png).
 
-- Motore AD: Rise e Fall, 5 ms–10 s; trigger accettato da Idle.
-- Modalità LFO: ripetizione del ciclo; trigger esterno riavvia Rise.
-- Curve LOG, LIN ed EXP; simmetria e livello regolati dagli encoder E3/E4.
-- Menu OLED e debug dei quattro encoder/tasti.
-- Trigger condizionato D6, lettura CV D16/A1, DAC interno D23/A8.
-- TIM5 a 10 kHz per inviluppo/DAC; scansione controlli a 1 kHz.
-- OLED SSD1306 128×64, indirizzi 0x3C/0x3D, I2C1 su D11/D12 a 100 kHz.
+Nelle impostazioni, ruota E2 e premi per aprire una voce:
 
-La scala CV presente nel codice è 0,97 e non è ancora aggiornata per il nuovo
-partitore 100 kΩ / 33 kΩ. Sono da implementare driver MCP4728, quattro motori,
-altri ingressi, coordinamento del bus e calibrazione. D23 non va collegato
-alle uscite del MCP4728. Il front panel cablato non implica che le dodici porte
-siano già operative.
+- **CV TARGET**: E2 sceglie OFF, RISE+FALL, RISE, FALL o LEVEL per il canale selezionato;
+  qui si leggono anche il CV corrente e l'abilitazione dell'ingresso.
+- **CONTROLS**: guida ai comandi.
+- **ENCODER TEST**: contatori di rotazione e stato degli switch/pulsanti;
+  ogni encoder azzera il proprio contatore al click, compreso E2.
+- **OUTPUT TEST**: tensione fissa su una sola uscita.
+- **BACK**: ritorno alla schermata principale.
 
-## File
+E2 premuto torna dalle sottopagine alle impostazioni, tranne in ENCODER TEST:
+lì si torna con E1 + E4 tenuti premuti. La stessa combinazione torna alle impostazioni
+da ogni sottopagina e le chiude quando si è già nel menu.
 
-| File | Funzione |
-| --- | --- |
-| [main.cpp](main.cpp) | Inizializzazione hardware, timer, controlli e display |
-| [PanelControls.h](PanelControls.h) | Pin, scansione e raccolta eventi dei quattro encoder/tasti |
-| [EnvelopeGenerator.h](EnvelopeGenerator.h) / [EnvelopeGenerator.cpp](EnvelopeGenerator.cpp) | Motore AD/LFO |
-| [Makefile](Makefile) | Build libDaisy/DaisySP e programmazione DFU |
+Gli altri canali continuano mentre ne modifichi uno. CV sui tempi li allunga;
+LEVEL attenua il livello E4 (CV minimo = zero, massimo = livello E4).
 
-## Compilazione
+Impostazioni → OUTPUT TEST: sospende tutti gli AD/LFO. B1–B4 scelgono l’uscita
+e riportano la tensione a zero, anche riselezionando lo stesso canale;
+E2 imposta 0/1/2 V. Le altre uscite restano a zero.
+Click E2 o E1 + E4 tenuti premuti escono con tutti i canali in AD a zero.
+Misurare tip rispetto a sleeve,
+con jack scollegati dagli strumenti.
 
-Servono ARM GNU `arm-none-eabi-gcc/g++`, `make`, libDaisy e DaisySP compilate.
-Il Makefile usa questi percorsi, relativi alla cartella firmware:
+[HardwareConfig.h](HardwareConfig.h): SDA D12, SCL D11; TRIG/CV disabilitati e senza pin assegnati.
+Dopo il montaggio: assegnare pin e abilitazioni per canale, verificare inversione trigger
+e scala CV. Ogni TRIG avvia il proprio AD o risincronizza il proprio LFO.
+La scala CV preimpostata vale solo per il partitore proposto 100k/33k e campo 0–10 V.
 
-```make
-LIBDAISY_DIR ?= ../../DaisyExamples/libDaisy
-DAISYSP_DIR ?= ../../DaisyExamples/DaisySP
-```
+Compilazione dalla radice: `make -C DaisyMonoEnvelope`.
+Binario: `DaisyMonoEnvelope/build/DaisyMonoEnvelope.bin`. Nuova interfaccia compilata
+e verificata con test locali; questa revisione non è ancora caricata sulla scheda.
+Uscite elettriche ancora da misurare.
+Test locali: `make -C DaisyMonoEnvelope test`.
 
-Dalla radice del progetto:
-
-```sh
-make -C DaisyMonoEnvelope
-```
-
-Per librerie in altre posizioni:
-
-```sh
-make -C DaisyMonoEnvelope LIBDAISY_DIR=/percorso/libDaisy DAISYSP_DIR=/percorso/DaisySP
-```
-
-Il binario viene generato in `build/DaisyMonoEnvelope.bin`. La presenza di
-file nella cartella build non dimostra che il montaggio attuale sia collaudato.
-
-## Programmazione USB DFU
-
-Questa versione usa `APP_TYPE=BOOT_NONE`, quindi la flash interna.
-Preparare l'alimentazione USB secondo la procedura in
-[SCHEMI.md](../wiring/SCHEMI.md), con JP_VIN tolto e patch scollegate.
-
-1. Collegare USB.
-2. Tenere BOOT, premere e rilasciare RESET, poi rilasciare BOOT.
-3. Eseguire dalla radice:
-
-```sh
-make -C DaisyMonoEnvelope program-dfu
-```
-
-È necessario `dfu-util`. La programmazione sostituisce il firmware sulla Daisy.
-
-## Verifica dei controlli
-
-Aprire ENC DEBUG e verificare rotazione, click e tasto di ogni colonna.
-Controllare le funzioni secondo [CONTROLLI.md](../wiring/CONTROLLI.md).
-Il collaudo elettrico dei nuovi ingressi e uscite segue invece la sequenza
-in [SCHEMI.md](../wiring/SCHEMI.md), prima di collegarli al processore o al synth.
-
-## Nuova vista OLED e test encoder
-
-La schermata principale usa tre colonne RISE / FALL / OUT, valori grandi e
-una fascia inferiore con simmetria, livello, modalità, curva e CV. OUT e CV
-sono percentuali; i tempi passano automaticamente da millisecondi a secondi.
-
-Premere insieme i click **E1 + E4**, poi rilasciarli, per aprire la vista
-con quattro contatori. Ruotare ogni encoder per variare il proprio valore;
-un click, al rilascio, azzera soltanto quel contatore. E2 qui azzera E2,
-non apre il menu. Premere nuovamente E1 + E4 per tornare alla pagina precedente.
-I contatori partono da zero all'avvio, persistono tra le aperture e sono limitati
-a −9999…9999. In questa vista gli encoder e i quattro tasti non modificano
-i parametri; l'inviluppo e gli ingressi esterni continuano a funzionare.
-
-La combinazione non esegue il trigger E1 né il reset livello E4. Nella vista
-principale il reset E4 viene quindi eseguito al rilascio del click.
-
-Nella vista E1 + E4 ogni riquadro mostra anche **B1, B2, B3 o B4**:
-l'intero riquadro diventa bianco con il nome del bottone grande in nero mentre
-il relativo tasto separato è premuto; al rilascio torna al valore dell'encoder. Si possono verificare anche più tasti insieme;
-in questa vista non attivano trigger, cambio modalità, curva o menu.
+Motori a 10 kHz; invio dei quattro DAC dal loop con obiettivo 1 kHz, I2C a 400 kHz
+con OLED a blocchi. Frequenza effettiva e tensioni da misurare sul montaggio.
+[Protocollo MCP4728](https://ww1.microchip.com/downloads/en/DeviceDoc/22187E.pdf):
+riferimento interno 2,048 V, limite 4000, scritture volatili; EEPROM invariata.

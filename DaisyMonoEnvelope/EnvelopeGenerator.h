@@ -22,6 +22,7 @@ class EnvelopeGenerator
     void Init(float updateRate);
 
     void Trigger();
+    void Stop();
     void SetCycling(bool enabled);
     void SetRiseTime(float seconds);
     void SetFallTime(float seconds);

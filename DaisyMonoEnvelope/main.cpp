@@ -1,29 +1,16 @@
-#include <cmath>
 #include <cstdint>
-#include <cstdio>
 
 #include "daisy_seed.h"
-#include "daisysp.h"
 #include "dev/oled_ssd130x.h"
 
-#include "EnvelopeGenerator.h"
+#include "EnvelopeBank.h"
+#include "HardwareConfig.h"
 #include "PanelControls.h"
 #include "OledUi.h"
+#include "Mcp4728Protocol.h"
+#include "OledTransferQueue.h"
 
 using namespace daisy;
-
-namespace HardwarePins
-{
-constexpr auto TriggerInput = seed::D6;
-
-constexpr auto CvInput       = seed::A1; // Alias analogico di D16.
-
-constexpr auto I2cScl = seed::D11;
-constexpr auto I2cSda = seed::D12;
-
-// Il DAC hardware non richiede una pin_config: Channel ONE seleziona PA4.
-constexpr auto ModulationOut = seed::D23; // A8 / PA4 / DAC OUT 1.
-} // namespace HardwarePins
 
 namespace Settings
 {
@@ -33,179 +20,188 @@ constexpr float kEnvelopeUpdateRate
 constexpr uint32_t kEncoderScanRateHz = 1000;
 constexpr uint32_t kEncoderScanDivider
     = kEnvelopeUpdateRateHz / kEncoderScanRateHz;
-constexpr float kMinimumTimeSeconds = 0.005f;
-constexpr float kMaximumTimeSeconds = 10.0f;
-constexpr float kInitialTimeNormalized = 0.45f;
-constexpr float kEncoderStep = 0.02f;
 
-// Escursione massima di SYMMETRY nel dominio logaritmico normalizzato.
-constexpr float kSymmetryDepth = 0.35f;
 constexpr float kCvSmoothingAmount = 0.02f;
 
-// Il partitore 100k/47k produce circa 3,20 V con 10 V al jack:
-// GetFloat() legge quindi circa 0,97 alla massima tensione prevista.
-constexpr float kCvAdcFullScale = 0.97f;
-constexpr float kCvTimeDepth = 0.35f;
-
-constexpr uint32_t kDisplayPeriodMs = 150; // Lascia tempo ai controlli a 100 kHz.
-constexpr float kLongPressTimeMs = 750.0f;
+constexpr uint32_t kDisplayPeriodMs = 150;
 
 constexpr uint8_t kOledI2cAddress = 0x3C;
 
-constexpr uint16_t kDacMaximumCode = 4095;
+constexpr uint32_t kDacPeriodUs = 1000;
 
 static_assert(kEnvelopeUpdateRateHz % kEncoderScanRateHz == 0,
               "La frequenza encoder deve dividere quella dell'inviluppo");
 } // namespace Settings
 
-enum class AdcChannel : uint8_t
-{
-    TimeCv = 0,
-    Count
-};
+// Un solo bus, inizializzato una volta: DAC e OLED lo usano dal main loop.
+I2CHandle shared_i2c;
+bool shared_i2c_ready = false;
+OledTransferQueue oled_queue;
+bool oled_deferred = false;
+bool oled_available = false;
+uint8_t oled_address = Settings::kOledI2cAddress;
 
-// Il transport SSD1306 standard della versione locale di libDaisy invia ogni
-// byte con una transazione separata. Questo transport mantiene lo stesso
-// driver, ma invia una pagina da 128 byte per transazione: il refresh OLED non
-// monopolizza più il loop dei controlli.
+// Il disegno accoda un frame; il loop invia al massimo 8 byte di pixel per
+// transazione, lasciando spazio agli aggiornamenti DAC anche durante il refresh.
 class BufferedSSD1306I2CTransport
 {
   public:
     struct Config
     {
-        Config()
-        {
-            i2c_config.periph = I2CHandle::Config::Peripheral::I2C_1;
-            i2c_config.speed = I2CHandle::Config::Speed::I2C_100KHZ;
-            i2c_config.mode = I2CHandle::Config::Mode::I2C_MASTER;
-            i2c_config.pin_config.scl = HardwarePins::I2cScl;
-            i2c_config.pin_config.sda = HardwarePins::I2cSda;
-            i2c_address = Settings::kOledI2cAddress;
-        }
-
-        I2CHandle::Config i2c_config;
-        uint8_t i2c_address;
+        uint8_t i2c_address = Settings::kOledI2cAddress;
     };
 
     void Init(const Config& config)
     {
-        i2c_address_ = config.i2c_address;
-        i2c_.Init(config.i2c_config);
+        oled_address = config.i2c_address;
     }
 
     void SendCommand(uint8_t command)
     {
         uint8_t packet[2] = {0x00, command};
-        i2c_.TransmitBlocking(i2c_address_, packet, 2, 100);
+        Send(packet, sizeof(packet));
     }
 
     void SendData(uint8_t* data, size_t size)
     {
-        constexpr size_t kMaximumPageSize = 128;
-        if(size > kMaximumPageSize)
-            return;
-
-        uint8_t packet[kMaximumPageSize + 1];
-        packet[0] = 0x40;
-        for(size_t index = 0; index < size; ++index)
-            packet[index + 1] = data[index];
-
-        i2c_.TransmitBlocking(
-            i2c_address_, packet, static_cast<uint16_t>(size + 1), 100);
+        for(size_t offset = 0; offset < size; offset += OledTransferQueue::kDataBytes)
+        {
+            const size_t count = size - offset < OledTransferQueue::kDataBytes
+                                     ? size - offset : OledTransferQueue::kDataBytes;
+            uint8_t packet[OledTransferQueue::kDataBytes + 1] = {0x40};
+            for(size_t i = 0; i < count; ++i)
+                packet[i + 1] = data[offset + i];
+            Send(packet, count + 1);
+        }
     }
 
   private:
-    I2CHandle i2c_;
-    uint8_t i2c_address_ = Settings::kOledI2cAddress;
+    void Send(uint8_t* packet, size_t size)
+    {
+        if(!oled_available)
+            return;
+        const bool ok = oled_deferred
+            ? oled_queue.Push(packet, size)
+            : shared_i2c.TransmitBlocking(oled_address, packet, size, 10)
+                  == I2CHandle::Result::OK;
+        if(!ok)
+        {
+            oled_available = false;
+            oled_queue.Clear();
+        }
+    }
 };
 
 using BufferedSSD1306Driver
     = SSD130xDriver<128, 64, BufferedSSD1306I2CTransport>;
 using Display = OledDisplay<BufferedSSD1306Driver>;
 
-enum class ScreenPage
-{
-    Main,
-    Menu,
-    ControlsHelp,
-    EncoderDebug
-};
-
-enum class MenuItem : uint8_t
-{
-    Controls = 0,
-    EncoderDebug,
-    Back,
-    Count
-};
-
-struct EncoderSnapshot
-{
-    int32_t encoder1_delta = 0;
-    int32_t encoder2_delta = 0;
-
-    bool encoder1_pressed_event = false;
-    bool encoder1_released_event = false;
-    bool encoder2_pressed_event = false;
-    bool encoder2_released_event = false;
-
-    bool encoder1_down = false;
-    bool encoder2_down = false;
-    uint32_t encoder1_held_ms = 0;
-    uint32_t encoder2_held_ms = 0;
-};
-
 struct Application
 {
     DaisySeed        hardware;
     panel::Controls  panel_controls;
-    std::array<panel::Events, panel::kColumns> panel_events{};
-    int32_t panel_positions[panel::kColumns]{};
-    float output_level = 1.0f;
-    ui::EncoderView encoder_view;
-    ui::Shortcut shortcut;
-    bool encoder4_click_armed = false;
-    GateIn            trigger_input;
+    ui::Frame        panel_frame;
+    ui::Controller   ui;
+    GateIn trigger_inputs[adlfo::kChannels];
+    int8_t adc_indices[adlfo::kChannels] = {-1, -1, -1, -1};
+    float smoothed_cv[adlfo::kChannels]{};
     Display          display;
     TimerHandle      envelope_timer;
-    EnvelopeGenerator envelope;
-
-    float rise_normalized = Settings::kInitialTimeNormalized;
-    float fall_normalized = Settings::kInitialTimeNormalized;
-    float smoothed_pot = 0.5f;
-    float smoothed_cv = 0.0f;
-    float normalized_cv = 0.0f;
-    float effective_rise_seconds = 0.1f;
-    float effective_fall_seconds = 0.1f;
-
-    CurveType curve = CurveType::Logarithmic;
-    bool cycling = false;
-    bool encoder1_long_press_handled = false;
-    bool encoder2_long_press_handled = false;
-    bool encoder1_button_down = false;
-    bool encoder2_button_down = false;
-    ScreenPage screen_page = ScreenPage::Main;
-    MenuItem selected_menu_item = MenuItem::Controls;
-
-    int32_t encoder1_position = 0;
-    int32_t encoder2_position = 0;
-    int32_t last_encoder1_delta = 0;
-    int32_t last_encoder2_delta = 0;
-
+    adlfo::EnvelopeBank bank;
+    uint8_t dac_address = 0;
+    bool timer_started = false;
+    volatile uint16_t pending_dac_codes[adlfo::kChannels]{}; // ISR -> main, IRQ guard.
+    uint32_t last_dac_update_us = 0;
     uint32_t encoder_scan_divider = 0;
     uint32_t last_display_update_ms = 0;
 };
 
-// Unico stato globale: serve al callback hardware e mantiene insieme tutte le
-// periferiche e tutte le variabili applicative.
+// Stato applicativo condiviso con il callback hardware.
 Application app;
 
-float TimeFromNormalized(float normalized)
+adlfo::Channel& Selected(Application& application)
 {
-    normalized = daisysp::fclamp(normalized, 0.0f, 1.0f);
-    const float ratio = Settings::kMaximumTimeSeconds
-                        / Settings::kMinimumTimeSeconds;
-    return Settings::kMinimumTimeSeconds * std::pow(ratio, normalized);
+    return application.bank.channels[application.ui.channel];
+}
+
+[[noreturn]] void SignalInitializationError(Application& application,
+                                           const char* message);
+
+bool WriteAllDacZero(Application& application)
+{
+    auto packet = mcp4728::AllZero();
+    return application.dac_address != 0
+           && shared_i2c.TransmitBlocking(application.dac_address,
+                                         packet.data(), packet.size(), 10)
+                  == I2CHandle::Result::OK;
+}
+
+bool InitOutputBus(Application& application)
+{
+    I2CHandle::Config config;
+    config.periph = I2CHandle::Config::Peripheral::I2C_1;
+    config.mode = I2CHandle::Config::Mode::I2C_MASTER;
+    config.speed = hardware_config::kI2cSpeed;
+    config.pin_config.scl = hardware_config::kI2cScl;
+    config.pin_config.sda = hardware_config::kI2cSda;
+    if(shared_i2c.Init(config) != I2CHandle::Result::OK)
+        return false;
+    shared_i2c_ready = true;
+    System::Delay(30);
+
+    unsigned found = 0;
+    for(uint8_t address : {uint8_t{0x60}, uint8_t{0x64}})
+    {
+        uint8_t state[24]{};
+        if(shared_i2c.ReceiveBlocking(address, state, sizeof(state), 10)
+           == I2CHandle::Result::OK)
+        {
+            application.dac_address = address;
+            ++found;
+        }
+    }
+    if(found != 1)
+    {
+        application.dac_address = 0;
+        return false;
+    }
+    return WriteAllDacZero(application);
+}
+
+void ServiceDac(Application& application)
+{
+    const uint32_t now = System::GetUs();
+    if(now - application.last_dac_update_us < Settings::kDacPeriodUs)
+        return;
+    std::array<uint16_t, adlfo::kChannels> codes{};
+    {
+        ScopedIrqBlocker lock;
+        for(size_t i = 0; i < adlfo::kChannels; ++i)
+            codes[i] = application.pending_dac_codes[i];
+    }
+    auto packet = mcp4728::AllChannels(codes);
+    if(shared_i2c.TransmitBlocking(application.dac_address,
+                                  packet.data(), packet.size(), 10)
+       != I2CHandle::Result::OK)
+        SignalInitializationError(application, "MCP4728 I2C ERROR");
+    application.last_dac_update_us = now;
+}
+
+void ServiceDisplay()
+{
+    if(!oled_available || oled_queue.Empty())
+        return;
+    auto& packet = oled_queue.Front();
+    if(shared_i2c.TransmitBlocking(oled_address, packet.data.data(),
+                                  packet.size, 10) != I2CHandle::Result::OK)
+    {
+        // Un OLED assente/guasto non deve bloccare indefinitamente il DAC.
+        oled_available = false;
+        oled_queue.Clear();
+        app.hardware.PrintLine("OLED I2C ERROR: display disabilitato fino al reset");
+        return;
+    }
+    oled_queue.Pop();
 }
 
 const char* CurveName(CurveType curve)
@@ -220,304 +216,70 @@ const char* CurveName(CurveType curve)
     return "?";
 }
 
-void CycleCurve(Application& application)
-{
-    switch(application.curve)
-    {
-        case CurveType::Logarithmic:
-            application.curve = CurveType::Linear;
-            break;
-        case CurveType::Linear:
-            application.curve = CurveType::Exponential;
-            break;
-        case CurveType::Exponential:
-            application.curve = CurveType::Logarithmic;
-            break;
-    }
-
-    // Il timer può leggere l'inviluppo in qualsiasi istante; il breve blocco
-    // IRQ rende atomico l'aggiornamento dei suoi parametri.
-    ScopedIrqBlocker irq_blocker;
-    application.envelope.SetCurve(application.curve);
-}
-
-void SetCycling(Application& application, bool enabled)
-{
-    application.cycling = enabled;
-    ScopedIrqBlocker irq_blocker;
-    application.envelope.SetCycling(enabled);
-}
-
-void TriggerEnvelope(Application& application)
-{
-    ScopedIrqBlocker irq_blocker;
-    application.envelope.Trigger();
-}
-
-void MoveMenuSelection(Application& application, int32_t increment)
-{
-    constexpr int32_t kMenuItemCount
-        = static_cast<int32_t>(MenuItem::Count);
-    int32_t selection
-        = static_cast<int32_t>(application.selected_menu_item) + increment;
-    selection %= kMenuItemCount;
-    if(selection < 0)
-        selection += kMenuItemCount;
-
-    application.selected_menu_item = static_cast<MenuItem>(selection);
-}
-
-void OpenSelectedMenuItem(Application& application)
-{
-    switch(application.selected_menu_item)
-    {
-        case MenuItem::Controls:
-            application.screen_page = ScreenPage::ControlsHelp;
-            break;
-        case MenuItem::EncoderDebug:
-            application.screen_page = ScreenPage::EncoderDebug;
-            break;
-        case MenuItem::Back:
-            application.screen_page = ScreenPage::Main;
-            break;
-        case MenuItem::Count:
-            break;
-    }
-}
-
 void UpdateEnvelopeTimes(Application& application)
 {
-    // Il potenziometro sposta Rise e Fall in direzioni opposte nel dominio
-    // normalizzato. Al centro (symmetry == 0) i tempi base non cambiano.
-    const float symmetry = (application.smoothed_pot - 0.5f) * 2.0f;
-    const float time_cv_offset
-        = application.normalized_cv * Settings::kCvTimeDepth;
-    const float rise_position = daisysp::fclamp(
-        application.rise_normalized + time_cv_offset
-            + symmetry * Settings::kSymmetryDepth,
-        0.0f,
-        1.0f);
-    const float fall_position = daisysp::fclamp(
-        application.fall_normalized + time_cv_offset
-            - symmetry * Settings::kSymmetryDepth,
-        0.0f,
-        1.0f);
-
-    application.effective_rise_seconds = TimeFromNormalized(rise_position);
-    application.effective_fall_seconds = TimeFromNormalized(fall_position);
-
-    ScopedIrqBlocker irq_blocker;
-    application.envelope.SetRiseTime(application.effective_rise_seconds);
-    application.envelope.SetFallTime(application.effective_fall_seconds);
-}
-
-void ScanEncodersFromTimer(Application& application)
-{
-    application.panel_controls.Scan();
-}
-
-EncoderSnapshot ConsumeEncoderSnapshot(Application& application)
-{
-    const auto frame = application.panel_controls.Consume();
-    application.panel_events = frame.events;
-    application.shortcut = frame.shortcut;
-    const auto& first = application.panel_events[0];
-    const auto& second = application.panel_events[1];
-    EncoderSnapshot snapshot;
-    snapshot.encoder1_delta = first.delta;
-    snapshot.encoder2_delta = second.delta;
-    snapshot.encoder1_pressed_event = first.pressed;
-    snapshot.encoder2_pressed_event = second.pressed;
-    snapshot.encoder1_released_event = first.released;
-    snapshot.encoder2_released_event = second.released;
-    snapshot.encoder1_down = first.down;
-    snapshot.encoder2_down = second.down;
-    snapshot.encoder1_held_ms = first.held_ms;
-    snapshot.encoder2_held_ms = second.held_ms;
-    return snapshot;
+    for(size_t i = 0; i < adlfo::kChannels; ++i)
+    {
+        auto& channel = application.bank.channels[i];
+        channel.cv_enabled = application.adc_indices[i] >= 0;
+        if(channel.cv_enabled)
+        {
+            const float raw = application.hardware.adc.GetFloat(application.adc_indices[i]);
+            application.smoothed_cv[i] += Settings::kCvSmoothingAmount
+                                         * (raw - application.smoothed_cv[i]);
+            channel.cv = adlfo::Clamp01(application.smoothed_cv[i] / hardware_config::kCv[i].full_scale);
+        }
+        else channel.cv = 0.0f;
+        channel.UpdateTimes(); // powf stays outside the IRQ blocker.
+        ScopedIrqBlocker lock;
+        channel.ApplyTimes();
+    }
 }
 
 void ProcessControls(Application& application)
 {
-    const EncoderSnapshot encoders = ConsumeEncoderSnapshot(application);
-
-    const float raw_cv = daisysp::fclamp(
-        application.hardware.adc.GetFloat(
-            static_cast<uint8_t>(AdcChannel::TimeCv)),
-        0.0f,
-        1.0f);
-    application.smoothed_cv += Settings::kCvSmoothingAmount
-                               * (raw_cv - application.smoothed_cv);
-    application.normalized_cv = daisysp::fclamp(
-        application.smoothed_cv / Settings::kCvAdcFullScale, 0.0f, 1.0f);
-    UpdateEnvelopeTimes(application);
-
-    if(application.encoder_view.Process(application.panel_events, application.shortcut))
-    {
-        application.encoder1_long_press_handled = true;
-        application.encoder2_long_press_handled = true;
-        application.encoder4_click_armed = false;
-        return;
-    }
-
-    // Mantiene visibile l'ultimo movimento non nullo tra due refresh OLED.
-    if(encoders.encoder1_delta != 0)
-    {
-        application.last_encoder1_delta = encoders.encoder1_delta;
-    }
-    if(encoders.encoder2_delta != 0)
-    {
-        application.last_encoder2_delta = encoders.encoder2_delta;
-    }
-    application.encoder1_position += encoders.encoder1_delta;
-    application.encoder2_position += encoders.encoder2_delta;
-    application.encoder1_button_down = encoders.encoder1_down;
-    application.encoder2_button_down = encoders.encoder2_down;
-
-    if(application.screen_page == ScreenPage::Main)
-    {
-        application.rise_normalized = daisysp::fclamp(
-            application.rise_normalized
-                + static_cast<float>(encoders.encoder1_delta)
-                      * Settings::kEncoderStep,
-            0.0f,
-            1.0f);
-        application.fall_normalized = daisysp::fclamp(
-            application.fall_normalized
-                + static_cast<float>(encoders.encoder2_delta)
-                      * Settings::kEncoderStep,
-            0.0f,
-            1.0f);
-    }
-    else if(application.screen_page == ScreenPage::Menu
-            && encoders.encoder2_delta != 0)
-    {
-        MoveMenuSelection(application, encoders.encoder2_delta);
-    }
-
-    for(size_t i = 0; i < panel::kColumns; ++i)
-        application.panel_positions[i] += application.panel_events[i].delta;
-
-    if(application.screen_page == ScreenPage::Main)
-    {
-        application.smoothed_pot = daisysp::fclamp(
-            application.smoothed_pot + application.panel_events[2].delta * Settings::kEncoderStep,
-            0.0f, 1.0f);
-        if(application.panel_events[2].clicks)
-            application.smoothed_pot = 0.5f;
-        float level = daisysp::fclamp(
-            application.output_level + application.panel_events[3].delta * Settings::kEncoderStep,
-            0.0f, 1.0f);
-        if(application.panel_events[3].pressed)
-            application.encoder4_click_armed = true;
-        if(application.panel_events[3].released)
-        {
-            if(application.encoder4_click_armed) level = 1.0f;
-            application.encoder4_click_armed = false;
-        }
-        {
-            ScopedIrqBlocker lock;
-            application.output_level = level;
-        }
-    }
-    if(application.panel_events[0].button_presses)
-        TriggerEnvelope(application);
-    if(application.panel_events[1].button_presses & 1)
-        SetCycling(application, !application.cycling);
-    for(uint32_t i = 0; i < application.panel_events[2].button_presses % 3; ++i)
-        CycleCurve(application);
-    if(application.panel_events[3].button_presses & 1)
-        application.screen_page = application.screen_page == ScreenPage::Main
-            ? ScreenPage::Menu : ScreenPage::Main;
-
-    // Encoder 1: una pressione breve viene riconosciuta al rilascio. In questo
-    // modo la stessa pressione può diventare lunga senza lanciare prima l'AD.
-    if(encoders.encoder1_pressed_event)
-        application.encoder1_long_press_handled = false;
-
-    if(application.screen_page == ScreenPage::Main && encoders.encoder1_down
-       && !application.encoder1_long_press_handled
-       && encoders.encoder1_held_ms >= Settings::kLongPressTimeMs)
-    {
-        SetCycling(application, !application.cycling);
-        application.encoder1_long_press_handled = true;
-    }
-
-    if(application.screen_page == ScreenPage::Main
-       && encoders.encoder1_released_event
-       && !application.encoder1_long_press_handled && !application.cycling)
-    {
-        TriggerEnvelope(application);
-    }
-
-    // Encoder 2: nella pagina principale il click cambia curva e la pressione
-    // lunga apre il menu. Nel menu ruota/seleziona; nelle sottopagine il click
-    // torna al menu. La pressione lunga chiude sempre la UI e torna a Main.
-    if(encoders.encoder2_pressed_event)
-        application.encoder2_long_press_handled = false;
-
-    if(encoders.encoder2_down && !application.encoder2_long_press_handled
-       && encoders.encoder2_held_ms >= Settings::kLongPressTimeMs)
-    {
-        application.screen_page
-            = application.screen_page == ScreenPage::Main
-                  ? ScreenPage::Menu
-                  : ScreenPage::Main;
-        application.encoder2_long_press_handled = true;
-    }
-
-    if(encoders.encoder2_released_event
-       && !application.encoder2_long_press_handled)
-    {
-        switch(application.screen_page)
-        {
-            case ScreenPage::Main:
-                CycleCurve(application);
-                break;
-            case ScreenPage::Menu:
-                OpenSelectedMenuItem(application);
-                break;
-            case ScreenPage::ControlsHelp:
-            case ScreenPage::EncoderDebug:
-                application.screen_page = ScreenPage::Menu;
-                break;
-        }
-    }
+    application.panel_frame = application.panel_controls.Consume();
+    const auto previous_page = application.ui.page;
+    const auto previous_channel = application.ui.channel;
+    const auto previous_test_volts = application.ui.test_volts;
+    ScopedIrqBlocker lock;
+    application.ui.Process(application.panel_frame, application.bank);
+    // Clear queued DAC values immediately on test entry, exit, channel change
+    // or zero selection. The next timer tick supplies the new bank values.
+    if((previous_page == ui::Page::OutputTest || application.ui.page == ui::Page::OutputTest)
+       && (previous_page != application.ui.page || previous_channel != application.ui.channel
+           || (previous_test_volts != 0 && application.ui.test_volts == 0)))
+        for(auto& code : application.pending_dac_codes) code = 0;
 }
 
 void InitDisplay(Application& application)
 {
+    if(!shared_i2c_ready)
+        return;
     // Tutta la configurazione SSD1306 resta confinata qui per poter cambiare
     // facilmente driver se il modulo reale usa un controller diverso.
     Display::Config config;
-    auto& i2c = config.driver_config.transport_config.i2c_config;
-    i2c.periph = I2CHandle::Config::Peripheral::I2C_1;
-    i2c.mode = I2CHandle::Config::Mode::I2C_MASTER;
-    i2c.speed = I2CHandle::Config::Speed::I2C_100KHZ;
-    i2c.pin_config.scl = HardwarePins::I2cScl;
-    i2c.pin_config.sda = HardwarePins::I2cSda;
     config.driver_config.transport_config.i2c_address
         = Settings::kOledI2cAddress;
 
     // Stessi pin e velocita del test OLED verificato sulla breadboard.
     System::Delay(200);
-    I2CHandle probe;
-    probe.Init(i2c);
     const uint8_t addresses[] = {Settings::kOledI2cAddress, 0x3D};
     for(uint8_t address : addresses)
     {
         uint8_t nop[] = {0x00, 0xE3};
-        if(probe.TransmitBlocking(address, nop, sizeof(nop), 20)
+        if(shared_i2c.TransmitBlocking(address, nop, sizeof(nop), 20)
            == I2CHandle::Result::OK)
         {
             config.driver_config.transport_config.i2c_address = address;
+            oled_available = true;
             break;
         }
     }
 
-    application.display.Init(config);
-    application.display.Fill(false);
-    application.display.Update();
+    if(oled_available)
+        application.display.Init(config);
+    oled_deferred = true;
 }
 
 void WriteDisplayLine(Display& display, uint8_t row, const char* text)
@@ -527,168 +289,73 @@ void WriteDisplayLine(Display& display, uint8_t row, const char* text)
     display.WriteString(text, Font_6x8, true);
 }
 
-void WriteDisplayText(Display& display,
-                      uint8_t  x,
-                      uint8_t  y,
-                      const char* text)
-{
-    display.SetCursor(x, y);
-    display.WriteString(text, Font_6x8, true);
-}
-
-void UpdateMenuDisplay(Application& application)
-{
-    constexpr const char* kMenuLabels[] = {
-        "CONTROLS",
-        "ENC DEBUG",
-        "BACK",
-    };
-
-    application.display.Fill(false);
-    WriteDisplayText(application.display, 52, 0, "MENU");
-    application.display.DrawLine(0, 10, 127, 10, true);
-
-    for(uint8_t index = 0;
-        index < static_cast<uint8_t>(MenuItem::Count);
-        ++index)
-    {
-        const uint8_t y = static_cast<uint8_t>(14 + index * 13);
-        if(index
-           == static_cast<uint8_t>(application.selected_menu_item))
-        {
-            application.display.DrawRect(1, y - 2, 126, y + 9, true);
-            application.display.DrawLine(5, y + 1, 9, y + 4, true);
-            application.display.DrawLine(9, y + 4, 5, y + 7, true);
-        }
-        WriteDisplayText(application.display, 14, y, kMenuLabels[index]);
-    }
-
-    WriteDisplayText(application.display, 4, 55, "E2 ROT/TAP  HLD EXIT");
-    application.display.Update();
-}
-
-void UpdateControlsHelpDisplay(Application& application)
-{
-    application.display.Fill(false);
-    WriteDisplayLine(application.display, 0, "E1 RISE  E2 FALL");
-    WriteDisplayLine(application.display, 1, "E3 SYM   E4 LEVEL");
-    WriteDisplayLine(application.display, 2, "B1 TRIG  B2 AD/LFO");
-    WriteDisplayLine(application.display, 3, "B3 CURVE B4 MENU");
-    WriteDisplayLine(application.display, 4, "E3/E4 TAP: RESET");
-    WriteDisplayLine(application.display, 5, "E2 TAP: BACK");
-    application.display.Update();
-}
-
-void UpdateEncoderDebugDisplay(Application& application)
-{
-    char line[22];
-    application.display.Fill(false);
-    WriteDisplayLine(application.display, 0, "ENC POS / SW / BUTTON");
-    for(size_t i = 0; i < panel::kColumns; ++i)
-    {
-        std::snprintf(line, sizeof(line), "%u:%ld S:%u B:%u",
-                      static_cast<unsigned>(i + 1),
-                      static_cast<long>(application.panel_positions[i]),
-                      application.panel_events[i].down ? 1u : 0u,
-                      application.panel_events[i].button_down ? 1u : 0u);
-        WriteDisplayLine(application.display, i + 1, line);
-    }
-    WriteDisplayLine(application.display, 5, "E2 TAP: BACK");
-    application.display.Update();
-}
-
-void UpdateMainDisplay(Application& application)
-{
-    float output_value;
-    {
-        ScopedIrqBlocker irq_blocker;
-        output_value = application.envelope.GetValue() * application.output_level;
-    }
-
-    ui::DrawMain(application.display,
-                 application.effective_rise_seconds, application.effective_fall_seconds,
-                 output_value, application.smoothed_pot, application.output_level,
-                 application.normalized_cv, application.cycling, CurveName(application.curve));
-    application.display.Update();
-}
-
 void UpdateDisplay(Application& application)
 {
-    if(application.encoder_view.active)
-    {
-        bool down[4], buttons[4];
-        for(unsigned i = 0; i < 4; ++i)
-        {
-            down[i] = application.panel_events[i].down;
-            buttons[i] = application.panel_events[i].button_down;
-        }
-        ui::DrawEncoders(application.display, application.encoder_view.values, down, buttons);
-        application.display.Update();
+    if(!oled_available || !oled_queue.Empty())
         return;
-    }
-    switch(application.screen_page)
+    auto& display = application.display;
+    const auto& state = application.ui;
+    const auto& voice = Selected(application);
+    const unsigned channel = state.channel + 1;
+    switch(state.page)
     {
-        case ScreenPage::Main:
-            UpdateMainDisplay(application);
+        case ui::Page::Main:
+        {
+            float output;
+            bool cycling;
+            {
+                ScopedIrqBlocker lock;
+                output = voice.envelope.GetValue() * voice.effective_level;
+                cycling = voice.envelope.IsCycling();
+            }
+            ui::DrawMain(display, voice.rise_seconds, voice.fall_seconds, output,
+                         voice.symmetry, voice.level, cycling, CurveName(voice.curve), channel);
             break;
-        case ScreenPage::Menu:
-            UpdateMenuDisplay(application);
+        }
+        case ui::Page::Settings:
+            ui::DrawSettings(display, state.menu_item, channel);
             break;
-        case ScreenPage::ControlsHelp:
-            UpdateControlsHelpDisplay(application);
+        case ui::Page::Controls:
+            ui::DrawControls(display);
             break;
-        case ScreenPage::EncoderDebug:
-            UpdateEncoderDebugDisplay(application);
+        case ui::Page::Encoders:
+            ui::DrawEncoders(display, state.encoder_values, application.panel_frame.events, channel);
+            break;
+        case ui::Page::CvTarget:
+            ui::DrawCvTarget(display, channel, voice.cv_target, voice.cv, voice.cv_enabled);
+            break;
+        case ui::Page::OutputTest:
+            ui::DrawOutputTest(display, channel, state.test_volts);
             break;
     }
+    display.Update();
 }
 
 void EnvelopeTimerCallback(void* context)
 {
     auto* application = static_cast<Application*>(context);
 
-    // L'inviluppo resta a 10 kHz; ogni dieci tick gli encoder vengono letti a
+    // I quattro inviluppi girano a 10 kHz; ogni dieci tick gli encoder vengono letti a
     // 1 kHz, indipendentemente dai trasferimenti OLED del loop principale.
     ++application->encoder_scan_divider;
     if(application->encoder_scan_divider >= Settings::kEncoderScanDivider)
     {
         application->encoder_scan_divider = 0;
-        ScanEncodersFromTimer(*application);
+        application->panel_controls.Scan();
     }
 
-    // GateIn usa il circuito BJT invertente documentato in ../wiring/SCHEMI.md.
-    // In AD avvia da Idle; in LFO riallinea immediatamente il ciclo a zero.
-    if(application->trigger_input.Trig())
-        application->envelope.Trigger();
+    for(size_t i = 0; i < adlfo::kChannels; ++i)
+        if(hardware_config::kTriggers[i].enabled && application->trigger_inputs[i].Trig())
+            application->bank.Trigger(i);
 
-    const float value = daisysp::fclamp(
-        application->envelope.Process() * application->output_level,
-        0.0f,
-        1.0f);
-    const uint16_t dac_code = static_cast<uint16_t>(
-        value * static_cast<float>(Settings::kDacMaximumCode) + 0.5f);
+    const auto codes = application->bank.Process();
+    for(size_t i = 0; i < adlfo::kChannels; ++i)
+        application->pending_dac_codes[i] = codes[i];
 
-    // DAC1 converte 0...4095 nel livello unipolare 0...VDDA (circa 3,3 V).
-    application->hardware.dac.WriteValue(DacHandle::Channel::ONE, dac_code);
 }
 
-bool InitDacAndTimer(Application& application)
+bool InitEnvelopeTimer(Application& application)
 {
-    (void)HardwarePins::ModulationOut; // Documenta il pin fisso scelto dal DAC1.
-
-    DacHandle::Config dac_config;
-    dac_config.bitdepth = DacHandle::BitDepth::BITS_12;
-    dac_config.buff_state = DacHandle::BufferState::ENABLED;
-    dac_config.mode = DacHandle::Mode::POLLING;
-    dac_config.chn = DacHandle::Channel::ONE;
-    dac_config.target_samplerate
-        = static_cast<uint32_t>(Settings::kEnvelopeUpdateRate);
-
-    if(application.hardware.dac.Init(dac_config) != DacHandle::Result::OK)
-        return false;
-
-    application.hardware.dac.WriteValue(DacHandle::Channel::ONE, 0);
-
     TimerHandle::Config timer_config;
     timer_config.periph = TimerHandle::Config::Peripheral::TIM_5;
     timer_config.dir = TimerHandle::Config::CounterDir::UP;
@@ -708,12 +375,27 @@ bool InitDacAndTimer(Application& application)
         return false;
 
     application.envelope_timer.SetCallback(EnvelopeTimerCallback, &application);
-    return application.envelope_timer.Start() == TimerHandle::Result::OK;
+    application.timer_started = application.envelope_timer.Start() == TimerHandle::Result::OK;
+    return application.timer_started;
 }
 
-[[noreturn]] void SignalInitializationError(Application& application)
+[[noreturn]] void SignalInitializationError(Application& application, const char* message)
 {
-    // Nessuna stampa o allocazione: un lampeggio rapido indica errore DAC/timer.
+    if(application.timer_started)
+        application.envelope_timer.Stop();
+    if(shared_i2c_ready && application.dac_address != 0)
+        WriteAllDacZero(application); // Tentativo: un DAC irraggiungibile può tenere l'ultimo valore.
+    application.hardware.PrintLine("ERRORE: %s. Uscite non garantite a zero.", message);
+    oled_queue.Clear();
+    oled_deferred = false;
+    if(oled_available)
+    {
+        application.display.Fill(false);
+        WriteDisplayLine(application.display, 0, "DAC ERROR");
+        WriteDisplayLine(application.display, 2, message);
+        WriteDisplayLine(application.display, 4, "CHECK WIRING / RESET");
+        application.display.Update();
+    }
     while(true)
     {
         application.hardware.SetLed(true);
@@ -723,51 +405,107 @@ bool InitDacAndTimer(Application& application)
     }
 }
 
+bool InitExternalInputs(Application& application)
+{
+    Pin used[2 + 4 * panel::kColumns + 2 * adlfo::kChannels];
+    size_t count = 0;
+    used[count++] = hardware_config::kI2cScl;
+    used[count++] = hardware_config::kI2cSda;
+    for(const auto& p : panel::kPins)
+        for(auto pin : {p.encoder_a, p.encoder_b, p.encoder_switch, p.button}) used[count++] = pin;
+    auto reserve = [&](Pin pin) {
+        if(!pin.IsValid()) return false;
+        for(size_t i = 0; i < count; ++i) if(used[i] == pin) return false;
+        used[count++] = pin;
+        return true;
+    };
+    const Pin analog_pins[] = {seed::A0, seed::A1, seed::A2, seed::A3, seed::A4,
+        seed::A5, seed::A6, seed::A7, seed::A8, seed::A9, seed::A10, seed::A11};
+    for(size_t i = 0; i < adlfo::kChannels; ++i)
+    {
+        const auto& trig = hardware_config::kTriggers[i];
+        const auto& cv = hardware_config::kCv[i];
+        if(trig.enabled && !reserve(trig.pin)) return false;
+        if(cv.enabled)
+        {
+            bool analog = false;
+            for(auto pin : analog_pins) analog |= pin == cv.pin;
+            if(!analog || !reserve(cv.pin) || !(cv.full_scale > 0.0f && cv.full_scale <= 1.0f)) return false;
+        }
+    }
+    AdcChannelConfig configs[adlfo::kChannels];
+    uint8_t adc_count = 0;
+    for(size_t i = 0; i < adlfo::kChannels; ++i)
+    {
+        const auto& trig = hardware_config::kTriggers[i];
+        if(trig.enabled)
+        {
+            application.trigger_inputs[i].Init(trig.pin, trig.inverted);
+            application.trigger_inputs[i].Trig(); // Prime state: no artificial startup edge.
+        }
+        if(hardware_config::kCv[i].enabled)
+        {
+            application.adc_indices[i] = adc_count;
+            configs[adc_count++].InitSingle(hardware_config::kCv[i].pin);
+        }
+    }
+    if(adc_count)
+    {
+        application.hardware.adc.Init(configs, adc_count);
+        application.hardware.adc.Start();
+        System::Delay(10);
+        for(size_t i = 0; i < adlfo::kChannels; ++i)
+            if(application.adc_indices[i] >= 0)
+                application.smoothed_cv[i] = application.hardware.adc.GetFloat(application.adc_indices[i]);
+    }
+    return true;
+}
+
 int main(void)
 {
     app.hardware.Init();
+    app.hardware.StartLog(false);
 
     app.panel_controls.Init();
-    app.trigger_input.Init(HardwarePins::TriggerInput);
+    app.bank.Init(Settings::kEnvelopeUpdateRate);
 
-    AdcChannelConfig
-        adc_config[static_cast<uint8_t>(AdcChannel::Count)];
-    adc_config[static_cast<uint8_t>(AdcChannel::TimeCv)]
-        .InitSingle(HardwarePins::CvInput);
-    app.hardware.adc.Init(
-        adc_config, static_cast<uint8_t>(AdcChannel::Count));
-    app.hardware.adc.Start();
-    System::Delay(10);
-    app.smoothed_cv = daisysp::fclamp(
-        app.hardware.adc.GetFloat(static_cast<uint8_t>(AdcChannel::TimeCv)),
-        0.0f,
-        1.0f);
-    app.normalized_cv = daisysp::fclamp(
-        app.smoothed_cv / Settings::kCvAdcFullScale, 0.0f, 1.0f);
-
-    app.envelope.Init(Settings::kEnvelopeUpdateRate);
-    UpdateEnvelopeTimes(app);
-    app.envelope.SetCurve(app.curve);
-
+    const bool dac_ok = InitOutputBus(app);
     InitDisplay(app);
+    if(!dac_ok)
+        SignalInitializationError(app, "CHECK DAC 0x60/0x64");
 
-    if(!InitDacAndTimer(app))
-        SignalInitializationError(app);
+    if(!InitExternalInputs(app))
+        SignalInitializationError(app, "CHECK INPUT CONFIG");
+    UpdateEnvelopeTimes(app);
+    if(!InitEnvelopeTimer(app))
+        SignalInitializationError(app, "TIMER ERROR");
 
     UpdateDisplay(app);
     app.last_display_update_ms = System::GetNow();
+    uint32_t last_controls_ms = app.last_display_update_ms;
+    app.hardware.PrintLine("ADLFO 4: MCP4728 0x%02X, VA/VB/VC/VD 0-2V",
+                           unsigned(app.dac_address));
 
     while(true)
     {
-        ProcessControls(app);
+        ServiceDac(app);
 
         const uint32_t now = System::GetNow();
-        if(now - app.last_display_update_ms >= Settings::kDisplayPeriodMs)
+        if(now - last_controls_ms >= 1)
+        {
+            last_controls_ms = now;
+            ProcessControls(app);
+            UpdateEnvelopeTimes(app);
+        }
+        if(now - app.last_display_update_ms >= Settings::kDisplayPeriodMs
+           && oled_queue.Empty())
         {
             app.last_display_update_ms = now;
             UpdateDisplay(app);
         }
 
-        System::Delay(1);
+        ServiceDisplay();
+        if(oled_queue.Empty())
+            System::DelayUs(50);
     }
 }

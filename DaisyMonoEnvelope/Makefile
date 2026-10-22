@@ -8,7 +8,7 @@ CPP_SOURCES = main.cpp EnvelopeGenerator.cpp
 LIBDAISY_DIR ?= ../../DaisyExamples/libDaisy
 DAISYSP_DIR ?= ../../DaisyExamples/DaisySP
 
-# Questa prima prova viene caricata direttamente nella flash interna STM32.
+# Firmware nella flash interna STM32.
 APP_TYPE ?= BOOT_NONE
 
 ifeq ($(wildcard $(LIBDAISY_DIR)/core/Makefile),)
@@ -21,3 +21,12 @@ endif
 
 SYSTEM_FILES_DIR = $(LIBDAISY_DIR)/core
 include $(SYSTEM_FILES_DIR)/Makefile
+
+.PHONY: test
+test:
+	$(HOST_CXX) -std=c++14 -Wall -Wextra -Werror -I. tests/output_test.cpp EnvelopeGenerator.cpp -o /tmp/adlfo-output-test
+	/tmp/adlfo-output-test
+	$(HOST_CXX) -std=c++14 -Wall -Wextra -Werror -I. -I$(LIBDAISY_DIR)/src tests/ui_test.cpp EnvelopeGenerator.cpp $(LIBDAISY_DIR)/src/util/oled_fonts.c -o /tmp/adlfo-ui-test
+	/tmp/adlfo-ui-test
+
+HOST_CXX ?= c++
