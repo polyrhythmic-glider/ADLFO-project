@@ -1,30 +1,33 @@
-# ADLFO — stato attuale
+# ADLFO
 
-Modulo AD/LFO con Daisy Seed3 su zoccolo alza pin e perfboard. Il front panel
-è già cablato: quattro encoder cliccabili, quattro tasti, dodici jack e OLED.
-Sono disponibili il quad DAC Adafruit MCP4728 e il connettore Eurorack IDC 2×8.
+Quattro AD/LFO indipendenti con Daisy Seed e MCP4728.
+Montaggio confermato: SDA D12, SCL D11; VA–VD ai quattro jack tramite 1 kΩ,
+sleeve a GND. Tensioni ancora da verificare.
 
-**Si procede prima via USB:** montaggio e debug di controlli, trigger, CV e DAC
-a 3,3 V. Alimentazione Eurorack e stadi di uscita TL074 sono la seconda fase.
-La guida da seguire ora è [AVVIO_USB.md](wiring/AVVIO_USB.md).
+- [Firmware e comandi](DaisyMonoEnvelope/README.md).
+- [Schemi conservati e lavoro hardware restante](wiring/README.md).
+- [Proposta PCB, pannello e visualizzatore offline](hardware/pcb/README.md).
+- Diagnostica separata: [CV/DAC](DaisyCv4Test/README.md) e [OLED](DaisyOledTest/README.md).
 
-La documentazione hardware corrente è raccolta in **[wiring/](wiring/README.md)**:
+TRIG/CV non ancora collegati: pin da decidere, ingressi disabilitati nel codice.
+Gli schemi sono proposte: non presumere che descrivano il cablaggio reale.
 
-- [Stato del montaggio e prossimi passi](wiring/README.md)
-- [Mappa completa dei pin, verificata per tutti i 12 jack](wiring/PINOUT.md)
-- [Schemi testuali, alimentazione, protezioni e pin](wiring/SCHEMI.md)
-- [BOM ordinata per circuito](wiring/BOM.md)
-- [BOM CSV, una riga per componente](wiring/BOM_COMPONENTI.csv)
-- [Controlli e display](wiring/CONTROLLI.md)
-- [Disegno e geometria del pannello](wiring/pannello/README.md)
+## Compilazione e test
 
-Il progetto hardware corrente prevede quattro trigger IN, quattro CV IN 0–10 V
-e quattro OUT circa 0–5 V. I circuiti posteriori sono definiti nella guida,
-ma montaggio e collaudo non sono ancora confermati.
+Servono GNU Make, la toolchain `arm-none-eabi`, un compilatore C++ per i test
+locali e le librerie libDaisy/DaisySP già compilate. I Makefile cercano queste
+librerie in `../DaisyExamples/` rispetto alla radice del repository; per altri
+percorsi passare `LIBDAISY_DIR` e `DAISYSP_DIR` a `make`.
 
-Il **[firmware principale](DaisyMonoEnvelope/README.md) è ancora mono**:
-gestisce i quattro encoder e i quattro tasti, un trigger su D6, un CV su D16
-e il DAC interno D23. Il MCP4728 e i quattro canali non sono ancora implementati.
+```sh
+make -C DaisyMonoEnvelope
+make -C DaisyMonoEnvelope test
+make -C DaisyCv4Test
+make -C DaisyOledTest
+c++ -std=c++14 -Wall -Wextra -Werror DaisyCv4Test/tests/protocol_test.cpp -o /tmp/adlfo-cv4-protocol-test
+/tmp/adlfo-cv4-protocol-test
+```
 
-[DaisyOledTest](DaisyOledTest/README.md) è un firmware separato di diagnostica
-del display; il suo caricamento sostituisce il programma principale.
+Le cartelle `build/` e le cache locali sono escluse da Git. I file hardware in
+`hardware/pcb/output/` sono invece versionati per poter aprire e revisionare
+il progetto senza rigenerarlo; le istruzioni sono nel relativo README.
