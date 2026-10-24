@@ -1,0 +1,18 @@
+{
+  "tool": "KiCad 9.0.2",
+  "status": "NOT_CLEAN_PLACEMENT_DRAFT",
+  "routing_present": false,
+  "erc_limits": "All generated symbol pins are passive; no meaningful IC power/direction verification.",
+  "drc": {
+    "silk_edge_clearance": 8,
+    "lib_footprint_mismatch": 104,
+    "text_height": 138,
+    "silk_over_copper": 58,
+    "silk_overlap": 58,
+    "unconnected_items": 296
+  },
+  "erc": {
+    "endpoint_off_grid": 497,
+    "lib_symbol_issues": 134
+  }
+}

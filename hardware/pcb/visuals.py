@@ -40,15 +40,15 @@ def panel(technical=False,assembled=True):
             c.line([(h['x']-1,h['y']),(h['x']+1,h['y'])],'#8a9ba3',.08)
             c.line([(h['x'],h['y']-1),(h['x'],h['y']+1)],'#8a9ba3',.08)
         c.rect(OLED['x']-13.5,OLED['y']-7.5,27,15,'none','#111',.1)
-        c.text(80,20,'ADLFO · 24 HP',4,'#192d39',weight='bold')
-        c.text(80,25,'121.6 × 128.5 mm',2.5,'#192d39')
-        c.text(60.8,121,'DIMA 1:1 · QUOTE DA VERIFICARE SUI COMPONENTI',1.7,'#192d39')
+        c.text(70,20,'ADLFO · 20 HP',4,'#192d39',weight='bold')
+        c.text(70,25,'101.2 × 128.5 mm',2.5,'#192d39')
+        c.text(W/2,121,'DIMA 1:1 · QUOTE DA VERIFICARE SUI COMPONENTI',1.7,'#192d39')
         return c
-    c.text(61,19,'ADLFO',9.3,anchor='start',weight='bold',spacing=.4)
-    c.text(61.5,24,'QUAD ENVELOPE / OSCILLATOR',1.65,'#a4b3b7',anchor='start',spacing=.12)
-    c.line([(61.5,28),(104,28)],'#617273',.25)
-    for i,color in enumerate(COLORS):c.circle(63+i*4,31,0.65,color)
-    c.text(104,31.7,'REV A',1.8,'#a4b3b7','end')
+    c.text(49,19,'ADLFO',9.3,anchor='start',weight='bold',spacing=.4)
+    c.text(49.5,24,'QUAD ENVELOPE / OSCILLATOR',1.65,'#a4b3b7',anchor='start',spacing=.12)
+    c.line([(49.5,28),(93,28)],'#617273',.25)
+    for i,color in enumerate(COLORS):c.circle(51+i*4,31,0.65,color)
+    c.text(93,31.7,'REV B',1.8,'#a4b3b7','end')
     ox,oy=OLED['x']-13.5,OLED['y']-7.5
     c.rect(ox-.7,oy-.7,28.4,16.4,'#0a1114','#354348',.3,.6)
     c.rect(ox,oy,27,15,'#06252a')
@@ -57,7 +57,7 @@ def panel(technical=False,assembled=True):
         c.text(ox+25.3,oy+3.5,'AD  EXP',1.5,'#9adacb','end')
         c.line([(ox+2,oy+11),(ox+7,oy+6),(ox+9,oy+8),(ox+12,oy+10),(ox+17,oy+11.6),(ox+25,oy+12)],'#a3efdd',.3)
         c.text(ox+1.6,oy+14,'250 ms     720 ms',1.55,'#91c8c3','start')
-    c.line([(13,34.8),(109,34.8)],'#47585e',.2)
+    c.line([(10,34.8),(93,34.8)],'#47585e',.2)
     names=['RISE','FALL','SYMMETRY','LEVEL'];small=['TRIG · MODE','CURVE','RESET 50%','RESET 100%']
     for i,(x,color) in enumerate(zip(COLUMNS,COLORS)):
         c.text(x,39,names[i],2.4,weight='bold',spacing=.2)
@@ -77,7 +77,7 @@ def panel(technical=False,assembled=True):
         c.circle(x,67,3.45,'#0b1317','#56686a',.22)
         c.circle(x,67,2.7,color)
         c.text(x,73,f'CH {i+1}',2.2,color,weight='bold',spacing=.2)
-        c.rect(x-10.1,103.4,20.2,14.2,color,r=1)
+        c.rect(x-9,103.4,18,14.2,color,r=1)
         for y in [80,95,110]:
             c.circle(x+.3,y+.45,4.7,'#0b1317')
             c.circle(x,y,4.35,'#abb4ae','#d6dbd1',.2)
@@ -86,8 +86,8 @@ def panel(technical=False,assembled=True):
             c.circle(x,y,1.8,'#070e12','#263235',.2)
             c.circle(x-.45,y-.5,.4,'#526064')
         c.text(x,116.6,str(i+1),1.8,'#172126',weight='bold')
-    for t,y in [('TRIG',80),('CV IN',95),('OUT',110)]:c.text(4.8,y+.8,t,1.85,'#b6c2c1','start','bold')
-    c.text(60.8,122,'4 × AD / LFO     •     CV 0–10 V     •     OUT 0–5 V*',1.7,'#a8b7ba',spacing=.08)
+    for t,y in [('TRIG',80),('CV IN',95),('OUT',110)]:c.text(2,y+.8,t,1.35,'#b6c2c1','start','bold')
+    c.text(W/2,122,'4 × AD / LFO     •     CV 0–10 V     •     OUT 0–5 V*',1.7,'#a8b7ba',spacing=.08)
     return c
 
 def pcb(board,parts,rear=True,ratsnest=False):
@@ -128,6 +128,14 @@ def pcb(board,parts,rear=True,ratsnest=False):
             c.rect(x-27,y-3.7,5,7.4,'#a8b7b4','#40504e',.2,.4)
             c.text(x,y-10.7,'U1 / DAISY SEED · SOCKETED',1.6,'#d4e3d5',weight='bold')
             c.text(x,y+1,'STM32',1.2,'#becbc4')
+        elif k=='mcp4728_breakout':
+            c.rect(x-12.7,y-8.89,25.4,17.78,'#163549','#8ca4a7',.2,.8)
+            c.text(x,y-1,'ADAFRUIT',1.7,weight='bold')
+            c.text(x,y+2,'MCP4728',1.7)
+            c.text(x,y+11,'U2 / SOCKETED',1.3)
+        elif k=='radial_cap':
+            c.circle(x,y,3.15,'#26343b','#98a8a4',.2)
+            c.text(x,y+1,'+',2)
         elif k in ['soic14','msop10']:
             ww,hh=(3.9,8.7) if k=='soic14' else (3,3)
             c.rect(x-ww/2,y-hh/2,ww,hh,'#142025','#455752',.2,.2)
@@ -156,16 +164,16 @@ def pcb(board,parts,rear=True,ratsnest=False):
         elif k=='button':c.rect(x-3,y-3,6,6,'#263139','#9ba69a',.2);c.circle(x,y,1.75,'#778f84')
         elif k=='jack':c.rect(x-4.5,y-6,9,10.5,'#18252b',r=.5);c.circle(x,y,3,'#a1afa5');c.circle(x,y,1.8,'#142025')
         elif k=='oled':c.rect(OLED['x']-13.75,OLED['y']-13.9,27.5,27.8,'#173838','#79948a',.2,.3)
-    c.text(60.8,39,'ADLFO  /  A',2.8,'#d3e5d3',weight='bold',spacing=.4)
-    c.text(60.8,43,'PLACEMENT · NO ROUTING',1.4,'#9dc3ae',spacing=.15)
-    c.text(60.8,118,'KIUTILS → KICAD   /   116.6 × 110.5 mm',1.35,'#c4ddc6')
+    c.text(W/2,39,'ADLFO  /  B',2.8,'#d3e5d3',weight='bold',spacing=.4)
+    c.text(W/2,43,'PLACEMENT · NO ROUTING',1.4,'#9dc3ae',spacing=.15)
+    c.text(W/2,118,'KIUTILS → KICAD   /   96.2 × 110.5 mm',1.35,'#c4ddc6')
     return c
 
 def overview(front,back,parts):
     c=Canvas(1800,1100);c.rect(0,0,1800,1100,'#eaeae2')
     c.text(75,62,'ADLFO / HARDWARE STUDY 01',17,'#4b6264','start',spacing=3)
     c.text(75,130,'Quattro canali. Una sola scheda.',48,'#1b3037','start','bold')
-    c.text(77,177,'Pannello forato + PCB unica • proposta Eurorack 24 HP • scala e collegamenti condivisi',20,'#576b6c','start')
+    c.text(77,177,'Pannello forato + PCB unica • proposta Eurorack 20 HP • scala e collegamenti condivisi',20,'#576b6c','start')
     c.text(85,231,'01   FRONT PANEL',16,'#3c535a','start','bold',2)
     c.text(930,231,'02   PCB — VISTA DAL RETRO',16,'#3c535a','start','bold',2)
     # Embed real generated vector views without raster approximation.
@@ -174,11 +182,11 @@ def overview(front,back,parts):
     body+=f'<g transform="translate(925 255) scale(5.25)">{back.inner()}</g>'
     lower=Canvas(1800,1100)
     lower.line([(85,960),(1715,960)],'#b6c0b9',1)
-    lower.text(85,998,'121,6 × 128,5 mm',23,'#223b41','start','bold')
+    lower.text(85,998,'101,2 × 128,5 mm',23,'#223b41','start','bold')
     lower.text(85,1029,'Alluminio 2 mm · encoder, pulsanti, 12 jack',17,'#607275','start')
     lower.text(685,998,'4 encoder  /  4 selettori  /  OLED',23,'#223b41','start','bold')
     lower.text(685,1029,'Ingresso TRIG + CV e uscita per ciascun canale',17,'#607275','start')
-    lower.text(1715,998,'REV A · PROPOSTA',22,'#8c613b','end','bold')
+    lower.text(1715,998,'REV B · PROPOSTA',22,'#8c613b','end','bold')
     lower.text(1715,1029,'PCB da sbrogliare e collaudare',17,'#8c613b','end')
     lower.text(85,1070,'* OUT: obiettivo 0–5 V a vuoto. Modelli dei componenti e distanze dal pannello da verificare sul materiale reale.',14,'#607275','start')
     return f'<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100">{body}{lower.inner()}</svg>'
@@ -197,3 +205,4 @@ def render(board,parts,out):
                     'RATSNEST':pcb(board,parts,True,True).d.tostring(),'BOM':table,'COUNT':str(len(parts))}.items():
         template=template.replace('{{'+key+'}}',val)
     (out/'index.html').write_text(template)
+

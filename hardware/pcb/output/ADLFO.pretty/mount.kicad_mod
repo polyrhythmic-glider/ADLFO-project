@@ -1,6 +1,6 @@
 (footprint "ADLFO:mount" (version 20211014) (generator kiutils)
   (layer "F.Cu")
-  (tedit 6ada636e)
+  (tedit 6adced38)
   (at 0 0 0)
   (attr through_hole exclude_from_bom)
   (fp_rect (start -3.0 -3.0) (end 3.0 3.0) (layer "F.Fab") (width 0.1))

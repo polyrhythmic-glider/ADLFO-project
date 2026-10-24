@@ -1,19 +1,19 @@
 {
   "panel": {
-    "width": 121.6,
+    "width": 101.2,
     "height": 128.5,
     "thickness": 2.0,
-    "hp": 24
+    "hp": 20
   },
   "pcb": {
     "x": 2.5,
     "y": 9.0,
-    "width": 116.6,
+    "width": 96.2,
     "height": 110.5,
     "thickness": 1.6
   },
   "oled": {
-    "x": 29,
+    "x": 24,
     "y": 22.5,
     "width": 27,
     "height": 15,
@@ -24,158 +24,158 @@
   "mounts": [
     [
       6.5,
-      13
+      12
     ],
     [
-      115.1,
-      13
+      94.7,
+      12
     ],
     [
       6.5,
       116
     ],
     [
-      115.1,
+      94.7,
       116
     ]
   ],
   "holes": [
     {
       "ref": "ENCODER1",
-      "x": 22.0,
+      "x": 17.5,
       "y": 48,
       "diameter": 7.2,
       "kind": "encoder"
     },
     {
       "ref": "BUTTON1",
-      "x": 22.0,
+      "x": 17.5,
       "y": 67,
       "diameter": 4.0,
       "kind": "button"
     },
     {
       "ref": "TRIG1",
-      "x": 22.0,
+      "x": 17.5,
       "y": 80,
       "diameter": 6.2,
       "kind": "trig"
     },
     {
       "ref": "CV1",
-      "x": 22.0,
+      "x": 17.5,
       "y": 95,
       "diameter": 6.2,
       "kind": "cv"
     },
     {
       "ref": "OUT1",
-      "x": 22.0,
+      "x": 17.5,
       "y": 110,
       "diameter": 6.2,
       "kind": "out"
     },
     {
       "ref": "ENCODER2",
-      "x": 48.0,
+      "x": 39.5,
       "y": 48,
       "diameter": 7.2,
       "kind": "encoder"
     },
     {
       "ref": "BUTTON2",
-      "x": 48.0,
+      "x": 39.5,
       "y": 67,
       "diameter": 4.0,
       "kind": "button"
     },
     {
       "ref": "TRIG2",
-      "x": 48.0,
+      "x": 39.5,
       "y": 80,
       "diameter": 6.2,
       "kind": "trig"
     },
     {
       "ref": "CV2",
-      "x": 48.0,
+      "x": 39.5,
       "y": 95,
       "diameter": 6.2,
       "kind": "cv"
     },
     {
       "ref": "OUT2",
-      "x": 48.0,
+      "x": 39.5,
       "y": 110,
       "diameter": 6.2,
       "kind": "out"
     },
     {
       "ref": "ENCODER3",
-      "x": 74.0,
+      "x": 61.5,
       "y": 48,
       "diameter": 7.2,
       "kind": "encoder"
     },
     {
       "ref": "BUTTON3",
-      "x": 74.0,
+      "x": 61.5,
       "y": 67,
       "diameter": 4.0,
       "kind": "button"
     },
     {
       "ref": "TRIG3",
-      "x": 74.0,
+      "x": 61.5,
       "y": 80,
       "diameter": 6.2,
       "kind": "trig"
     },
     {
       "ref": "CV3",
-      "x": 74.0,
+      "x": 61.5,
       "y": 95,
       "diameter": 6.2,
       "kind": "cv"
     },
     {
       "ref": "OUT3",
-      "x": 74.0,
+      "x": 61.5,
       "y": 110,
       "diameter": 6.2,
       "kind": "out"
     },
     {
       "ref": "ENCODER4",
-      "x": 100.0,
+      "x": 83.5,
       "y": 48,
       "diameter": 7.2,
       "kind": "encoder"
     },
     {
       "ref": "BUTTON4",
-      "x": 100.0,
+      "x": 83.5,
       "y": 67,
       "diameter": 4.0,
       "kind": "button"
     },
     {
       "ref": "TRIG4",
-      "x": 100.0,
+      "x": 83.5,
       "y": 80,
       "diameter": 6.2,
       "kind": "trig"
     },
     {
       "ref": "CV4",
-      "x": 100.0,
+      "x": 83.5,
       "y": 95,
       "diameter": 6.2,
       "kind": "cv"
     },
     {
       "ref": "OUT4",
-      "x": 100.0,
+      "x": 83.5,
       "y": 110,
       "diameter": 6.2,
       "kind": "out"
@@ -183,14 +183,14 @@
     {
       "ref": "M1",
       "x": 6.5,
-      "y": 13,
+      "y": 12,
       "diameter": 3.2,
       "kind": "mount"
     },
     {
       "ref": "M2",
-      "x": 115.1,
-      "y": 13,
+      "x": 94.7,
+      "y": 12,
       "diameter": 3.2,
       "kind": "mount"
     },
@@ -203,7 +203,7 @@
     },
     {
       "ref": "M4",
-      "x": 115.1,
+      "x": 94.7,
       "y": 116,
       "diameter": 3.2,
       "kind": "mount"
@@ -215,7 +215,7 @@
       3
     ],
     [
-      114.18,
+      93.86,
       3
     ],
     [
@@ -223,7 +223,7 @@
       125.5
     ],
     [
-      114.18,
+      93.86,
       125.5
     ]
   ],
@@ -232,7 +232,7 @@
       "ref": "U1",
       "value": "Daisy Seed (socketed)",
       "footprint": "seed",
-      "x": 82,
+      "x": 70,
       "y": 24,
       "pins": {
         "1": "D0",
@@ -282,32 +282,34 @@
     },
     {
       "ref": "U2",
-      "value": "MCP4728-E/UN",
-      "footprint": "msop10",
-      "x": 87,
-      "y": 60,
+      "value": "Adafruit MCP4728 STEMMA QT breakout",
+      "footprint": "mcp4728_breakout",
+      "x": 29,
+      "y": 24,
       "pins": {
         "1": "+3V3",
-        "2": "D11",
-        "3": "D12",
-        "4": "GND",
-        "5": null,
-        "6": "DAC1",
-        "7": "DAC2",
-        "8": "DAC3",
-        "9": "DAC4",
-        "10": "GND"
+        "2": "GND",
+        "3": "D11",
+        "4": "D12",
+        "5": "GND",
+        "6": null,
+        "7": "GND",
+        "8": "DAC1",
+        "9": "DAC2",
+        "10": "DAC3",
+        "11": "DAC4",
+        "12": "+3V3"
       },
       "side": "B",
       "group": "SYSTEM",
-      "note": ""
+      "note": "Two 1x6 female sockets, rows 12.70 mm apart; module 25.4 x 17.78 mm. JP1: VCC/GND/SCL/SDA/LDAC/RDY. Verify actual board revision; no second DAC IC on carrier."
     },
     {
       "ref": "U3",
       "value": "MCP6004-I/SL",
       "footprint": "soic14",
-      "x": 35,
-      "y": 59,
+      "x": 28.5,
+      "y": 60,
       "pins": {
         "4": "+3V3",
         "11": "GND",
@@ -332,8 +334,8 @@
       "ref": "U4",
       "value": "TL074CDR",
       "footprint": "soic14",
-      "x": 61,
-      "y": 59,
+      "x": 50.5,
+      "y": 60,
       "pins": {
         "4": "+12VA",
         "11": "-12VA",
@@ -358,8 +360,8 @@
       "ref": "U5",
       "value": "R-78E5.0-0.5",
       "footprint": "recom",
-      "x": 31,
-      "y": 24,
+      "x": 51,
+      "y": 40.5,
       "pins": {
         "1": "+12VA",
         "2": "GND",
@@ -367,7 +369,7 @@
       },
       "side": "B",
       "group": "SYSTEM",
-      "note": "500 mA rated converter; actual rail budget to measure."
+      "note": "Candidate 500 mA converter, not a confirmed budget. Size from Daisy + OLED + DAC + analog load, startup and thermal measurements; no case +5 V required."
     },
     {
       "ref": "J13",
@@ -395,7 +397,7 @@
       "ref": "J14",
       "value": "OLED SSD1306 128x64",
       "footprint": "oled",
-      "x": 29,
+      "x": 24,
       "y": 11.0,
       "pins": {
         "1": "GND",
@@ -408,14 +410,28 @@
       "note": "Assumed module GND/VCC/SCL/SDA, 0.96 inch; measure actual glass, PCB and connector before release."
     },
     {
+      "ref": "F1",
+      "value": "PTC 0.5A hold candidate",
+      "footprint": "ptc1812",
+      "x": 8,
+      "y": 58,
+      "pins": {
+        "1": "+12V_IN",
+        "2": "+12V_FUSED"
+      },
+      "side": "B",
+      "group": "SYSTEM",
+      "note": "Candidate only: select rated voltage >=24 V and hold/trip current from measured startup and hot-case load. Package must match selected PTC."
+    },
+    {
       "ref": "D1",
       "value": "SS14",
       "footprint": "sma",
-      "x": 21,
-      "y": 36,
+      "x": 12,
+      "y": 38.5,
       "pins": {
         "1": "+12VA",
-        "2": "+12V_IN"
+        "2": "+12V_FUSED"
       },
       "side": "B",
       "group": "SYSTEM",
@@ -439,8 +455,8 @@
       "ref": "D3",
       "value": "SS14",
       "footprint": "sma",
-      "x": 42,
-      "y": 24,
+      "x": 73,
+      "y": 38,
       "pins": {
         "1": "+5V_SEED",
         "2": "+5V_REG"
@@ -453,8 +469,8 @@
       "ref": "C1",
       "value": "10uF 50V X7R",
       "footprint": "c0805",
-      "x": 20,
-      "y": 29,
+      "x": 12,
+      "y": 11.5,
       "pins": {
         "1": "+12VA",
         "2": "GND"
@@ -467,8 +483,8 @@
       "ref": "C2",
       "value": "10uF 50V X7R",
       "footprint": "c0805",
-      "x": 30,
-      "y": 31,
+      "x": 32,
+      "y": 11.5,
       "pins": {
         "1": "GND",
         "2": "-12VA"
@@ -481,8 +497,8 @@
       "ref": "C3",
       "value": "10uF 10V X7R",
       "footprint": "c0805",
-      "x": 40,
-      "y": 29,
+      "x": 61,
+      "y": 34.5,
       "pins": {
         "1": "+5V_REG",
         "2": "GND"
@@ -495,8 +511,8 @@
       "ref": "C4",
       "value": "10uF 10V X7R",
       "footprint": "c0805",
-      "x": 49.5,
-      "y": 24,
+      "x": 73,
+      "y": 34.5,
       "pins": {
         "1": "+5V_SEED",
         "2": "GND"
@@ -509,8 +525,8 @@
       "ref": "C5",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 81.5,
-      "y": 56,
+      "x": 37,
+      "y": 36,
       "pins": {
         "1": "+3V3",
         "2": "GND"
@@ -523,8 +539,8 @@
       "ref": "C6",
       "value": "10uF 10V X7R",
       "footprint": "c0805",
-      "x": 81.5,
-      "y": 64.5,
+      "x": 37,
+      "y": 39,
       "pins": {
         "1": "+3V3",
         "2": "GND"
@@ -537,8 +553,8 @@
       "ref": "C7",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 28,
-      "y": 59,
+      "x": 23,
+      "y": 60,
       "pins": {
         "1": "+3V3",
         "2": "GND"
@@ -551,8 +567,8 @@
       "ref": "C8",
       "value": "100nF 50V",
       "footprint": "c0805",
-      "x": 54,
-      "y": 59,
+      "x": 45,
+      "y": 60,
       "pins": {
         "1": "+12VA",
         "2": "GND"
@@ -565,7 +581,7 @@
       "ref": "C9",
       "value": "100nF 50V",
       "footprint": "c0805",
-      "x": 61,
+      "x": 50.5,
       "y": 52.5,
       "pins": {
         "1": "-12VA",
@@ -576,11 +592,53 @@
       "note": ""
     },
     {
+      "ref": "C10",
+      "value": "47uF 10V low ESR candidate",
+      "footprint": "radial_cap",
+      "x": 94,
+      "y": 37,
+      "pins": {
+        "1": "+5V_SEED",
+        "2": "GND"
+      },
+      "side": "B",
+      "group": "SYSTEM",
+      "note": "Local 5 V bulk capacitor; check regulator stability, startup and actual case size before fitting."
+    },
+    {
+      "ref": "C11",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 79,
+      "y": 34.5,
+      "pins": {
+        "1": "+5V_SEED",
+        "2": "GND"
+      },
+      "side": "B",
+      "group": "SYSTEM",
+      "note": ""
+    },
+    {
+      "ref": "C12",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 91,
+      "y": 42,
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "side": "B",
+      "group": "SYSTEM",
+      "note": ""
+    },
+    {
       "ref": "R1",
-      "value": "4.7k",
+      "value": "4.7k DNP",
       "footprint": "r0805",
-      "x": 43,
-      "y": 16,
+      "x": 39,
+      "y": 11.5,
       "pins": {
         "1": "+3V3",
         "2": "D11"
@@ -591,10 +649,10 @@
     },
     {
       "ref": "R2",
-      "value": "4.7k",
+      "value": "4.7k DNP",
       "footprint": "r0805",
-      "x": 43,
-      "y": 19.5,
+      "x": 45,
+      "y": 11.5,
       "pins": {
         "1": "+3V3",
         "2": "D12"
@@ -607,8 +665,8 @@
       "ref": "TP1",
       "value": "GND",
       "footprint": "testpoint",
-      "x": 10,
-      "y": 43,
+      "x": 14,
+      "y": 118,
       "pins": {
         "1": "GND"
       },
@@ -620,8 +678,8 @@
       "ref": "TP2",
       "value": "+12VA",
       "footprint": "testpoint",
-      "x": 16,
-      "y": 43,
+      "x": 32,
+      "y": 118,
       "pins": {
         "1": "+12VA"
       },
@@ -633,8 +691,8 @@
       "ref": "TP3",
       "value": "-12VA",
       "footprint": "testpoint",
-      "x": 34,
-      "y": 43,
+      "x": 50,
+      "y": 118,
       "pins": {
         "1": "-12VA"
       },
@@ -646,8 +704,8 @@
       "ref": "TP4",
       "value": "+5V_SEED",
       "footprint": "testpoint",
-      "x": 40,
-      "y": 36,
+      "x": 68,
+      "y": 118,
       "pins": {
         "1": "+5V_SEED"
       },
@@ -659,8 +717,8 @@
       "ref": "TP5",
       "value": "+3V3",
       "footprint": "testpoint",
-      "x": 47,
-      "y": 36,
+      "x": 90,
+      "y": 118,
       "pins": {
         "1": "+3V3"
       },
@@ -672,7 +730,7 @@
       "ref": "ENC1",
       "value": "RISE",
       "footprint": "encoder",
-      "x": 22.0,
+      "x": 17.5,
       "y": 48,
       "pins": {
         "A": "D0",
@@ -690,7 +748,7 @@
       "ref": "SW1",
       "value": "CH 1",
       "footprint": "button",
-      "x": 22.0,
+      "x": 17.5,
       "y": 67,
       "pins": {
         "1": "D25",
@@ -704,7 +762,7 @@
       "ref": "J1",
       "value": "TRIG1",
       "footprint": "jack",
-      "x": 22.0,
+      "x": 17.5,
       "y": 80,
       "pins": {
         "S": "GND",
@@ -719,7 +777,7 @@
       "ref": "J2",
       "value": "CV1",
       "footprint": "jack",
-      "x": 22.0,
+      "x": 17.5,
       "y": 95,
       "pins": {
         "S": "GND",
@@ -734,7 +792,7 @@
       "ref": "J3",
       "value": "OUT1",
       "footprint": "jack",
-      "x": 22.0,
+      "x": 17.5,
       "y": 110,
       "pins": {
         "S": "GND",
@@ -749,7 +807,7 @@
       "ref": "R101",
       "value": "100k",
       "footprint": "r0805",
-      "x": 15.0,
+      "x": 10.5,
       "y": 77,
       "pins": {
         "1": "TRIG1",
@@ -763,7 +821,7 @@
       "ref": "R102",
       "value": "1M",
       "footprint": "r0805",
-      "x": 15.0,
+      "x": 10.5,
       "y": 81,
       "pins": {
         "1": "TRIG_BASE1",
@@ -777,7 +835,7 @@
       "ref": "R103",
       "value": "47k",
       "footprint": "r0805",
-      "x": 15.0,
+      "x": 10.5,
       "y": 85,
       "pins": {
         "1": "+3V3",
@@ -791,7 +849,7 @@
       "ref": "Q1",
       "value": "MMBT3904",
       "footprint": "sot23",
-      "x": 28.0,
+      "x": 23.5,
       "y": 80,
       "pins": {
         "1": "TRIG_BASE1",
@@ -806,7 +864,7 @@
       "ref": "D101",
       "value": "1N4148W",
       "footprint": "sod123",
-      "x": 28.0,
+      "x": 23.5,
       "y": 85,
       "pins": {
         "1": "TRIG_BASE1",
@@ -820,7 +878,7 @@
       "ref": "R104",
       "value": "100k 0.1%",
       "footprint": "r0805",
-      "x": 15.0,
+      "x": 10.5,
       "y": 92,
       "pins": {
         "1": "CV1",
@@ -834,7 +892,7 @@
       "ref": "R105",
       "value": "33k 0.1%",
       "footprint": "r0805",
-      "x": 15.0,
+      "x": 10.5,
       "y": 96,
       "pins": {
         "1": "CV_DIV1",
@@ -848,7 +906,7 @@
       "ref": "R106",
       "value": "10k",
       "footprint": "r0805",
-      "x": 15.0,
+      "x": 10.5,
       "y": 100,
       "pins": {
         "1": "CV_DIV1",
@@ -862,7 +920,7 @@
       "ref": "C101",
       "value": "10nF",
       "footprint": "c0805",
-      "x": 28.0,
+      "x": 23.5,
       "y": 90,
       "pins": {
         "1": "CV_DIV1",
@@ -876,7 +934,7 @@
       "ref": "D102",
       "value": "BAT54S",
       "footprint": "sot23",
-      "x": 28.0,
+      "x": 23.5,
       "y": 94,
       "pins": {
         "1": "GND",
@@ -891,7 +949,7 @@
       "ref": "R107",
       "value": "1k",
       "footprint": "r0805",
-      "x": 28.0,
+      "x": 23.5,
       "y": 99,
       "pins": {
         "1": "CV_BUF1",
@@ -905,7 +963,7 @@
       "ref": "C102",
       "value": "1nF",
       "footprint": "c0805",
-      "x": 28.0,
+      "x": 23.5,
       "y": 103,
       "pins": {
         "1": "D15",
@@ -919,7 +977,7 @@
       "ref": "R108",
       "value": "10k",
       "footprint": "r0805",
-      "x": 15.0,
+      "x": 17.5,
       "y": 56,
       "pins": {
         "1": "DAC1",
@@ -933,8 +991,8 @@
       "ref": "R109",
       "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 15.0,
-      "y": 60,
+      "x": 17.5,
+      "y": 59.5,
       "pins": {
         "1": "OUT_FB1",
         "2": "GND"
@@ -947,8 +1005,8 @@
       "ref": "R110",
       "value": "15k 0.1%",
       "footprint": "r0805",
-      "x": 15.0,
-      "y": 64,
+      "x": 17.5,
+      "y": 63,
       "pins": {
         "1": "OUT_AMP1",
         "2": "OUT_FB1"
@@ -961,7 +1019,7 @@
       "ref": "R111",
       "value": "2.2k 0.5W",
       "footprint": "r2010",
-      "x": 29.0,
+      "x": 24.5,
       "y": 110,
       "pins": {
         "1": "OUT_AMP1",
@@ -972,10 +1030,66 @@
       "note": "Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior."
     },
     {
+      "ref": "RP11",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 20.5,
+      "y": 35.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D0"
+      },
+      "side": "B",
+      "group": "CH1",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP12",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 20.5,
+      "y": 39,
+      "pins": {
+        "1": "+3V3",
+        "2": "D1"
+      },
+      "side": "B",
+      "group": "CH1",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP13",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 20.5,
+      "y": 71.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D2"
+      },
+      "side": "B",
+      "group": "CH1",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP14",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 20.5,
+      "y": 74.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D25"
+      },
+      "side": "B",
+      "group": "CH1",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
       "ref": "TP11",
       "value": "DAC1",
       "footprint": "testpoint",
-      "x": 15.0,
+      "x": 10.5,
       "y": 70,
       "pins": {
         "1": "DAC1"
@@ -988,7 +1102,7 @@
       "ref": "ENC2",
       "value": "FALL",
       "footprint": "encoder",
-      "x": 48.0,
+      "x": 39.5,
       "y": 48,
       "pins": {
         "A": "D3",
@@ -1006,7 +1120,7 @@
       "ref": "SW2",
       "value": "CH 2",
       "footprint": "button",
-      "x": 48.0,
+      "x": 39.5,
       "y": 67,
       "pins": {
         "1": "D24",
@@ -1020,7 +1134,7 @@
       "ref": "J4",
       "value": "TRIG2",
       "footprint": "jack",
-      "x": 48.0,
+      "x": 39.5,
       "y": 80,
       "pins": {
         "S": "GND",
@@ -1035,7 +1149,7 @@
       "ref": "J5",
       "value": "CV2",
       "footprint": "jack",
-      "x": 48.0,
+      "x": 39.5,
       "y": 95,
       "pins": {
         "S": "GND",
@@ -1050,7 +1164,7 @@
       "ref": "J6",
       "value": "OUT2",
       "footprint": "jack",
-      "x": 48.0,
+      "x": 39.5,
       "y": 110,
       "pins": {
         "S": "GND",
@@ -1065,7 +1179,7 @@
       "ref": "R201",
       "value": "100k",
       "footprint": "r0805",
-      "x": 41.0,
+      "x": 32.5,
       "y": 77,
       "pins": {
         "1": "TRIG2",
@@ -1079,7 +1193,7 @@
       "ref": "R202",
       "value": "1M",
       "footprint": "r0805",
-      "x": 41.0,
+      "x": 32.5,
       "y": 81,
       "pins": {
         "1": "TRIG_BASE2",
@@ -1093,7 +1207,7 @@
       "ref": "R203",
       "value": "47k",
       "footprint": "r0805",
-      "x": 41.0,
+      "x": 32.5,
       "y": 85,
       "pins": {
         "1": "+3V3",
@@ -1107,7 +1221,7 @@
       "ref": "Q2",
       "value": "MMBT3904",
       "footprint": "sot23",
-      "x": 54.0,
+      "x": 45.5,
       "y": 80,
       "pins": {
         "1": "TRIG_BASE2",
@@ -1122,7 +1236,7 @@
       "ref": "D201",
       "value": "1N4148W",
       "footprint": "sod123",
-      "x": 54.0,
+      "x": 45.5,
       "y": 85,
       "pins": {
         "1": "TRIG_BASE2",
@@ -1136,7 +1250,7 @@
       "ref": "R204",
       "value": "100k 0.1%",
       "footprint": "r0805",
-      "x": 41.0,
+      "x": 32.5,
       "y": 92,
       "pins": {
         "1": "CV2",
@@ -1150,7 +1264,7 @@
       "ref": "R205",
       "value": "33k 0.1%",
       "footprint": "r0805",
-      "x": 41.0,
+      "x": 32.5,
       "y": 96,
       "pins": {
         "1": "CV_DIV2",
@@ -1164,7 +1278,7 @@
       "ref": "R206",
       "value": "10k",
       "footprint": "r0805",
-      "x": 41.0,
+      "x": 32.5,
       "y": 100,
       "pins": {
         "1": "CV_DIV2",
@@ -1178,7 +1292,7 @@
       "ref": "C201",
       "value": "10nF",
       "footprint": "c0805",
-      "x": 54.0,
+      "x": 45.5,
       "y": 90,
       "pins": {
         "1": "CV_DIV2",
@@ -1192,7 +1306,7 @@
       "ref": "D202",
       "value": "BAT54S",
       "footprint": "sot23",
-      "x": 54.0,
+      "x": 45.5,
       "y": 94,
       "pins": {
         "1": "GND",
@@ -1207,7 +1321,7 @@
       "ref": "R207",
       "value": "1k",
       "footprint": "r0805",
-      "x": 54.0,
+      "x": 45.5,
       "y": 99,
       "pins": {
         "1": "CV_BUF2",
@@ -1221,7 +1335,7 @@
       "ref": "C202",
       "value": "1nF",
       "footprint": "c0805",
-      "x": 54.0,
+      "x": 45.5,
       "y": 103,
       "pins": {
         "1": "D16",
@@ -1235,7 +1349,7 @@
       "ref": "R208",
       "value": "10k",
       "footprint": "r0805",
-      "x": 41.0,
+      "x": 39.5,
       "y": 56,
       "pins": {
         "1": "DAC2",
@@ -1249,8 +1363,8 @@
       "ref": "R209",
       "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 41.0,
-      "y": 60,
+      "x": 39.5,
+      "y": 59.5,
       "pins": {
         "1": "OUT_FB2",
         "2": "GND"
@@ -1263,8 +1377,8 @@
       "ref": "R210",
       "value": "15k 0.1%",
       "footprint": "r0805",
-      "x": 41.0,
-      "y": 64,
+      "x": 39.5,
+      "y": 63,
       "pins": {
         "1": "OUT_AMP2",
         "2": "OUT_FB2"
@@ -1277,7 +1391,7 @@
       "ref": "R211",
       "value": "2.2k 0.5W",
       "footprint": "r2010",
-      "x": 55.0,
+      "x": 46.5,
       "y": 110,
       "pins": {
         "1": "OUT_AMP2",
@@ -1288,10 +1402,66 @@
       "note": "Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior."
     },
     {
+      "ref": "RP21",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 42.5,
+      "y": 35.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D3"
+      },
+      "side": "B",
+      "group": "CH2",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP22",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 42.5,
+      "y": 39,
+      "pins": {
+        "1": "+3V3",
+        "2": "D4"
+      },
+      "side": "B",
+      "group": "CH2",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP23",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 42.5,
+      "y": 71.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D5"
+      },
+      "side": "B",
+      "group": "CH2",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP24",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 42.5,
+      "y": 74.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D24"
+      },
+      "side": "B",
+      "group": "CH2",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
       "ref": "TP12",
       "value": "DAC2",
       "footprint": "testpoint",
-      "x": 41.0,
+      "x": 32.5,
       "y": 70,
       "pins": {
         "1": "DAC2"
@@ -1304,7 +1474,7 @@
       "ref": "ENC3",
       "value": "SYMMETRY",
       "footprint": "encoder",
-      "x": 74.0,
+      "x": 61.5,
       "y": 48,
       "pins": {
         "A": "D7",
@@ -1322,7 +1492,7 @@
       "ref": "SW3",
       "value": "CH 3",
       "footprint": "button",
-      "x": 74.0,
+      "x": 61.5,
       "y": 67,
       "pins": {
         "1": "D26",
@@ -1336,7 +1506,7 @@
       "ref": "J7",
       "value": "TRIG3",
       "footprint": "jack",
-      "x": 74.0,
+      "x": 61.5,
       "y": 80,
       "pins": {
         "S": "GND",
@@ -1351,7 +1521,7 @@
       "ref": "J8",
       "value": "CV3",
       "footprint": "jack",
-      "x": 74.0,
+      "x": 61.5,
       "y": 95,
       "pins": {
         "S": "GND",
@@ -1366,7 +1536,7 @@
       "ref": "J9",
       "value": "OUT3",
       "footprint": "jack",
-      "x": 74.0,
+      "x": 61.5,
       "y": 110,
       "pins": {
         "S": "GND",
@@ -1381,7 +1551,7 @@
       "ref": "R301",
       "value": "100k",
       "footprint": "r0805",
-      "x": 67.0,
+      "x": 54.5,
       "y": 77,
       "pins": {
         "1": "TRIG3",
@@ -1395,7 +1565,7 @@
       "ref": "R302",
       "value": "1M",
       "footprint": "r0805",
-      "x": 67.0,
+      "x": 54.5,
       "y": 81,
       "pins": {
         "1": "TRIG_BASE3",
@@ -1409,7 +1579,7 @@
       "ref": "R303",
       "value": "47k",
       "footprint": "r0805",
-      "x": 67.0,
+      "x": 54.5,
       "y": 85,
       "pins": {
         "1": "+3V3",
@@ -1423,7 +1593,7 @@
       "ref": "Q3",
       "value": "MMBT3904",
       "footprint": "sot23",
-      "x": 80.0,
+      "x": 67.5,
       "y": 80,
       "pins": {
         "1": "TRIG_BASE3",
@@ -1438,7 +1608,7 @@
       "ref": "D301",
       "value": "1N4148W",
       "footprint": "sod123",
-      "x": 80.0,
+      "x": 67.5,
       "y": 85,
       "pins": {
         "1": "TRIG_BASE3",
@@ -1452,7 +1622,7 @@
       "ref": "R304",
       "value": "100k 0.1%",
       "footprint": "r0805",
-      "x": 67.0,
+      "x": 54.5,
       "y": 92,
       "pins": {
         "1": "CV3",
@@ -1466,7 +1636,7 @@
       "ref": "R305",
       "value": "33k 0.1%",
       "footprint": "r0805",
-      "x": 67.0,
+      "x": 54.5,
       "y": 96,
       "pins": {
         "1": "CV_DIV3",
@@ -1480,7 +1650,7 @@
       "ref": "R306",
       "value": "10k",
       "footprint": "r0805",
-      "x": 67.0,
+      "x": 54.5,
       "y": 100,
       "pins": {
         "1": "CV_DIV3",
@@ -1494,7 +1664,7 @@
       "ref": "C301",
       "value": "10nF",
       "footprint": "c0805",
-      "x": 80.0,
+      "x": 67.5,
       "y": 90,
       "pins": {
         "1": "CV_DIV3",
@@ -1508,7 +1678,7 @@
       "ref": "D302",
       "value": "BAT54S",
       "footprint": "sot23",
-      "x": 80.0,
+      "x": 67.5,
       "y": 94,
       "pins": {
         "1": "GND",
@@ -1523,7 +1693,7 @@
       "ref": "R307",
       "value": "1k",
       "footprint": "r0805",
-      "x": 80.0,
+      "x": 67.5,
       "y": 99,
       "pins": {
         "1": "CV_BUF3",
@@ -1537,7 +1707,7 @@
       "ref": "C302",
       "value": "1nF",
       "footprint": "c0805",
-      "x": 80.0,
+      "x": 67.5,
       "y": 103,
       "pins": {
         "1": "D17",
@@ -1551,7 +1721,7 @@
       "ref": "R308",
       "value": "10k",
       "footprint": "r0805",
-      "x": 67.0,
+      "x": 61.5,
       "y": 56,
       "pins": {
         "1": "DAC3",
@@ -1565,8 +1735,8 @@
       "ref": "R309",
       "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 67.0,
-      "y": 60,
+      "x": 61.5,
+      "y": 59.5,
       "pins": {
         "1": "OUT_FB3",
         "2": "GND"
@@ -1579,8 +1749,8 @@
       "ref": "R310",
       "value": "15k 0.1%",
       "footprint": "r0805",
-      "x": 67.0,
-      "y": 64,
+      "x": 61.5,
+      "y": 63,
       "pins": {
         "1": "OUT_AMP3",
         "2": "OUT_FB3"
@@ -1593,7 +1763,7 @@
       "ref": "R311",
       "value": "2.2k 0.5W",
       "footprint": "r2010",
-      "x": 81.0,
+      "x": 68.5,
       "y": 110,
       "pins": {
         "1": "OUT_AMP3",
@@ -1604,10 +1774,66 @@
       "note": "Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior."
     },
     {
+      "ref": "RP31",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 64.5,
+      "y": 35.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D7"
+      },
+      "side": "B",
+      "group": "CH3",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP32",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 64.5,
+      "y": 39,
+      "pins": {
+        "1": "+3V3",
+        "2": "D8"
+      },
+      "side": "B",
+      "group": "CH3",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP33",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 64.5,
+      "y": 71.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D9"
+      },
+      "side": "B",
+      "group": "CH3",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP34",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 64.5,
+      "y": 74.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D26"
+      },
+      "side": "B",
+      "group": "CH3",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
       "ref": "TP13",
       "value": "DAC3",
       "footprint": "testpoint",
-      "x": 67.0,
+      "x": 54.5,
       "y": 70,
       "pins": {
         "1": "DAC3"
@@ -1620,7 +1846,7 @@
       "ref": "ENC4",
       "value": "LEVEL",
       "footprint": "encoder",
-      "x": 100.0,
+      "x": 83.5,
       "y": 48,
       "pins": {
         "A": "D10",
@@ -1638,7 +1864,7 @@
       "ref": "SW4",
       "value": "CH 4",
       "footprint": "button",
-      "x": 100.0,
+      "x": 83.5,
       "y": 67,
       "pins": {
         "1": "D27",
@@ -1652,7 +1878,7 @@
       "ref": "J10",
       "value": "TRIG4",
       "footprint": "jack",
-      "x": 100.0,
+      "x": 83.5,
       "y": 80,
       "pins": {
         "S": "GND",
@@ -1667,7 +1893,7 @@
       "ref": "J11",
       "value": "CV4",
       "footprint": "jack",
-      "x": 100.0,
+      "x": 83.5,
       "y": 95,
       "pins": {
         "S": "GND",
@@ -1682,7 +1908,7 @@
       "ref": "J12",
       "value": "OUT4",
       "footprint": "jack",
-      "x": 100.0,
+      "x": 83.5,
       "y": 110,
       "pins": {
         "S": "GND",
@@ -1697,7 +1923,7 @@
       "ref": "R401",
       "value": "100k",
       "footprint": "r0805",
-      "x": 93.0,
+      "x": 76.5,
       "y": 77,
       "pins": {
         "1": "TRIG4",
@@ -1711,7 +1937,7 @@
       "ref": "R402",
       "value": "1M",
       "footprint": "r0805",
-      "x": 93.0,
+      "x": 76.5,
       "y": 81,
       "pins": {
         "1": "TRIG_BASE4",
@@ -1725,7 +1951,7 @@
       "ref": "R403",
       "value": "47k",
       "footprint": "r0805",
-      "x": 93.0,
+      "x": 76.5,
       "y": 85,
       "pins": {
         "1": "+3V3",
@@ -1739,7 +1965,7 @@
       "ref": "Q4",
       "value": "MMBT3904",
       "footprint": "sot23",
-      "x": 106.0,
+      "x": 89.5,
       "y": 80,
       "pins": {
         "1": "TRIG_BASE4",
@@ -1754,7 +1980,7 @@
       "ref": "D401",
       "value": "1N4148W",
       "footprint": "sod123",
-      "x": 106.0,
+      "x": 89.5,
       "y": 85,
       "pins": {
         "1": "TRIG_BASE4",
@@ -1768,7 +1994,7 @@
       "ref": "R404",
       "value": "100k 0.1%",
       "footprint": "r0805",
-      "x": 93.0,
+      "x": 76.5,
       "y": 92,
       "pins": {
         "1": "CV4",
@@ -1782,7 +2008,7 @@
       "ref": "R405",
       "value": "33k 0.1%",
       "footprint": "r0805",
-      "x": 93.0,
+      "x": 76.5,
       "y": 96,
       "pins": {
         "1": "CV_DIV4",
@@ -1796,7 +2022,7 @@
       "ref": "R406",
       "value": "10k",
       "footprint": "r0805",
-      "x": 93.0,
+      "x": 76.5,
       "y": 100,
       "pins": {
         "1": "CV_DIV4",
@@ -1810,7 +2036,7 @@
       "ref": "C401",
       "value": "10nF",
       "footprint": "c0805",
-      "x": 106.0,
+      "x": 89.5,
       "y": 90,
       "pins": {
         "1": "CV_DIV4",
@@ -1824,7 +2050,7 @@
       "ref": "D402",
       "value": "BAT54S",
       "footprint": "sot23",
-      "x": 106.0,
+      "x": 89.5,
       "y": 94,
       "pins": {
         "1": "GND",
@@ -1839,7 +2065,7 @@
       "ref": "R407",
       "value": "1k",
       "footprint": "r0805",
-      "x": 106.0,
+      "x": 89.5,
       "y": 99,
       "pins": {
         "1": "CV_BUF4",
@@ -1853,7 +2079,7 @@
       "ref": "C402",
       "value": "1nF",
       "footprint": "c0805",
-      "x": 106.0,
+      "x": 89.5,
       "y": 103,
       "pins": {
         "1": "D18",
@@ -1867,7 +2093,7 @@
       "ref": "R408",
       "value": "10k",
       "footprint": "r0805",
-      "x": 93.0,
+      "x": 83.5,
       "y": 56,
       "pins": {
         "1": "DAC4",
@@ -1881,8 +2107,8 @@
       "ref": "R409",
       "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 93.0,
-      "y": 60,
+      "x": 83.5,
+      "y": 59.5,
       "pins": {
         "1": "OUT_FB4",
         "2": "GND"
@@ -1895,8 +2121,8 @@
       "ref": "R410",
       "value": "15k 0.1%",
       "footprint": "r0805",
-      "x": 93.0,
-      "y": 64,
+      "x": 83.5,
+      "y": 63,
       "pins": {
         "1": "OUT_AMP4",
         "2": "OUT_FB4"
@@ -1909,7 +2135,7 @@
       "ref": "R411",
       "value": "2.2k 0.5W",
       "footprint": "r2010",
-      "x": 107.0,
+      "x": 90.5,
       "y": 110,
       "pins": {
         "1": "OUT_AMP4",
@@ -1920,10 +2146,66 @@
       "note": "Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior."
     },
     {
+      "ref": "RP41",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 86.5,
+      "y": 35.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D10"
+      },
+      "side": "B",
+      "group": "CH4",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP42",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 86.5,
+      "y": 39,
+      "pins": {
+        "1": "+3V3",
+        "2": "D13"
+      },
+      "side": "B",
+      "group": "CH4",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP43",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 86.5,
+      "y": 71.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D14"
+      },
+      "side": "B",
+      "group": "CH4",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
+      "ref": "RP44",
+      "value": "10k DNP",
+      "footprint": "r0805",
+      "x": 86.5,
+      "y": 74.5,
+      "pins": {
+        "1": "+3V3",
+        "2": "D27"
+      },
+      "side": "B",
+      "group": "CH4",
+      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+    },
+    {
       "ref": "TP14",
       "value": "DAC4",
       "footprint": "testpoint",
-      "x": 93.0,
+      "x": 76.5,
       "y": 70,
       "pins": {
         "1": "DAC4"

@@ -1,7 +1,16 @@
-# Proposta PCB ADLFO — revisione A
+# Proposta PCB ADLFO — revisione B
 
-Progetto di posizionamento per un pannello da 24 HP e una singola PCB.
+Progetto di posizionamento per un pannello da 20 HP e una singola PCB.
 **La scheda non è sbrogliata e non è pronta per la produzione.**
+
+[Vincoli, alimentazione, protezioni e verifiche della revisione B](REVISION_B.md).
+Pannello proposto 101,2 × 128,5 mm (20 HP nominali = 101,6 mm), PCB 96,2 × 110,5 mm.
+Daisy e DAC Adafruit MCP4728 su zoccoli, OLED breakout rialzato, encoder e
+pulsanti nudi, jack [PJ398SM/Thonkiconn verticali](https://www.cctv.fm/product-page/pj398sm-pj301m-12-thonkiconn-3-5mm-jacks-bag-of-50).
+Ingresso Eurorack IDC10 ±12 V; i 5 V si generano sulla PCB. Pull-up aggiuntive DNP.
+Scollegare il cavo Eurorack prima di usare USB finché la revisione Daisy e la
+gestione delle due alimentazioni non saranno verificate.
+
 I pin TRIG/CV qui proposti restano disabilitati nel firmware corrente.
 
 - Aprire [output/index.html](output/index.html) in un browser per il visualizzatore
@@ -45,6 +54,9 @@ conserva i file già presenti in `vendor/`.
 netlist e PCB, posizionamento, fori e unità degli export. Il rapporto è in
 [output/validation.json](output/validation.json).
 Non esegue ERC/DRC nativi di KiCad, sbroglio o misure sul circuito reale.
+ERC/DRC nativi sono stati eseguiti separatamente sulla revisione B: non sono
+puliti. Il riepilogo versionato è `output/native-checks.json`; vedere le
+limitazioni e il lavoro restante in `REVISION_B.md`.
 
 Il test del visualizzatore richiede Node.js e `google-chrome` nel PATH:
 
@@ -55,3 +67,4 @@ node hardware/pcb/browser-smoke.mjs
 Controlla le cinque viste, i collegamenti, la ricerca BOM, il cursore
 dell'assemblaggio esploso e la larghezza mobile. Salva le schermate in
 `/tmp/adlfo-viewer-checks/`.
+

@@ -29,7 +29,7 @@ PARTS = circuit()
 NET_NAMES = sorted({n for p in PARTS for n in p['pins'].values() if n})
 NETS = {n:Net(i+1,n) for i,n in enumerate(NET_NAMES)}
 
-def uid(name): return str(uuid5(NAMESPACE_URL, 'adlfo/rev-a/'+name))
+def uid(name): return str(uuid5(NAMESPACE_URL, 'adlfo/rev-b/'+name))
 def q(text): return json.dumps(str(text), ensure_ascii=False)
 def eff(size=1): return Effects(font=Font(height=size,width=size,thickness=0.15))
 
@@ -73,6 +73,24 @@ def make_footprint(kind):
                 fp.pads += [pad(i+1,-24.13+i*2.54,7.62,1.1,1.8),
                             pad(40-i,-24.13+i*2.54,-7.62,1.1,1.8)]
             body(fp,51,18)
+        elif kind=='mcp4728_breakout':
+            # Eagle JP1 below, JP2 above; top-of-module view before B.Cu flip.
+            for i in range(6):
+                fp.pads += [pad(i+1,-6.35+i*2.54,6.35),
+                            pad(i+7,-6.35+i*2.54,-6.35)]
+            body(fp,25.4,17.78)
+            fp.description='Adafruit MCP4728 STEMMA QT module; 2 x 1x6 sockets. Verify board revision.'
+        elif kind=='ptc1812':
+            fp.attributes.type='smd'
+            fp.pads=[Pad(number=str(i),type='smd',shape='rect',position=P(x,0),
+                         size=P(2.0,3.5),layers=['F.Cu','F.Paste','F.Mask'])
+                     for i,x in [(1,-2.25),(2,2.25)]]
+            body(fp,4.5,3.2)
+            fp.description='1812 PTC land-pattern candidate; confirm selected manufacturer recommended footprint.'
+        elif kind=='radial_cap':
+            fp.pads=[pad(1,-1.25,0),pad(2,1.25,0)]
+            body(fp,6.3,6.3)
+            fp.description='Polarized bulk capacitor candidate: 6.3 mm body, 2.5 mm pitch; pad 1 positive.'
         elif kind=='recom':
             fp.pads=[pad(i+1,(i-1)*2.54,0,1.0,1.8) for i in range(3)]
             body(fp,11.6,8.5,0,-2.25)
@@ -110,12 +128,12 @@ def flip(fp):
 def make_board():
     board=Board.create_new()
     board.generator='pcbnew';board.version='20221018'
-    board.titleBlock=TitleBlock(title='ADLFO — single PCB placement proposal',revision='A / DRAFT',date='2026-10-21')
+    board.titleBlock=TitleBlock(title='ADLFO — single PCB placement proposal',revision='B / DRAFT',date='2026-10-24')
     board.general.thickness=PCB['thickness']
     board.nets.extend(NETS.values())
     board.graphicItems.append(GrRect(start=P(PCB['x'],PCB['y']),
         end=P(PCB['x']+PCB['width'],PCB['y']+PCB['height']),layer='Edge.Cuts',width=0.05,tstamp=uid('pcb-outline')))
-    for text,x,y in [('ADLFO / REV A',60,39),('PLACEMENT ONLY - NOT FOR FABRICATION',60,117.8)]:
+    for text,x,y in [('ADLFO / REV B',PANEL['width']/2,39),('PLACEMENT ONLY - NOT FOR FABRICATION',PANEL['width']/2,117.8)]:
         board.graphicItems.append(GrText(text=text,position=P(x,y),layer='F.SilkS',effects=eff(1),tstamp=uid(text)))
     allparts=PARTS+[dict(ref=f'H{i}',value='M3 spacer',footprint='mount',x=x,y=y,pins={},side='F',group='MECHANICAL') for i,(x,y) in enumerate(MOUNTS,1)]
     templates={kind:make_footprint(kind) for kind in {p['footprint'] for p in allparts}}
@@ -144,7 +162,7 @@ def make_schematic():
     # Explicit terminal diagrams, grouped by electrical function. Embedded symbols keep it portable.
     sid=uid('schematic')
     defs=[];instances=[];wires=[];labels=[];ncs=[];legacy=[];texts=[]
-    cols=8;cell_w=140;row_y=35
+    cols=10;cell_w=110;row_y=35
     groups=['SYSTEM','CH1','CH2','CH3','CH4']
     for group in groups:
         gp=[p for p in PARTS if p['group']==group]
@@ -168,7 +186,7 @@ def make_schematic():
                     py=h/2-3.81-(i if left else i-half)*3.81
                     label=num
                     if ref=='U1':label=net or {16:'AUDIO_IN_L',17:'AUDIO_IN_R',18:'AUDIO_OUT_L',19:'AUDIO_OUT_R',21:'3V3_A_NC'}.get(int(num),'NC')
-                    if ref=='U2':label={'1':'VDD','2':'SCL','3':'SDA','4':'LDAC','5':'RDY_BSY','6':'VA','7':'VB','8':'VC','9':'VD','10':'VSS'}[num]
+                    if ref=='U2':label={'1':'JP1_VCC','2':'JP1_GND','3':'JP1_SCL','4':'JP1_SDA','5':'JP1_LDAC','6':'JP1_RDY','7':'JP2_GND','8':'JP2_VA','9':'JP2_VB','10':'JP2_VC','11':'JP2_VD','12':'JP2_VCC'}[num]
                     d.append(f'(pin passive line (at {px} {py} {0 if left else 180}) (length 5.08) (name {q(label)} (effects (font (size 1 1)))) (number {q(num)} (effects (font (size 1 1)))))')
                     ax=x+px;ay=y-py;ex=ax+(-5.08 if left else 5.08)
                     if net:
@@ -186,7 +204,7 @@ def make_schematic():
         row_y+=12
     assert row_y<810, row_y
     sch='\n'.join(['(kicad_sch (version 20211123) (generator eeschema)',f'(uuid {sid})','(paper "A0")',
-        '(title_block (title "ADLFO REV A — electrical placement draft") (rev "A DRAFT") (comment 1 "Terminal diagrams; passive pin types. Full ERC and routing pending."))',
+        '(title_block (title "ADLFO REV B — electrical placement draft") (rev "B DRAFT") (comment 1 "Terminal diagrams; passive pin types. Full ERC and routing pending."))',
         '(lib_symbols '+ '\n'.join(defs)+')',*texts,*wires,*labels,*ncs,*instances,
         '(sheet_instances (path "/" (page "1")))','(symbol_instances '+ '\n'.join(legacy)+')',')'])
     # Parse and reserialize through KiUtils, not merely text masquerading as CAD.
@@ -263,6 +281,7 @@ module panel() {{
         if k=='encoder':scad+=f'color("silver") translate([{x},{y},0]) cylinder(d=6,h=20);\n'
         if k=='jack':scad+=f'color("silver") translate([{x},{y},0]) difference(){{cylinder(d=6,h=13);cylinder(d=3.5,h=14);}}\n'
         if k=='button':scad+=f'color("gray") translate([{x},{y},0]) cylinder(d=3.5,h=13);\n'
+        if k=='mcp4728_breakout':scad+=f'color([0.05,0.2,0.35]) translate([{x-12.7},{y-8.89},-9]) cube([25.4,17.78,1.6]);\n'
         if k=='seed':scad+=f'color([0.1,0.2,0.22]) translate([{x-25.5},{y-9},-13]) cube([51,18,1.6]);\n'
     (OUT/'assembly.scad').write_text(scad)
 
@@ -274,3 +293,4 @@ def main():
     print(f'Generated {len(PARTS)} electrical parts, {len(NETS)} nets. Routing deliberately absent.')
 
 if __name__=='__main__':main()
+
