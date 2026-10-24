@@ -6,7 +6,7 @@ sleeve a GND. Tensioni ancora da verificare.
 
 - [Firmware e comandi](DaisyMonoEnvelope/README.md).
 - [Schemi conservati e lavoro hardware restante](wiring/README.md).
-- [Proposta PCB, pannello e visualizzatore offline](hardware/pcb/README.md).
+- [Proposta PCB 20 HP, alimentazione Eurorack e visualizzatore offline](hardware/pcb/README.md).
 - Diagnostica separata: [CV/DAC](DaisyCv4Test/README.md) e [OLED](DaisyOledTest/README.md).
 
 TRIG/CV non ancora collegati: pin da decidere, ingressi disabilitati nel codice.
@@ -31,3 +31,4 @@ c++ -std=c++14 -Wall -Wextra -Werror DaisyCv4Test/tests/protocol_test.cpp -o /tm
 Le cartelle `build/` e le cache locali sono escluse da Git. I file hardware in
 `hardware/pcb/output/` sono invece versionati per poter aprire e revisionare
 il progetto senza rigenerarlo; le istruzioni sono nel relativo README.
+

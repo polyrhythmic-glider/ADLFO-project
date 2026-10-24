@@ -75,8 +75,8 @@ used=[d for row in ENCODERS for d in row]+BUTTONS+TRIGGERS+CV+[11,12]
 check(len(used)==len(set(used)),'26 assigned GPIOs are unique; no I2C/control/input conflicts')
 check(CV==[15,16,17,18],'CV proposal uses Daisy ADC-capable A0–A3')
 check(all(byref[f'J{1+3*i}']['pins']['TN']=='GND' and byref[f'J{2+3*i}']['pins']['TN']=='GND' for i in range(4)),'All unused TRIG/CV jack normals connect to ground')
-check(byref['U2']['pins']=={'1':'+3V3','2':'D11','3':'D12','4':'GND','5':None,'6':'DAC1','7':'DAC2','8':'DAC3','9':'DAC4','10':'GND'},'MCP4728 pin map matches Microchip table 3-1')
-check(byref['D1']['pins']=={'1':'+12VA','2':'+12V_IN'} and byref['D2']['pins']=={'1':'-12V_IN','2':'-12VA'},'Reverse-polarity series diodes have opposite orientation on positive/negative rails')
+check(byref['U2']['pins']=={'1':'+3V3','2':'GND','3':'D11','4':'D12','5':'GND','6':None,'7':'GND','8':'DAC1','9':'DAC2','10':'DAC3','11':'DAC4','12':'+3V3'},'Adafruit MCP4728 header map matches upstream Eagle JP1/JP2')
+check(byref['D1']['pins']=={'1':'+12VA','2':'+12V_FUSED'} and byref['D2']['pins']=={'1':'-12V_IN','2':'-12VA'},'Reverse-polarity series diodes have opposite orientation on positive/negative rails')
 check(byref['D3']['pins']=={'1':'+5V_SEED','2':'+5V_REG'},'5 V series diode blocks current from Seed toward the converter')
 
 # Pad clearance screening across sides: through-hole pads occupy both copper layers.
@@ -84,8 +84,8 @@ allpads=[]
 for fp in board.footprints:
     for p in fp.pads:
         x=fp.position.X+p.position.X;y=fp.position.Y+p.position.Y
-        check(x-p.size.X/2>=PCB['x'] and x+p.size.X/2<=PCB['x']+PCB['width'] and
-              y-p.size.Y/2>=PCB['y'] and y+p.size.Y/2<=PCB['y']+PCB['height'],f'Pad inside board outline: {ref(fp)}.{p.number}')
+        check(x-p.size.X/2>=PCB['x']+.5 and x+p.size.X/2<=PCB['x']+PCB['width']-.5 and
+              y-p.size.Y/2>=PCB['y']+.5 and y+p.size.Y/2<=PCB['y']+PCB['height']-.5,f'Pad at least 0.5 mm inside board outline: {ref(fp)}.{p.number}')
         allpads.append((fp,p,x,y))
 clashes=[]
 for (f,p,x,y),(g,q,u,v) in combinations(allpads,2):
@@ -118,13 +118,18 @@ for i,x in enumerate(COLUMNS,1):
 for a,b in combinations(holes(),2):
     check(math.hypot(a['x']-b['x'],a['y']-b['y'])>(a['diameter']+b['diameter'])/2+1,
           f'Panel apertures separated: {a["ref"]}/{b["ref"]}')
-check(min(COLUMNS[i+1]-COLUMNS[i] for i in range(3))-16==10,'16 mm knobs have 10 mm horizontal edge-to-edge clearance')
+check(min(COLUMNS[i+1]-COLUMNS[i] for i in range(3))-16>=6,'16 mm knobs have at least 6 mm horizontal edge-to-edge clearance')
 dxf=ezdxf.readfile(OUT/'front-panel.dxf')
 check(dxf.units==4,'DXF units are millimeters')
 check(len(dxf.modelspace().query('CIRCLE'))==24,'DXF contains 20 control/jack holes + 4 spacer holes')
 audit=dxf.audit();check(not audit.errors,'DXF audit passes')
 svg=ET.parse(OUT/'panel-drilling-1to1.svg').getroot()
-check(svg.attrib['width']=='121.6mm' and svg.attrib['height']=='128.5mm','Printable SVG has physical 1:1 dimensions')
+check(svg.attrib['width']==f"{PANEL['width']}mm" and svg.attrib['height']==f"{PANEL['height']}mm",'Printable SVG has physical 1:1 dimensions')
+check(PANEL['hp']==20 and PANEL['width']<=101.6,'20 HP panel stays within nominal pitch envelope')
+check(byref['J13']['pins']=={'1':'-12V_IN','2':'-12V_IN','3':'GND','4':'GND','5':'GND','6':'GND','7':'GND','8':'GND','9':'+12V_IN','10':'+12V_IN'},'Eurorack IDC10: red stripe pins 1/2 negative, no case +5 V dependency')
+check(byref['F1']['pins']=={'1':'+12V_IN','2':'+12V_FUSED'},'Positive input fuse is ahead of reverse-polarity diode')
+check(all('DNP' in byref[r]['value'] for r in ['R1','R2']+[f'RP{i}{j}' for i in range(1,5) for j in range(1,5)]),'Additional I2C and control pull-ups are optional, not fitted by default')
+check(byref['C10']['pins']=={'1':'+5V_SEED','2':'GND'},'Polarized local bulk capacitor: pad 1 positive, pad 2 ground')
 gain=1+15000/10000;adc10=10*33000/133000
 check(gain==2.5 and 2.48<adc10<2.49,'Nominal calculations: output gain 2.5; 10 V CV -> 2.4812 V at ADC')
 report={'status':'PASS_LIMITED_STATIC_CHECKS','parts':len(parts),'nets':len(board.nets)-1,
@@ -136,3 +141,4 @@ report={'status':'PASS_LIMITED_STATIC_CHECKS','parts':len(parts),'nets':len(boar
     'details':results}
 (OUT/'validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print(f'PASS: {len(results)} static checks; {len(parts)} parts; {len(board.nets)-1} nets. Native ERC/DRC and routing NOT performed.')
+

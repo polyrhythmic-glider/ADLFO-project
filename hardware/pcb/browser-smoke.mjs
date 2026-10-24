@@ -1,10 +1,10 @@
 // Local offline viewer verification via Chrome DevTools pipe; no npm dependencies.
 import {spawn} from 'node:child_process';
-import {writeFile, mkdir} from 'node:fs/promises';
+import {writeFile, mkdir, readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 const root=fileURLToPath(new URL('.',import.meta.url));
-const child=spawn('google-chrome',['--headless','--no-sandbox','--disable-dev-shm-usage','--disable-gpu',
+const child=spawn(process.env.CHROME_BIN || 'google-chrome',['--headless','--no-sandbox','--disable-dev-shm-usage','--disable-gpu',
  '--no-first-run','--user-data-dir=/tmp/adlfo-cdp','--remote-debugging-pipe'],{stdio:['ignore','ignore','ignore','pipe','pipe']});
 let seq=0, buffer='';const pending=new Map();
 child.stdio[4].on('data',chunk=>{buffer+=chunk.toString();let k;while((k=buffer.indexOf('\0'))>=0){
@@ -18,10 +18,13 @@ try{
  const call=(m,p)=>send(m,p,sessionId);
  await call('Page.enable');await call('Runtime.enable');
  await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1200,deviceScaleFactor:1,mobile:false});
- await call('Page.navigate',{url:new URL('./output/index.html',import.meta.url).href});
+ const {frameTree}=await call('Page.getFrameTree');
+ await call('Page.setDocumentContent',{frameId:frameTree.frame.id,html:await readFile(new URL('./output/index.html',import.meta.url),'utf8')});
  const evalJS=async(expression)=>{const r=await call('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value};
- await evalJS('new Promise(resolve=>document.readyState==="complete"?resolve(true):window.addEventListener("load",()=>resolve(true),{once:true}))');
- assert.equal(await evalJS('document.querySelectorAll("tbody tr").length'),114);
+ await evalJS(`new Promise((resolve,reject)=>{const deadline=Date.now()+10000;const poll=()=>{if(document.querySelectorAll('tbody tr').length)resolve(true);else if(Date.now()>deadline)reject(Error('Viewer did not load: '+location.href));else setTimeout(poll,50)};poll()})`);
+ const design=JSON.parse(await readFile(new URL('./output/design.json',import.meta.url),'utf8'));
+ assert.equal(await evalJS('document.querySelectorAll("tbody tr").length'),design.parts.length);
+ assert.equal(await evalJS('document.body.textContent.includes("20 HP")'),true);
  for(const view of ['assembly','front','back','cut','pair']){
   assert.equal(await evalJS(`document.querySelector('[data-view="${view}"]').click(); document.querySelector('.view.active').id`),'view-'+view);
  }
@@ -38,3 +41,4 @@ try{
  console.log('PASS: all five tabs, ratsnest, BOM search, exploded slider, mobile width.');
  await send('Browser.close');
 }finally{clearTimeout(timer);child.kill()}
+

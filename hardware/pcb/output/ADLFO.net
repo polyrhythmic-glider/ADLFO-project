@@ -8,572 +8,672 @@
     <comp ref="U1">
       <value>Daisy Seed (socketed)</value>
       <footprint>ADLFO:seed</footprint>
-      <tstamps>06b3cf9e-2bcb-5f20-b98d-700b4aec55ee</tstamps>
+      <tstamps>6a0ba7ca-5d63-51f4-8488-c5e6f00dc6d0</tstamps>
     </comp>
     <comp ref="U2">
-      <value>MCP4728-E/UN</value>
-      <footprint>ADLFO:msop10</footprint>
-      <tstamps>e0880055-ec72-58e6-b429-239457f4029f</tstamps>
+      <value>Adafruit MCP4728 STEMMA QT breakout</value>
+      <footprint>ADLFO:mcp4728_breakout</footprint>
+      <tstamps>9eaaec71-0fcc-507e-b781-c30172fc1b27</tstamps>
     </comp>
     <comp ref="U3">
       <value>MCP6004-I/SL</value>
       <footprint>ADLFO:soic14</footprint>
-      <tstamps>7869fa5d-40f6-5e7d-a261-dbe8fef74bdb</tstamps>
+      <tstamps>3595775f-36da-5be4-89d2-c86fc5ebcec5</tstamps>
     </comp>
     <comp ref="U4">
       <value>TL074CDR</value>
       <footprint>ADLFO:soic14</footprint>
-      <tstamps>c000fe14-71da-500b-b4c7-7a008db34525</tstamps>
+      <tstamps>789c8e20-a575-574a-96c9-f25020bc5bf3</tstamps>
     </comp>
     <comp ref="U5">
       <value>R-78E5.0-0.5</value>
       <footprint>ADLFO:recom</footprint>
-      <tstamps>313d629d-27d6-5ca1-be04-db67dc2086a9</tstamps>
+      <tstamps>9ff00c86-222f-5c29-b3c0-8df0dfceab7f</tstamps>
     </comp>
     <comp ref="J13">
       <value>EURORACK 2x5 keyed</value>
       <footprint>ADLFO:idc10</footprint>
-      <tstamps>def1c6c7-11be-546f-a4e7-01e4531347b4</tstamps>
+      <tstamps>0f4cf4f5-6572-5362-8521-dc858c7ea348</tstamps>
     </comp>
     <comp ref="J14">
       <value>OLED SSD1306 128x64</value>
       <footprint>ADLFO:oled</footprint>
-      <tstamps>c0285ab8-f283-5b96-825b-73b11adccaef</tstamps>
+      <tstamps>5f218441-3aa1-57fb-ac3c-4672da2d6455</tstamps>
+    </comp>
+    <comp ref="F1">
+      <value>PTC 0.5A hold candidate</value>
+      <footprint>ADLFO:ptc1812</footprint>
+      <tstamps>82f742dc-a59d-5dc6-a3b0-1b572ae29de1</tstamps>
     </comp>
     <comp ref="D1">
       <value>SS14</value>
       <footprint>ADLFO:sma</footprint>
-      <tstamps>5a54acdf-d3c9-575f-90b1-b48d6f485845</tstamps>
+      <tstamps>2be54693-b816-5a14-81f4-36a928140391</tstamps>
     </comp>
     <comp ref="D2">
       <value>SS14</value>
       <footprint>ADLFO:sma</footprint>
-      <tstamps>28639789-cf89-5fca-aa38-2cbaf73e5a65</tstamps>
+      <tstamps>c60aeac2-e580-597a-a34c-5bed53571806</tstamps>
     </comp>
     <comp ref="D3">
       <value>SS14</value>
       <footprint>ADLFO:sma</footprint>
-      <tstamps>e883ae49-d9d2-5119-8c18-66a2ca7179b1</tstamps>
+      <tstamps>5af6dd6d-4034-59a2-8a12-aea9a3621d7b</tstamps>
     </comp>
     <comp ref="C1">
       <value>10uF 50V X7R</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>b278de7c-3602-50b5-8f93-195768cc6716</tstamps>
+      <tstamps>d3b17bea-63ba-5660-b95c-5003f7ab759d</tstamps>
     </comp>
     <comp ref="C2">
       <value>10uF 50V X7R</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>6596e0ce-18bb-5576-bded-811fa7a18a24</tstamps>
+      <tstamps>71745566-fab7-587a-838b-fa1a79eef60d</tstamps>
     </comp>
     <comp ref="C3">
       <value>10uF 10V X7R</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>685cbd33-1776-56c6-8845-2677146e09f8</tstamps>
+      <tstamps>3ad7d797-bdd5-555d-98d9-cbdbb84acb58</tstamps>
     </comp>
     <comp ref="C4">
       <value>10uF 10V X7R</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>85d3a182-d760-5d25-a100-297498dc8baa</tstamps>
+      <tstamps>74c03e09-33ff-592c-ad0a-560aa46514f5</tstamps>
     </comp>
     <comp ref="C5">
       <value>100nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>3317e076-8321-57f8-a219-46d0a2d40d57</tstamps>
+      <tstamps>55096af3-ed1c-5a6b-8154-bdb4630d9776</tstamps>
     </comp>
     <comp ref="C6">
       <value>10uF 10V X7R</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>06ce8093-6e64-536f-a1db-13b967880eb6</tstamps>
+      <tstamps>2bc9c062-b8de-58d0-9d10-218951a85ac6</tstamps>
     </comp>
     <comp ref="C7">
       <value>100nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>65c173ec-5c1f-572a-b7ab-d5efee5bf2ad</tstamps>
+      <tstamps>d7bff64d-a653-5759-b674-b0c821e03433</tstamps>
     </comp>
     <comp ref="C8">
       <value>100nF 50V</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>cd236010-fb73-5a74-a203-12a9edf74dd8</tstamps>
+      <tstamps>eb42ad32-8b03-53e3-bd26-b9d4956ba64f</tstamps>
     </comp>
     <comp ref="C9">
       <value>100nF 50V</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>db49ce8f-8dda-5cb7-9b5b-33d6a0bfaea8</tstamps>
+      <tstamps>aabb556b-590f-5e18-b143-8969c2f9a636</tstamps>
+    </comp>
+    <comp ref="C10">
+      <value>47uF 10V low ESR candidate</value>
+      <footprint>ADLFO:radial_cap</footprint>
+      <tstamps>1f7dd6b1-772f-53a2-8692-3f4343209bae</tstamps>
+    </comp>
+    <comp ref="C11">
+      <value>100nF</value>
+      <footprint>ADLFO:c0805</footprint>
+      <tstamps>b0d3b255-f5c3-56a0-b2a7-d6addd6f8868</tstamps>
+    </comp>
+    <comp ref="C12">
+      <value>100nF</value>
+      <footprint>ADLFO:c0805</footprint>
+      <tstamps>45b08cb6-c866-51fb-b396-c7e7239a4837</tstamps>
     </comp>
     <comp ref="R1">
-      <value>4.7k</value>
+      <value>4.7k DNP</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>973b4066-5e90-5a81-a19a-17b29a4c32ab</tstamps>
+      <tstamps>5b30c84c-f5fb-58b9-8bb2-7796b9d87dfc</tstamps>
     </comp>
     <comp ref="R2">
-      <value>4.7k</value>
+      <value>4.7k DNP</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>a22b53b3-dd3d-5797-9c1d-23fd1ccdc5d1</tstamps>
+      <tstamps>7a92c986-370b-5b9a-9127-e09d17ff774e</tstamps>
     </comp>
     <comp ref="TP1">
       <value>GND</value>
       <footprint>ADLFO:testpoint</footprint>
-      <tstamps>84a07597-e1a9-5f5f-92c7-dc6fdf744245</tstamps>
+      <tstamps>eecc9fe6-251e-5637-aa89-b11aed021e5b</tstamps>
     </comp>
     <comp ref="TP2">
       <value>+12VA</value>
       <footprint>ADLFO:testpoint</footprint>
-      <tstamps>7e71567d-c843-56cd-b53f-8df82d8c12b2</tstamps>
+      <tstamps>61a5fdc8-2eb3-5c9c-95a1-08572197b9b0</tstamps>
     </comp>
     <comp ref="TP3">
       <value>-12VA</value>
       <footprint>ADLFO:testpoint</footprint>
-      <tstamps>59f4a3f7-a3f7-52c7-9093-8e6f667dafcb</tstamps>
+      <tstamps>800a2f8d-263f-5507-a66b-0c1fb524655b</tstamps>
     </comp>
     <comp ref="TP4">
       <value>+5V_SEED</value>
       <footprint>ADLFO:testpoint</footprint>
-      <tstamps>6a104365-73e3-53da-a3cf-92c1604eb795</tstamps>
+      <tstamps>6c5e1dc8-7bdb-544d-899c-a107d1caf8ec</tstamps>
     </comp>
     <comp ref="TP5">
       <value>+3V3</value>
       <footprint>ADLFO:testpoint</footprint>
-      <tstamps>f07f1ee5-47c4-5aa8-8895-8be3cc10f36a</tstamps>
+      <tstamps>6b726e98-6e98-54e9-9458-07a0e8eae267</tstamps>
     </comp>
     <comp ref="ENC1">
       <value>RISE</value>
       <footprint>ADLFO:encoder</footprint>
-      <tstamps>fd8a5eaa-a8e4-521f-bba2-32c0590a1a3c</tstamps>
+      <tstamps>3127675b-10de-5851-bf25-b1876f3427a7</tstamps>
     </comp>
     <comp ref="SW1">
       <value>CH 1</value>
       <footprint>ADLFO:button</footprint>
-      <tstamps>f5af825f-9f91-598e-859e-82fc76fcdf5b</tstamps>
+      <tstamps>8380cb72-e6d7-5077-a062-20a6d515ee1e</tstamps>
     </comp>
     <comp ref="J1">
       <value>TRIG1</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>c2204ef6-723d-5385-970f-e2e4b6cbf021</tstamps>
+      <tstamps>f53726eb-3345-5446-b254-88e55bc36c77</tstamps>
     </comp>
     <comp ref="J2">
       <value>CV1</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>6d0fa680-5a1c-5c83-89b7-3f4e70b2f48a</tstamps>
+      <tstamps>026de3ad-aa45-5a6e-b098-f1a881889257</tstamps>
     </comp>
     <comp ref="J3">
       <value>OUT1</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>6b46f9e5-fa41-5ded-b79c-38c6c72c7e28</tstamps>
+      <tstamps>0034fb3c-961b-50bc-9d8a-aae6f3ff79a2</tstamps>
     </comp>
     <comp ref="R101">
       <value>100k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>ad0a4532-eec7-5b81-9e91-3cbe21a20b48</tstamps>
+      <tstamps>e9a0d804-ddd3-5693-9862-14c1d1590964</tstamps>
     </comp>
     <comp ref="R102">
       <value>1M</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>14031982-52c8-5f29-9f46-1869065fe15b</tstamps>
+      <tstamps>dd9a2983-5c92-5765-90f8-093f5f11ef27</tstamps>
     </comp>
     <comp ref="R103">
       <value>47k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>a6293a38-cee1-5e7d-8669-6a74966f011e</tstamps>
+      <tstamps>d506b400-7db0-5cdc-aa9a-e3d8cbddb5e0</tstamps>
     </comp>
     <comp ref="Q1">
       <value>MMBT3904</value>
       <footprint>ADLFO:sot23</footprint>
-      <tstamps>2ced1b52-cb07-58ea-b7cd-2aaae602b3ec</tstamps>
+      <tstamps>b61d27e4-54b3-5a3a-b92e-bd36361e1881</tstamps>
     </comp>
     <comp ref="D101">
       <value>1N4148W</value>
       <footprint>ADLFO:sod123</footprint>
-      <tstamps>f80b40ce-a333-533d-bccb-b9016e1af0e1</tstamps>
+      <tstamps>4e49d4ea-55f4-5ece-b582-d921477b6b84</tstamps>
     </comp>
     <comp ref="R104">
       <value>100k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>29994127-e107-5a52-9c30-b7cd412420fc</tstamps>
+      <tstamps>f23f330a-0b3d-5ec5-9594-24b3bf492b7a</tstamps>
     </comp>
     <comp ref="R105">
       <value>33k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>f0b5bd15-fbd3-5eb8-9ea2-e851a7a34fd9</tstamps>
+      <tstamps>ce0e4e6f-bf66-5258-87c1-6d93f76ce38a</tstamps>
     </comp>
     <comp ref="R106">
       <value>10k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>cf05af5d-effe-5f29-b61b-f6304db940f3</tstamps>
+      <tstamps>71d59aed-735d-52ab-ab4a-b26daac0197d</tstamps>
     </comp>
     <comp ref="C101">
       <value>10nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>50dd9ac8-e600-5457-befc-7a5765c521b8</tstamps>
+      <tstamps>15bf351a-0d84-5b2b-baa1-f732d3110792</tstamps>
     </comp>
     <comp ref="D102">
       <value>BAT54S</value>
       <footprint>ADLFO:sot23</footprint>
-      <tstamps>e4edce70-87b4-5578-823d-72c00f18abbd</tstamps>
+      <tstamps>aabdecfc-0ecb-5643-a8d3-b5f6993b90be</tstamps>
     </comp>
     <comp ref="R107">
       <value>1k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>c21f74cc-493e-542a-b0d2-c0a3542b8abb</tstamps>
+      <tstamps>73e8543e-86be-5380-8981-c7e991f764ac</tstamps>
     </comp>
     <comp ref="C102">
       <value>1nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>0b95c419-1510-57dd-810f-b1b71f03e038</tstamps>
+      <tstamps>c8efee6c-1aa0-5d27-9200-6961bb9cf48c</tstamps>
     </comp>
     <comp ref="R108">
       <value>10k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>b5856e23-1960-5426-9ce8-c55a0f0df19f</tstamps>
+      <tstamps>c282f3b6-c050-552d-aae3-cd5388115119</tstamps>
     </comp>
     <comp ref="R109">
       <value>10k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>fc27d7d1-dccc-562b-aeb2-ecadadc81a3d</tstamps>
+      <tstamps>141f2e52-7c9a-52f6-8ad8-ee66519494ac</tstamps>
     </comp>
     <comp ref="R110">
       <value>15k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>f2636d23-807a-531b-baa0-e8fa92d335d1</tstamps>
+      <tstamps>004acc40-657b-5c7c-9ae0-2009169fe905</tstamps>
     </comp>
     <comp ref="R111">
       <value>2.2k 0.5W</value>
       <footprint>ADLFO:r2010</footprint>
-      <tstamps>3abaf96f-6e8e-5a16-a2bd-24770df8fdf0</tstamps>
+      <tstamps>927b2740-7b79-5d86-bf9e-183e00b8d039</tstamps>
+    </comp>
+    <comp ref="RP11">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>d7689343-c9b7-540a-8373-4e711b343080</tstamps>
+    </comp>
+    <comp ref="RP12">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>191fd3c5-0535-51a0-9bab-ea178ccfa6e6</tstamps>
+    </comp>
+    <comp ref="RP13">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>caf1c6bf-4100-5114-b5bc-5f13f2f2e173</tstamps>
+    </comp>
+    <comp ref="RP14">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>e809bdad-1cb4-5045-a1dd-80ed3dcaf4be</tstamps>
     </comp>
     <comp ref="TP11">
       <value>DAC1</value>
       <footprint>ADLFO:testpoint</footprint>
-      <tstamps>623c6366-0ab9-5e42-814c-5c5ececd1d06</tstamps>
+      <tstamps>31f66d45-9445-5cec-ab61-74657b146299</tstamps>
     </comp>
     <comp ref="ENC2">
       <value>FALL</value>
       <footprint>ADLFO:encoder</footprint>
-      <tstamps>9cdec7c7-87a2-52c3-a275-b033031ab500</tstamps>
+      <tstamps>de648945-f289-52ea-9570-284b7b3b6f82</tstamps>
     </comp>
     <comp ref="SW2">
       <value>CH 2</value>
       <footprint>ADLFO:button</footprint>
-      <tstamps>3b7ed3ba-ef25-5fb5-b303-d03561d4c409</tstamps>
+      <tstamps>43e67eee-45ce-5299-92a5-f523fc66386c</tstamps>
     </comp>
     <comp ref="J4">
       <value>TRIG2</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>14e5a6c3-e54c-568c-acab-0b5fa59d3de1</tstamps>
+      <tstamps>ce843d5c-1add-55d9-8518-c73c084b0f8a</tstamps>
     </comp>
     <comp ref="J5">
       <value>CV2</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>1571a371-7860-5beb-9952-0d44126ca62a</tstamps>
+      <tstamps>255f9969-390f-50dc-bde5-1434c7cca22d</tstamps>
     </comp>
     <comp ref="J6">
       <value>OUT2</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>f1a735ba-483b-50ab-953a-83e3e83b58e1</tstamps>
+      <tstamps>57c67ac5-4aed-5594-8ba9-969663e72e79</tstamps>
     </comp>
     <comp ref="R201">
       <value>100k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>4133fdd1-c9aa-5804-b74c-c9b1f3689c4f</tstamps>
+      <tstamps>7a4a9c70-9fb3-5e97-8e33-c8ad1378e52f</tstamps>
     </comp>
     <comp ref="R202">
       <value>1M</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>6db90b2d-b6c2-5e08-9b12-296f268e0bdc</tstamps>
+      <tstamps>1485c54f-df54-5605-ad31-543dcf917025</tstamps>
     </comp>
     <comp ref="R203">
       <value>47k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>5a7c3009-60d0-5445-9bee-b730f1ffea10</tstamps>
+      <tstamps>89d5afbc-47f5-5c7f-a632-f1777964c698</tstamps>
     </comp>
     <comp ref="Q2">
       <value>MMBT3904</value>
       <footprint>ADLFO:sot23</footprint>
-      <tstamps>512ee26d-7c3e-52b2-b600-60366f37d51d</tstamps>
+      <tstamps>bcbb2382-43a3-5ecd-bfe3-1778d161e045</tstamps>
     </comp>
     <comp ref="D201">
       <value>1N4148W</value>
       <footprint>ADLFO:sod123</footprint>
-      <tstamps>09fc376a-4ff8-51da-899b-433ea79c8f75</tstamps>
+      <tstamps>a0377470-341f-527f-890a-e24b373dfd3f</tstamps>
     </comp>
     <comp ref="R204">
       <value>100k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>70b6c967-8ac8-5518-939e-348332a52dec</tstamps>
+      <tstamps>7028ae84-b606-5479-9d5f-155455541853</tstamps>
     </comp>
     <comp ref="R205">
       <value>33k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>2ed10751-932f-577e-826a-d6db44ef9020</tstamps>
+      <tstamps>eb7ab806-303d-5bf5-a480-b9ec0765d478</tstamps>
     </comp>
     <comp ref="R206">
       <value>10k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>091257d0-4df9-5f2e-9d69-5905de40a906</tstamps>
+      <tstamps>ed84f2f4-6201-51c6-a5eb-c595f3f7fc7e</tstamps>
     </comp>
     <comp ref="C201">
       <value>10nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>8688fdb6-15e4-56b7-a995-467ba9911027</tstamps>
+      <tstamps>aead376a-01cd-51cb-b5d9-7220a6964b89</tstamps>
     </comp>
     <comp ref="D202">
       <value>BAT54S</value>
       <footprint>ADLFO:sot23</footprint>
-      <tstamps>e7230d6a-9e07-56ea-9a3c-7f2bdf07032f</tstamps>
+      <tstamps>d2feaf60-f0f4-5a25-a78f-80e2065094fd</tstamps>
     </comp>
     <comp ref="R207">
       <value>1k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>bfa53c81-2e65-53da-ba4e-b05b4f2a7b8e</tstamps>
+      <tstamps>71c9cb38-f537-5c24-b2f4-fddb90c91f50</tstamps>
     </comp>
     <comp ref="C202">
       <value>1nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>4da88077-152b-5b56-ad83-cf0b30a0b88f</tstamps>
+      <tstamps>bdde96ee-9f4f-538e-b924-0d8682381b09</tstamps>
     </comp>
     <comp ref="R208">
       <value>10k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>2db83ee7-eda1-5d0f-b7ce-12fc3fe5bf30</tstamps>
+      <tstamps>40f3665e-f262-5bdd-86bf-a600498bb902</tstamps>
     </comp>
     <comp ref="R209">
       <value>10k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>55c36968-e93c-55d2-b69e-3fa8e5d84864</tstamps>
+      <tstamps>3765e5b3-cc54-5136-9126-71c0e54eb299</tstamps>
     </comp>
     <comp ref="R210">
       <value>15k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>f10cbc7f-fbe9-551d-a8cd-ae2f0a654abf</tstamps>
+      <tstamps>f33f056d-e60c-5662-9077-ffa17787e99c</tstamps>
     </comp>
     <comp ref="R211">
       <value>2.2k 0.5W</value>
       <footprint>ADLFO:r2010</footprint>
-      <tstamps>89e0a685-64ba-5b74-bfb9-708b94be13df</tstamps>
+      <tstamps>98445949-c74b-5393-b2a4-e0cea3b32fc6</tstamps>
+    </comp>
+    <comp ref="RP21">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>1a576510-df57-55de-ad75-01caea013ab4</tstamps>
+    </comp>
+    <comp ref="RP22">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>297fef31-f310-50de-897c-a39f34fb25c0</tstamps>
+    </comp>
+    <comp ref="RP23">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>290bd415-4b62-5893-969b-79174f94b7e4</tstamps>
+    </comp>
+    <comp ref="RP24">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>ba436869-e2cf-5df6-b92c-657fd268e5b7</tstamps>
     </comp>
     <comp ref="TP12">
       <value>DAC2</value>
       <footprint>ADLFO:testpoint</footprint>
-      <tstamps>2d3cc99c-d54e-503e-81bd-ff92e81a3e07</tstamps>
+      <tstamps>51432ef9-54d5-5457-9984-409714b09031</tstamps>
     </comp>
     <comp ref="ENC3">
       <value>SYMMETRY</value>
       <footprint>ADLFO:encoder</footprint>
-      <tstamps>b233f1de-f2ed-5cb0-8a61-6ae1a5f239f8</tstamps>
+      <tstamps>e77735a3-5418-5df9-aeff-8bc5aa104c80</tstamps>
     </comp>
     <comp ref="SW3">
       <value>CH 3</value>
       <footprint>ADLFO:button</footprint>
-      <tstamps>8f98b723-99b5-5f0d-8f1d-0b6b20337479</tstamps>
+      <tstamps>70e769b2-3ff0-5ff1-bf05-a07c6ac14bda</tstamps>
     </comp>
     <comp ref="J7">
       <value>TRIG3</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>bad2b573-2844-5f14-984e-b8f65c7110a3</tstamps>
+      <tstamps>fb25387e-6679-5415-8dda-0c1a5ed64a23</tstamps>
     </comp>
     <comp ref="J8">
       <value>CV3</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>111f538d-1c70-5e8f-896b-36085ec1c69b</tstamps>
+      <tstamps>4511f422-5356-589f-ba49-2f08d1608e7b</tstamps>
     </comp>
     <comp ref="J9">
       <value>OUT3</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>c833f81d-a506-51e0-b038-8f23377e0e6e</tstamps>
+      <tstamps>f86e9fb9-2f6c-5f27-9cca-ce1ba4efd4f1</tstamps>
     </comp>
     <comp ref="R301">
       <value>100k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>618881f0-ef05-5c0d-99a4-a9fa057ba477</tstamps>
+      <tstamps>956f2069-8eab-5c1e-b38b-74b16aad8b84</tstamps>
     </comp>
     <comp ref="R302">
       <value>1M</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>75316587-4d04-57aa-b0f2-21c0a0b40785</tstamps>
+      <tstamps>5bca3158-748f-52b8-9ea0-9a83ab2f6173</tstamps>
     </comp>
     <comp ref="R303">
       <value>47k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>32543ccf-8090-551b-adb2-06742c84a585</tstamps>
+      <tstamps>1f0d966e-bbcc-58a0-aada-3a21858857e1</tstamps>
     </comp>
     <comp ref="Q3">
       <value>MMBT3904</value>
       <footprint>ADLFO:sot23</footprint>
-      <tstamps>44e5406a-cb16-591a-8f8c-b9b128e2c109</tstamps>
+      <tstamps>7b206ba7-8274-58ea-8983-bd86927d76c7</tstamps>
     </comp>
     <comp ref="D301">
       <value>1N4148W</value>
       <footprint>ADLFO:sod123</footprint>
-      <tstamps>580f8ab0-6d3a-5b2f-b6c0-fbe9e40e1281</tstamps>
+      <tstamps>c4f2a04d-595b-572b-8513-77a9f5e4d019</tstamps>
     </comp>
     <comp ref="R304">
       <value>100k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>3b2fbaee-c9fc-524a-a054-a47486f1338a</tstamps>
+      <tstamps>259842f1-4a52-581c-9c15-99689ceb135e</tstamps>
     </comp>
     <comp ref="R305">
       <value>33k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>c22ee492-134b-5309-aa7b-469af8c20177</tstamps>
+      <tstamps>e9b12066-d1fc-5926-be34-b47f287c9514</tstamps>
     </comp>
     <comp ref="R306">
       <value>10k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>f356ed1c-55c7-51b6-86e6-34c8f23f5a7e</tstamps>
+      <tstamps>ce3cf907-2ca6-5801-89eb-e1f4b8798051</tstamps>
     </comp>
     <comp ref="C301">
       <value>10nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>ed5c172c-6916-5d6f-88b9-89699da6fa3a</tstamps>
+      <tstamps>629a499e-116d-5d39-898e-4388e7cc16ef</tstamps>
     </comp>
     <comp ref="D302">
       <value>BAT54S</value>
       <footprint>ADLFO:sot23</footprint>
-      <tstamps>d420a020-9c0f-54f9-b878-d8e24e1c44b1</tstamps>
+      <tstamps>6254f9a8-5778-5190-8225-2f6b27eab6ae</tstamps>
     </comp>
     <comp ref="R307">
       <value>1k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>811a3f6d-ac6d-509d-9364-3d18373596f7</tstamps>
+      <tstamps>bd8d4d6c-ee50-5c9e-9cfb-c5f298ab77b6</tstamps>
     </comp>
     <comp ref="C302">
       <value>1nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>bd0ed1ff-22d4-5877-a4f0-6647388cee6e</tstamps>
+      <tstamps>31c58650-69fe-50dc-96fd-43831463121a</tstamps>
     </comp>
     <comp ref="R308">
       <value>10k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>76e3a88e-d57c-5505-a692-cda5f6d1a1ce</tstamps>
+      <tstamps>21bdb945-911c-54f6-9f62-1677f4e3c723</tstamps>
     </comp>
     <comp ref="R309">
       <value>10k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>09b4ac0b-fac7-5592-b454-40d7a09022f8</tstamps>
+      <tstamps>8b759339-a1ee-552a-a867-8832a9511b31</tstamps>
     </comp>
     <comp ref="R310">
       <value>15k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>39ec8f83-0193-5773-ad1e-3a4679605d4c</tstamps>
+      <tstamps>16a6a5c2-6a10-5797-bc88-756c474d6a14</tstamps>
     </comp>
     <comp ref="R311">
       <value>2.2k 0.5W</value>
       <footprint>ADLFO:r2010</footprint>
-      <tstamps>efa9de7f-1243-5249-839e-1f4714a6865c</tstamps>
+      <tstamps>21b090fb-9831-5845-81a4-3a908bb1e58d</tstamps>
+    </comp>
+    <comp ref="RP31">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>9b49802b-0459-5a57-87c5-593082a08c3e</tstamps>
+    </comp>
+    <comp ref="RP32">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>2bc65e60-62a9-53c1-84c4-d4503edeb81c</tstamps>
+    </comp>
+    <comp ref="RP33">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>8a886217-bf37-5c33-9874-41a502d12ac7</tstamps>
+    </comp>
+    <comp ref="RP34">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>1d3e711a-587e-5501-bef4-aa783baee50d</tstamps>
     </comp>
     <comp ref="TP13">
       <value>DAC3</value>
       <footprint>ADLFO:testpoint</footprint>
-      <tstamps>64c0ea3a-c08d-5b4f-9d8d-2ed8bb2ebc7e</tstamps>
+      <tstamps>00820c45-3ea0-5e12-b06b-821bf8143812</tstamps>
     </comp>
     <comp ref="ENC4">
       <value>LEVEL</value>
       <footprint>ADLFO:encoder</footprint>
-      <tstamps>e923c57b-01a6-51df-85e5-9e84b72f7c94</tstamps>
+      <tstamps>aaa04e58-5370-5efd-b3c0-6e6549a367f0</tstamps>
     </comp>
     <comp ref="SW4">
       <value>CH 4</value>
       <footprint>ADLFO:button</footprint>
-      <tstamps>3d40fd22-2599-5ec5-9efb-3fc07c94fefd</tstamps>
+      <tstamps>f1761680-5356-585b-893f-4f972345e7d7</tstamps>
     </comp>
     <comp ref="J10">
       <value>TRIG4</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>48df0924-33ca-57e3-be39-0bb0086f51f6</tstamps>
+      <tstamps>52fab15a-10bb-51ae-bfdd-dc603f1debba</tstamps>
     </comp>
     <comp ref="J11">
       <value>CV4</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>2144c1ef-fb6b-5488-b7c0-bf176dac3ae0</tstamps>
+      <tstamps>4a3bb744-61fc-58cc-8334-861ee17a544c</tstamps>
     </comp>
     <comp ref="J12">
       <value>OUT4</value>
       <footprint>ADLFO:jack</footprint>
-      <tstamps>f47916af-7252-5937-be9a-5a482440c4fc</tstamps>
+      <tstamps>b08c39a9-11ee-5446-a7dd-c2e2820eb3ef</tstamps>
     </comp>
     <comp ref="R401">
       <value>100k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>babc302f-2fa1-5dd6-8d5f-b8a67a8e847b</tstamps>
+      <tstamps>e0a121c1-9502-5286-a1c3-159adad1d961</tstamps>
     </comp>
     <comp ref="R402">
       <value>1M</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>7d0b6b2a-2a33-5c99-8296-9dfc34904565</tstamps>
+      <tstamps>d07fd60b-af88-5893-b2b7-6871d41f3158</tstamps>
     </comp>
     <comp ref="R403">
       <value>47k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>ac89ff76-d1e8-502a-baa4-06cf3f040c2b</tstamps>
+      <tstamps>576dd093-a912-5f53-a870-aa4e72d3e202</tstamps>
     </comp>
     <comp ref="Q4">
       <value>MMBT3904</value>
       <footprint>ADLFO:sot23</footprint>
-      <tstamps>f3049189-b1a9-5860-b6cc-b7bc3842b90a</tstamps>
+      <tstamps>0a1d649b-eb04-5354-9f04-c7391bdb3707</tstamps>
     </comp>
     <comp ref="D401">
       <value>1N4148W</value>
       <footprint>ADLFO:sod123</footprint>
-      <tstamps>35ac2e03-3491-59e4-9641-d9f93b3dc35d</tstamps>
+      <tstamps>967c4ea5-b306-56b3-b676-7ebf0c04f6de</tstamps>
     </comp>
     <comp ref="R404">
       <value>100k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>a885084f-56cb-52e1-b9e7-5c40449a482d</tstamps>
+      <tstamps>b9b5726f-2803-55b5-87e7-eec259baacb9</tstamps>
     </comp>
     <comp ref="R405">
       <value>33k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>d76e5560-1cc8-5d60-a60c-20991236861d</tstamps>
+      <tstamps>f05bc571-05a8-5a6f-a289-19f12933357f</tstamps>
     </comp>
     <comp ref="R406">
       <value>10k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>6353dd4c-ad6f-569d-986e-136e937bbd86</tstamps>
+      <tstamps>dc73f6ec-a47f-5fc4-b82f-5145b2f93cfb</tstamps>
     </comp>
     <comp ref="C401">
       <value>10nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>3151c029-903e-5be1-9c14-1f8151398e2e</tstamps>
+      <tstamps>8c5b9495-84c9-52f0-bbb0-65c1a54be722</tstamps>
     </comp>
     <comp ref="D402">
       <value>BAT54S</value>
       <footprint>ADLFO:sot23</footprint>
-      <tstamps>24a561e7-1c8f-5200-aee9-e5f1422468a1</tstamps>
+      <tstamps>730f5e63-fd73-5d1b-a20f-2da5580654f3</tstamps>
     </comp>
     <comp ref="R407">
       <value>1k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>60e499f3-96b4-57f9-ae4c-ac01c7c6fbea</tstamps>
+      <tstamps>2fe9a663-b4ef-570c-be9f-3fab7217f5b2</tstamps>
     </comp>
     <comp ref="C402">
       <value>1nF</value>
       <footprint>ADLFO:c0805</footprint>
-      <tstamps>8ad26135-7c2f-5930-89f7-d0127f645dc1</tstamps>
+      <tstamps>f66ac6c3-1aaa-560e-a902-0e4124df1c5a</tstamps>
     </comp>
     <comp ref="R408">
       <value>10k</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>7225483f-cddd-579d-aed2-6ce6ad2ce211</tstamps>
+      <tstamps>2301f534-5fa4-58a6-af70-8c24d3151a9e</tstamps>
     </comp>
     <comp ref="R409">
       <value>10k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>25c6bcb6-f5ba-5b42-a4ff-07134ae72a6a</tstamps>
+      <tstamps>90436611-83ab-55b4-bea0-bd30e0bcaef6</tstamps>
     </comp>
     <comp ref="R410">
       <value>15k 0.1%</value>
       <footprint>ADLFO:r0805</footprint>
-      <tstamps>d4d9d008-6a2b-5d0e-bc8f-b61d3905ad12</tstamps>
+      <tstamps>f1b1b212-7610-533a-bba3-abaa6dcc3932</tstamps>
     </comp>
     <comp ref="R411">
       <value>2.2k 0.5W</value>
       <footprint>ADLFO:r2010</footprint>
-      <tstamps>fe8defa7-c544-5d49-92bf-582577f1e6ab</tstamps>
+      <tstamps>a4d2a942-dd4d-52f6-bdeb-b1f328e6bd50</tstamps>
+    </comp>
+    <comp ref="RP41">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>0e23233a-5361-523f-8862-271640890339</tstamps>
+    </comp>
+    <comp ref="RP42">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>d47ad8c8-19a5-5445-8074-f6fb91f65c33</tstamps>
+    </comp>
+    <comp ref="RP43">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>0156a7b8-334e-5075-a20e-2de84e1aaff0</tstamps>
+    </comp>
+    <comp ref="RP44">
+      <value>10k DNP</value>
+      <footprint>ADLFO:r0805</footprint>
+      <tstamps>05bfaeda-a019-5878-8ff2-f12e317f8e8b</tstamps>
     </comp>
     <comp ref="TP14">
       <value>DAC4</value>
       <footprint>ADLFO:testpoint</footprint>
-      <tstamps>cce44ca7-5dcf-5448-8c9d-96c427e2fca9</tstamps>
+      <tstamps>71c661ac-c94d-587a-8dfb-6a7b78e84c46</tstamps>
     </comp>
   </components>
   <nets>
@@ -585,275 +685,316 @@
       <node ref="C8" pin="1" />
       <node ref="TP2" pin="1" />
     </net>
-    <net code="2" name="+12V_IN">
-      <node ref="J13" pin="9" />
-      <node ref="J13" pin="10" />
+    <net code="2" name="+12V_FUSED">
+      <node ref="F1" pin="2" />
       <node ref="D1" pin="2" />
     </net>
-    <net code="3" name="+3V3">
+    <net code="3" name="+12V_IN">
+      <node ref="J13" pin="9" />
+      <node ref="J13" pin="10" />
+      <node ref="F1" pin="1" />
+    </net>
+    <net code="4" name="+3V3">
       <node ref="U1" pin="38" />
       <node ref="U2" pin="1" />
+      <node ref="U2" pin="12" />
       <node ref="U3" pin="4" />
       <node ref="J14" pin="2" />
       <node ref="C5" pin="1" />
       <node ref="C6" pin="1" />
       <node ref="C7" pin="1" />
+      <node ref="C12" pin="1" />
       <node ref="R1" pin="1" />
       <node ref="R2" pin="1" />
       <node ref="TP5" pin="1" />
       <node ref="R103" pin="1" />
       <node ref="D102" pin="2" />
+      <node ref="RP11" pin="1" />
+      <node ref="RP12" pin="1" />
+      <node ref="RP13" pin="1" />
+      <node ref="RP14" pin="1" />
       <node ref="R203" pin="1" />
       <node ref="D202" pin="2" />
+      <node ref="RP21" pin="1" />
+      <node ref="RP22" pin="1" />
+      <node ref="RP23" pin="1" />
+      <node ref="RP24" pin="1" />
       <node ref="R303" pin="1" />
       <node ref="D302" pin="2" />
+      <node ref="RP31" pin="1" />
+      <node ref="RP32" pin="1" />
+      <node ref="RP33" pin="1" />
+      <node ref="RP34" pin="1" />
       <node ref="R403" pin="1" />
       <node ref="D402" pin="2" />
+      <node ref="RP41" pin="1" />
+      <node ref="RP42" pin="1" />
+      <node ref="RP43" pin="1" />
+      <node ref="RP44" pin="1" />
     </net>
-    <net code="4" name="+5V_REG">
+    <net code="5" name="+5V_REG">
       <node ref="U5" pin="3" />
       <node ref="D3" pin="2" />
       <node ref="C3" pin="1" />
     </net>
-    <net code="5" name="+5V_SEED">
+    <net code="6" name="+5V_SEED">
       <node ref="U1" pin="39" />
       <node ref="D3" pin="1" />
       <node ref="C4" pin="1" />
+      <node ref="C10" pin="1" />
+      <node ref="C11" pin="1" />
       <node ref="TP4" pin="1" />
     </net>
-    <net code="6" name="-12VA">
+    <net code="7" name="-12VA">
       <node ref="U4" pin="11" />
       <node ref="D2" pin="2" />
       <node ref="C2" pin="2" />
       <node ref="C9" pin="1" />
       <node ref="TP3" pin="1" />
     </net>
-    <net code="7" name="-12V_IN">
+    <net code="8" name="-12V_IN">
       <node ref="J13" pin="1" />
       <node ref="J13" pin="2" />
       <node ref="D2" pin="1" />
     </net>
-    <net code="8" name="CV1">
+    <net code="9" name="CV1">
       <node ref="J2" pin="T" />
       <node ref="R104" pin="1" />
     </net>
-    <net code="9" name="CV2">
+    <net code="10" name="CV2">
       <node ref="J5" pin="T" />
       <node ref="R204" pin="1" />
     </net>
-    <net code="10" name="CV3">
+    <net code="11" name="CV3">
       <node ref="J8" pin="T" />
       <node ref="R304" pin="1" />
     </net>
-    <net code="11" name="CV4">
+    <net code="12" name="CV4">
       <node ref="J11" pin="T" />
       <node ref="R404" pin="1" />
     </net>
-    <net code="12" name="CV_BUF1">
+    <net code="13" name="CV_BUF1">
       <node ref="U3" pin="2" />
       <node ref="U3" pin="1" />
       <node ref="R107" pin="1" />
     </net>
-    <net code="13" name="CV_BUF2">
+    <net code="14" name="CV_BUF2">
       <node ref="U3" pin="6" />
       <node ref="U3" pin="7" />
       <node ref="R207" pin="1" />
     </net>
-    <net code="14" name="CV_BUF3">
+    <net code="15" name="CV_BUF3">
       <node ref="U3" pin="9" />
       <node ref="U3" pin="8" />
       <node ref="R307" pin="1" />
     </net>
-    <net code="15" name="CV_BUF4">
+    <net code="16" name="CV_BUF4">
       <node ref="U3" pin="13" />
       <node ref="U3" pin="14" />
       <node ref="R407" pin="1" />
     </net>
-    <net code="16" name="CV_CLAMP1">
+    <net code="17" name="CV_CLAMP1">
       <node ref="U3" pin="3" />
       <node ref="R106" pin="2" />
       <node ref="D102" pin="3" />
     </net>
-    <net code="17" name="CV_CLAMP2">
+    <net code="18" name="CV_CLAMP2">
       <node ref="U3" pin="5" />
       <node ref="R206" pin="2" />
       <node ref="D202" pin="3" />
     </net>
-    <net code="18" name="CV_CLAMP3">
+    <net code="19" name="CV_CLAMP3">
       <node ref="U3" pin="10" />
       <node ref="R306" pin="2" />
       <node ref="D302" pin="3" />
     </net>
-    <net code="19" name="CV_CLAMP4">
+    <net code="20" name="CV_CLAMP4">
       <node ref="U3" pin="12" />
       <node ref="R406" pin="2" />
       <node ref="D402" pin="3" />
     </net>
-    <net code="20" name="CV_DIV1">
+    <net code="21" name="CV_DIV1">
       <node ref="R104" pin="2" />
       <node ref="R105" pin="1" />
       <node ref="R106" pin="1" />
       <node ref="C101" pin="1" />
     </net>
-    <net code="21" name="CV_DIV2">
+    <net code="22" name="CV_DIV2">
       <node ref="R204" pin="2" />
       <node ref="R205" pin="1" />
       <node ref="R206" pin="1" />
       <node ref="C201" pin="1" />
     </net>
-    <net code="22" name="CV_DIV3">
+    <net code="23" name="CV_DIV3">
       <node ref="R304" pin="2" />
       <node ref="R305" pin="1" />
       <node ref="R306" pin="1" />
       <node ref="C301" pin="1" />
     </net>
-    <net code="23" name="CV_DIV4">
+    <net code="24" name="CV_DIV4">
       <node ref="R404" pin="2" />
       <node ref="R405" pin="1" />
       <node ref="R406" pin="1" />
       <node ref="C401" pin="1" />
     </net>
-    <net code="24" name="D0">
+    <net code="25" name="D0">
       <node ref="U1" pin="1" />
       <node ref="ENC1" pin="A" />
+      <node ref="RP11" pin="2" />
     </net>
-    <net code="25" name="D1">
+    <net code="26" name="D1">
       <node ref="U1" pin="2" />
       <node ref="ENC1" pin="B" />
+      <node ref="RP12" pin="2" />
     </net>
-    <net code="26" name="D10">
+    <net code="27" name="D10">
       <node ref="U1" pin="11" />
       <node ref="ENC4" pin="A" />
+      <node ref="RP41" pin="2" />
     </net>
-    <net code="27" name="D11">
+    <net code="28" name="D11">
       <node ref="U1" pin="12" />
-      <node ref="U2" pin="2" />
+      <node ref="U2" pin="3" />
       <node ref="J14" pin="3" />
       <node ref="R1" pin="2" />
     </net>
-    <net code="28" name="D12">
+    <net code="29" name="D12">
       <node ref="U1" pin="13" />
-      <node ref="U2" pin="3" />
+      <node ref="U2" pin="4" />
       <node ref="J14" pin="4" />
       <node ref="R2" pin="2" />
     </net>
-    <net code="29" name="D13">
+    <net code="30" name="D13">
       <node ref="U1" pin="14" />
       <node ref="ENC4" pin="B" />
+      <node ref="RP42" pin="2" />
     </net>
-    <net code="30" name="D14">
+    <net code="31" name="D14">
       <node ref="U1" pin="15" />
       <node ref="ENC4" pin="S1" />
+      <node ref="RP43" pin="2" />
     </net>
-    <net code="31" name="D15">
+    <net code="32" name="D15">
       <node ref="U1" pin="22" />
       <node ref="R107" pin="2" />
       <node ref="C102" pin="1" />
     </net>
-    <net code="32" name="D16">
+    <net code="33" name="D16">
       <node ref="U1" pin="23" />
       <node ref="R207" pin="2" />
       <node ref="C202" pin="1" />
     </net>
-    <net code="33" name="D17">
+    <net code="34" name="D17">
       <node ref="U1" pin="24" />
       <node ref="R307" pin="2" />
       <node ref="C302" pin="1" />
     </net>
-    <net code="34" name="D18">
+    <net code="35" name="D18">
       <node ref="U1" pin="25" />
       <node ref="R407" pin="2" />
       <node ref="C402" pin="1" />
     </net>
-    <net code="35" name="D19">
+    <net code="36" name="D19">
       <node ref="U1" pin="26" />
       <node ref="R203" pin="2" />
       <node ref="Q2" pin="3" />
     </net>
-    <net code="36" name="D2">
+    <net code="37" name="D2">
       <node ref="U1" pin="3" />
       <node ref="ENC1" pin="S1" />
+      <node ref="RP13" pin="2" />
     </net>
-    <net code="37" name="D20">
+    <net code="38" name="D20">
       <node ref="U1" pin="27" />
       <node ref="R303" pin="2" />
       <node ref="Q3" pin="3" />
     </net>
-    <net code="38" name="D21">
+    <net code="39" name="D21">
       <node ref="U1" pin="28" />
       <node ref="R403" pin="2" />
       <node ref="Q4" pin="3" />
     </net>
-    <net code="39" name="D24">
+    <net code="40" name="D24">
       <node ref="U1" pin="31" />
       <node ref="SW2" pin="1" />
+      <node ref="RP24" pin="2" />
     </net>
-    <net code="40" name="D25">
+    <net code="41" name="D25">
       <node ref="U1" pin="32" />
       <node ref="SW1" pin="1" />
+      <node ref="RP14" pin="2" />
     </net>
-    <net code="41" name="D26">
+    <net code="42" name="D26">
       <node ref="U1" pin="33" />
       <node ref="SW3" pin="1" />
+      <node ref="RP34" pin="2" />
     </net>
-    <net code="42" name="D27">
+    <net code="43" name="D27">
       <node ref="U1" pin="34" />
       <node ref="SW4" pin="1" />
+      <node ref="RP44" pin="2" />
     </net>
-    <net code="43" name="D3">
+    <net code="44" name="D3">
       <node ref="U1" pin="4" />
       <node ref="ENC2" pin="A" />
+      <node ref="RP21" pin="2" />
     </net>
-    <net code="44" name="D4">
+    <net code="45" name="D4">
       <node ref="U1" pin="5" />
       <node ref="ENC2" pin="B" />
+      <node ref="RP22" pin="2" />
     </net>
-    <net code="45" name="D5">
+    <net code="46" name="D5">
       <node ref="U1" pin="6" />
       <node ref="ENC2" pin="S1" />
+      <node ref="RP23" pin="2" />
     </net>
-    <net code="46" name="D6">
+    <net code="47" name="D6">
       <node ref="U1" pin="7" />
       <node ref="R103" pin="2" />
       <node ref="Q1" pin="3" />
     </net>
-    <net code="47" name="D7">
+    <net code="48" name="D7">
       <node ref="U1" pin="8" />
       <node ref="ENC3" pin="A" />
+      <node ref="RP31" pin="2" />
     </net>
-    <net code="48" name="D8">
+    <net code="49" name="D8">
       <node ref="U1" pin="9" />
       <node ref="ENC3" pin="B" />
+      <node ref="RP32" pin="2" />
     </net>
-    <net code="49" name="D9">
+    <net code="50" name="D9">
       <node ref="U1" pin="10" />
       <node ref="ENC3" pin="S1" />
+      <node ref="RP33" pin="2" />
     </net>
-    <net code="50" name="DAC1">
-      <node ref="U2" pin="6" />
+    <net code="51" name="DAC1">
+      <node ref="U2" pin="8" />
       <node ref="R108" pin="1" />
       <node ref="TP11" pin="1" />
     </net>
-    <net code="51" name="DAC2">
-      <node ref="U2" pin="7" />
+    <net code="52" name="DAC2">
+      <node ref="U2" pin="9" />
       <node ref="R208" pin="1" />
       <node ref="TP12" pin="1" />
     </net>
-    <net code="52" name="DAC3">
-      <node ref="U2" pin="8" />
+    <net code="53" name="DAC3">
+      <node ref="U2" pin="10" />
       <node ref="R308" pin="1" />
       <node ref="TP13" pin="1" />
     </net>
-    <net code="53" name="DAC4">
-      <node ref="U2" pin="9" />
+    <net code="54" name="DAC4">
+      <node ref="U2" pin="11" />
       <node ref="R408" pin="1" />
       <node ref="TP14" pin="1" />
     </net>
-    <net code="54" name="GND">
+    <net code="55" name="GND">
       <node ref="U1" pin="20" />
       <node ref="U1" pin="40" />
-      <node ref="U2" pin="4" />
-      <node ref="U2" pin="10" />
+      <node ref="U2" pin="2" />
+      <node ref="U2" pin="5" />
+      <node ref="U2" pin="7" />
       <node ref="U3" pin="11" />
       <node ref="U5" pin="2" />
       <node ref="J13" pin="3" />
@@ -872,6 +1013,9 @@
       <node ref="C7" pin="2" />
       <node ref="C8" pin="2" />
       <node ref="C9" pin="2" />
+      <node ref="C10" pin="2" />
+      <node ref="C11" pin="2" />
+      <node ref="C12" pin="2" />
       <node ref="TP1" pin="1" />
       <node ref="ENC1" pin="C" />
       <node ref="ENC1" pin="S2" />
@@ -942,113 +1086,113 @@
       <node ref="C402" pin="2" />
       <node ref="R409" pin="2" />
     </net>
-    <net code="55" name="OUT1">
+    <net code="56" name="OUT1">
       <node ref="J3" pin="T" />
       <node ref="R111" pin="2" />
     </net>
-    <net code="56" name="OUT2">
+    <net code="57" name="OUT2">
       <node ref="J6" pin="T" />
       <node ref="R211" pin="2" />
     </net>
-    <net code="57" name="OUT3">
+    <net code="58" name="OUT3">
       <node ref="J9" pin="T" />
       <node ref="R311" pin="2" />
     </net>
-    <net code="58" name="OUT4">
+    <net code="59" name="OUT4">
       <node ref="J12" pin="T" />
       <node ref="R411" pin="2" />
     </net>
-    <net code="59" name="OUT_AMP1">
+    <net code="60" name="OUT_AMP1">
       <node ref="U4" pin="1" />
       <node ref="R110" pin="1" />
       <node ref="R111" pin="1" />
     </net>
-    <net code="60" name="OUT_AMP2">
+    <net code="61" name="OUT_AMP2">
       <node ref="U4" pin="7" />
       <node ref="R210" pin="1" />
       <node ref="R211" pin="1" />
     </net>
-    <net code="61" name="OUT_AMP3">
+    <net code="62" name="OUT_AMP3">
       <node ref="U4" pin="8" />
       <node ref="R310" pin="1" />
       <node ref="R311" pin="1" />
     </net>
-    <net code="62" name="OUT_AMP4">
+    <net code="63" name="OUT_AMP4">
       <node ref="U4" pin="14" />
       <node ref="R410" pin="1" />
       <node ref="R411" pin="1" />
     </net>
-    <net code="63" name="OUT_FB1">
+    <net code="64" name="OUT_FB1">
       <node ref="U4" pin="2" />
       <node ref="R109" pin="1" />
       <node ref="R110" pin="2" />
     </net>
-    <net code="64" name="OUT_FB2">
+    <net code="65" name="OUT_FB2">
       <node ref="U4" pin="6" />
       <node ref="R209" pin="1" />
       <node ref="R210" pin="2" />
     </net>
-    <net code="65" name="OUT_FB3">
+    <net code="66" name="OUT_FB3">
       <node ref="U4" pin="9" />
       <node ref="R309" pin="1" />
       <node ref="R310" pin="2" />
     </net>
-    <net code="66" name="OUT_FB4">
+    <net code="67" name="OUT_FB4">
       <node ref="U4" pin="13" />
       <node ref="R409" pin="1" />
       <node ref="R410" pin="2" />
     </net>
-    <net code="67" name="OUT_PLUS1">
+    <net code="68" name="OUT_PLUS1">
       <node ref="U4" pin="3" />
       <node ref="R108" pin="2" />
     </net>
-    <net code="68" name="OUT_PLUS2">
+    <net code="69" name="OUT_PLUS2">
       <node ref="U4" pin="5" />
       <node ref="R208" pin="2" />
     </net>
-    <net code="69" name="OUT_PLUS3">
+    <net code="70" name="OUT_PLUS3">
       <node ref="U4" pin="10" />
       <node ref="R308" pin="2" />
     </net>
-    <net code="70" name="OUT_PLUS4">
+    <net code="71" name="OUT_PLUS4">
       <node ref="U4" pin="12" />
       <node ref="R408" pin="2" />
     </net>
-    <net code="71" name="TRIG1">
+    <net code="72" name="TRIG1">
       <node ref="J1" pin="T" />
       <node ref="R101" pin="1" />
     </net>
-    <net code="72" name="TRIG2">
+    <net code="73" name="TRIG2">
       <node ref="J4" pin="T" />
       <node ref="R201" pin="1" />
     </net>
-    <net code="73" name="TRIG3">
+    <net code="74" name="TRIG3">
       <node ref="J7" pin="T" />
       <node ref="R301" pin="1" />
     </net>
-    <net code="74" name="TRIG4">
+    <net code="75" name="TRIG4">
       <node ref="J10" pin="T" />
       <node ref="R401" pin="1" />
     </net>
-    <net code="75" name="TRIG_BASE1">
+    <net code="76" name="TRIG_BASE1">
       <node ref="R101" pin="2" />
       <node ref="R102" pin="1" />
       <node ref="Q1" pin="1" />
       <node ref="D101" pin="1" />
     </net>
-    <net code="76" name="TRIG_BASE2">
+    <net code="77" name="TRIG_BASE2">
       <node ref="R201" pin="2" />
       <node ref="R202" pin="1" />
       <node ref="Q2" pin="1" />
       <node ref="D201" pin="1" />
     </net>
-    <net code="77" name="TRIG_BASE3">
+    <net code="78" name="TRIG_BASE3">
       <node ref="R301" pin="2" />
       <node ref="R302" pin="1" />
       <node ref="Q3" pin="1" />
       <node ref="D301" pin="1" />
     </net>
-    <net code="78" name="TRIG_BASE4">
+    <net code="79" name="TRIG_BASE4">
       <node ref="R401" pin="2" />
       <node ref="R402" pin="1" />
       <node ref="Q4" pin="1" />

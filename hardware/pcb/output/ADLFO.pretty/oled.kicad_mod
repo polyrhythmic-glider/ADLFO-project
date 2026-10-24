@@ -1,6 +1,6 @@
 (footprint "ADLFO:oled" (version 20211014) (generator kiutils)
   (layer "F.Cu")
-  (tedit 6ada636e)
+  (tedit 6adced38)
   (at 0 0 0)
   (attr through_hole)
   (fp_rect (start -5.08 -1.27) (end 5.08 1.27) (layer "F.Fab") (width 0.1))

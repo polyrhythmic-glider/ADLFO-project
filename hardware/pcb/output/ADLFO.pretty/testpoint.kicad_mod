@@ -1,6 +1,6 @@
 (footprint "ADLFO:testpoint" (version 20211014) (generator kiutils)
   (layer "F.Cu")
-  (tedit 6ada636e)
+  (tedit 6adced38)
   (at 0 0 0)
   (attr through_hole)
   (fp_text reference "REF**" (at 0 -2.6) (layer "F.SilkS")

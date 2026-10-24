@@ -1,11 +1,12 @@
 Reference,Value / candidate,Footprint,Side,Group,Notes
 U1,Daisy Seed (socketed),seed,B,SYSTEM,"2 x 20 sockets, 2.54 mm pitch; row spacing 15.24 mm; USB toward right in panel view."
-U2,MCP4728-E/UN,msop10,B,SYSTEM,
+U2,Adafruit MCP4728 STEMMA QT breakout,mcp4728_breakout,B,SYSTEM,"Two 1x6 female sockets, rows 12.70 mm apart; module 25.4 x 17.78 mm. JP1: VCC/GND/SCL/SDA/LDAC/RDY. Verify actual board revision; no second DAC IC on carrier."
 U3,MCP6004-I/SL,soic14,B,SYSTEM,
 U4,TL074CDR,soic14,B,SYSTEM,Dual supply; nominal non-inverting gain 2.5. Feedback before output resistor.
-U5,R-78E5.0-0.5,recom,B,SYSTEM,500 mA rated converter; actual rail budget to measure.
+U5,R-78E5.0-0.5,recom,B,SYSTEM,"Candidate 500 mA converter, not a confirmed budget. Size from Daisy + OLED + DAC + analog load, startup and thermal measurements; no case +5 V required."
 J13,EURORACK 2x5 keyed,idc10,B,SYSTEM,Red stripe = pins 1/2 = -12 V. Key orientation must match cable.
 J14,OLED SSD1306 128x64,oled,F,SYSTEM,"Assumed module GND/VCC/SCL/SDA, 0.96 inch; measure actual glass, PCB and connector before release."
+F1,PTC 0.5A hold candidate,ptc1812,B,SYSTEM,Candidate only: select rated voltage >=24 V and hold/trip current from measured startup and hot-case load. Package must match selected PTC.
 D1,SS14,sma,B,SYSTEM,Pad 1 cathode: protected positive rail.
 D2,SS14,sma,B,SYSTEM,Pad 1 cathode: raw negative rail.
 D3,SS14,sma,B,SYSTEM,Blocks reverse feed from USB into 5 V converter; check specific Seed revision.
@@ -18,8 +19,11 @@ C6,10uF 10V X7R,c0805,B,SYSTEM,
 C7,100nF,c0805,B,SYSTEM,
 C8,100nF 50V,c0805,B,SYSTEM,
 C9,100nF 50V,c0805,B,SYSTEM,
-R1,4.7k,r0805,B,SYSTEM,
-R2,4.7k,r0805,B,SYSTEM,
+C10,47uF 10V low ESR candidate,radial_cap,B,SYSTEM,"Local 5 V bulk capacitor; check regulator stability, startup and actual case size before fitting."
+C11,100nF,c0805,B,SYSTEM,
+C12,100nF,c0805,B,SYSTEM,
+R1,4.7k DNP,r0805,B,SYSTEM,
+R2,4.7k DNP,r0805,B,SYSTEM,
 TP1,GND,testpoint,B,SYSTEM,
 TP2,+12VA,testpoint,B,SYSTEM,
 TP3,-12VA,testpoint,B,SYSTEM,
@@ -46,6 +50,10 @@ R108,10k,r0805,B,CH1,
 R109,10k 0.1%,r0805,B,CH1,
 R110,15k 0.1%,r0805,B,CH1,
 R111,2.2k 0.5W,r2010,B,CH1,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
+RP11,10k DNP,r0805,B,CH1,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP12,10k DNP,r0805,B,CH1,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP13,10k DNP,r0805,B,CH1,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP14,10k DNP,r0805,B,CH1,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
 TP11,DAC1,testpoint,B,CH1,
 ENC2,FALL,encoder,F,CH2,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
 SW2,CH 2,button,F,CH2,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
@@ -68,6 +76,10 @@ R208,10k,r0805,B,CH2,
 R209,10k 0.1%,r0805,B,CH2,
 R210,15k 0.1%,r0805,B,CH2,
 R211,2.2k 0.5W,r2010,B,CH2,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
+RP21,10k DNP,r0805,B,CH2,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP22,10k DNP,r0805,B,CH2,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP23,10k DNP,r0805,B,CH2,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP24,10k DNP,r0805,B,CH2,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
 TP12,DAC2,testpoint,B,CH2,
 ENC3,SYMMETRY,encoder,F,CH3,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
 SW3,CH 3,button,F,CH3,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
@@ -90,6 +102,10 @@ R308,10k,r0805,B,CH3,
 R309,10k 0.1%,r0805,B,CH3,
 R310,15k 0.1%,r0805,B,CH3,
 R311,2.2k 0.5W,r2010,B,CH3,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
+RP31,10k DNP,r0805,B,CH3,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP32,10k DNP,r0805,B,CH3,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP33,10k DNP,r0805,B,CH3,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP34,10k DNP,r0805,B,CH3,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
 TP13,DAC3,testpoint,B,CH3,
 ENC4,LEVEL,encoder,F,CH4,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
 SW4,CH 4,button,F,CH4,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
@@ -112,4 +128,8 @@ R408,10k,r0805,B,CH4,
 R409,10k 0.1%,r0805,B,CH4,
 R410,15k 0.1%,r0805,B,CH4,
 R411,2.2k 0.5W,r2010,B,CH4,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
+RP41,10k DNP,r0805,B,CH4,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP42,10k DNP,r0805,B,CH4,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP43,10k DNP,r0805,B,CH4,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
+RP44,10k DNP,r0805,B,CH4,Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.
 TP14,DAC4,testpoint,B,CH4,

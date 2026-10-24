@@ -1,6 +1,6 @@
 (footprint "ADLFO:recom" (version 20211014) (generator kiutils)
   (layer "F.Cu")
-  (tedit 6ada636e)
+  (tedit 6adced38)
   (at 0 0 0)
   (attr through_hole)
   (fp_rect (start -5.8 -6.5) (end 5.8 2.0) (layer "F.Fab") (width 0.1))
