@@ -1,0 +1,1639 @@
+<?xml version='1.0' encoding='utf-8'?>
+<export version="D">
+  <components>
+    <comp ref="JM">
+      <value>Panel link 2x20 candidate</value>
+      <footprint>ADOLFO:header40</footprint>
+    </comp>
+    <comp ref="JP">
+      <value>Panel link 2x20 candidate</value>
+      <footprint>ADOLFO:header40</footprint>
+    </comp>
+    <comp ref="E1">
+      <value>EC11 click candidate</value>
+      <footprint>ADOLFO:encoder</footprint>
+    </comp>
+    <comp ref="K1">
+      <value>6x6 tact height TBD</value>
+      <footprint>ADOLFO:button</footprint>
+    </comp>
+    <comp ref="J1">
+      <value>IN1 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="J2">
+      <value>CTRL1 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="J3">
+      <value>OUT1 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="E2">
+      <value>EC11 click candidate</value>
+      <footprint>ADOLFO:encoder</footprint>
+    </comp>
+    <comp ref="K2">
+      <value>6x6 tact height TBD</value>
+      <footprint>ADOLFO:button</footprint>
+    </comp>
+    <comp ref="J4">
+      <value>IN2 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="J5">
+      <value>CTRL2 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="J6">
+      <value>OUT2 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="E3">
+      <value>EC11 click candidate</value>
+      <footprint>ADOLFO:encoder</footprint>
+    </comp>
+    <comp ref="K3">
+      <value>6x6 tact height TBD</value>
+      <footprint>ADOLFO:button</footprint>
+    </comp>
+    <comp ref="J7">
+      <value>IN3 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="J8">
+      <value>CTRL3 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="J9">
+      <value>OUT3 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="E4">
+      <value>EC11 click candidate</value>
+      <footprint>ADOLFO:encoder</footprint>
+    </comp>
+    <comp ref="K4">
+      <value>6x6 tact height TBD</value>
+      <footprint>ADOLFO:button</footprint>
+    </comp>
+    <comp ref="J10">
+      <value>IN4 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="J11">
+      <value>CTRL4 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="J12">
+      <value>OUT4 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+    </comp>
+    <comp ref="J14">
+      <value>SSD1306 breakout raised</value>
+      <footprint>ADOLFO:oled</footprint>
+    </comp>
+    <comp ref="U1">
+      <value>Daisy Seed 3 / Seed2 DFM compatibility review</value>
+      <footprint>ADOLFO:seed</footprint>
+    </comp>
+    <comp ref="U2">
+      <value>AD7606C-18 candidate</value>
+      <footprint>ADOLFO:lqfp64</footprint>
+    </comp>
+    <comp ref="U3">
+      <value>DAC8568B (gain 1, midscale reset) candidate</value>
+      <footprint>ADOLFO:tssop16</footprint>
+    </comp>
+    <comp ref="U4">
+      <value>MCP23017-E/SO candidate</value>
+      <footprint>ADOLFO:soic28</footprint>
+    </comp>
+    <comp ref="U5">
+      <value>SN74LVC08A candidate</value>
+      <footprint>ADOLFO:soic14</footprint>
+    </comp>
+    <comp ref="U6">
+      <value>SN74LVC08A candidate</value>
+      <footprint>ADOLFO:soic14</footprint>
+    </comp>
+    <comp ref="U7">
+      <value>ADG5412FBRUZ candidate</value>
+      <footprint>ADOLFO:tssop16</footprint>
+    </comp>
+    <comp ref="U8">
+      <value>ADG5412FBRUZ candidate</value>
+      <footprint>ADOLFO:tssop16</footprint>
+    </comp>
+    <comp ref="RA1">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RB1">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RC1">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RD1">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RO1">
+      <value>100R 0.25W candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RE1">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RQ1">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RA2">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RB2">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RC2">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RD2">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RO2">
+      <value>100R 0.25W candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RE2">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RQ2">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RA3">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RB3">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RC3">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RD3">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RO3">
+      <value>100R 0.25W candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RE3">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RQ3">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RA4">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RB4">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RC4">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RD4">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RO4">
+      <value>100R 0.25W candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RE4">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RQ4">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RA5">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RB5">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RC5">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RD5">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RO5">
+      <value>100R 0.25W candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RE5">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RQ5">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RA6">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RB6">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RC6">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RD6">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RO6">
+      <value>100R 0.25W candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RE6">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RQ6">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RA7">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RB7">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RC7">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RD7">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RO7">
+      <value>100R 0.25W candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RE7">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RQ7">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RA8">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RB8">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RC8">
+      <value>10k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RD8">
+      <value>40k 0.01% matched network TBD</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RO8">
+      <value>100R 0.25W candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RE8">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RQ8">
+      <value>100k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="U9">
+      <value>OPA4197ID candidate</value>
+      <footprint>ADOLFO:soic14</footprint>
+    </comp>
+    <comp ref="CP0P">
+      <value>100nF 50V</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CP0N">
+      <value>100nF 50V</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="U10">
+      <value>OPA4197ID candidate</value>
+      <footprint>ADOLFO:soic14</footprint>
+    </comp>
+    <comp ref="CP1P">
+      <value>100nF 50V</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CP1N">
+      <value>100nF 50V</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="U11">
+      <value>OPA4197ID candidate</value>
+      <footprint>ADOLFO:soic14</footprint>
+    </comp>
+    <comp ref="CP2P">
+      <value>100nF 50V</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CP2N">
+      <value>100nF 50V</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="U12">
+      <value>SN74AHCT125 candidate</value>
+      <footprint>ADOLFO:soic14</footprint>
+    </comp>
+    <comp ref="CBUF0">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="U13">
+      <value>SN74AHCT125 candidate</value>
+      <footprint>ADOLFO:soic14</footprint>
+    </comp>
+    <comp ref="CBUF1">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="RREF1">
+      <value>10k 0.01% matched</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RREF2">
+      <value>10k 0.01% matched</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RI1">
+      <value>1k input protection candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="CI1">
+      <value>1nF EMI only - NOT full antialias</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="RP1">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RI2">
+      <value>1k input protection candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="CI2">
+      <value>1nF EMI only - NOT full antialias</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="RP2">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RI3">
+      <value>1k input protection candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="CI3">
+      <value>1nF EMI only - NOT full antialias</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="RP3">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RI4">
+      <value>1k input protection candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="CI4">
+      <value>1nF EMI only - NOT full antialias</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="RP4">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RI5">
+      <value>1k input protection candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="CI5">
+      <value>1nF EMI only - NOT full antialias</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="RP5">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RI6">
+      <value>1k input protection candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="CI6">
+      <value>1nF EMI only - NOT full antialias</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="RP6">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RI7">
+      <value>1k input protection candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="CI7">
+      <value>1nF EMI only - NOT full antialias</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="RP7">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RI8">
+      <value>1k input protection candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="CI8">
+      <value>1nF EMI only - NOT full antialias</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="RP8">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RK1">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RK2">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RK3">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RK4">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RK5">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RK6">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RK7">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RK8">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RU1">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RU2">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RU3">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RU4">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RU5">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RPERMIT">
+      <value>10k</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RSCL">
+      <value>4.7k DNP</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="RSDA">
+      <value>4.7k DNP</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="JPOWER">
+      <value>Eurorack IDC10 keyed</value>
+      <footprint>ADOLFO:idc10</footprint>
+    </comp>
+    <comp ref="DPOWERP">
+      <value>SS14</value>
+      <footprint>ADOLFO:sma</footprint>
+    </comp>
+    <comp ref="DPOWERN">
+      <value>SS14</value>
+      <footprint>ADOLFO:sma</footprint>
+    </comp>
+    <comp ref="UREG">
+      <value>5V &gt;=1A module - selection OPEN</value>
+      <footprint>ADOLFO:power_module</footprint>
+    </comp>
+    <comp ref="FB1">
+      <value>Ferrite 600R@100MHz candidate</value>
+      <footprint>ADOLFO:r0805</footprint>
+    </comp>
+    <comp ref="C5D">
+      <value>47uF 10V</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="C5A">
+      <value>10uF 10V</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CVDRV">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CREG1">
+      <value>1uF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CREG2">
+      <value>1uF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CREFADC">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CREFCAP">
+      <value>10uF low ESR</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CREFDAC">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CADC0">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CADC1">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CADC2">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CADC3">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CD1">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CD2">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CD3">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CD4">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CD5">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CD6">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CD7">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CD8">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="CD9">
+      <value>100nF</value>
+      <footprint>ADOLFO:c0805</footprint>
+    </comp>
+    <comp ref="TP1">
+      <value>GND</value>
+      <footprint>ADOLFO:testpoint</footprint>
+    </comp>
+    <comp ref="TP2">
+      <value>+12VA</value>
+      <footprint>ADOLFO:testpoint</footprint>
+    </comp>
+    <comp ref="TP3">
+      <value>-12VA</value>
+      <footprint>ADOLFO:testpoint</footprint>
+    </comp>
+    <comp ref="TP4">
+      <value>+5D</value>
+      <footprint>ADOLFO:testpoint</footprint>
+    </comp>
+    <comp ref="TP5">
+      <value>+5A</value>
+      <footprint>ADOLFO:testpoint</footprint>
+    </comp>
+    <comp ref="TP6">
+      <value>REF_BUF</value>
+      <footprint>ADOLFO:testpoint</footprint>
+    </comp>
+  </components>
+  <nets>
+    <net name="+12VA" code="1">
+      <node ref="U7" pin="13" />
+      <node ref="U8" pin="13" />
+      <node ref="U9" pin="4" />
+      <node ref="CP0P" pin="1" />
+      <node ref="U10" pin="4" />
+      <node ref="CP1P" pin="1" />
+      <node ref="U11" pin="4" />
+      <node ref="CP2P" pin="1" />
+      <node ref="DPOWERP" pin="1" />
+      <node ref="UREG" pin="1" />
+      <node ref="CD6" pin="1" />
+      <node ref="CD8" pin="1" />
+      <node ref="TP2" pin="1" />
+    </net>
+    <net name="+12_IN" code="2">
+      <node ref="JPOWER" pin="9" />
+      <node ref="JPOWER" pin="10" />
+      <node ref="DPOWERP" pin="2" />
+    </net>
+    <net name="+3V3" code="3">
+      <node ref="JM" pin="31" />
+      <node ref="JP" pin="31" />
+      <node ref="J14" pin="2" />
+      <node ref="U1" pin="38" />
+      <node ref="U2" pin="3" />
+      <node ref="U2" pin="4" />
+      <node ref="U2" pin="5" />
+      <node ref="U2" pin="6" />
+      <node ref="U2" pin="7" />
+      <node ref="U2" pin="23" />
+      <node ref="U2" pin="34" />
+      <node ref="U4" pin="5" />
+      <node ref="U5" pin="14" />
+      <node ref="U6" pin="14" />
+      <node ref="RP1" pin="2" />
+      <node ref="RP2" pin="2" />
+      <node ref="RP3" pin="2" />
+      <node ref="RP4" pin="2" />
+      <node ref="RP5" pin="2" />
+      <node ref="RP6" pin="2" />
+      <node ref="RP7" pin="2" />
+      <node ref="RP8" pin="2" />
+      <node ref="RK1" pin="2" />
+      <node ref="RK2" pin="2" />
+      <node ref="RK3" pin="2" />
+      <node ref="RK4" pin="2" />
+      <node ref="RK5" pin="2" />
+      <node ref="RK6" pin="2" />
+      <node ref="RK7" pin="2" />
+      <node ref="RK8" pin="2" />
+      <node ref="RU1" pin="2" />
+      <node ref="RU2" pin="2" />
+      <node ref="RU3" pin="2" />
+      <node ref="RU4" pin="2" />
+      <node ref="RU5" pin="2" />
+      <node ref="RSCL" pin="2" />
+      <node ref="RSDA" pin="2" />
+      <node ref="CVDRV" pin="1" />
+      <node ref="CD3" pin="1" />
+      <node ref="CD4" pin="1" />
+      <node ref="CD5" pin="1" />
+    </net>
+    <net name="+5A" code="4">
+      <node ref="U2" pin="1" />
+      <node ref="U2" pin="37" />
+      <node ref="U2" pin="38" />
+      <node ref="U2" pin="48" />
+      <node ref="U3" pin="3" />
+      <node ref="U12" pin="14" />
+      <node ref="CBUF0" pin="1" />
+      <node ref="U13" pin="14" />
+      <node ref="CBUF1" pin="1" />
+      <node ref="FB1" pin="2" />
+      <node ref="C5A" pin="1" />
+      <node ref="CADC0" pin="1" />
+      <node ref="CADC1" pin="1" />
+      <node ref="CADC2" pin="1" />
+      <node ref="CADC3" pin="1" />
+      <node ref="CD2" pin="1" />
+      <node ref="TP5" pin="1" />
+    </net>
+    <net name="+5D" code="5">
+      <node ref="U1" pin="39" />
+      <node ref="UREG" pin="3" />
+      <node ref="FB1" pin="1" />
+      <node ref="C5D" pin="1" />
+      <node ref="CD1" pin="1" />
+      <node ref="TP4" pin="1" />
+    </net>
+    <net name="-12VA" code="6">
+      <node ref="U7" pin="4" />
+      <node ref="U8" pin="4" />
+      <node ref="U9" pin="11" />
+      <node ref="CP0N" pin="1" />
+      <node ref="U10" pin="11" />
+      <node ref="CP1N" pin="1" />
+      <node ref="U11" pin="11" />
+      <node ref="CP2N" pin="1" />
+      <node ref="DPOWERN" pin="2" />
+      <node ref="CD7" pin="1" />
+      <node ref="CD9" pin="1" />
+      <node ref="TP3" pin="1" />
+    </net>
+    <net name="-12_IN" code="7">
+      <node ref="JPOWER" pin="1" />
+      <node ref="JPOWER" pin="2" />
+      <node ref="DPOWERN" pin="1" />
+    </net>
+    <net name="ADC_BUSY" code="8">
+      <node ref="U1" pin="4" />
+      <node ref="U2" pin="14" />
+    </net>
+    <net name="ADC_CONVST" code="9">
+      <node ref="U1" pin="5" />
+      <node ref="U2" pin="9" />
+    </net>
+    <net name="ADC_CS" code="10">
+      <node ref="U1" pin="8" />
+      <node ref="U2" pin="13" />
+      <node ref="RU1" pin="1" />
+    </net>
+    <net name="ADC_IN1" code="11">
+      <node ref="U2" pin="49" />
+      <node ref="RI1" pin="2" />
+      <node ref="CI1" pin="1" />
+    </net>
+    <net name="ADC_IN2" code="12">
+      <node ref="U2" pin="51" />
+      <node ref="RI2" pin="2" />
+      <node ref="CI2" pin="1" />
+    </net>
+    <net name="ADC_IN3" code="13">
+      <node ref="U2" pin="53" />
+      <node ref="RI3" pin="2" />
+      <node ref="CI3" pin="1" />
+    </net>
+    <net name="ADC_IN4" code="14">
+      <node ref="U2" pin="55" />
+      <node ref="RI4" pin="2" />
+      <node ref="CI4" pin="1" />
+    </net>
+    <net name="ADC_IN5" code="15">
+      <node ref="U2" pin="57" />
+      <node ref="RI5" pin="2" />
+      <node ref="CI5" pin="1" />
+    </net>
+    <net name="ADC_IN6" code="16">
+      <node ref="U2" pin="59" />
+      <node ref="RI6" pin="2" />
+      <node ref="CI6" pin="1" />
+    </net>
+    <net name="ADC_IN7" code="17">
+      <node ref="U2" pin="61" />
+      <node ref="RI7" pin="2" />
+      <node ref="CI7" pin="1" />
+    </net>
+    <net name="ADC_IN8" code="18">
+      <node ref="U2" pin="63" />
+      <node ref="RI8" pin="2" />
+      <node ref="CI8" pin="1" />
+    </net>
+    <net name="ADC_MISO" code="19">
+      <node ref="U1" pin="10" />
+      <node ref="U2" pin="24" />
+    </net>
+    <net name="ADC_MOSI" code="20">
+      <node ref="U1" pin="11" />
+      <node ref="U2" pin="29" />
+    </net>
+    <net name="ADC_REF" code="21">
+      <node ref="U2" pin="42" />
+      <node ref="CREFADC" pin="1" />
+    </net>
+    <net name="ADC_REFCAP" code="22">
+      <node ref="U2" pin="44" />
+      <node ref="U2" pin="45" />
+      <node ref="CREFCAP" pin="1" />
+    </net>
+    <net name="ADC_RESET" code="23">
+      <node ref="U1" pin="6" />
+      <node ref="U2" pin="11" />
+    </net>
+    <net name="ADC_SCK" code="24">
+      <node ref="U1" pin="9" />
+      <node ref="U2" pin="12" />
+    </net>
+    <net name="AMP1" code="25">
+      <node ref="RD1" pin="1" />
+      <node ref="RO1" pin="1" />
+      <node ref="U9" pin="1" />
+    </net>
+    <net name="AMP2" code="26">
+      <node ref="RD2" pin="1" />
+      <node ref="RO2" pin="1" />
+      <node ref="U9" pin="7" />
+    </net>
+    <net name="AMP3" code="27">
+      <node ref="RD3" pin="1" />
+      <node ref="RO3" pin="1" />
+      <node ref="U9" pin="8" />
+    </net>
+    <net name="AMP4" code="28">
+      <node ref="RD4" pin="1" />
+      <node ref="RO4" pin="1" />
+      <node ref="U9" pin="14" />
+    </net>
+    <net name="AMP5" code="29">
+      <node ref="RD5" pin="1" />
+      <node ref="RO5" pin="1" />
+      <node ref="U10" pin="1" />
+    </net>
+    <net name="AMP6" code="30">
+      <node ref="RD6" pin="1" />
+      <node ref="RO6" pin="1" />
+      <node ref="U10" pin="7" />
+    </net>
+    <net name="AMP7" code="31">
+      <node ref="RD7" pin="1" />
+      <node ref="RO7" pin="1" />
+      <node ref="U10" pin="8" />
+    </net>
+    <net name="AMP8" code="32">
+      <node ref="RD8" pin="1" />
+      <node ref="RO8" pin="1" />
+      <node ref="U10" pin="14" />
+    </net>
+    <net name="CTRL1" code="33">
+      <node ref="JM" pin="5" />
+      <node ref="JP" pin="5" />
+      <node ref="J2" pin="T" />
+      <node ref="U8" pin="3" />
+      <node ref="RI5" pin="1" />
+    </net>
+    <net name="CTRL2" code="34">
+      <node ref="JM" pin="6" />
+      <node ref="JP" pin="6" />
+      <node ref="J5" pin="T" />
+      <node ref="U8" pin="14" />
+      <node ref="RI6" pin="1" />
+    </net>
+    <net name="CTRL3" code="35">
+      <node ref="JM" pin="7" />
+      <node ref="JP" pin="7" />
+      <node ref="J8" pin="T" />
+      <node ref="U8" pin="11" />
+      <node ref="RI7" pin="1" />
+    </net>
+    <net name="CTRL4" code="36">
+      <node ref="JM" pin="8" />
+      <node ref="JP" pin="8" />
+      <node ref="J11" pin="T" />
+      <node ref="U8" pin="6" />
+      <node ref="RI8" pin="1" />
+    </net>
+    <net name="DAC1" code="37">
+      <node ref="U3" pin="4" />
+      <node ref="RA1" pin="1" />
+    </net>
+    <net name="DAC2" code="38">
+      <node ref="U3" pin="13" />
+      <node ref="RA2" pin="1" />
+    </net>
+    <net name="DAC3" code="39">
+      <node ref="U3" pin="5" />
+      <node ref="RA3" pin="1" />
+    </net>
+    <net name="DAC4" code="40">
+      <node ref="U3" pin="12" />
+      <node ref="RA4" pin="1" />
+    </net>
+    <net name="DAC5" code="41">
+      <node ref="U3" pin="6" />
+      <node ref="RA5" pin="1" />
+    </net>
+    <net name="DAC6" code="42">
+      <node ref="U3" pin="11" />
+      <node ref="RA6" pin="1" />
+    </net>
+    <net name="DAC7" code="43">
+      <node ref="U3" pin="7" />
+      <node ref="RA7" pin="1" />
+    </net>
+    <net name="DAC8" code="44">
+      <node ref="U3" pin="10" />
+      <node ref="RA8" pin="1" />
+    </net>
+    <net name="DAC_CLR" code="45">
+      <node ref="U1" pin="14" />
+      <node ref="U13" pin="2" />
+      <node ref="RU4" pin="1" />
+    </net>
+    <net name="DAC_CLR_5V" code="46">
+      <node ref="U3" pin="9" />
+      <node ref="U13" pin="3" />
+    </net>
+    <net name="DAC_LDAC" code="47">
+      <node ref="U1" pin="2" />
+      <node ref="U12" pin="12" />
+      <node ref="RU3" pin="1" />
+    </net>
+    <net name="DAC_LDAC_5V" code="48">
+      <node ref="U3" pin="1" />
+      <node ref="U12" pin="11" />
+    </net>
+    <net name="DAC_MOSI" code="49">
+      <node ref="U1" pin="7" />
+      <node ref="U12" pin="5" />
+    </net>
+    <net name="DAC_MOSI_5V" code="50">
+      <node ref="U3" pin="15" />
+      <node ref="U12" pin="6" />
+    </net>
+    <net name="DAC_SCK" code="51">
+      <node ref="U1" pin="3" />
+      <node ref="U12" pin="2" />
+    </net>
+    <net name="DAC_SCK_5V" code="52">
+      <node ref="U3" pin="16" />
+      <node ref="U12" pin="3" />
+    </net>
+    <net name="DAC_SYNC" code="53">
+      <node ref="U1" pin="1" />
+      <node ref="U12" pin="9" />
+      <node ref="RU2" pin="1" />
+    </net>
+    <net name="DAC_SYNC_5V" code="54">
+      <node ref="U3" pin="2" />
+      <node ref="U12" pin="8" />
+    </net>
+    <net name="DRIVE1" code="55">
+      <node ref="U7" pin="2" />
+      <node ref="RO1" pin="2" />
+    </net>
+    <net name="DRIVE2" code="56">
+      <node ref="U7" pin="15" />
+      <node ref="RO2" pin="2" />
+    </net>
+    <net name="DRIVE3" code="57">
+      <node ref="U7" pin="10" />
+      <node ref="RO3" pin="2" />
+    </net>
+    <net name="DRIVE4" code="58">
+      <node ref="U7" pin="7" />
+      <node ref="RO4" pin="2" />
+    </net>
+    <net name="DRIVE5" code="59">
+      <node ref="U8" pin="2" />
+      <node ref="RO5" pin="2" />
+    </net>
+    <net name="DRIVE6" code="60">
+      <node ref="U8" pin="15" />
+      <node ref="RO6" pin="2" />
+    </net>
+    <net name="DRIVE7" code="61">
+      <node ref="U8" pin="10" />
+      <node ref="RO7" pin="2" />
+    </net>
+    <net name="DRIVE8" code="62">
+      <node ref="U8" pin="7" />
+      <node ref="RO8" pin="2" />
+    </net>
+    <net name="ENC1_A" code="63">
+      <node ref="JM" pin="13" />
+      <node ref="JP" pin="13" />
+      <node ref="E1" pin="A" />
+      <node ref="U1" pin="22" />
+      <node ref="RP1" pin="1" />
+    </net>
+    <net name="ENC1_B" code="64">
+      <node ref="JM" pin="14" />
+      <node ref="JP" pin="14" />
+      <node ref="E1" pin="B" />
+      <node ref="U1" pin="23" />
+      <node ref="RP2" pin="1" />
+    </net>
+    <net name="ENC1_CLICK" code="65">
+      <node ref="JM" pin="15" />
+      <node ref="JP" pin="15" />
+      <node ref="E1" pin="S1" />
+      <node ref="U4" pin="17" />
+      <node ref="RK1" pin="1" />
+    </net>
+    <net name="ENC2_A" code="66">
+      <node ref="JM" pin="16" />
+      <node ref="JP" pin="16" />
+      <node ref="E2" pin="A" />
+      <node ref="U1" pin="24" />
+      <node ref="RP3" pin="1" />
+    </net>
+    <net name="ENC2_B" code="67">
+      <node ref="JM" pin="17" />
+      <node ref="JP" pin="17" />
+      <node ref="E2" pin="B" />
+      <node ref="U1" pin="25" />
+      <node ref="RP4" pin="1" />
+    </net>
+    <net name="ENC2_CLICK" code="68">
+      <node ref="JM" pin="18" />
+      <node ref="JP" pin="18" />
+      <node ref="E2" pin="S1" />
+      <node ref="U4" pin="18" />
+      <node ref="RK2" pin="1" />
+    </net>
+    <net name="ENC3_A" code="69">
+      <node ref="JM" pin="19" />
+      <node ref="JP" pin="19" />
+      <node ref="E3" pin="A" />
+      <node ref="U1" pin="26" />
+      <node ref="RP5" pin="1" />
+    </net>
+    <net name="ENC3_B" code="70">
+      <node ref="JM" pin="20" />
+      <node ref="JP" pin="20" />
+      <node ref="E3" pin="B" />
+      <node ref="U1" pin="27" />
+      <node ref="RP6" pin="1" />
+    </net>
+    <net name="ENC3_CLICK" code="71">
+      <node ref="JM" pin="21" />
+      <node ref="JP" pin="21" />
+      <node ref="E3" pin="S1" />
+      <node ref="U4" pin="19" />
+      <node ref="RK3" pin="1" />
+    </net>
+    <net name="ENC4_A" code="72">
+      <node ref="JM" pin="22" />
+      <node ref="JP" pin="22" />
+      <node ref="E4" pin="A" />
+      <node ref="U1" pin="28" />
+      <node ref="RP7" pin="1" />
+    </net>
+    <net name="ENC4_B" code="73">
+      <node ref="JM" pin="23" />
+      <node ref="JP" pin="23" />
+      <node ref="E4" pin="B" />
+      <node ref="U1" pin="29" />
+      <node ref="RP8" pin="1" />
+    </net>
+    <net name="ENC4_CLICK" code="74">
+      <node ref="JM" pin="24" />
+      <node ref="JP" pin="24" />
+      <node ref="E4" pin="S1" />
+      <node ref="U4" pin="20" />
+      <node ref="RK4" pin="1" />
+    </net>
+    <net name="FAULT1" code="75">
+      <node ref="U7" pin="12" />
+    </net>
+    <net name="FAULT2" code="76">
+      <node ref="U8" pin="12" />
+    </net>
+    <net name="GND" code="77">
+      <node ref="JM" pin="32" />
+      <node ref="JM" pin="33" />
+      <node ref="JM" pin="34" />
+      <node ref="JM" pin="35" />
+      <node ref="JM" pin="36" />
+      <node ref="JM" pin="37" />
+      <node ref="JM" pin="38" />
+      <node ref="JM" pin="39" />
+      <node ref="JM" pin="40" />
+      <node ref="JP" pin="32" />
+      <node ref="JP" pin="33" />
+      <node ref="JP" pin="34" />
+      <node ref="JP" pin="35" />
+      <node ref="JP" pin="36" />
+      <node ref="JP" pin="37" />
+      <node ref="JP" pin="38" />
+      <node ref="JP" pin="39" />
+      <node ref="JP" pin="40" />
+      <node ref="E1" pin="C" />
+      <node ref="E1" pin="S2" />
+      <node ref="E1" pin="MP" />
+      <node ref="K1" pin="2" />
+      <node ref="J1" pin="S" />
+      <node ref="J2" pin="S" />
+      <node ref="J3" pin="S" />
+      <node ref="E2" pin="C" />
+      <node ref="E2" pin="S2" />
+      <node ref="E2" pin="MP" />
+      <node ref="K2" pin="2" />
+      <node ref="J4" pin="S" />
+      <node ref="J5" pin="S" />
+      <node ref="J6" pin="S" />
+      <node ref="E3" pin="C" />
+      <node ref="E3" pin="S2" />
+      <node ref="E3" pin="MP" />
+      <node ref="K3" pin="2" />
+      <node ref="J7" pin="S" />
+      <node ref="J8" pin="S" />
+      <node ref="J9" pin="S" />
+      <node ref="E4" pin="C" />
+      <node ref="E4" pin="S2" />
+      <node ref="E4" pin="MP" />
+      <node ref="K4" pin="2" />
+      <node ref="J10" pin="S" />
+      <node ref="J11" pin="S" />
+      <node ref="J12" pin="S" />
+      <node ref="J14" pin="1" />
+      <node ref="U1" pin="20" />
+      <node ref="U1" pin="40" />
+      <node ref="U2" pin="2" />
+      <node ref="U2" pin="8" />
+      <node ref="U2" pin="10" />
+      <node ref="U2" pin="16" />
+      <node ref="U2" pin="17" />
+      <node ref="U2" pin="18" />
+      <node ref="U2" pin="26" />
+      <node ref="U2" pin="30" />
+      <node ref="U2" pin="31" />
+      <node ref="U2" pin="32" />
+      <node ref="U2" pin="33" />
+      <node ref="U2" pin="35" />
+      <node ref="U2" pin="40" />
+      <node ref="U2" pin="41" />
+      <node ref="U2" pin="43" />
+      <node ref="U2" pin="46" />
+      <node ref="U2" pin="47" />
+      <node ref="U2" pin="50" />
+      <node ref="U2" pin="52" />
+      <node ref="U2" pin="54" />
+      <node ref="U2" pin="56" />
+      <node ref="U2" pin="58" />
+      <node ref="U2" pin="60" />
+      <node ref="U2" pin="62" />
+      <node ref="U2" pin="64" />
+      <node ref="U3" pin="14" />
+      <node ref="U4" pin="6" />
+      <node ref="U4" pin="11" />
+      <node ref="U4" pin="12" />
+      <node ref="U4" pin="13" />
+      <node ref="U5" pin="7" />
+      <node ref="U6" pin="7" />
+      <node ref="U7" pin="5" />
+      <node ref="U8" pin="5" />
+      <node ref="RB1" pin="2" />
+      <node ref="RE1" pin="2" />
+      <node ref="RQ1" pin="2" />
+      <node ref="RB2" pin="2" />
+      <node ref="RE2" pin="2" />
+      <node ref="RQ2" pin="2" />
+      <node ref="RB3" pin="2" />
+      <node ref="RE3" pin="2" />
+      <node ref="RQ3" pin="2" />
+      <node ref="RB4" pin="2" />
+      <node ref="RE4" pin="2" />
+      <node ref="RQ4" pin="2" />
+      <node ref="RB5" pin="2" />
+      <node ref="RE5" pin="2" />
+      <node ref="RQ5" pin="2" />
+      <node ref="RB6" pin="2" />
+      <node ref="RE6" pin="2" />
+      <node ref="RQ6" pin="2" />
+      <node ref="RB7" pin="2" />
+      <node ref="RE7" pin="2" />
+      <node ref="RQ7" pin="2" />
+      <node ref="RB8" pin="2" />
+      <node ref="RE8" pin="2" />
+      <node ref="RQ8" pin="2" />
+      <node ref="CP0P" pin="2" />
+      <node ref="CP0N" pin="2" />
+      <node ref="CP1P" pin="2" />
+      <node ref="CP1N" pin="2" />
+      <node ref="U11" pin="5" />
+      <node ref="U11" pin="10" />
+      <node ref="U11" pin="12" />
+      <node ref="CP2P" pin="2" />
+      <node ref="CP2N" pin="2" />
+      <node ref="U12" pin="1" />
+      <node ref="U12" pin="4" />
+      <node ref="U12" pin="7" />
+      <node ref="U12" pin="10" />
+      <node ref="U12" pin="13" />
+      <node ref="CBUF0" pin="2" />
+      <node ref="U13" pin="1" />
+      <node ref="U13" pin="4" />
+      <node ref="U13" pin="7" />
+      <node ref="U13" pin="10" />
+      <node ref="U13" pin="13" />
+      <node ref="U13" pin="5" />
+      <node ref="U13" pin="9" />
+      <node ref="U13" pin="12" />
+      <node ref="CBUF1" pin="2" />
+      <node ref="RREF2" pin="2" />
+      <node ref="CI1" pin="2" />
+      <node ref="CI2" pin="2" />
+      <node ref="CI3" pin="2" />
+      <node ref="CI4" pin="2" />
+      <node ref="CI5" pin="2" />
+      <node ref="CI6" pin="2" />
+      <node ref="CI7" pin="2" />
+      <node ref="CI8" pin="2" />
+      <node ref="RPERMIT" pin="2" />
+      <node ref="JPOWER" pin="3" />
+      <node ref="JPOWER" pin="4" />
+      <node ref="JPOWER" pin="5" />
+      <node ref="JPOWER" pin="6" />
+      <node ref="JPOWER" pin="7" />
+      <node ref="JPOWER" pin="8" />
+      <node ref="UREG" pin="2" />
+      <node ref="C5D" pin="2" />
+      <node ref="C5A" pin="2" />
+      <node ref="CVDRV" pin="2" />
+      <node ref="CREG1" pin="2" />
+      <node ref="CREG2" pin="2" />
+      <node ref="CREFADC" pin="2" />
+      <node ref="CREFCAP" pin="2" />
+      <node ref="CREFDAC" pin="2" />
+      <node ref="CADC0" pin="2" />
+      <node ref="CADC1" pin="2" />
+      <node ref="CADC2" pin="2" />
+      <node ref="CADC3" pin="2" />
+      <node ref="CD1" pin="2" />
+      <node ref="CD2" pin="2" />
+      <node ref="CD3" pin="2" />
+      <node ref="CD4" pin="2" />
+      <node ref="CD5" pin="2" />
+      <node ref="CD6" pin="2" />
+      <node ref="CD7" pin="2" />
+      <node ref="CD8" pin="2" />
+      <node ref="CD9" pin="2" />
+      <node ref="TP1" pin="1" />
+    </net>
+    <net name="I2C_SCL" code="78">
+      <node ref="JM" pin="29" />
+      <node ref="JP" pin="29" />
+      <node ref="J14" pin="3" />
+      <node ref="U1" pin="12" />
+      <node ref="U4" pin="8" />
+      <node ref="RSCL" pin="1" />
+    </net>
+    <net name="I2C_SDA" code="79">
+      <node ref="JM" pin="30" />
+      <node ref="JP" pin="30" />
+      <node ref="J14" pin="4" />
+      <node ref="U1" pin="13" />
+      <node ref="U4" pin="9" />
+      <node ref="RSDA" pin="1" />
+    </net>
+    <net name="IN1" code="80">
+      <node ref="JM" pin="1" />
+      <node ref="JP" pin="1" />
+      <node ref="J1" pin="T" />
+      <node ref="RI1" pin="1" />
+    </net>
+    <net name="IN2" code="81">
+      <node ref="JM" pin="2" />
+      <node ref="JP" pin="2" />
+      <node ref="J4" pin="T" />
+      <node ref="RI2" pin="1" />
+    </net>
+    <net name="IN3" code="82">
+      <node ref="JM" pin="3" />
+      <node ref="JP" pin="3" />
+      <node ref="J7" pin="T" />
+      <node ref="RI3" pin="1" />
+    </net>
+    <net name="IN4" code="83">
+      <node ref="JM" pin="4" />
+      <node ref="JP" pin="4" />
+      <node ref="J10" pin="T" />
+      <node ref="RI4" pin="1" />
+    </net>
+    <net name="IO_RESET" code="84">
+      <node ref="U1" pin="30" />
+      <node ref="U4" pin="14" />
+      <node ref="RU5" pin="1" />
+    </net>
+    <net name="KEY1" code="85">
+      <node ref="JM" pin="25" />
+      <node ref="JP" pin="25" />
+      <node ref="K1" pin="1" />
+      <node ref="U4" pin="21" />
+      <node ref="RK5" pin="1" />
+    </net>
+    <net name="KEY2" code="86">
+      <node ref="JM" pin="26" />
+      <node ref="JP" pin="26" />
+      <node ref="K2" pin="1" />
+      <node ref="U4" pin="22" />
+      <node ref="RK6" pin="1" />
+    </net>
+    <net name="KEY3" code="87">
+      <node ref="JM" pin="27" />
+      <node ref="JP" pin="27" />
+      <node ref="K3" pin="1" />
+      <node ref="U4" pin="23" />
+      <node ref="RK7" pin="1" />
+    </net>
+    <net name="KEY4" code="88">
+      <node ref="JM" pin="28" />
+      <node ref="JP" pin="28" />
+      <node ref="K4" pin="1" />
+      <node ref="U4" pin="24" />
+      <node ref="RK8" pin="1" />
+    </net>
+    <net name="MINUS1" code="89">
+      <node ref="RC1" pin="2" />
+      <node ref="RD1" pin="2" />
+      <node ref="U9" pin="2" />
+    </net>
+    <net name="MINUS2" code="90">
+      <node ref="RC2" pin="2" />
+      <node ref="RD2" pin="2" />
+      <node ref="U9" pin="6" />
+    </net>
+    <net name="MINUS3" code="91">
+      <node ref="RC3" pin="2" />
+      <node ref="RD3" pin="2" />
+      <node ref="U9" pin="9" />
+    </net>
+    <net name="MINUS4" code="92">
+      <node ref="RC4" pin="2" />
+      <node ref="RD4" pin="2" />
+      <node ref="U9" pin="13" />
+    </net>
+    <net name="MINUS5" code="93">
+      <node ref="RC5" pin="2" />
+      <node ref="RD5" pin="2" />
+      <node ref="U10" pin="2" />
+    </net>
+    <net name="MINUS6" code="94">
+      <node ref="RC6" pin="2" />
+      <node ref="RD6" pin="2" />
+      <node ref="U10" pin="6" />
+    </net>
+    <net name="MINUS7" code="95">
+      <node ref="RC7" pin="2" />
+      <node ref="RD7" pin="2" />
+      <node ref="U10" pin="9" />
+    </net>
+    <net name="MINUS8" code="96">
+      <node ref="RC8" pin="2" />
+      <node ref="RD8" pin="2" />
+      <node ref="U10" pin="13" />
+    </net>
+    <net name="OUT1" code="97">
+      <node ref="JM" pin="9" />
+      <node ref="JP" pin="9" />
+      <node ref="J3" pin="T" />
+      <node ref="U7" pin="3" />
+    </net>
+    <net name="OUT2" code="98">
+      <node ref="JM" pin="10" />
+      <node ref="JP" pin="10" />
+      <node ref="J6" pin="T" />
+      <node ref="U7" pin="14" />
+    </net>
+    <net name="OUT3" code="99">
+      <node ref="JM" pin="11" />
+      <node ref="JP" pin="11" />
+      <node ref="J9" pin="T" />
+      <node ref="U7" pin="11" />
+    </net>
+    <net name="OUT4" code="100">
+      <node ref="JM" pin="12" />
+      <node ref="JP" pin="12" />
+      <node ref="J12" pin="T" />
+      <node ref="U7" pin="6" />
+    </net>
+    <net name="OUTPUT_PERMIT" code="101">
+      <node ref="U1" pin="15" />
+      <node ref="U5" pin="2" />
+      <node ref="U5" pin="5" />
+      <node ref="U5" pin="10" />
+      <node ref="U5" pin="13" />
+      <node ref="U6" pin="2" />
+      <node ref="U6" pin="5" />
+      <node ref="U6" pin="10" />
+      <node ref="U6" pin="13" />
+      <node ref="RPERMIT" pin="1" />
+    </net>
+    <net name="PLUS1" code="102">
+      <node ref="RA1" pin="2" />
+      <node ref="RB1" pin="1" />
+      <node ref="U9" pin="3" />
+    </net>
+    <net name="PLUS2" code="103">
+      <node ref="RA2" pin="2" />
+      <node ref="RB2" pin="1" />
+      <node ref="U9" pin="5" />
+    </net>
+    <net name="PLUS3" code="104">
+      <node ref="RA3" pin="2" />
+      <node ref="RB3" pin="1" />
+      <node ref="U9" pin="10" />
+    </net>
+    <net name="PLUS4" code="105">
+      <node ref="RA4" pin="2" />
+      <node ref="RB4" pin="1" />
+      <node ref="U9" pin="12" />
+    </net>
+    <net name="PLUS5" code="106">
+      <node ref="RA5" pin="2" />
+      <node ref="RB5" pin="1" />
+      <node ref="U10" pin="3" />
+    </net>
+    <net name="PLUS6" code="107">
+      <node ref="RA6" pin="2" />
+      <node ref="RB6" pin="1" />
+      <node ref="U10" pin="5" />
+    </net>
+    <net name="PLUS7" code="108">
+      <node ref="RA7" pin="2" />
+      <node ref="RB7" pin="1" />
+      <node ref="U10" pin="10" />
+    </net>
+    <net name="PLUS8" code="109">
+      <node ref="RA8" pin="2" />
+      <node ref="RB8" pin="1" />
+      <node ref="U10" pin="12" />
+    </net>
+    <net name="REF2V5" code="110">
+      <node ref="U3" pin="8" />
+      <node ref="RREF1" pin="1" />
+      <node ref="CREFDAC" pin="1" />
+    </net>
+    <net name="REF_BUF" code="111">
+      <node ref="RC1" pin="1" />
+      <node ref="RC2" pin="1" />
+      <node ref="RC3" pin="1" />
+      <node ref="RC4" pin="1" />
+      <node ref="RC5" pin="1" />
+      <node ref="RC6" pin="1" />
+      <node ref="RC7" pin="1" />
+      <node ref="RC8" pin="1" />
+      <node ref="U11" pin="2" />
+      <node ref="U11" pin="1" />
+      <node ref="TP6" pin="1" />
+    </net>
+    <net name="REF_HALF" code="112">
+      <node ref="U11" pin="3" />
+      <node ref="RREF1" pin="2" />
+      <node ref="RREF2" pin="1" />
+    </net>
+    <net name="REGCAP1" code="113">
+      <node ref="U2" pin="36" />
+      <node ref="CREG1" pin="1" />
+    </net>
+    <net name="REGCAP2" code="114">
+      <node ref="U2" pin="39" />
+      <node ref="CREG2" pin="1" />
+    </net>
+    <net name="REQ1" code="115">
+      <node ref="U4" pin="25" />
+      <node ref="U5" pin="1" />
+      <node ref="RQ1" pin="1" />
+    </net>
+    <net name="REQ2" code="116">
+      <node ref="U4" pin="26" />
+      <node ref="U5" pin="4" />
+      <node ref="RQ2" pin="1" />
+    </net>
+    <net name="REQ3" code="117">
+      <node ref="U4" pin="27" />
+      <node ref="U5" pin="9" />
+      <node ref="RQ3" pin="1" />
+    </net>
+    <net name="REQ4" code="118">
+      <node ref="U4" pin="28" />
+      <node ref="U5" pin="12" />
+      <node ref="RQ4" pin="1" />
+    </net>
+    <net name="REQ5" code="119">
+      <node ref="U4" pin="1" />
+      <node ref="U6" pin="1" />
+      <node ref="RQ5" pin="1" />
+    </net>
+    <net name="REQ6" code="120">
+      <node ref="U4" pin="2" />
+      <node ref="U6" pin="4" />
+      <node ref="RQ6" pin="1" />
+    </net>
+    <net name="REQ7" code="121">
+      <node ref="U4" pin="3" />
+      <node ref="U6" pin="9" />
+      <node ref="RQ7" pin="1" />
+    </net>
+    <net name="REQ8" code="122">
+      <node ref="U4" pin="4" />
+      <node ref="U6" pin="12" />
+      <node ref="RQ8" pin="1" />
+    </net>
+    <net name="SW_ON1" code="123">
+      <node ref="U5" pin="3" />
+      <node ref="U7" pin="1" />
+      <node ref="RE1" pin="1" />
+    </net>
+    <net name="SW_ON2" code="124">
+      <node ref="U5" pin="6" />
+      <node ref="U7" pin="16" />
+      <node ref="RE2" pin="1" />
+    </net>
+    <net name="SW_ON3" code="125">
+      <node ref="U5" pin="8" />
+      <node ref="U7" pin="9" />
+      <node ref="RE3" pin="1" />
+    </net>
+    <net name="SW_ON4" code="126">
+      <node ref="U5" pin="11" />
+      <node ref="U7" pin="8" />
+      <node ref="RE4" pin="1" />
+    </net>
+    <net name="SW_ON5" code="127">
+      <node ref="U6" pin="3" />
+      <node ref="U8" pin="1" />
+      <node ref="RE5" pin="1" />
+    </net>
+    <net name="SW_ON6" code="128">
+      <node ref="U6" pin="6" />
+      <node ref="U8" pin="16" />
+      <node ref="RE6" pin="1" />
+    </net>
+    <net name="SW_ON7" code="129">
+      <node ref="U6" pin="8" />
+      <node ref="U8" pin="9" />
+      <node ref="RE7" pin="1" />
+    </net>
+    <net name="SW_ON8" code="130">
+      <node ref="U6" pin="11" />
+      <node ref="U8" pin="8" />
+      <node ref="RE8" pin="1" />
+    </net>
+    <net name="UNUSED_FB14" code="131">
+      <node ref="U11" pin="13" />
+      <node ref="U11" pin="14" />
+    </net>
+    <net name="UNUSED_FB7" code="132">
+      <node ref="U11" pin="6" />
+      <node ref="U11" pin="7" />
+    </net>
+    <net name="UNUSED_FB8" code="133">
+      <node ref="U11" pin="9" />
+      <node ref="U11" pin="8" />
+    </net>
+  </nets>
+</export>

@@ -1,3 +1,1 @@
-(fp_lib_table
-  (lib (name "ADLFO")(type "KiCad")(uri "${KIPRJMOD}/ADLFO.pretty")(options "")(descr "Local ADLFO footprints"))
-)
+(fp_lib_table (lib (name "ADOLFO")(type "KiCad")(uri "${KIPRJMOD}/ADOLFO.pretty")(options "")(descr "Local candidate footprints")))

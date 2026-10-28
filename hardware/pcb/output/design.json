@@ -1,796 +1,384 @@
 {
+  "revision": "C",
+  "status": "CONCEPT_UNROUTED_NOT_FOR_FABRICATION",
   "panel": {
     "width": 101.2,
     "height": 128.5,
-    "thickness": 2.0,
-    "hp": 20
+    "hp": 20,
+    "thickness": 2
   },
   "pcb": {
     "x": 2.5,
-    "y": 9.0,
+    "y": 9,
     "width": 96.2,
     "height": 110.5,
     "thickness": 1.6
   },
-  "oled": {
-    "x": 24,
-    "y": 22.5,
-    "width": 27,
-    "height": 15,
-    "body_width": 27.5,
-    "body_height": 27.8,
-    "header_y": 11.0
-  },
-  "mounts": [
-    [
-      6.5,
-      12
-    ],
-    [
-      94.7,
-      12
-    ],
-    [
-      6.5,
-      116
-    ],
-    [
-      94.7,
-      116
-    ]
-  ],
-  "holes": [
+  "ports": [
     {
-      "ref": "ENCODER1",
-      "x": 17.5,
-      "y": 48,
-      "diameter": 7.2,
-      "kind": "encoder"
+      "id": "IN1",
+      "direction": "input",
+      "adc": 0,
+      "modes": [
+        "audio",
+        "cv",
+        "gate",
+        "trigger"
+      ]
     },
     {
-      "ref": "BUTTON1",
-      "x": 17.5,
-      "y": 67,
-      "diameter": 4.0,
-      "kind": "button"
+      "id": "IN2",
+      "direction": "input",
+      "adc": 1,
+      "modes": [
+        "audio",
+        "cv",
+        "gate",
+        "trigger"
+      ]
     },
     {
-      "ref": "TRIG1",
-      "x": 17.5,
-      "y": 80,
-      "diameter": 6.2,
-      "kind": "trig"
+      "id": "IN3",
+      "direction": "input",
+      "adc": 2,
+      "modes": [
+        "audio",
+        "cv",
+        "gate",
+        "trigger"
+      ]
     },
     {
-      "ref": "CV1",
-      "x": 17.5,
-      "y": 95,
-      "diameter": 6.2,
-      "kind": "cv"
+      "id": "IN4",
+      "direction": "input",
+      "adc": 3,
+      "modes": [
+        "audio",
+        "cv",
+        "gate",
+        "trigger"
+      ]
     },
     {
-      "ref": "OUT1",
-      "x": 17.5,
-      "y": 110,
-      "diameter": 6.2,
-      "kind": "out"
+      "id": "OUT1",
+      "direction": "output",
+      "dac": 0,
+      "modes": [
+        "audio",
+        "cv",
+        "envelope",
+        "lfo",
+        "gate",
+        "trigger"
+      ]
     },
     {
-      "ref": "ENCODER2",
-      "x": 39.5,
-      "y": 48,
-      "diameter": 7.2,
-      "kind": "encoder"
+      "id": "OUT2",
+      "direction": "output",
+      "dac": 1,
+      "modes": [
+        "audio",
+        "cv",
+        "envelope",
+        "lfo",
+        "gate",
+        "trigger"
+      ]
     },
     {
-      "ref": "BUTTON2",
-      "x": 39.5,
-      "y": 67,
-      "diameter": 4.0,
-      "kind": "button"
+      "id": "OUT3",
+      "direction": "output",
+      "dac": 2,
+      "modes": [
+        "audio",
+        "cv",
+        "envelope",
+        "lfo",
+        "gate",
+        "trigger"
+      ]
     },
     {
-      "ref": "TRIG2",
-      "x": 39.5,
-      "y": 80,
-      "diameter": 6.2,
-      "kind": "trig"
+      "id": "OUT4",
+      "direction": "output",
+      "dac": 3,
+      "modes": [
+        "audio",
+        "cv",
+        "envelope",
+        "lfo",
+        "gate",
+        "trigger"
+      ]
     },
     {
-      "ref": "CV2",
-      "x": 39.5,
-      "y": 95,
-      "diameter": 6.2,
-      "kind": "cv"
+      "id": "CTRL1",
+      "direction": "bidirectional",
+      "adc": 4,
+      "dac": 4,
+      "modes": [
+        "cv_in",
+        "gate_in",
+        "trigger_in",
+        "cv_out",
+        "gate_out",
+        "trigger_out"
+      ]
     },
     {
-      "ref": "OUT2",
-      "x": 39.5,
-      "y": 110,
-      "diameter": 6.2,
-      "kind": "out"
+      "id": "CTRL2",
+      "direction": "bidirectional",
+      "adc": 5,
+      "dac": 5,
+      "modes": [
+        "cv_in",
+        "gate_in",
+        "trigger_in",
+        "cv_out",
+        "gate_out",
+        "trigger_out"
+      ]
     },
     {
-      "ref": "ENCODER3",
-      "x": 61.5,
-      "y": 48,
-      "diameter": 7.2,
-      "kind": "encoder"
+      "id": "CTRL3",
+      "direction": "bidirectional",
+      "adc": 6,
+      "dac": 6,
+      "modes": [
+        "cv_in",
+        "gate_in",
+        "trigger_in",
+        "cv_out",
+        "gate_out",
+        "trigger_out"
+      ]
     },
     {
-      "ref": "BUTTON3",
-      "x": 61.5,
-      "y": 67,
-      "diameter": 4.0,
-      "kind": "button"
-    },
-    {
-      "ref": "TRIG3",
-      "x": 61.5,
-      "y": 80,
-      "diameter": 6.2,
-      "kind": "trig"
-    },
-    {
-      "ref": "CV3",
-      "x": 61.5,
-      "y": 95,
-      "diameter": 6.2,
-      "kind": "cv"
-    },
-    {
-      "ref": "OUT3",
-      "x": 61.5,
-      "y": 110,
-      "diameter": 6.2,
-      "kind": "out"
-    },
-    {
-      "ref": "ENCODER4",
-      "x": 83.5,
-      "y": 48,
-      "diameter": 7.2,
-      "kind": "encoder"
-    },
-    {
-      "ref": "BUTTON4",
-      "x": 83.5,
-      "y": 67,
-      "diameter": 4.0,
-      "kind": "button"
-    },
-    {
-      "ref": "TRIG4",
-      "x": 83.5,
-      "y": 80,
-      "diameter": 6.2,
-      "kind": "trig"
-    },
-    {
-      "ref": "CV4",
-      "x": 83.5,
-      "y": 95,
-      "diameter": 6.2,
-      "kind": "cv"
-    },
-    {
-      "ref": "OUT4",
-      "x": 83.5,
-      "y": 110,
-      "diameter": 6.2,
-      "kind": "out"
-    },
-    {
-      "ref": "M1",
-      "x": 6.5,
-      "y": 12,
-      "diameter": 3.2,
-      "kind": "mount"
-    },
-    {
-      "ref": "M2",
-      "x": 94.7,
-      "y": 12,
-      "diameter": 3.2,
-      "kind": "mount"
-    },
-    {
-      "ref": "M3",
-      "x": 6.5,
-      "y": 116,
-      "diameter": 3.2,
-      "kind": "mount"
-    },
-    {
-      "ref": "M4",
-      "x": 94.7,
-      "y": 116,
-      "diameter": 3.2,
-      "kind": "mount"
+      "id": "CTRL4",
+      "direction": "bidirectional",
+      "adc": 7,
+      "dac": 7,
+      "modes": [
+        "cv_in",
+        "gate_in",
+        "trigger_in",
+        "cv_out",
+        "gate_out",
+        "trigger_out"
+      ]
     }
   ],
-  "rail_slots": [
-    [
-      7.5,
-      3
-    ],
-    [
-      93.86,
-      3
-    ],
-    [
-      7.5,
-      125.5
-    ],
-    [
-      93.86,
-      125.5
-    ]
-  ],
+  "pins": {
+    "DAC_SYNC": 0,
+    "DAC_LDAC": 1,
+    "DAC_SCK": 2,
+    "ADC_BUSY": 3,
+    "ADC_CONVST": 4,
+    "ADC_RESET": 5,
+    "DAC_MOSI": 6,
+    "ADC_CS": 7,
+    "ADC_SCK": 8,
+    "ADC_MISO": 9,
+    "ADC_MOSI": 10,
+    "I2C_SCL": 11,
+    "I2C_SDA": 12,
+    "DAC_CLR": 13,
+    "OUTPUT_PERMIT": 14,
+    "ENC1_A": 15,
+    "ENC1_B": 16,
+    "ENC2_A": 17,
+    "ENC2_B": 18,
+    "ENC3_A": 19,
+    "ENC3_B": 20,
+    "ENC4_A": 21,
+    "ENC4_B": 22,
+    "IO_RESET": 23
+  },
+  "rates": {
+    "adc_hz": 96000,
+    "audio_hz": 48000,
+    "control_hz": 1000,
+    "adc_spi_target_hz": 25000000,
+    "dac_spi_target_hz": 25000000,
+    "adc_bits_per_frame": 144,
+    "dac_bits_per_word": 32
+  },
   "parts": [
     {
-      "ref": "U1",
-      "value": "Daisy Seed (socketed)",
-      "footprint": "seed",
-      "x": 70,
-      "y": 24,
+      "ref": "JM",
+      "value": "Panel link 2x20 candidate",
+      "footprint": "header40",
+      "x": 50.6,
+      "y": 87,
       "pins": {
-        "1": "D0",
-        "2": "D1",
-        "3": "D2",
-        "4": "D3",
-        "5": "D4",
-        "6": "D5",
-        "7": "D6",
-        "8": "D7",
-        "9": "D8",
-        "10": "D9",
-        "11": "D10",
-        "12": "D11",
-        "13": "D12",
-        "14": "D13",
-        "15": "D14",
-        "22": "D15",
-        "23": "D16",
-        "24": "D17",
-        "25": "D18",
-        "26": "D19",
-        "27": "D20",
-        "28": "D21",
-        "29": null,
-        "30": null,
-        "31": "D24",
-        "32": "D25",
-        "33": "D26",
-        "34": "D27",
-        "35": null,
-        "36": null,
-        "37": null,
-        "16": null,
-        "17": null,
-        "18": null,
-        "19": null,
-        "20": "GND",
-        "21": null,
-        "38": "+3V3",
-        "39": "+5V_SEED",
+        "1": "IN1",
+        "2": "IN2",
+        "3": "IN3",
+        "4": "IN4",
+        "5": "CTRL1",
+        "6": "CTRL2",
+        "7": "CTRL3",
+        "8": "CTRL4",
+        "9": "OUT1",
+        "10": "OUT2",
+        "11": "OUT3",
+        "12": "OUT4",
+        "13": "ENC1_A",
+        "14": "ENC1_B",
+        "15": "ENC1_CLICK",
+        "16": "ENC2_A",
+        "17": "ENC2_B",
+        "18": "ENC2_CLICK",
+        "19": "ENC3_A",
+        "20": "ENC3_B",
+        "21": "ENC3_CLICK",
+        "22": "ENC4_A",
+        "23": "ENC4_B",
+        "24": "ENC4_CLICK",
+        "25": "KEY1",
+        "26": "KEY2",
+        "27": "KEY3",
+        "28": "KEY4",
+        "29": "I2C_SCL",
+        "30": "I2C_SDA",
+        "31": "+3V3",
+        "32": "GND",
+        "33": "GND",
+        "34": "GND",
+        "35": "GND",
+        "36": "GND",
+        "37": "GND",
+        "38": "GND",
+        "39": "GND",
         "40": "GND"
       },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "2 x 20 sockets, 2.54 mm pitch; row spacing 15.24 mm; USB toward right in panel view."
-    },
-    {
-      "ref": "U2",
-      "value": "Adafruit MCP4728 STEMMA QT breakout",
-      "footprint": "mcp4728_breakout",
-      "x": 29,
-      "y": 24,
-      "pins": {
-        "1": "+3V3",
-        "2": "GND",
-        "3": "D11",
-        "4": "D12",
-        "5": "GND",
-        "6": null,
-        "7": "GND",
-        "8": "DAC1",
-        "9": "DAC2",
-        "10": "DAC3",
-        "11": "DAC4",
-        "12": "+3V3"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "Two 1x6 female sockets, rows 12.70 mm apart; module 25.4 x 17.78 mm. JP1: VCC/GND/SCL/SDA/LDAC/RDY. Verify actual board revision; no second DAC IC on carrier."
-    },
-    {
-      "ref": "U3",
-      "value": "MCP6004-I/SL",
-      "footprint": "soic14",
-      "x": 28.5,
-      "y": 60,
-      "pins": {
-        "4": "+3V3",
-        "11": "GND",
-        "3": "CV_CLAMP1",
-        "2": "CV_BUF1",
-        "1": "CV_BUF1",
-        "5": "CV_CLAMP2",
-        "6": "CV_BUF2",
-        "7": "CV_BUF2",
-        "10": "CV_CLAMP3",
-        "9": "CV_BUF3",
-        "8": "CV_BUF3",
-        "12": "CV_CLAMP4",
-        "13": "CV_BUF4",
-        "14": "CV_BUF4"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "U4",
-      "value": "TL074CDR",
-      "footprint": "soic14",
-      "x": 50.5,
-      "y": 60,
-      "pins": {
-        "4": "+12VA",
-        "11": "-12VA",
-        "3": "OUT_PLUS1",
-        "2": "OUT_FB1",
-        "1": "OUT_AMP1",
-        "5": "OUT_PLUS2",
-        "6": "OUT_FB2",
-        "7": "OUT_AMP2",
-        "10": "OUT_PLUS3",
-        "9": "OUT_FB3",
-        "8": "OUT_AMP3",
-        "12": "OUT_PLUS4",
-        "13": "OUT_FB4",
-        "14": "OUT_AMP4"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "Dual supply; nominal non-inverting gain 2.5. Feedback before output resistor."
-    },
-    {
-      "ref": "U5",
-      "value": "R-78E5.0-0.5",
-      "footprint": "recom",
-      "x": 51,
-      "y": 40.5,
-      "pins": {
-        "1": "+12VA",
-        "2": "GND",
-        "3": "+5V_REG"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "Candidate 500 mA converter, not a confirmed budget. Size from Daisy + OLED + DAC + analog load, startup and thermal measurements; no case +5 V required."
-    },
-    {
-      "ref": "J13",
-      "value": "EURORACK 2x5 keyed",
-      "footprint": "idc10",
-      "x": 10.5,
-      "y": 25,
-      "pins": {
-        "1": "-12V_IN",
-        "2": "-12V_IN",
-        "3": "GND",
-        "4": "GND",
-        "5": "GND",
-        "6": "GND",
-        "7": "GND",
-        "8": "GND",
-        "9": "+12V_IN",
-        "10": "+12V_IN"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "Red stripe = pins 1/2 = -12 V. Key orientation must match cable."
-    },
-    {
-      "ref": "J14",
-      "value": "OLED SSD1306 128x64",
-      "footprint": "oled",
-      "x": 24,
-      "y": 11.0,
-      "pins": {
-        "1": "GND",
-        "2": "+3V3",
-        "3": "D11",
-        "4": "D12"
-      },
+      "board": "main",
       "side": "F",
-      "group": "SYSTEM",
-      "note": "Assumed module GND/VCC/SCL/SDA, 0.96 inch; measure actual glass, PCB and connector before release."
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "F1",
-      "value": "PTC 0.5A hold candidate",
-      "footprint": "ptc1812",
-      "x": 8,
-      "y": 58,
+      "ref": "JP",
+      "value": "Panel link 2x20 candidate",
+      "footprint": "header40",
+      "x": 50.6,
+      "y": 87,
       "pins": {
-        "1": "+12V_IN",
-        "2": "+12V_FUSED"
+        "1": "IN1",
+        "2": "IN2",
+        "3": "IN3",
+        "4": "IN4",
+        "5": "CTRL1",
+        "6": "CTRL2",
+        "7": "CTRL3",
+        "8": "CTRL4",
+        "9": "OUT1",
+        "10": "OUT2",
+        "11": "OUT3",
+        "12": "OUT4",
+        "13": "ENC1_A",
+        "14": "ENC1_B",
+        "15": "ENC1_CLICK",
+        "16": "ENC2_A",
+        "17": "ENC2_B",
+        "18": "ENC2_CLICK",
+        "19": "ENC3_A",
+        "20": "ENC3_B",
+        "21": "ENC3_CLICK",
+        "22": "ENC4_A",
+        "23": "ENC4_B",
+        "24": "ENC4_CLICK",
+        "25": "KEY1",
+        "26": "KEY2",
+        "27": "KEY3",
+        "28": "KEY4",
+        "29": "I2C_SCL",
+        "30": "I2C_SDA",
+        "31": "+3V3",
+        "32": "GND",
+        "33": "GND",
+        "34": "GND",
+        "35": "GND",
+        "36": "GND",
+        "37": "GND",
+        "38": "GND",
+        "39": "GND",
+        "40": "GND"
       },
+      "board": "panel",
       "side": "B",
-      "group": "SYSTEM",
-      "note": "Candidate only: select rated voltage >=24 V and hold/trip current from measured startup and hot-case load. Package must match selected PTC."
+      "note": "Stack height and connector polarity require physical review.",
+      "group": "SYSTEM"
     },
     {
-      "ref": "D1",
-      "value": "SS14",
-      "footprint": "sma",
-      "x": 12,
-      "y": 38.5,
-      "pins": {
-        "1": "+12VA",
-        "2": "+12V_FUSED"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "Pad 1 cathode: protected positive rail."
-    },
-    {
-      "ref": "D2",
-      "value": "SS14",
-      "footprint": "sma",
-      "x": 30,
-      "y": 36,
-      "pins": {
-        "1": "-12V_IN",
-        "2": "-12VA"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "Pad 1 cathode: raw negative rail."
-    },
-    {
-      "ref": "D3",
-      "value": "SS14",
-      "footprint": "sma",
-      "x": 73,
-      "y": 38,
-      "pins": {
-        "1": "+5V_SEED",
-        "2": "+5V_REG"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "Blocks reverse feed from USB into 5 V converter; check specific Seed revision."
-    },
-    {
-      "ref": "C1",
-      "value": "10uF 50V X7R",
-      "footprint": "c0805",
-      "x": 12,
-      "y": 11.5,
-      "pins": {
-        "1": "+12VA",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "Allow for MLCC DC bias; 1206 may be needed after part selection."
-    },
-    {
-      "ref": "C2",
-      "value": "10uF 50V X7R",
-      "footprint": "c0805",
-      "x": 32,
-      "y": 11.5,
-      "pins": {
-        "1": "GND",
-        "2": "-12VA"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "C3",
-      "value": "10uF 10V X7R",
-      "footprint": "c0805",
-      "x": 61,
-      "y": 34.5,
-      "pins": {
-        "1": "+5V_REG",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "C4",
-      "value": "10uF 10V X7R",
-      "footprint": "c0805",
-      "x": 73,
-      "y": 34.5,
-      "pins": {
-        "1": "+5V_SEED",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "C5",
-      "value": "100nF",
-      "footprint": "c0805",
-      "x": 37,
-      "y": 36,
-      "pins": {
-        "1": "+3V3",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "C6",
-      "value": "10uF 10V X7R",
-      "footprint": "c0805",
-      "x": 37,
-      "y": 39,
-      "pins": {
-        "1": "+3V3",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "C7",
-      "value": "100nF",
-      "footprint": "c0805",
-      "x": 23,
-      "y": 60,
-      "pins": {
-        "1": "+3V3",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "C8",
-      "value": "100nF 50V",
-      "footprint": "c0805",
-      "x": 45,
-      "y": 60,
-      "pins": {
-        "1": "+12VA",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "C9",
-      "value": "100nF 50V",
-      "footprint": "c0805",
-      "x": 50.5,
-      "y": 52.5,
-      "pins": {
-        "1": "-12VA",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "C10",
-      "value": "47uF 10V low ESR candidate",
-      "footprint": "radial_cap",
-      "x": 94,
-      "y": 37,
-      "pins": {
-        "1": "+5V_SEED",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": "Local 5 V bulk capacitor; check regulator stability, startup and actual case size before fitting."
-    },
-    {
-      "ref": "C11",
-      "value": "100nF",
-      "footprint": "c0805",
-      "x": 79,
-      "y": 34.5,
-      "pins": {
-        "1": "+5V_SEED",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "C12",
-      "value": "100nF",
-      "footprint": "c0805",
-      "x": 91,
-      "y": 42,
-      "pins": {
-        "1": "+3V3",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "R1",
-      "value": "4.7k DNP",
-      "footprint": "r0805",
-      "x": 39,
-      "y": 11.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D11"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "R2",
-      "value": "4.7k DNP",
-      "footprint": "r0805",
-      "x": 45,
-      "y": 11.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D12"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "TP1",
-      "value": "GND",
-      "footprint": "testpoint",
-      "x": 14,
-      "y": 118,
-      "pins": {
-        "1": "GND"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "TP2",
-      "value": "+12VA",
-      "footprint": "testpoint",
-      "x": 32,
-      "y": 118,
-      "pins": {
-        "1": "+12VA"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "TP3",
-      "value": "-12VA",
-      "footprint": "testpoint",
-      "x": 50,
-      "y": 118,
-      "pins": {
-        "1": "-12VA"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "TP4",
-      "value": "+5V_SEED",
-      "footprint": "testpoint",
-      "x": 68,
-      "y": 118,
-      "pins": {
-        "1": "+5V_SEED"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "TP5",
-      "value": "+3V3",
-      "footprint": "testpoint",
-      "x": 90,
-      "y": 118,
-      "pins": {
-        "1": "+3V3"
-      },
-      "side": "B",
-      "group": "SYSTEM",
-      "note": ""
-    },
-    {
-      "ref": "ENC1",
-      "value": "RISE",
+      "ref": "E1",
+      "value": "EC11 click candidate",
       "footprint": "encoder",
       "x": 17.5,
       "y": 48,
       "pins": {
-        "A": "D0",
-        "B": "D1",
+        "A": "ENC1_A",
+        "B": "ENC1_B",
         "C": "GND",
-        "S1": "D2",
+        "S1": "ENC1_CLICK",
         "S2": "GND",
         "MP": "GND"
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH1",
-      "note": "ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "SW1",
-      "value": "CH 1",
+      "ref": "K1",
+      "value": "6x6 tact height TBD",
       "footprint": "button",
       "x": 17.5,
       "y": 67,
       "pins": {
-        "1": "D25",
+        "1": "KEY1",
         "2": "GND"
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH1",
-      "note": "6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
+      "note": "",
+      "group": "SYSTEM"
     },
     {
       "ref": "J1",
-      "value": "TRIG1",
+      "value": "IN1 PJ398SM",
       "footprint": "jack",
       "x": 17.5,
       "y": 80,
       "pins": {
         "S": "GND",
-        "T": "TRIG1",
-        "TN": "GND"
+        "T": "IN1",
+        "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH1",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
       "ref": "J2",
-      "value": "CV1",
+      "value": "CTRL1 PJ398SM",
       "footprint": "jack",
       "x": 17.5,
       "y": 95,
       "pins": {
         "S": "GND",
-        "T": "CV1",
-        "TN": "GND"
+        "T": "CTRL1",
+        "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH1",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
       "ref": "J3",
-      "value": "OUT1",
+      "value": "OUT1 PJ398SM",
       "footprint": "jack",
       "x": 17.5,
       "y": 110,
@@ -799,370 +387,80 @@
         "T": "OUT1",
         "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH1",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
-      "ref": "R101",
-      "value": "100k",
-      "footprint": "r0805",
-      "x": 10.5,
-      "y": 77,
-      "pins": {
-        "1": "TRIG1",
-        "2": "TRIG_BASE1"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R102",
-      "value": "1M",
-      "footprint": "r0805",
-      "x": 10.5,
-      "y": 81,
-      "pins": {
-        "1": "TRIG_BASE1",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R103",
-      "value": "47k",
-      "footprint": "r0805",
-      "x": 10.5,
-      "y": 85,
-      "pins": {
-        "1": "+3V3",
-        "2": "D6"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "Q1",
-      "value": "MMBT3904",
-      "footprint": "sot23",
-      "x": 23.5,
-      "y": 80,
-      "pins": {
-        "1": "TRIG_BASE1",
-        "2": "GND",
-        "3": "D6"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "D101",
-      "value": "1N4148W",
-      "footprint": "sod123",
-      "x": 23.5,
-      "y": 85,
-      "pins": {
-        "1": "TRIG_BASE1",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R104",
-      "value": "100k 0.1%",
-      "footprint": "r0805",
-      "x": 10.5,
-      "y": 92,
-      "pins": {
-        "1": "CV1",
-        "2": "CV_DIV1"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R105",
-      "value": "33k 0.1%",
-      "footprint": "r0805",
-      "x": 10.5,
-      "y": 96,
-      "pins": {
-        "1": "CV_DIV1",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R106",
-      "value": "10k",
-      "footprint": "r0805",
-      "x": 10.5,
-      "y": 100,
-      "pins": {
-        "1": "CV_DIV1",
-        "2": "CV_CLAMP1"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "C101",
-      "value": "10nF",
-      "footprint": "c0805",
-      "x": 23.5,
-      "y": 90,
-      "pins": {
-        "1": "CV_DIV1",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "D102",
-      "value": "BAT54S",
-      "footprint": "sot23",
-      "x": 23.5,
-      "y": 94,
-      "pins": {
-        "1": "GND",
-        "2": "+3V3",
-        "3": "CV_CLAMP1"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R107",
-      "value": "1k",
-      "footprint": "r0805",
-      "x": 23.5,
-      "y": 99,
-      "pins": {
-        "1": "CV_BUF1",
-        "2": "D15"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "C102",
-      "value": "1nF",
-      "footprint": "c0805",
-      "x": 23.5,
-      "y": 103,
-      "pins": {
-        "1": "D15",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R108",
-      "value": "10k",
-      "footprint": "r0805",
-      "x": 17.5,
-      "y": 56,
-      "pins": {
-        "1": "DAC1",
-        "2": "OUT_PLUS1"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R109",
-      "value": "10k 0.1%",
-      "footprint": "r0805",
-      "x": 17.5,
-      "y": 59.5,
-      "pins": {
-        "1": "OUT_FB1",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R110",
-      "value": "15k 0.1%",
-      "footprint": "r0805",
-      "x": 17.5,
-      "y": 63,
-      "pins": {
-        "1": "OUT_AMP1",
-        "2": "OUT_FB1"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "R111",
-      "value": "2.2k 0.5W",
-      "footprint": "r2010",
-      "x": 24.5,
-      "y": 110,
-      "pins": {
-        "1": "OUT_AMP1",
-        "2": "OUT1"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": "Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior."
-    },
-    {
-      "ref": "RP11",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 20.5,
-      "y": 35.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D0"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "RP12",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 20.5,
-      "y": 39,
-      "pins": {
-        "1": "+3V3",
-        "2": "D1"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "RP13",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 20.5,
-      "y": 71.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D2"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "RP14",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 20.5,
-      "y": 74.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D25"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "TP11",
-      "value": "DAC1",
-      "footprint": "testpoint",
-      "x": 10.5,
-      "y": 70,
-      "pins": {
-        "1": "DAC1"
-      },
-      "side": "B",
-      "group": "CH1",
-      "note": ""
-    },
-    {
-      "ref": "ENC2",
-      "value": "FALL",
+      "ref": "E2",
+      "value": "EC11 click candidate",
       "footprint": "encoder",
       "x": 39.5,
       "y": 48,
       "pins": {
-        "A": "D3",
-        "B": "D4",
+        "A": "ENC2_A",
+        "B": "ENC2_B",
         "C": "GND",
-        "S1": "D5",
+        "S1": "ENC2_CLICK",
         "S2": "GND",
         "MP": "GND"
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH2",
-      "note": "ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "SW2",
-      "value": "CH 2",
+      "ref": "K2",
+      "value": "6x6 tact height TBD",
       "footprint": "button",
       "x": 39.5,
       "y": 67,
       "pins": {
-        "1": "D24",
+        "1": "KEY2",
         "2": "GND"
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH2",
-      "note": "6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
+      "note": "",
+      "group": "SYSTEM"
     },
     {
       "ref": "J4",
-      "value": "TRIG2",
+      "value": "IN2 PJ398SM",
       "footprint": "jack",
       "x": 39.5,
       "y": 80,
       "pins": {
         "S": "GND",
-        "T": "TRIG2",
-        "TN": "GND"
+        "T": "IN2",
+        "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH2",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
       "ref": "J5",
-      "value": "CV2",
+      "value": "CTRL2 PJ398SM",
       "footprint": "jack",
       "x": 39.5,
       "y": 95,
       "pins": {
         "S": "GND",
-        "T": "CV2",
-        "TN": "GND"
+        "T": "CTRL2",
+        "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH2",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
       "ref": "J6",
-      "value": "OUT2",
+      "value": "OUT2 PJ398SM",
       "footprint": "jack",
       "x": 39.5,
       "y": 110,
@@ -1171,370 +469,80 @@
         "T": "OUT2",
         "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH2",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
-      "ref": "R201",
-      "value": "100k",
-      "footprint": "r0805",
-      "x": 32.5,
-      "y": 77,
-      "pins": {
-        "1": "TRIG2",
-        "2": "TRIG_BASE2"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R202",
-      "value": "1M",
-      "footprint": "r0805",
-      "x": 32.5,
-      "y": 81,
-      "pins": {
-        "1": "TRIG_BASE2",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R203",
-      "value": "47k",
-      "footprint": "r0805",
-      "x": 32.5,
-      "y": 85,
-      "pins": {
-        "1": "+3V3",
-        "2": "D19"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "Q2",
-      "value": "MMBT3904",
-      "footprint": "sot23",
-      "x": 45.5,
-      "y": 80,
-      "pins": {
-        "1": "TRIG_BASE2",
-        "2": "GND",
-        "3": "D19"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "D201",
-      "value": "1N4148W",
-      "footprint": "sod123",
-      "x": 45.5,
-      "y": 85,
-      "pins": {
-        "1": "TRIG_BASE2",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R204",
-      "value": "100k 0.1%",
-      "footprint": "r0805",
-      "x": 32.5,
-      "y": 92,
-      "pins": {
-        "1": "CV2",
-        "2": "CV_DIV2"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R205",
-      "value": "33k 0.1%",
-      "footprint": "r0805",
-      "x": 32.5,
-      "y": 96,
-      "pins": {
-        "1": "CV_DIV2",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R206",
-      "value": "10k",
-      "footprint": "r0805",
-      "x": 32.5,
-      "y": 100,
-      "pins": {
-        "1": "CV_DIV2",
-        "2": "CV_CLAMP2"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "C201",
-      "value": "10nF",
-      "footprint": "c0805",
-      "x": 45.5,
-      "y": 90,
-      "pins": {
-        "1": "CV_DIV2",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "D202",
-      "value": "BAT54S",
-      "footprint": "sot23",
-      "x": 45.5,
-      "y": 94,
-      "pins": {
-        "1": "GND",
-        "2": "+3V3",
-        "3": "CV_CLAMP2"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R207",
-      "value": "1k",
-      "footprint": "r0805",
-      "x": 45.5,
-      "y": 99,
-      "pins": {
-        "1": "CV_BUF2",
-        "2": "D16"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "C202",
-      "value": "1nF",
-      "footprint": "c0805",
-      "x": 45.5,
-      "y": 103,
-      "pins": {
-        "1": "D16",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R208",
-      "value": "10k",
-      "footprint": "r0805",
-      "x": 39.5,
-      "y": 56,
-      "pins": {
-        "1": "DAC2",
-        "2": "OUT_PLUS2"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R209",
-      "value": "10k 0.1%",
-      "footprint": "r0805",
-      "x": 39.5,
-      "y": 59.5,
-      "pins": {
-        "1": "OUT_FB2",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R210",
-      "value": "15k 0.1%",
-      "footprint": "r0805",
-      "x": 39.5,
-      "y": 63,
-      "pins": {
-        "1": "OUT_AMP2",
-        "2": "OUT_FB2"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "R211",
-      "value": "2.2k 0.5W",
-      "footprint": "r2010",
-      "x": 46.5,
-      "y": 110,
-      "pins": {
-        "1": "OUT_AMP2",
-        "2": "OUT2"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": "Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior."
-    },
-    {
-      "ref": "RP21",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 42.5,
-      "y": 35.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D3"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "RP22",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 42.5,
-      "y": 39,
-      "pins": {
-        "1": "+3V3",
-        "2": "D4"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "RP23",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 42.5,
-      "y": 71.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D5"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "RP24",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 42.5,
-      "y": 74.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D24"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "TP12",
-      "value": "DAC2",
-      "footprint": "testpoint",
-      "x": 32.5,
-      "y": 70,
-      "pins": {
-        "1": "DAC2"
-      },
-      "side": "B",
-      "group": "CH2",
-      "note": ""
-    },
-    {
-      "ref": "ENC3",
-      "value": "SYMMETRY",
+      "ref": "E3",
+      "value": "EC11 click candidate",
       "footprint": "encoder",
       "x": 61.5,
       "y": 48,
       "pins": {
-        "A": "D7",
-        "B": "D8",
+        "A": "ENC3_A",
+        "B": "ENC3_B",
         "C": "GND",
-        "S1": "D9",
+        "S1": "ENC3_CLICK",
         "S2": "GND",
         "MP": "GND"
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH3",
-      "note": "ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "SW3",
-      "value": "CH 3",
+      "ref": "K3",
+      "value": "6x6 tact height TBD",
       "footprint": "button",
       "x": 61.5,
       "y": 67,
       "pins": {
-        "1": "D26",
+        "1": "KEY3",
         "2": "GND"
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH3",
-      "note": "6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
+      "note": "",
+      "group": "SYSTEM"
     },
     {
       "ref": "J7",
-      "value": "TRIG3",
+      "value": "IN3 PJ398SM",
       "footprint": "jack",
       "x": 61.5,
       "y": 80,
       "pins": {
         "S": "GND",
-        "T": "TRIG3",
-        "TN": "GND"
+        "T": "IN3",
+        "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH3",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
       "ref": "J8",
-      "value": "CV3",
+      "value": "CTRL3 PJ398SM",
       "footprint": "jack",
       "x": 61.5,
       "y": 95,
       "pins": {
         "S": "GND",
-        "T": "CV3",
-        "TN": "GND"
+        "T": "CTRL3",
+        "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH3",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
       "ref": "J9",
-      "value": "OUT3",
+      "value": "OUT3 PJ398SM",
       "footprint": "jack",
       "x": 61.5,
       "y": 110,
@@ -1543,370 +551,80 @@
         "T": "OUT3",
         "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH3",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
-      "ref": "R301",
-      "value": "100k",
-      "footprint": "r0805",
-      "x": 54.5,
-      "y": 77,
-      "pins": {
-        "1": "TRIG3",
-        "2": "TRIG_BASE3"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R302",
-      "value": "1M",
-      "footprint": "r0805",
-      "x": 54.5,
-      "y": 81,
-      "pins": {
-        "1": "TRIG_BASE3",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R303",
-      "value": "47k",
-      "footprint": "r0805",
-      "x": 54.5,
-      "y": 85,
-      "pins": {
-        "1": "+3V3",
-        "2": "D20"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "Q3",
-      "value": "MMBT3904",
-      "footprint": "sot23",
-      "x": 67.5,
-      "y": 80,
-      "pins": {
-        "1": "TRIG_BASE3",
-        "2": "GND",
-        "3": "D20"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "D301",
-      "value": "1N4148W",
-      "footprint": "sod123",
-      "x": 67.5,
-      "y": 85,
-      "pins": {
-        "1": "TRIG_BASE3",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R304",
-      "value": "100k 0.1%",
-      "footprint": "r0805",
-      "x": 54.5,
-      "y": 92,
-      "pins": {
-        "1": "CV3",
-        "2": "CV_DIV3"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R305",
-      "value": "33k 0.1%",
-      "footprint": "r0805",
-      "x": 54.5,
-      "y": 96,
-      "pins": {
-        "1": "CV_DIV3",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R306",
-      "value": "10k",
-      "footprint": "r0805",
-      "x": 54.5,
-      "y": 100,
-      "pins": {
-        "1": "CV_DIV3",
-        "2": "CV_CLAMP3"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "C301",
-      "value": "10nF",
-      "footprint": "c0805",
-      "x": 67.5,
-      "y": 90,
-      "pins": {
-        "1": "CV_DIV3",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "D302",
-      "value": "BAT54S",
-      "footprint": "sot23",
-      "x": 67.5,
-      "y": 94,
-      "pins": {
-        "1": "GND",
-        "2": "+3V3",
-        "3": "CV_CLAMP3"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R307",
-      "value": "1k",
-      "footprint": "r0805",
-      "x": 67.5,
-      "y": 99,
-      "pins": {
-        "1": "CV_BUF3",
-        "2": "D17"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "C302",
-      "value": "1nF",
-      "footprint": "c0805",
-      "x": 67.5,
-      "y": 103,
-      "pins": {
-        "1": "D17",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R308",
-      "value": "10k",
-      "footprint": "r0805",
-      "x": 61.5,
-      "y": 56,
-      "pins": {
-        "1": "DAC3",
-        "2": "OUT_PLUS3"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R309",
-      "value": "10k 0.1%",
-      "footprint": "r0805",
-      "x": 61.5,
-      "y": 59.5,
-      "pins": {
-        "1": "OUT_FB3",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R310",
-      "value": "15k 0.1%",
-      "footprint": "r0805",
-      "x": 61.5,
-      "y": 63,
-      "pins": {
-        "1": "OUT_AMP3",
-        "2": "OUT_FB3"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "R311",
-      "value": "2.2k 0.5W",
-      "footprint": "r2010",
-      "x": 68.5,
-      "y": 110,
-      "pins": {
-        "1": "OUT_AMP3",
-        "2": "OUT3"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": "Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior."
-    },
-    {
-      "ref": "RP31",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 64.5,
-      "y": 35.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D7"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "RP32",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 64.5,
-      "y": 39,
-      "pins": {
-        "1": "+3V3",
-        "2": "D8"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "RP33",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 64.5,
-      "y": 71.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D9"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "RP34",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 64.5,
-      "y": 74.5,
-      "pins": {
-        "1": "+3V3",
-        "2": "D26"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
-    },
-    {
-      "ref": "TP13",
-      "value": "DAC3",
-      "footprint": "testpoint",
-      "x": 54.5,
-      "y": 70,
-      "pins": {
-        "1": "DAC3"
-      },
-      "side": "B",
-      "group": "CH3",
-      "note": ""
-    },
-    {
-      "ref": "ENC4",
-      "value": "LEVEL",
+      "ref": "E4",
+      "value": "EC11 click candidate",
       "footprint": "encoder",
       "x": 83.5,
       "y": 48,
       "pins": {
-        "A": "D10",
-        "B": "D13",
+        "A": "ENC4_A",
+        "B": "ENC4_B",
         "C": "GND",
-        "S1": "D14",
+        "S1": "ENC4_CLICK",
         "S2": "GND",
         "MP": "GND"
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH4",
-      "note": "ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "SW4",
-      "value": "CH 4",
+      "ref": "K4",
+      "value": "6x6 tact height TBD",
       "footprint": "button",
       "x": 83.5,
       "y": 67,
       "pins": {
-        "1": "D27",
+        "1": "KEY4",
         "2": "GND"
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH4",
-      "note": "6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
+      "note": "",
+      "group": "SYSTEM"
     },
     {
       "ref": "J10",
-      "value": "TRIG4",
+      "value": "IN4 PJ398SM",
       "footprint": "jack",
       "x": 83.5,
       "y": 80,
       "pins": {
         "S": "GND",
-        "T": "TRIG4",
-        "TN": "GND"
+        "T": "IN4",
+        "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH4",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
       "ref": "J11",
-      "value": "CV4",
+      "value": "CTRL4 PJ398SM",
       "footprint": "jack",
       "x": 83.5,
       "y": 95,
       "pins": {
         "S": "GND",
-        "T": "CV4",
-        "TN": "GND"
+        "T": "CTRL4",
+        "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH4",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
       "ref": "J12",
-      "value": "OUT4",
+      "value": "OUT4 PJ398SM",
       "footprint": "jack",
       "x": 83.5,
       "y": 110,
@@ -1915,305 +633,2725 @@
         "T": "OUT4",
         "TN": null
       },
+      "board": "panel",
       "side": "F",
-      "group": "CH4",
-      "note": "PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added."
+      "note": "Normals left open: must never ground a CTRL port used as output.",
+      "group": "SYSTEM"
     },
     {
-      "ref": "R401",
-      "value": "100k",
-      "footprint": "r0805",
-      "x": 76.5,
-      "y": 77,
-      "pins": {
-        "1": "TRIG4",
-        "2": "TRIG_BASE4"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
-    },
-    {
-      "ref": "R402",
-      "value": "1M",
-      "footprint": "r0805",
-      "x": 76.5,
-      "y": 81,
-      "pins": {
-        "1": "TRIG_BASE4",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
-    },
-    {
-      "ref": "R403",
-      "value": "47k",
-      "footprint": "r0805",
-      "x": 76.5,
-      "y": 85,
-      "pins": {
-        "1": "+3V3",
-        "2": "D21"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
-    },
-    {
-      "ref": "Q4",
-      "value": "MMBT3904",
-      "footprint": "sot23",
-      "x": 89.5,
-      "y": 80,
-      "pins": {
-        "1": "TRIG_BASE4",
-        "2": "GND",
-        "3": "D21"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
-    },
-    {
-      "ref": "D401",
-      "value": "1N4148W",
-      "footprint": "sod123",
-      "x": 89.5,
-      "y": 85,
-      "pins": {
-        "1": "TRIG_BASE4",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
-    },
-    {
-      "ref": "R404",
-      "value": "100k 0.1%",
-      "footprint": "r0805",
-      "x": 76.5,
-      "y": 92,
-      "pins": {
-        "1": "CV4",
-        "2": "CV_DIV4"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
-    },
-    {
-      "ref": "R405",
-      "value": "33k 0.1%",
-      "footprint": "r0805",
-      "x": 76.5,
-      "y": 96,
-      "pins": {
-        "1": "CV_DIV4",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
-    },
-    {
-      "ref": "R406",
-      "value": "10k",
-      "footprint": "r0805",
-      "x": 76.5,
-      "y": 100,
-      "pins": {
-        "1": "CV_DIV4",
-        "2": "CV_CLAMP4"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
-    },
-    {
-      "ref": "C401",
-      "value": "10nF",
-      "footprint": "c0805",
-      "x": 89.5,
-      "y": 90,
-      "pins": {
-        "1": "CV_DIV4",
-        "2": "GND"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
-    },
-    {
-      "ref": "D402",
-      "value": "BAT54S",
-      "footprint": "sot23",
-      "x": 89.5,
-      "y": 94,
+      "ref": "J14",
+      "value": "SSD1306 breakout raised",
+      "footprint": "oled",
+      "x": 24,
+      "y": 11,
       "pins": {
         "1": "GND",
         "2": "+3V3",
-        "3": "CV_CLAMP4"
+        "3": "I2C_SCL",
+        "4": "I2C_SDA"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
+      "board": "panel",
+      "side": "F",
+      "note": "Assumed GND/VCC/SCL/SDA order; module dimensions unconfirmed.",
+      "group": "SYSTEM"
     },
     {
-      "ref": "R407",
-      "value": "1k",
+      "ref": "U1",
+      "value": "Daisy Seed 3 / Seed2 DFM compatibility review",
+      "footprint": "seed",
+      "x": 70,
+      "y": 24,
+      "pins": {
+        "1": "DAC_SYNC",
+        "2": "DAC_LDAC",
+        "3": "DAC_SCK",
+        "4": "ADC_BUSY",
+        "5": "ADC_CONVST",
+        "6": "ADC_RESET",
+        "7": "DAC_MOSI",
+        "8": "ADC_CS",
+        "9": "ADC_SCK",
+        "10": "ADC_MISO",
+        "11": "ADC_MOSI",
+        "12": "I2C_SCL",
+        "13": "I2C_SDA",
+        "14": "DAC_CLR",
+        "15": "OUTPUT_PERMIT",
+        "16": null,
+        "17": null,
+        "18": null,
+        "19": null,
+        "20": "GND",
+        "21": null,
+        "22": "ENC1_A",
+        "23": "ENC1_B",
+        "24": "ENC2_A",
+        "25": "ENC2_B",
+        "26": "ENC3_A",
+        "27": "ENC3_B",
+        "28": "ENC4_A",
+        "29": "ENC4_B",
+        "30": "IO_RESET",
+        "31": null,
+        "32": null,
+        "33": null,
+        "34": null,
+        "35": null,
+        "36": null,
+        "37": null,
+        "38": "+3V3",
+        "39": "+5D",
+        "40": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "note": "Common 40-pin footprint candidate; onboard audio and 12-bit DAC unused. Check USB-C and DFM mechanical envelope.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U2",
+      "value": "AD7606C-18 candidate",
+      "footprint": "lqfp64",
+      "x": 36,
+      "y": 33,
+      "pins": {
+        "1": "+5A",
+        "2": "GND",
+        "3": "+3V3",
+        "4": "+3V3",
+        "5": "+3V3",
+        "6": "+3V3",
+        "7": "+3V3",
+        "8": "GND",
+        "9": "ADC_CONVST",
+        "10": "GND",
+        "11": "ADC_RESET",
+        "12": "ADC_SCK",
+        "13": "ADC_CS",
+        "14": "ADC_BUSY",
+        "15": null,
+        "16": "GND",
+        "17": "GND",
+        "18": "GND",
+        "19": null,
+        "20": null,
+        "21": null,
+        "22": null,
+        "23": "+3V3",
+        "24": "ADC_MISO",
+        "25": null,
+        "26": "GND",
+        "27": null,
+        "28": null,
+        "29": "ADC_MOSI",
+        "30": "GND",
+        "31": "GND",
+        "32": "GND",
+        "33": "GND",
+        "34": "+3V3",
+        "35": "GND",
+        "36": "REGCAP1",
+        "37": "+5A",
+        "38": "+5A",
+        "39": "REGCAP2",
+        "40": "GND",
+        "41": "GND",
+        "42": "ADC_REF",
+        "43": "GND",
+        "44": "ADC_REFCAP",
+        "45": "ADC_REFCAP",
+        "46": "GND",
+        "47": "GND",
+        "48": "+5A",
+        "49": "ADC_IN1",
+        "50": "GND",
+        "51": "ADC_IN2",
+        "52": "GND",
+        "53": "ADC_IN3",
+        "54": "GND",
+        "55": "ADC_IN4",
+        "56": "GND",
+        "57": "ADC_IN5",
+        "58": "GND",
+        "59": "ADC_IN6",
+        "60": "GND",
+        "61": "ADC_IN7",
+        "62": "GND",
+        "63": "ADC_IN8",
+        "64": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "SOFTWARE mode OS[2:0]=111; select one DOUTA, bipolar ranges, bandwidth per channel. No audio HPF. Register/DMA driver missing.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U3",
+      "value": "DAC8568B (gain 1, midscale reset) candidate",
+      "footprint": "tssop16",
+      "x": 48,
+      "y": 36,
+      "pins": {
+        "1": "DAC_LDAC_5V",
+        "2": "DAC_SYNC_5V",
+        "3": "+5A",
+        "4": "DAC1",
+        "5": "DAC3",
+        "6": "DAC5",
+        "7": "DAC7",
+        "8": "REF2V5",
+        "9": "DAC_CLR_5V",
+        "10": "DAC8",
+        "11": "DAC6",
+        "12": "DAC4",
+        "13": "DAC2",
+        "14": "GND",
+        "15": "DAC_MOSI_5V",
+        "16": "DAC_SCK_5V"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "B grade matters: internal 2.5 V reference, output span 2.5 V, midscale reset; enable reference in software. 16-bit output, not a 24-bit codec.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U4",
+      "value": "MCP23017-E/SO candidate",
+      "footprint": "soic28",
+      "x": 22,
+      "y": 36,
+      "pins": {
+        "1": "REQ5",
+        "2": "REQ6",
+        "3": "REQ7",
+        "4": "REQ8",
+        "5": "+3V3",
+        "6": "GND",
+        "7": null,
+        "8": "I2C_SCL",
+        "9": "I2C_SDA",
+        "10": null,
+        "11": "GND",
+        "12": "GND",
+        "13": "GND",
+        "14": "IO_RESET",
+        "15": null,
+        "16": null,
+        "17": "ENC1_CLICK",
+        "18": "ENC2_CLICK",
+        "19": "ENC3_CLICK",
+        "20": "ENC4_CLICK",
+        "21": "KEY1",
+        "22": "KEY2",
+        "23": "KEY3",
+        "24": "KEY4",
+        "25": "REQ1",
+        "26": "REQ2",
+        "27": "REQ3",
+        "28": "REQ4"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "I2C 0x20. Encoders A/B stay on MCU GPIO; only clicks/keys and static output requests use expander.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U5",
+      "value": "SN74LVC08A candidate",
+      "footprint": "soic14",
+      "x": 40,
+      "y": 15,
+      "pins": {
+        "7": "GND",
+        "14": "+3V3",
+        "1": "REQ1",
+        "2": "OUTPUT_PERMIT",
+        "3": "SW_ON1",
+        "4": "REQ2",
+        "5": "OUTPUT_PERMIT",
+        "6": "SW_ON2",
+        "9": "REQ3",
+        "10": "OUTPUT_PERMIT",
+        "8": "SW_ON3",
+        "12": "REQ4",
+        "13": "OUTPUT_PERMIT",
+        "11": "SW_ON4"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U6",
+      "value": "SN74LVC08A candidate",
+      "footprint": "soic14",
+      "x": 48,
+      "y": 22,
+      "pins": {
+        "7": "GND",
+        "14": "+3V3",
+        "1": "REQ5",
+        "2": "OUTPUT_PERMIT",
+        "3": "SW_ON5",
+        "4": "REQ6",
+        "5": "OUTPUT_PERMIT",
+        "6": "SW_ON6",
+        "9": "REQ7",
+        "10": "OUTPUT_PERMIT",
+        "8": "SW_ON7",
+        "12": "REQ8",
+        "13": "OUTPUT_PERMIT",
+        "11": "SW_ON8"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U7",
+      "value": "ADG5412FBRUZ candidate",
+      "footprint": "tssop16",
+      "x": 57,
+      "y": 36,
+      "pins": {
+        "4": "-12VA",
+        "5": "GND",
+        "12": "FAULT1",
+        "13": "+12VA",
+        "1": "SW_ON1",
+        "2": "DRIVE1",
+        "3": "OUT1",
+        "16": "SW_ON2",
+        "15": "DRIVE2",
+        "14": "OUT2",
+        "9": "SW_ON3",
+        "10": "DRIVE3",
+        "11": "OUT3",
+        "8": "SW_ON4",
+        "7": "DRIVE4",
+        "6": "OUT4"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "Not ADG5413F. IN=0 disconnects. Protected S faces jack; driver on D. Fault/power-off isolation needs bench qualification; not protection against every output collision.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U8",
+      "value": "ADG5412FBRUZ candidate",
+      "footprint": "tssop16",
+      "x": 66,
+      "y": 36,
+      "pins": {
+        "4": "-12VA",
+        "5": "GND",
+        "12": "FAULT2",
+        "13": "+12VA",
+        "1": "SW_ON5",
+        "2": "DRIVE5",
+        "3": "CTRL1",
+        "16": "SW_ON6",
+        "15": "DRIVE6",
+        "14": "CTRL2",
+        "9": "SW_ON7",
+        "10": "DRIVE7",
+        "11": "CTRL3",
+        "8": "SW_ON8",
+        "7": "DRIVE8",
+        "6": "CTRL4"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "Not ADG5413F. IN=0 disconnects. Protected S faces jack; driver on D. Fault/power-off isolation needs bench qualification; not protection against every output collision.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RA1",
+      "value": "10k 0.01% matched network TBD",
       "footprint": "r0805",
-      "x": 89.5,
-      "y": 99,
+      "x": 85,
+      "y": 29,
       "pins": {
-        "1": "CV_BUF4",
-        "2": "D18"
+        "1": "DAC1",
+        "2": "PLUS1"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "C402",
-      "value": "1nF",
-      "footprint": "c0805",
-      "x": 89.5,
-      "y": 103,
+      "ref": "RB1",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 89,
+      "y": 29,
       "pins": {
-        "1": "D18",
+        "1": "PLUS1",
         "2": "GND"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "R408",
-      "value": "10k",
+      "ref": "RC1",
+      "value": "10k 0.01% matched network TBD",
       "footprint": "r0805",
-      "x": 83.5,
-      "y": 56,
+      "x": 73,
+      "y": 34,
+      "pins": {
+        "1": "REF_BUF",
+        "2": "MINUS1"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RD1",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 77,
+      "y": 34,
+      "pins": {
+        "1": "AMP1",
+        "2": "MINUS1"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RO1",
+      "value": "100R 0.25W candidate",
+      "footprint": "r0805",
+      "x": 81,
+      "y": 34,
+      "pins": {
+        "1": "AMP1",
+        "2": "DRIVE1"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RE1",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 34,
+      "pins": {
+        "1": "SW_ON1",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RQ1",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 89,
+      "y": 34,
+      "pins": {
+        "1": "REQ1",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RA2",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 93,
+      "y": 34,
+      "pins": {
+        "1": "DAC2",
+        "2": "PLUS2"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RB2",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 6,
+      "y": 37,
+      "pins": {
+        "1": "PLUS2",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RC2",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 10,
+      "y": 37,
+      "pins": {
+        "1": "REF_BUF",
+        "2": "MINUS2"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RD2",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 73,
+      "y": 37,
+      "pins": {
+        "1": "AMP2",
+        "2": "MINUS2"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RO2",
+      "value": "100R 0.25W candidate",
+      "footprint": "r0805",
+      "x": 77,
+      "y": 37,
+      "pins": {
+        "1": "AMP2",
+        "2": "DRIVE2"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RE2",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 81,
+      "y": 37,
+      "pins": {
+        "1": "SW_ON2",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RQ2",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 37,
+      "pins": {
+        "1": "REQ2",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RA3",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 89,
+      "y": 37,
+      "pins": {
+        "1": "DAC3",
+        "2": "PLUS3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RB3",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 93,
+      "y": 37,
+      "pins": {
+        "1": "PLUS3",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RC3",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 6,
+      "y": 40,
+      "pins": {
+        "1": "REF_BUF",
+        "2": "MINUS3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RD3",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 10,
+      "y": 40,
+      "pins": {
+        "1": "AMP3",
+        "2": "MINUS3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RO3",
+      "value": "100R 0.25W candidate",
+      "footprint": "r0805",
+      "x": 73,
+      "y": 40,
+      "pins": {
+        "1": "AMP3",
+        "2": "DRIVE3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RE3",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 77,
+      "y": 40,
+      "pins": {
+        "1": "SW_ON3",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RQ3",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 81,
+      "y": 40,
+      "pins": {
+        "1": "REQ3",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RA4",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 40,
       "pins": {
         "1": "DAC4",
-        "2": "OUT_PLUS4"
+        "2": "PLUS4"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "R409",
-      "value": "10k 0.1%",
+      "ref": "RB4",
+      "value": "40k 0.01% matched network TBD",
       "footprint": "r0805",
-      "x": 83.5,
-      "y": 59.5,
+      "x": 89,
+      "y": 40,
       "pins": {
-        "1": "OUT_FB4",
+        "1": "PLUS4",
         "2": "GND"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "R410",
-      "value": "15k 0.1%",
+      "ref": "RC4",
+      "value": "10k 0.01% matched network TBD",
       "footprint": "r0805",
-      "x": 83.5,
-      "y": 63,
+      "x": 93,
+      "y": 40,
       "pins": {
-        "1": "OUT_AMP4",
-        "2": "OUT_FB4"
+        "1": "REF_BUF",
+        "2": "MINUS4"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "R411",
-      "value": "2.2k 0.5W",
-      "footprint": "r2010",
-      "x": 90.5,
-      "y": 110,
-      "pins": {
-        "1": "OUT_AMP4",
-        "2": "OUT4"
-      },
-      "side": "B",
-      "group": "CH4",
-      "note": "Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior."
-    },
-    {
-      "ref": "RP41",
-      "value": "10k DNP",
+      "ref": "RD4",
+      "value": "40k 0.01% matched network TBD",
       "footprint": "r0805",
-      "x": 86.5,
-      "y": 35.5,
+      "x": 45,
+      "y": 41,
+      "pins": {
+        "1": "AMP4",
+        "2": "MINUS4"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RO4",
+      "value": "100R 0.25W candidate",
+      "footprint": "r0805",
+      "x": 49,
+      "y": 41,
+      "pins": {
+        "1": "AMP4",
+        "2": "DRIVE4"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RE4",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 53,
+      "y": 41,
+      "pins": {
+        "1": "SW_ON4",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RQ4",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 57,
+      "y": 41,
+      "pins": {
+        "1": "REQ4",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RA5",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 61,
+      "y": 41,
+      "pins": {
+        "1": "DAC5",
+        "2": "PLUS5"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RB5",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 65,
+      "y": 41,
+      "pins": {
+        "1": "PLUS5",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RC5",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 69,
+      "y": 41,
+      "pins": {
+        "1": "REF_BUF",
+        "2": "MINUS5"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RD5",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 31,
+      "y": 42,
+      "pins": {
+        "1": "AMP5",
+        "2": "MINUS5"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RO5",
+      "value": "100R 0.25W candidate",
+      "footprint": "r0805",
+      "x": 35,
+      "y": 42,
+      "pins": {
+        "1": "AMP5",
+        "2": "DRIVE5"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RE5",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 39,
+      "y": 42,
+      "pins": {
+        "1": "SW_ON5",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RQ5",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 6,
+      "y": 43,
+      "pins": {
+        "1": "REQ5",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RA6",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 10,
+      "y": 43,
+      "pins": {
+        "1": "DAC6",
+        "2": "PLUS6"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RB6",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 73,
+      "y": 43,
+      "pins": {
+        "1": "PLUS6",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RC6",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 77,
+      "y": 43,
+      "pins": {
+        "1": "REF_BUF",
+        "2": "MINUS6"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RD6",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 81,
+      "y": 43,
+      "pins": {
+        "1": "AMP6",
+        "2": "MINUS6"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RO6",
+      "value": "100R 0.25W candidate",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 43,
+      "pins": {
+        "1": "AMP6",
+        "2": "DRIVE6"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RE6",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 89,
+      "y": 43,
+      "pins": {
+        "1": "SW_ON6",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RQ6",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 93,
+      "y": 43,
+      "pins": {
+        "1": "REQ6",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RA7",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 43,
+      "y": 44,
+      "pins": {
+        "1": "DAC7",
+        "2": "PLUS7"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RB7",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 47,
+      "y": 44,
+      "pins": {
+        "1": "PLUS7",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RC7",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 51,
+      "y": 44,
+      "pins": {
+        "1": "REF_BUF",
+        "2": "MINUS7"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RD7",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 55,
+      "y": 44,
+      "pins": {
+        "1": "AMP7",
+        "2": "MINUS7"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RO7",
+      "value": "100R 0.25W candidate",
+      "footprint": "r0805",
+      "x": 59,
+      "y": 44,
+      "pins": {
+        "1": "AMP7",
+        "2": "DRIVE7"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RE7",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 63,
+      "y": 44,
+      "pins": {
+        "1": "SW_ON7",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RQ7",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 67,
+      "y": 44,
+      "pins": {
+        "1": "REQ7",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RA8",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 31,
+      "y": 45,
+      "pins": {
+        "1": "DAC8",
+        "2": "PLUS8"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RB8",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 35,
+      "y": 45,
+      "pins": {
+        "1": "PLUS8",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RC8",
+      "value": "10k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 39,
+      "y": 45,
+      "pins": {
+        "1": "REF_BUF",
+        "2": "MINUS8"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RD8",
+      "value": "40k 0.01% matched network TBD",
+      "footprint": "r0805",
+      "x": 6,
+      "y": 46,
+      "pins": {
+        "1": "AMP8",
+        "2": "MINUS8"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RO8",
+      "value": "100R 0.25W candidate",
+      "footprint": "r0805",
+      "x": 10,
+      "y": 46,
+      "pins": {
+        "1": "AMP8",
+        "2": "DRIVE8"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RE8",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 71,
+      "y": 46,
+      "pins": {
+        "1": "SW_ON8",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RQ8",
+      "value": "100k",
+      "footprint": "r0805",
+      "x": 75,
+      "y": 46,
+      "pins": {
+        "1": "REQ8",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U9",
+      "value": "OPA4197ID candidate",
+      "footprint": "soic14",
+      "x": 56,
+      "y": 22,
+      "pins": {
+        "4": "+12VA",
+        "11": "-12VA",
+        "3": "PLUS1",
+        "2": "MINUS1",
+        "1": "AMP1",
+        "5": "PLUS2",
+        "6": "MINUS2",
+        "7": "AMP2",
+        "10": "PLUS3",
+        "9": "MINUS3",
+        "8": "AMP3",
+        "12": "PLUS4",
+        "13": "MINUS4",
+        "14": "AMP4"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CP0P",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 6,
+      "y": 11,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CP0N",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 10,
+      "y": 11,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U10",
+      "value": "OPA4197ID candidate",
+      "footprint": "soic14",
+      "x": 64,
+      "y": 22,
+      "pins": {
+        "4": "+12VA",
+        "11": "-12VA",
+        "3": "PLUS5",
+        "2": "MINUS5",
+        "1": "AMP5",
+        "5": "PLUS6",
+        "6": "MINUS6",
+        "7": "AMP6",
+        "10": "PLUS7",
+        "9": "MINUS7",
+        "8": "AMP7",
+        "12": "PLUS8",
+        "13": "MINUS8",
+        "14": "AMP8"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CP1P",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 14,
+      "y": 11,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CP1N",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 62,
+      "y": 11,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U11",
+      "value": "OPA4197ID candidate",
+      "footprint": "soic14",
+      "x": 72,
+      "y": 22,
+      "pins": {
+        "4": "+12VA",
+        "11": "-12VA",
+        "3": "REF_HALF",
+        "2": "REF_BUF",
+        "1": "REF_BUF",
+        "5": "GND",
+        "6": "UNUSED_FB7",
+        "7": "UNUSED_FB7",
+        "10": "GND",
+        "9": "UNUSED_FB8",
+        "8": "UNUSED_FB8",
+        "12": "GND",
+        "13": "UNUSED_FB14",
+        "14": "UNUSED_FB14"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CP2P",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 66,
+      "y": 11,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CP2N",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 70,
+      "y": 11,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U12",
+      "value": "SN74AHCT125 candidate",
+      "footprint": "soic14",
+      "x": 80,
+      "y": 22,
+      "pins": {
+        "1": "GND",
+        "4": "GND",
+        "7": "GND",
+        "10": "GND",
+        "13": "GND",
+        "14": "+5A",
+        "2": "DAC_SCK",
+        "3": "DAC_SCK_5V",
+        "5": "DAC_MOSI",
+        "6": "DAC_MOSI_5V",
+        "9": "DAC_SYNC",
+        "8": "DAC_SYNC_5V",
+        "12": "DAC_LDAC",
+        "11": "DAC_LDAC_5V"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "5 V powered TTL-input buffers; validate timing/skew at selected SPI clock. Not LVC125 at 5 V.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CBUF0",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 74,
+      "y": 11,
+      "pins": {
+        "1": "+5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "U13",
+      "value": "SN74AHCT125 candidate",
+      "footprint": "soic14",
+      "x": 88,
+      "y": 22,
+      "pins": {
+        "1": "GND",
+        "4": "GND",
+        "7": "GND",
+        "10": "GND",
+        "13": "GND",
+        "14": "+5A",
+        "2": "DAC_CLR",
+        "3": "DAC_CLR_5V",
+        "5": "GND",
+        "6": null,
+        "9": "GND",
+        "8": null,
+        "12": "GND",
+        "11": null
+      },
+      "board": "main",
+      "side": "F",
+      "note": "5 V powered TTL-input buffers; validate timing/skew at selected SPI clock. Not LVC125 at 5 V.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CBUF1",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 78,
+      "y": 11,
+      "pins": {
+        "1": "+5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RREF1",
+      "value": "10k 0.01% matched",
+      "footprint": "r0805",
+      "x": 79,
+      "y": 46,
+      "pins": {
+        "1": "REF2V5",
+        "2": "REF_HALF"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RREF2",
+      "value": "10k 0.01% matched",
+      "footprint": "r0805",
+      "x": 83,
+      "y": 46,
+      "pins": {
+        "1": "REF_HALF",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RI1",
+      "value": "1k input protection candidate",
+      "footprint": "r0805",
+      "x": 87,
+      "y": 46,
+      "pins": {
+        "1": "IN1",
+        "2": "ADC_IN1"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CI1",
+      "value": "1nF EMI only - NOT full antialias",
+      "footprint": "c0805",
+      "x": 82,
+      "y": 11,
+      "pins": {
+        "1": "ADC_IN1",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RP1",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 91,
+      "y": 46,
+      "pins": {
+        "1": "ENC1_A",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RI2",
+      "value": "1k input protection candidate",
+      "footprint": "r0805",
+      "x": 95,
+      "y": 46,
+      "pins": {
+        "1": "IN2",
+        "2": "ADC_IN2"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CI2",
+      "value": "1nF EMI only - NOT full antialias",
+      "footprint": "c0805",
+      "x": 86,
+      "y": 11,
+      "pins": {
+        "1": "ADC_IN2",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RP2",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 14,
+      "y": 47,
+      "pins": {
+        "1": "ENC1_B",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RI3",
+      "value": "1k input protection candidate",
+      "footprint": "r0805",
+      "x": 18,
+      "y": 47,
+      "pins": {
+        "1": "IN3",
+        "2": "ADC_IN3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CI3",
+      "value": "1nF EMI only - NOT full antialias",
+      "footprint": "c0805",
+      "x": 90,
+      "y": 11,
+      "pins": {
+        "1": "ADC_IN3",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RP3",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 22,
+      "y": 47,
+      "pins": {
+        "1": "ENC2_A",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RI4",
+      "value": "1k input protection candidate",
+      "footprint": "r0805",
+      "x": 26,
+      "y": 47,
+      "pins": {
+        "1": "IN4",
+        "2": "ADC_IN4"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CI4",
+      "value": "1nF EMI only - NOT full antialias",
+      "footprint": "c0805",
+      "x": 94,
+      "y": 11,
+      "pins": {
+        "1": "ADC_IN4",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RP4",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 43,
+      "y": 47,
+      "pins": {
+        "1": "ENC2_B",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RI5",
+      "value": "1k input protection candidate",
+      "footprint": "r0805",
+      "x": 47,
+      "y": 47,
+      "pins": {
+        "1": "CTRL1",
+        "2": "ADC_IN5"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CI5",
+      "value": "1nF EMI only - NOT full antialias",
+      "footprint": "c0805",
+      "x": 62,
+      "y": 14,
+      "pins": {
+        "1": "ADC_IN5",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RP5",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 51,
+      "y": 47,
+      "pins": {
+        "1": "ENC3_A",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RI6",
+      "value": "1k input protection candidate",
+      "footprint": "r0805",
+      "x": 55,
+      "y": 47,
+      "pins": {
+        "1": "CTRL2",
+        "2": "ADC_IN6"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CI6",
+      "value": "1nF EMI only - NOT full antialias",
+      "footprint": "c0805",
+      "x": 66,
+      "y": 14,
+      "pins": {
+        "1": "ADC_IN6",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RP6",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 59,
+      "y": 47,
+      "pins": {
+        "1": "ENC3_B",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RI7",
+      "value": "1k input protection candidate",
+      "footprint": "r0805",
+      "x": 63,
+      "y": 47,
+      "pins": {
+        "1": "CTRL3",
+        "2": "ADC_IN7"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CI7",
+      "value": "1nF EMI only - NOT full antialias",
+      "footprint": "c0805",
+      "x": 70,
+      "y": 14,
+      "pins": {
+        "1": "ADC_IN7",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RP7",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 67,
+      "y": 47,
+      "pins": {
+        "1": "ENC4_A",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RI8",
+      "value": "1k input protection candidate",
+      "footprint": "r0805",
+      "x": 30,
+      "y": 48,
+      "pins": {
+        "1": "CTRL4",
+        "2": "ADC_IN8"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CI8",
+      "value": "1nF EMI only - NOT full antialias",
+      "footprint": "c0805",
+      "x": 74,
+      "y": 14,
+      "pins": {
+        "1": "ADC_IN8",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RP8",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 34,
+      "y": 48,
+      "pins": {
+        "1": "ENC4_B",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RK1",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 38,
+      "y": 48,
+      "pins": {
+        "1": "ENC1_CLICK",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RK2",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 6,
+      "y": 49,
+      "pins": {
+        "1": "ENC2_CLICK",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RK3",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 10,
+      "y": 49,
+      "pins": {
+        "1": "ENC3_CLICK",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RK4",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 71,
+      "y": 49,
+      "pins": {
+        "1": "ENC4_CLICK",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RK5",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 75,
+      "y": 49,
+      "pins": {
+        "1": "KEY1",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RK6",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 79,
+      "y": 49,
+      "pins": {
+        "1": "KEY2",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RK7",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 83,
+      "y": 49,
+      "pins": {
+        "1": "KEY3",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RK8",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 87,
+      "y": 49,
+      "pins": {
+        "1": "KEY4",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RU1",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 91,
+      "y": 49,
+      "pins": {
+        "1": "ADC_CS",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RU2",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 95,
+      "y": 49,
+      "pins": {
+        "1": "DAC_SYNC",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RU3",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 14,
+      "y": 50,
+      "pins": {
+        "1": "DAC_LDAC",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RU4",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 18,
+      "y": 50,
+      "pins": {
+        "1": "DAC_CLR",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RU5",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 22,
+      "y": 50,
+      "pins": {
+        "1": "IO_RESET",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RPERMIT",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 26,
+      "y": 50,
+      "pins": {
+        "1": "OUTPUT_PERMIT",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RSCL",
+      "value": "4.7k DNP",
+      "footprint": "r0805",
+      "x": 42,
+      "y": 50,
+      "pins": {
+        "1": "I2C_SCL",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "RSDA",
+      "value": "4.7k DNP",
+      "footprint": "r0805",
+      "x": 46,
+      "y": 50,
+      "pins": {
+        "1": "I2C_SDA",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "JPOWER",
+      "value": "Eurorack IDC10 keyed",
+      "footprint": "idc10",
+      "x": 10.5,
+      "y": 24,
+      "pins": {
+        "1": "-12_IN",
+        "2": "-12_IN",
+        "3": "GND",
+        "4": "GND",
+        "5": "GND",
+        "6": "GND",
+        "7": "GND",
+        "8": "GND",
+        "9": "+12_IN",
+        "10": "+12_IN"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "DPOWERP",
+      "value": "SS14",
+      "footprint": "sma",
+      "x": 48,
+      "y": 12,
+      "pins": {
+        "1": "+12VA",
+        "2": "+12_IN"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "DPOWERN",
+      "value": "SS14",
+      "footprint": "sma",
+      "x": 56,
+      "y": 12,
+      "pins": {
+        "1": "-12_IN",
+        "2": "-12VA"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "UREG",
+      "value": "5V >=1A module - selection OPEN",
+      "footprint": "power_module",
+      "x": 26,
+      "y": 18,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND",
+        "3": "+5D"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "Envelope placeholder, not an orderable/verified footprint. Compare converter ripple, startup and heat. No case +5V required.",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "FB1",
+      "value": "Ferrite 600R@100MHz candidate",
+      "footprint": "r0805",
+      "x": 50,
+      "y": 50,
+      "pins": {
+        "1": "+5D",
+        "2": "+5A"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "C5D",
+      "value": "47uF 10V",
+      "footprint": "c0805",
+      "x": 78,
+      "y": 14,
+      "pins": {
+        "1": "+5D",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "C5A",
+      "value": "10uF 10V",
+      "footprint": "c0805",
+      "x": 82,
+      "y": 14,
+      "pins": {
+        "1": "+5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CVDRV",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 86,
+      "y": 14,
       "pins": {
         "1": "+3V3",
-        "2": "D10"
+        "2": "GND"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "RP42",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 86.5,
-      "y": 39,
+      "ref": "CREG1",
+      "value": "1uF",
+      "footprint": "c0805",
+      "x": 90,
+      "y": 14,
+      "pins": {
+        "1": "REGCAP1",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CREG2",
+      "value": "1uF",
+      "footprint": "c0805",
+      "x": 94,
+      "y": 14,
+      "pins": {
+        "1": "REGCAP2",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CREFADC",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 94,
+      "y": 19,
+      "pins": {
+        "1": "ADC_REF",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CREFCAP",
+      "value": "10uF low ESR",
+      "footprint": "c0805",
+      "x": 38,
+      "y": 22,
+      "pins": {
+        "1": "ADC_REFCAP",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CREFDAC",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 42,
+      "y": 22,
+      "pins": {
+        "1": "REF2V5",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CADC0",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 94,
+      "y": 22,
+      "pins": {
+        "1": "+5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CADC1",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 94,
+      "y": 25,
+      "pins": {
+        "1": "+5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CADC2",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 94,
+      "y": 28,
+      "pins": {
+        "1": "+5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CADC3",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 45,
+      "y": 29,
+      "pins": {
+        "1": "+5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CD1",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 49,
+      "y": 29,
+      "pins": {
+        "1": "+5D",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CD2",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 53,
+      "y": 29,
+      "pins": {
+        "1": "+5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CD3",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 57,
+      "y": 29,
       "pins": {
         "1": "+3V3",
-        "2": "D13"
+        "2": "GND"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "RP43",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 86.5,
-      "y": 71.5,
+      "ref": "CD4",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 61,
+      "y": 29,
       "pins": {
         "1": "+3V3",
-        "2": "D14"
+        "2": "GND"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "RP44",
-      "value": "10k DNP",
-      "footprint": "r0805",
-      "x": 86.5,
-      "y": 74.5,
+      "ref": "CD5",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 65,
+      "y": 29,
       "pins": {
         "1": "+3V3",
-        "2": "D27"
+        "2": "GND"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": "Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V."
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     },
     {
-      "ref": "TP14",
-      "value": "DAC4",
+      "ref": "CD6",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 29,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CD7",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 73,
+      "y": 29,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CD8",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 77,
+      "y": 29,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "CD9",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 29,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "TP1",
+      "value": "GND",
       "footprint": "testpoint",
-      "x": 76.5,
-      "y": 70,
+      "x": 14,
+      "y": 37,
       "pins": {
-        "1": "DAC4"
+        "1": "GND"
       },
-      "side": "B",
-      "group": "CH4",
-      "note": ""
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "TP2",
+      "value": "+12VA",
+      "footprint": "testpoint",
+      "x": 14,
+      "y": 40,
+      "pins": {
+        "1": "+12VA"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "TP3",
+      "value": "-12VA",
+      "footprint": "testpoint",
+      "x": 14,
+      "y": 43,
+      "pins": {
+        "1": "-12VA"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "TP4",
+      "value": "+5D",
+      "footprint": "testpoint",
+      "x": 54,
+      "y": 50,
+      "pins": {
+        "1": "+5D"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "TP5",
+      "value": "+5A",
+      "footprint": "testpoint",
+      "x": 57,
+      "y": 50,
+      "pins": {
+        "1": "+5A"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
+    },
+    {
+      "ref": "TP6",
+      "value": "REF_BUF",
+      "footprint": "testpoint",
+      "x": 60,
+      "y": 50,
+      "pins": {
+        "1": "REF_BUF"
+      },
+      "board": "main",
+      "side": "F",
+      "note": "",
+      "group": "SYSTEM"
     }
   ],
-  "status": "PLACEMENT_DRAFT_UNROUTED"
+  "holes": [
+    {
+      "ref": "ENC1",
+      "x": 17.5,
+      "y": 48,
+      "diameter": 7.2,
+      "kind": "ENC"
+    },
+    {
+      "ref": "KEY1",
+      "x": 17.5,
+      "y": 67,
+      "diameter": 4,
+      "kind": "KEY"
+    },
+    {
+      "ref": "IN1",
+      "x": 17.5,
+      "y": 80,
+      "diameter": 6.2,
+      "kind": "IN"
+    },
+    {
+      "ref": "CTRL1",
+      "x": 17.5,
+      "y": 95,
+      "diameter": 6.2,
+      "kind": "CTRL"
+    },
+    {
+      "ref": "OUT1",
+      "x": 17.5,
+      "y": 110,
+      "diameter": 6.2,
+      "kind": "OUT"
+    },
+    {
+      "ref": "ENC2",
+      "x": 39.5,
+      "y": 48,
+      "diameter": 7.2,
+      "kind": "ENC"
+    },
+    {
+      "ref": "KEY2",
+      "x": 39.5,
+      "y": 67,
+      "diameter": 4,
+      "kind": "KEY"
+    },
+    {
+      "ref": "IN2",
+      "x": 39.5,
+      "y": 80,
+      "diameter": 6.2,
+      "kind": "IN"
+    },
+    {
+      "ref": "CTRL2",
+      "x": 39.5,
+      "y": 95,
+      "diameter": 6.2,
+      "kind": "CTRL"
+    },
+    {
+      "ref": "OUT2",
+      "x": 39.5,
+      "y": 110,
+      "diameter": 6.2,
+      "kind": "OUT"
+    },
+    {
+      "ref": "ENC3",
+      "x": 61.5,
+      "y": 48,
+      "diameter": 7.2,
+      "kind": "ENC"
+    },
+    {
+      "ref": "KEY3",
+      "x": 61.5,
+      "y": 67,
+      "diameter": 4,
+      "kind": "KEY"
+    },
+    {
+      "ref": "IN3",
+      "x": 61.5,
+      "y": 80,
+      "diameter": 6.2,
+      "kind": "IN"
+    },
+    {
+      "ref": "CTRL3",
+      "x": 61.5,
+      "y": 95,
+      "diameter": 6.2,
+      "kind": "CTRL"
+    },
+    {
+      "ref": "OUT3",
+      "x": 61.5,
+      "y": 110,
+      "diameter": 6.2,
+      "kind": "OUT"
+    },
+    {
+      "ref": "ENC4",
+      "x": 83.5,
+      "y": 48,
+      "diameter": 7.2,
+      "kind": "ENC"
+    },
+    {
+      "ref": "KEY4",
+      "x": 83.5,
+      "y": 67,
+      "diameter": 4,
+      "kind": "KEY"
+    },
+    {
+      "ref": "IN4",
+      "x": 83.5,
+      "y": 80,
+      "diameter": 6.2,
+      "kind": "IN"
+    },
+    {
+      "ref": "CTRL4",
+      "x": 83.5,
+      "y": 95,
+      "diameter": 6.2,
+      "kind": "CTRL"
+    },
+    {
+      "ref": "OUT4",
+      "x": 83.5,
+      "y": 110,
+      "diameter": 6.2,
+      "kind": "OUT"
+    },
+    {
+      "ref": "H1",
+      "x": 6.5,
+      "y": 12,
+      "diameter": 3.2,
+      "kind": "mount"
+    },
+    {
+      "ref": "H2",
+      "x": 94.7,
+      "y": 12,
+      "diameter": 3.2,
+      "kind": "mount"
+    },
+    {
+      "ref": "H3",
+      "x": 6.5,
+      "y": 116,
+      "diameter": 3.2,
+      "kind": "mount"
+    },
+    {
+      "ref": "H4",
+      "x": 94.7,
+      "y": 116,
+      "diameter": 3.2,
+      "kind": "mount"
+    }
+  ],
+  "blocking": [
+    "analog antialias/reconstruction filters",
+    "converter selection and supply budget",
+    "SPI8 DMA scheduling and clock proof",
+    "mechanical stack",
+    "native ERC/DRC",
+    "routing and bench tests"
+  ]
 }

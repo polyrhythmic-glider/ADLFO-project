@@ -1,34 +1,55 @@
-# ADLFO
+# Adolfo
 
-Quattro AD/LFO indipendenti con Daisy Seed e MCP4728.
-Montaggio confermato: SDA D12, SCL D11; VA–VD ai quattro jack tramite 1 kΩ,
-sleeve a GND. Tensioni ancora da verificare.
+Piattaforma Eurorack programmabile da 20 HP: quattro ingressi universali,
+quattro uscite universali e quattro porte di controllo bidirezionali.
+Quattro encoder con click, quattro tasti e OLED. Alimentazione Eurorack IDC10 ±12 V.
 
-- [Firmware e comandi](DaisyMonoEnvelope/README.md).
-- [Schemi conservati e lavoro hardware restante](wiring/README.md).
-- [Proposta PCB 20 HP, alimentazione Eurorack e visualizzatore offline](hardware/pcb/README.md).
-- Diagnostica separata: [CV/DAC](DaisyCv4Test/README.md) e [OLED](DaisyOledTest/README.md).
+| Porta | Funzioni previste |
+| --- | --- |
+| IN1–4 | audio, CV, gate, trigger |
+| OUT1–4 | audio, CV, envelope, LFO, gate, trigger |
+| CTRL1–4 | CV/gate/trigger, ingresso oppure uscita |
 
-TRIG/CV non ancora collegati: pin da decidere, ingressi disabilitati nel codice.
-Gli schemi sono proposte: non presumere che descrivano il cablaggio reale.
+## Due stati distinti
 
-## Compilazione e test
+- **[Adolfo/](Adolfo/README.md)** è il firmware funzionante del prototipo
+  Daisy + DAC Adafruit MCP4728, rinominato da DaisyMonoEnvelope. Motori e
+  comandi sono conservati; il nome del binario diventa `Adolfo.bin`.
+- **[hardware/pcb/](hardware/pcb/README.md)** contiene la nuova architettura C:
+  due schede e conversione esterna DC coupled. È una proposta elettrica
+  non sbrogliata, con filtri e altri blocchi ancora da completare. Non è
+  pilotata dal firmware del prototipo e non è pronta per l'ordine.
 
-Servono GNU Make, la toolchain `arm-none-eabi`, un compilatore C++ per i test
-locali e le librerie libDaisy/DaisySP già compilate. I Makefile cercano queste
-librerie in `../DaisyExamples/` rispetto alla radice del repository; per altri
-percorsi passare `LIBDAISY_DIR` e `DAISYSP_DIR` a `make`.
+Le vecchie PCB 24/20 HP per il solo AD/LFO, le diagnostiche separate e gli
+schemi breadboard superati sono stati rimossi dal branch. La storia Git conserva
+il materiale precedente; [pulizia e conservazione](docs/CLEANUP.md).
+
+## Da dove iniziare
+
+1. [Architettura e compromessi](hardware/pcb/ARCHITECTURE.md).
+2. [Componenti da aggiungere e materiale da riutilizzare](hardware/pcb/PARTS.md).
+3. [Cablaggio del prototipo preservato](docs/PROTOTYPE.md).
+4. [Lavoro restante prima della produzione](hardware/pcb/RELEASE_CHECKLIST.md).
+
+## Generazione e controlli
+
+Python 3 con venv, compilatore C++ per i test locali. Per KiCad usare la versione
+9 o successiva; i controlli nativi non sostituiscono il collaudo.
 
 ```sh
-make -C DaisyMonoEnvelope
-make -C DaisyMonoEnvelope test
-make -C DaisyCv4Test
-make -C DaisyOledTest
-c++ -std=c++14 -Wall -Wextra -Werror DaisyCv4Test/tests/protocol_test.cpp -o /tmp/adlfo-cv4-protocol-test
-/tmp/adlfo-cv4-protocol-test
+python3 -m venv .venv
+.venv/bin/python -m pip install -r hardware/pcb/requirements.txt
+make pcb
+make check
+make test
 ```
 
-Le cartelle `build/` e le cache locali sono escluse da Git. I file hardware in
-`hardware/pcb/output/` sono invece versionati per poter aprire e revisionare
-il progetto senza rigenerarlo; le istruzioni sono nel relativo README.
+Per il firmware del prototipo servono libDaisy/DaisySP e `arm-none-eabi`:
 
+```sh
+make -C Adolfo
+make -C Adolfo test
+```
+
+I percorsi delle librerie restano sovrascrivibili con `LIBDAISY_DIR` e
+`DAISYSP_DIR`. Nessun comando di generazione carica firmware o ordina una PCB.

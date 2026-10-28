@@ -1,134 +1,131 @@
-"""ADLFO revision B: single source of electrical and mechanical intent (mm).
+"""Adolfo universal carrier C: electrical candidate, two unrouted boards.
 
-This is a reviewable placement proposal, not released manufacturing data.
-Coordinates are viewed from the panel, origin at its upper left.
+Panel coordinates in mm, viewed from the front. Every candidate must be reviewed
+against its datasheet and hardware; the firmware Adolfo/ is the old prototype.
 """
-PANEL = dict(width=101.2, height=128.5, thickness=2.0, hp=20)
-PCB = dict(x=2.5, y=9.0, width=96.2, height=110.5, thickness=1.6)
-COLUMNS = [17.5, 39.5, 61.5, 83.5]
-COLORS = ['#efb65c', '#60c9bd', '#98a9ef', '#e28eac']
-MOUNTS = [(6.5, 12), (94.7, 12), (6.5, 116), (94.7, 116)]
-RAIL_SLOTS = [(7.5, 3), (93.86, 3), (7.5, 125.5), (93.86, 125.5)]
-OLED = dict(x=24, y=22.5, width=27, height=15, body_width=27.5,
-            body_height=27.8, header_y=11.0)
-ENCODERS = [(0, 1, 2), (3, 4, 5), (7, 8, 9), (10, 13, 14)]
-BUTTONS = [25, 24, 26, 27]
-TRIGGERS = [6, 19, 20, 21]
-CV = [15, 16, 17, 18]
-
-def gpio(d):
-    return f'D{d}'
-
-def circuit():
-    parts = []
-    def add(ref, value, footprint, x, y, pins, side='B', group='SYSTEM', note=''):
-        parts.append(dict(ref=ref, value=value, footprint=footprint, x=x, y=y,
-                          pins={str(k): v for k, v in pins.items()}, side=side,
-                          group=group, note=note))
-    def two(ref, value, fp, x, y, n1, n2, group='SYSTEM', note=''):
-        add(ref, value, fp, x, y, {1:n1, 2:n2}, group=group, note=note)
-    seed = {i+1:gpio(i) for i in range(15)}
-    seed.update({i+7:gpio(i) for i in range(15, 31)})
-    seed.update({16:None, 17:None, 18:None, 19:None, 20:'GND',
-                 21:None, 38:'+3V3', 39:'+5V_SEED', 40:'GND'})
-    for d in [22, 23, 28, 29, 30]: seed[d+7] = None
-    add('U1', 'Daisy Seed (socketed)', 'seed', 70, 24, seed,
-        note='2 x 20 sockets, 2.54 mm pitch; row spacing 15.24 mm; USB toward right in panel view.')
-    # Adafruit MCP4728 STEMMA QT: JP1 pins 1..6, JP2 pins 7..12.
-    # Derived from the upstream Eagle board, not the bare IC pinout.
-    add('U2', 'Adafruit MCP4728 STEMMA QT breakout', 'mcp4728_breakout', 29, 24,
-        {1:'+3V3', 2:'GND', 3:'D11', 4:'D12', 5:'GND', 6:None,
-         7:'GND', 8:'DAC1', 9:'DAC2', 10:'DAC3', 11:'DAC4', 12:'+3V3'},
-        note='Two 1x6 female sockets, rows 12.70 mm apart; module 25.4 x 17.78 mm. JP1: VCC/GND/SCL/SDA/LDAC/RDY. Verify actual board revision; no second DAC IC on carrier.')
-    in_pins = {4:'+3V3', 11:'GND'}
-    out_pins = {4:'+12VA', 11:'-12VA'}
-    for ch, (plus, minus, out) in enumerate([(3,2,1),(5,6,7),(10,9,8),(12,13,14)], 1):
-        in_pins.update({plus:f'CV_CLAMP{ch}', minus:f'CV_BUF{ch}', out:f'CV_BUF{ch}'})
-        out_pins.update({plus:f'OUT_PLUS{ch}', minus:f'OUT_FB{ch}', out:f'OUT_AMP{ch}'})
-    add('U3', 'MCP6004-I/SL', 'soic14', 28.5, 60, in_pins)
-    add('U4', 'TL074CDR', 'soic14', 50.5, 60, out_pins,
-        note='Dual supply; nominal non-inverting gain 2.5. Feedback before output resistor.')
-    add('U5', 'R-78E5.0-0.5', 'recom', 51, 40.5,
-        {1:'+12VA', 2:'GND', 3:'+5V_REG'}, note='Candidate 500 mA converter, not a confirmed budget. Size from Daisy + OLED + DAC + analog load, startup and thermal measurements; no case +5 V required.')
-    add('J13', 'EURORACK 2x5 keyed', 'idc10', 10.5, 25,
-        {1:'-12V_IN',2:'-12V_IN',3:'GND',4:'GND',5:'GND',6:'GND',7:'GND',8:'GND',9:'+12V_IN',10:'+12V_IN'},
-        note='Red stripe = pins 1/2 = -12 V. Key orientation must match cable.')
-    add('J14', 'OLED SSD1306 128x64', 'oled', OLED['x'], OLED['header_y'],
-        {1:'GND',2:'+3V3',3:'D11',4:'D12'}, 'F',
-        note='Assumed module GND/VCC/SCL/SDA, 0.96 inch; measure actual glass, PCB and connector before release.')
-    add('F1', 'PTC 0.5A hold candidate', 'ptc1812', 8, 58,
-        {1:'+12V_IN',2:'+12V_FUSED'},
-        note='Candidate only: select rated voltage >=24 V and hold/trip current from measured startup and hot-case load. Package must match selected PTC.')
-    two('D1', 'SS14', 'sma', 12, 38.5, '+12VA', '+12V_FUSED', note='Pad 1 cathode: protected positive rail.')
-    two('D2', 'SS14', 'sma', 30, 36, '-12V_IN', '-12VA', note='Pad 1 cathode: raw negative rail.')
-    two('D3', 'SS14', 'sma', 73, 38, '+5V_SEED', '+5V_REG', note='Blocks reverse feed from USB into 5 V converter; check specific Seed revision.')
-    two('C1', '10uF 50V X7R', 'c0805', 12, 11.5, '+12VA', 'GND', note='Allow for MLCC DC bias; 1206 may be needed after part selection.')
-    two('C2', '10uF 50V X7R', 'c0805', 32, 11.5, 'GND', '-12VA')
-    two('C3', '10uF 10V X7R', 'c0805', 61, 34.5, '+5V_REG', 'GND')
-    two('C4', '10uF 10V X7R', 'c0805', 73, 34.5, '+5V_SEED', 'GND')
-    two('C5', '100nF', 'c0805', 37, 36, '+3V3', 'GND')
-    two('C6', '10uF 10V X7R', 'c0805', 37, 39, '+3V3', 'GND')
-    two('C7', '100nF', 'c0805', 23, 60, '+3V3', 'GND')
-    two('C8', '100nF 50V', 'c0805', 45, 60, '+12VA', 'GND')
-    two('C9', '100nF 50V', 'c0805', 50.5, 52.5, '-12VA', 'GND')
-    two('C10', '47uF 10V low ESR candidate', 'radial_cap', 94, 37, '+5V_SEED', 'GND',
-        note='Local 5 V bulk capacitor; check regulator stability, startup and actual case size before fitting.')
-    two('C11', '100nF', 'c0805', 79, 34.5, '+5V_SEED', 'GND')
-    two('C12', '100nF', 'c0805', 91, 42, '+3V3', 'GND')
-    two('R1', '4.7k DNP', 'r0805', 39, 11.5, '+3V3', 'D11')
-    two('R2', '4.7k DNP', 'r0805', 45, 11.5, '+3V3', 'D12')
-    for i, (net, x, y) in enumerate([('GND',14,118),('+12VA',32,118),('-12VA',50,118),
-                                      ('+5V_SEED',68,118),('+3V3',90,118)],1):
-        add(f'TP{i}',net,'testpoint',x,y,{1:net})
-    for i, x in enumerate(COLUMNS, 1):
-        group = f'CH{i}'
-        a,b,sw=ENCODERS[i-1]
-        # Preserve E3's existing software direction compensation; validate on hardware.
-        add(f'ENC{i}', ['RISE','FALL','SYMMETRY','LEVEL'][i-1], 'encoder', x,48,
-            {'A':gpio(a),'B':gpio(b),'C':'GND','S1':gpio(sw),'S2':'GND','MP':'GND'}, 'F', group,
-            note='ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify.')
-        add(f'SW{i}', f'CH {i}', 'button', x,67, {1:gpio(BUTTONS[i-1]),2:'GND'}, 'F', group,
-            note='6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator.')
-        for j, (role,y) in enumerate([('TRIG',80),('CV',95),('OUT',110)]):
-            add(f'J{(i-1)*3+j+1}', f'{role}{i}', 'jack', x,y,
-                {'S':'GND','T':f'{role}{i}','TN':'GND' if role!='OUT' else None}, 'F', group,
-                note='PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.')
-        # Trigger: 100k series, 1M B-E, 47k collector pull-up, reverse B-E diode.
-        base=f'TRIG_BASE{i}'
-        two(f'R{i}01','100k','r0805',x-7,77,f'TRIG{i}',base,group)
-        two(f'R{i}02','1M','r0805',x-7,81,base,'GND',group)
-        two(f'R{i}03','47k','r0805',x-7,85,'+3V3',gpio(TRIGGERS[i-1]),group)
-        add(f'Q{i}','MMBT3904','sot23',x+6,80,
-            {1:base,2:'GND',3:gpio(TRIGGERS[i-1])},group=group)
-        two(f'D{i}01','1N4148W','sod123',x+6,85,base,'GND',group)
-        # CV input: divider, RC, series impedance, Schottky clamps, buffer, ADC RC.
-        two(f'R{i}04','100k 0.1%','r0805',x-7,92,f'CV{i}',f'CV_DIV{i}',group)
-        two(f'R{i}05','33k 0.1%','r0805',x-7,96,f'CV_DIV{i}','GND',group)
-        two(f'R{i}06','10k','r0805',x-7,100,f'CV_DIV{i}',f'CV_CLAMP{i}',group)
-        two(f'C{i}01','10nF','c0805',x+6,90,f'CV_DIV{i}','GND',group)
-        add(f'D{i}02','BAT54S','sot23',x+6,94,
-            {1:'GND',2:'+3V3',3:f'CV_CLAMP{i}'},group=group)
-        two(f'R{i}07','1k','r0805',x+6,99,f'CV_BUF{i}',gpio(CV[i-1]),group)
-        two(f'C{i}02','1nF','c0805',x+6,103,gpio(CV[i-1]),'GND',group)
-        # Output matches repository proposal; intentionally not a precision pitch output.
-        two(f'R{i}08','10k','r0805',x,56,f'DAC{i}',f'OUT_PLUS{i}',group)
-        two(f'R{i}09','10k 0.1%','r0805',x,59.5,f'OUT_FB{i}','GND',group)
-        two(f'R{i}10','15k 0.1%','r0805',x,63,f'OUT_AMP{i}',f'OUT_FB{i}',group)
-        two(f'R{i}11','2.2k 0.5W','r2010',x+7,110,f'OUT_AMP{i}',f'OUT{i}',group,
-            note='Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.')
-        # Optional external pulls; libDaisy already debounces controls in software.
-        for j, (pin, y) in enumerate([(a,35.5),(b,39),(sw,71.5),(BUTTONS[i-1],74.5)], 1):
-            two(f'RP{i}{j}', '10k DNP', 'r0805', x+3, y, '+3V3', gpio(pin), group,
-                note='Optional external pull-up. Fit only after checking internal pull-ups and actual encoder/module; never pull GPIO to 5 V.')
-        add(f'TP{10+i}',f'DAC{i}','testpoint',x-7,70,{1:f'DAC{i}'},group=group)
-    return parts
+PANEL = dict(width=101.2, height=128.5, hp=20, thickness=2)
+PCB = dict(x=2.5, y=9, width=96.2, height=110.5, thickness=1.6)
+COLUMNS = [17.5,39.5,61.5,83.5]
+MOUNTS = [(6.5,12),(94.7,12),(6.5,116),(94.7,116)]
+OLED = dict(x=24, y=22.5, width=27, height=15, header_y=11)
+RAIL_SLOTS = [(7.5,3),(93.86,3),(7.5,125.5),(93.86,125.5)]
+# New board ONLY. SPI assignments checked against libDaisy per/spi.cpp.
+PINS = dict(DAC_SYNC=0,DAC_LDAC=1,DAC_SCK=2,ADC_BUSY=3,ADC_CONVST=4,
+            ADC_RESET=5,DAC_MOSI=6,ADC_CS=7,ADC_SCK=8,ADC_MISO=9,
+            ADC_MOSI=10,I2C_SCL=11,I2C_SDA=12,DAC_CLR=13,OUTPUT_PERMIT=14,
+            ENC1_A=15,ENC1_B=16,ENC2_A=17,ENC2_B=18,
+            ENC3_A=19,ENC3_B=20,ENC4_A=21,ENC4_B=22,IO_RESET=23)
+PORTS = ([dict(id=f'IN{i}',direction='input',adc=i-1,modes=['audio','cv','gate','trigger']) for i in range(1,5)]
+       + [dict(id=f'OUT{i}',direction='output',dac=i-1,modes=['audio','cv','envelope','lfo','gate','trigger']) for i in range(1,5)]
+       + [dict(id=f'CTRL{i}',direction='bidirectional',adc=i+3,dac=i+3,modes=['cv_in','gate_in','trigger_in','cv_out','gate_out','trigger_out']) for i in range(1,5)])
+# ADC frame: eight 18-bit words serialized into 18 bytes; use SPI 8-bit DMA.
+RATES = dict(adc_hz=96000,audio_hz=48000,control_hz=1000,
+             adc_spi_target_hz=25000000,dac_spi_target_hz=25000000,
+             adc_bits_per_frame=144,dac_bits_per_word=32)
+INTERCONNECT = {i+1:n for i,n in enumerate(
+    [f'{role}{i}' for role in ['IN','CTRL','OUT'] for i in range(1,5)]
+    +[f'ENC{i}_{p}' for i in range(1,5) for p in ['A','B','CLICK']]
+    +[f'KEY{i}' for i in range(1,5)]
+    +['I2C_SCL','I2C_SDA','+3V3','GND','GND','GND','GND','GND','GND','GND','GND','GND'])}
 
 def holes():
-    result=[]
-    for i,x in enumerate(COLUMNS,1):
-        for kind,y,d in [('encoder',48,7.2),('button',67,4.0),('trig',80,6.2),('cv',95,6.2),('out',110,6.2)]:
-            result.append(dict(ref=f'{kind.upper()}{i}',x=x,y=y,diameter=d,kind=kind))
-    for i,(x,y) in enumerate(MOUNTS,1):
-        result.append(dict(ref=f'M{i}',x=x,y=y,diameter=3.2,kind='mount'))
-    return result
+    return ([dict(ref=f'{role}{i}',x=x,y=y,diameter=d,kind=role)
+        for i,x in enumerate(COLUMNS,1)
+        for role,y,d in [('ENC',48,7.2),('KEY',67,4),('IN',80,6.2),('CTRL',95,6.2),('OUT',110,6.2)]]
+        +[dict(ref=f'H{i}',x=x,y=y,diameter=3.2,kind='mount') for i,(x,y) in enumerate(MOUNTS,1)])
 
+def circuit():
+    parts=[]
+    def add(ref,value,fp,x,y,pins,board='main',side='F',note='',group='SYSTEM'):
+        parts.append(dict(ref=ref,value=value,footprint=fp,x=x,y=y,
+            pins={str(k):v for k,v in pins.items()},board=board,side=side,note=note,group=group))
+    def two(ref,value,x,y,n1,n2,fp='r0805',**kw):add(ref,value,fp,x,y,{1:n1,2:n2},**kw)
+    def cap(ref,value,x,y,rail,fp='c0805'):two(ref,value,x,y,rail,'GND',fp)
+    # Both boards use exactly the same connector pin numbers; key direction is TBD.
+    add('JM','Panel link 2x20 candidate','header40',50.6,87,INTERCONNECT)
+    add('JP','Panel link 2x20 candidate','header40',50.6,87,INTERCONNECT,'panel','B',note='Stack height and connector polarity require physical review.')
+    for i,x in enumerate(COLUMNS,1):
+        add(f'E{i}','EC11 click candidate','encoder',x,48,{'A':f'ENC{i}_A','B':f'ENC{i}_B','C':'GND','S1':f'ENC{i}_CLICK','S2':'GND','MP':'GND'},'panel')
+        add(f'K{i}','6x6 tact height TBD','button',x,67,{1:f'KEY{i}',2:'GND'},'panel')
+        for j,(role,y) in enumerate([('IN',80),('CTRL',95),('OUT',110)]):
+            add(f'J{3*(i-1)+j+1}',f'{role}{i} PJ398SM','jack',x,y,{'S':'GND','T':f'{role}{i}','TN':None},'panel',note='Normals left open: must never ground a CTRL port used as output.')
+    add('J14','SSD1306 breakout raised','oled',24,11,{1:'GND',2:'+3V3',3:'I2C_SCL',4:'I2C_SDA'},'panel',note='Assumed GND/VCC/SCL/SDA order; module dimensions unconfirmed.')
+    seed={i+1:None for i in range(40)}
+    for name,d in PINS.items():seed[d+1 if d<15 else d+7]=name
+    seed.update({20:'GND',38:'+3V3',39:'+5D',40:'GND'})
+    add('U1','Daisy Seed 3 / Seed2 DFM compatibility review','seed',70,24,seed,side='B',note='Common 40-pin footprint candidate; onboard audio and 12-bit DAC unused. Check USB-C and DFM mechanical envelope.')
+    adc={i:None for i in range(1,65)}
+    adc.update({i:'+5A' for i in [1,37,38,48]})
+    adc.update({i:'GND' for i in [2,26,35,40,41,47,16,17,18,30,31,32,33,8,10,43,46]})
+    adc.update({3:'+3V3',4:'+3V3',5:'+3V3',6:'+3V3',7:'+3V3',9:'ADC_CONVST',11:'ADC_RESET',12:'ADC_SCK',13:'ADC_CS',14:'ADC_BUSY',23:'+3V3',24:'ADC_MISO',29:'ADC_MOSI',34:'+3V3',36:'REGCAP1',39:'REGCAP2',42:'ADC_REF',44:'ADC_REFCAP',45:'ADC_REFCAP'})
+    for i in range(8):adc[49+2*i]=f'ADC_IN{i+1}';adc[50+2*i]='GND'
+    add('U2','AD7606C-18 candidate','lqfp64',27,51,adc,note='SOFTWARE mode OS[2:0]=111; select one DOUTA, bipolar ranges, bandwidth per channel. No audio HPF. Register/DMA driver missing.')
+    dac={1:'DAC_LDAC_5V',2:'DAC_SYNC_5V',3:'+5A',4:'DAC1',5:'DAC3',6:'DAC5',7:'DAC7',8:'REF2V5',9:'DAC_CLR_5V',10:'DAC8',11:'DAC6',12:'DAC4',13:'DAC2',14:'GND',15:'DAC_MOSI_5V',16:'DAC_SCK_5V'}
+    add('U3','DAC8568B (gain 1, midscale reset) candidate','tssop16',62,50,dac,note='B grade matters: internal 2.5 V reference, output span 2.5 V, midscale reset; enable reference in software. 16-bit output, not a 24-bit codec.')
+    # MCP23017 SOIC28. Port A: 4 clicks + 4 keys, port B: 8 switch requests.
+    io={1:'REQ5',2:'REQ6',3:'REQ7',4:'REQ8',5:'+3V3',6:'GND',7:None,8:'I2C_SCL',9:'I2C_SDA',10:None,11:'GND',12:'GND',13:'GND',14:'IO_RESET',15:None,16:None,17:'ENC1_CLICK',18:'ENC2_CLICK',19:'ENC3_CLICK',20:'ENC4_CLICK',21:'KEY1',22:'KEY2',23:'KEY3',24:'KEY4',25:'REQ1',26:'REQ2',27:'REQ3',28:'REQ4'}
+    add('U4','MCP23017-E/SO candidate','soic28',27,28,io,note='I2C 0x20. Encoders A/B stay on MCU GPIO; only clicks/keys and static output requests use expander.')
+    # Two quad AND gates: permit defaults low independently from expander state.
+    for bank,x in enumerate([45,67]):
+        pins={7:'GND',14:'+3V3'}
+        for j,(a,b,y) in enumerate([(1,2,3),(4,5,6),(9,10,8),(12,13,11)]):
+            n=bank*4+j+1;pins.update({a:f'REQ{n}',b:'OUTPUT_PERMIT',y:f'SW_ON{n}'})
+        add(f'U{5+bank}','SN74LVC08A candidate','soic14',x,74,pins)
+    # Source terminals face jacks; only sources have the quoted fault protection.
+    for bank,x in enumerate([45,67]):
+        pins={4:'-12VA',5:'GND',12:f'FAULT{bank+1}',13:'+12VA'}
+        for j,(control,drain,source) in enumerate([(1,2,3),(16,15,14),(9,10,11),(8,7,6)]):
+            n=bank*4+j+1;port=f'OUT{j+1}' if bank==0 else f'CTRL{j+1}'
+            pins.update({control:f'SW_ON{n}',drain:f'DRIVE{n}',source:port})
+        add(f'U{7+bank}','ADG5412FBRUZ candidate','tssop16',x,89,pins,note='Not ADG5413F. IN=0 disconnects. Protected S faces jack; driver on D. Fault/power-off isolation needs bench qualification; not protection against every output collision.')
+    # 8 bipolar differential amplifier candidates plus reference follower.
+    quadpins=[{4:'+12VA',11:'-12VA'} for _ in range(3)]
+    for n in range(1,9):
+        idx=(n-1)//4;plus,minus,out=[(3,2,1),(5,6,7),(10,9,8),(12,13,14)][(n-1)%4]
+        quadpins[idx].update({plus:f'PLUS{n}',minus:f'MINUS{n}',out:f'AMP{n}'})
+        x=10+(n-1)*11;y=66
+        two(f'RA{n}','10k 0.01% matched network TBD',x,y,f'DAC{n}',f'PLUS{n}')
+        two(f'RB{n}','40k 0.01% matched network TBD',x,y+3,f'PLUS{n}','GND')
+        two(f'RC{n}','10k 0.01% matched network TBD',x,y+6,'REF_BUF',f'MINUS{n}')
+        two(f'RD{n}','40k 0.01% matched network TBD',x,y+9,f'AMP{n}',f'MINUS{n}')
+        two(f'RO{n}','100R 0.25W candidate',x,83,f'AMP{n}',f'DRIVE{n}')
+        two(f'RE{n}','100k',x,93,f'SW_ON{n}','GND')
+        two(f'RQ{n}','100k',x,96,f'REQ{n}','GND')
+    quadpins[2].update({3:'REF_HALF',2:'REF_BUF',1:'REF_BUF'})
+    for plus,minus,out in [(5,6,7),(10,9,8),(12,13,14)]:quadpins[2].update({plus:'GND',minus:f'UNUSED_FB{out}',out:f'UNUSED_FB{out}'})
+    for i,x in enumerate([13,45,80]):
+        add(f'U{9+i}','OPA4197ID candidate','soic14',x,60,quadpins[i],note='Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V.')
+        cap(f'CP{i}P','100nF 50V',x-5,55,'+12VA');cap(f'CP{i}N','100nF 50V',x-5,58,'-12VA')
+    # DAC VIH at 5 V is 0.7*AVDD: 3.3 V direct drive is NOT guaranteed.
+    # AHCT inputs have TTL thresholds; shift all five control lines to 5 V.
+    signals=['DAC_SCK','DAC_MOSI','DAC_SYNC','DAC_LDAC','DAC_CLR']
+    for bank in range(2):
+        pins={1:'GND',4:'GND',7:'GND',10:'GND',13:'GND',14:'+5A'}
+        for j,(a,y) in enumerate([(2,3),(5,6),(9,8),(12,11)]):
+            idx=bank*4+j
+            pins[a]=signals[idx] if idx<len(signals) else 'GND'
+            pins[y]=signals[idx]+'_5V' if idx<len(signals) else None
+        add(f'U{12+bank}','SN74AHCT125 candidate','soic14',70+bank*12,57,pins,note='5 V powered TTL-input buffers; validate timing/skew at selected SPI clock. Not LVC125 at 5 V.')
+        cap(f'CBUF{bank}','100nF',70+bank*12,53,'+5A')
+    two('RREF1','10k 0.01% matched',60,60,'REF2V5','REF_HALF')
+    two('RREF2','10k 0.01% matched',60,63,'REF_HALF','GND')
+    # First-pass RC only. A proper analog antialias/reconstruction design is OPEN.
+    for n,port in enumerate([f'IN{i}' for i in range(1,5)]+[f'CTRL{i}' for i in range(1,5)],1):
+        x=9+(n-1)*11
+        two(f'RI{n}','1k input protection candidate',x,41,port,f'ADC_IN{n}')
+        cap(f'CI{n}','1nF EMI only - NOT full antialias',x,44,f'ADC_IN{n}')
+        two(f'RP{n}','10k',x,37,f'ENC{(n-1)//2+1}_{"A" if n%2 else "B"}','+3V3')
+    for n,net in enumerate([f'ENC{i}_CLICK' for i in range(1,5)]+[f'KEY{i}' for i in range(1,5)],1):two(f'RK{n}','10k',9+(n-1)*11,107,net,'+3V3')
+    for n,net in enumerate(['ADC_CS','DAC_SYNC','DAC_LDAC','DAC_CLR','IO_RESET'],1):two(f'RU{n}','10k',9+(n-1)*11,111,net,'+3V3')
+    two('RPERMIT','10k',80,111,'OUTPUT_PERMIT','GND')
+    two('RSCL','4.7k DNP',80,15,'I2C_SCL','+3V3');two('RSDA','4.7k DNP',90,15,'I2C_SDA','+3V3')
+    # Eurorack input and candidate power module, analog branch filtered.
+    add('JPOWER','Eurorack IDC10 keyed','idc10',10.5,24,{1:'-12_IN',2:'-12_IN',3:'GND',4:'GND',5:'GND',6:'GND',7:'GND',8:'GND',9:'+12_IN',10:'+12_IN'})
+    two('DPOWERP','SS14',10,13,'+12VA','+12_IN','sma');two('DPOWERN','SS14',23,13,'-12_IN','-12VA','sma')
+    add('UREG','5V >=1A module - selection OPEN','power_module',80,42,{1:'+12VA',2:'GND',3:'+5D'},note='Envelope placeholder, not an orderable/verified footprint. Compare converter ripple, startup and heat. No case +5V required.')
+    two('FB1','Ferrite 600R@100MHz candidate',64,37,'+5D','+5A')
+    for ref,value,x,y,rail in [('C5D','47uF 10V',85,34,'+5D'),('C5A','10uF 10V',58,37,'+5A'),('CVDRV','100nF',34,51,'+3V3'),('CREG1','1uF',20,57,'REGCAP1'),('CREG2','1uF',23,57,'REGCAP2'),('CREFADC','100nF',26,57,'ADC_REF'),('CREFCAP','10uF low ESR',29,57,'ADC_REFCAP'),('CREFDAC','100nF',62,56,'REF2V5')]:cap(ref,value,x,y,rail)
+    for j in range(4):cap(f'CADC{j}','100nF',18+j*3,48,'+5A')
+    for n,(rail,x,y) in enumerate([('+5D',90,34),('+5A',62,44),('+3V3',33,24),('+3V3',40,74),('+3V3',62,74),('+12VA',40,89),('-12VA',40,92),('+12VA',62,89),('-12VA',62,92)],1):cap(f'CD{n}','100nF',x,y,rail)
+    for j,(net,x) in enumerate([('GND',10),('+12VA',25),('-12VA',40),('+5D',55),('+5A',70),('REF_BUF',85)],1):add(f'TP{j}',net,'testpoint',x,117,{1:net})
+    return parts
