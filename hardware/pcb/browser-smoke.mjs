@@ -1,40 +1,26 @@
-// Local offline viewer verification via Chrome DevTools pipe; no npm dependencies.
 import {spawn} from 'node:child_process';
-import {writeFile, mkdir} from 'node:fs/promises';
-import {fileURLToPath} from 'node:url';
+import {readFile,mkdir,writeFile,access} from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const root=fileURLToPath(new URL('.',import.meta.url));
-const child=spawn('google-chrome',['--headless','--no-sandbox','--disable-dev-shm-usage','--disable-gpu',
- '--no-first-run','--user-data-dir=/tmp/adlfo-cdp','--remote-debugging-pipe'],{stdio:['ignore','ignore','ignore','pipe','pipe']});
-let seq=0, buffer='';const pending=new Map();
-child.stdio[4].on('data',chunk=>{buffer+=chunk.toString();let k;while((k=buffer.indexOf('\0'))>=0){
- const packet=JSON.parse(buffer.slice(0,k));buffer=buffer.slice(k+1);if(pending.has(packet.id)){
- const {resolve,reject}=pending.get(packet.id);pending.delete(packet.id);packet.error?reject(packet.error):resolve(packet.result)}}});
+const child=spawn(process.env.CHROME_BIN||'chromium',['--headless','--no-sandbox','--disable-dev-shm-usage','--disable-gpu','--no-first-run','--user-data-dir=/tmp/adolfo-cdp','--remote-debugging-pipe'],{stdio:['ignore','ignore','ignore','pipe','pipe']});
+let seq=0,buffer='';const pending=new Map();
+child.stdio[4].on('data',c=>{buffer+=c;let k;while((k=buffer.indexOf('\0'))>=0){const p=JSON.parse(buffer.slice(0,k));buffer=buffer.slice(k+1);if(pending.has(p.id)){const {resolve,reject}=pending.get(p.id);pending.delete(p.id);p.error?reject(p.error):resolve(p.result)}}});
 const send=(method,params={},sessionId)=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});child.stdio[3].write(JSON.stringify({id,method,params,sessionId})+'\0')});
-const timer=setTimeout(()=>{child.kill();console.error('Chrome smoke timed out');process.exit(1)},25000);
-try{
+const timer=setTimeout(()=>{child.kill();process.exit(1)},25000);
+try {
  const {targetId}=await send('Target.createTarget',{url:'about:blank'});
- const {sessionId}=await send('Target.attachToTarget',{targetId,flatten:true});
- const call=(m,p)=>send(m,p,sessionId);
+ const {sessionId}=await send('Target.attachToTarget',{targetId,flatten:true});const call=(m,p)=>send(m,p,sessionId);
  await call('Page.enable');await call('Runtime.enable');
- await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1200,deviceScaleFactor:1,mobile:false});
- await call('Page.navigate',{url:new URL('./output/index.html',import.meta.url).href});
- const evalJS=async(expression)=>{const r=await call('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value};
- await evalJS('new Promise(resolve=>document.readyState==="complete"?resolve(true):window.addEventListener("load",()=>resolve(true),{once:true}))');
- assert.equal(await evalJS('document.querySelectorAll("tbody tr").length'),114);
- for(const view of ['assembly','front','back','cut','pair']){
-  assert.equal(await evalJS(`document.querySelector('[data-view="${view}"]').click(); document.querySelector('.view.active').id`),'view-'+view);
- }
- assert.equal(await evalJS(`document.querySelector('[data-view="back"]').click();document.querySelector('#rats').click();!document.querySelector('#board-rats').classList.contains('hidden')`),true);
- assert.equal(await evalJS(`const s=document.querySelector('#search');s.value='TL074';s.dispatchEvent(new Event('input'));document.querySelectorAll('tbody tr:not([hidden])').length`),1);
- await evalJS(`document.querySelector('[data-view="assembly"]').click(); const e=document.querySelector('#explode');e.value=170;e.dispatchEvent(new Event('input'))`);
- assert.equal(await evalJS(`document.querySelector('.assembly').style.getPropertyValue('--separation')`),'170px');
- await mkdir('/tmp/adlfo-viewer-checks',{recursive:true});
- let shot=await call('Page.captureScreenshot',{format:'png'});await writeFile('/tmp/adlfo-viewer-checks/exploded.png',Buffer.from(shot.data,'base64'));
- await call('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
- await evalJS(`document.querySelector('[data-view="pair"]').click()`);
- assert.equal(await evalJS('document.documentElement.scrollWidth<=innerWidth'),true);
- shot=await call('Page.captureScreenshot',{format:'png'});await writeFile('/tmp/adlfo-viewer-checks/mobile.png',Buffer.from(shot.data,'base64'));
- console.log('PASS: all five tabs, ratsnest, BOM search, exploded slider, mobile width.');
- await send('Browser.close');
+ await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
+ const {frameTree}=await call('Page.getFrameTree');await call('Page.setDocumentContent',{frameId:frameTree.frame.id,html:await readFile(new URL('./output/index.html',import.meta.url),'utf8')});
+ const evaluate=async expression=>{const r=await call('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value};
+ const design=JSON.parse(await readFile(new URL('./output/design.json',import.meta.url),'utf8'));
+ assert.equal(await evaluate('document.querySelectorAll("tbody tr").length'),design.parts.length);
+ for(const name of ['main','panel','drill','front'])assert.equal(await evaluate(`document.querySelector('[data-view="${name}"]').click();document.querySelector('.view.active').id`),name);
+ assert.equal(await evaluate(`document.querySelector('#search').value='DAC8568B';document.querySelector('#search').dispatchEvent(new Event('input'));document.querySelectorAll('tbody tr:not([hidden])').length`),1);
+ const links=await evaluate('[...document.querySelectorAll("a")].map(a=>a.getAttribute("href"))');for(const href of links)await access(new URL('./output/'+href,import.meta.url));
+ await mkdir('/tmp/adolfo-viewer-checks',{recursive:true});
+ let shot=await call('Page.captureScreenshot',{format:'png'});await writeFile('/tmp/adolfo-viewer-checks/desktop.png',Buffer.from(shot.data,'base64'));
+ await call('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true);
+ shot=await call('Page.captureScreenshot',{format:'png'});await writeFile('/tmp/adolfo-viewer-checks/mobile.png',Buffer.from(shot.data,'base64'));
+ console.log('PASS four views, BOM search, local links, mobile width');await send('Browser.close');
 }finally{clearTimeout(timer);child.kill()}

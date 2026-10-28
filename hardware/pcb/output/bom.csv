@@ -1,115 +1,175 @@
-Reference,Value / candidate,Footprint,Side,Group,Notes
-U1,Daisy Seed (socketed),seed,B,SYSTEM,"2 x 20 sockets, 2.54 mm pitch; row spacing 15.24 mm; USB toward right in panel view."
-U2,MCP4728-E/UN,msop10,B,SYSTEM,
-U3,MCP6004-I/SL,soic14,B,SYSTEM,
-U4,TL074CDR,soic14,B,SYSTEM,Dual supply; nominal non-inverting gain 2.5. Feedback before output resistor.
-U5,R-78E5.0-0.5,recom,B,SYSTEM,500 mA rated converter; actual rail budget to measure.
-J13,EURORACK 2x5 keyed,idc10,B,SYSTEM,Red stripe = pins 1/2 = -12 V. Key orientation must match cable.
-J14,OLED SSD1306 128x64,oled,F,SYSTEM,"Assumed module GND/VCC/SCL/SDA, 0.96 inch; measure actual glass, PCB and connector before release."
-D1,SS14,sma,B,SYSTEM,Pad 1 cathode: protected positive rail.
-D2,SS14,sma,B,SYSTEM,Pad 1 cathode: raw negative rail.
-D3,SS14,sma,B,SYSTEM,Blocks reverse feed from USB into 5 V converter; check specific Seed revision.
-C1,10uF 50V X7R,c0805,B,SYSTEM,Allow for MLCC DC bias; 1206 may be needed after part selection.
-C2,10uF 50V X7R,c0805,B,SYSTEM,
-C3,10uF 10V X7R,c0805,B,SYSTEM,
-C4,10uF 10V X7R,c0805,B,SYSTEM,
-C5,100nF,c0805,B,SYSTEM,
-C6,10uF 10V X7R,c0805,B,SYSTEM,
-C7,100nF,c0805,B,SYSTEM,
-C8,100nF 50V,c0805,B,SYSTEM,
-C9,100nF 50V,c0805,B,SYSTEM,
-R1,4.7k,r0805,B,SYSTEM,
-R2,4.7k,r0805,B,SYSTEM,
-TP1,GND,testpoint,B,SYSTEM,
-TP2,+12VA,testpoint,B,SYSTEM,
-TP3,-12VA,testpoint,B,SYSTEM,
-TP4,+5V_SEED,testpoint,B,SYSTEM,
-TP5,+3V3,testpoint,B,SYSTEM,
-ENC1,RISE,encoder,F,CH1,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
-SW1,CH 1,button,F,CH1,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
-J1,TRIG1,jack,F,CH1,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-J2,CV1,jack,F,CH1,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-J3,OUT1,jack,F,CH1,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-R101,100k,r0805,B,CH1,
-R102,1M,r0805,B,CH1,
-R103,47k,r0805,B,CH1,
-Q1,MMBT3904,sot23,B,CH1,
-D101,1N4148W,sod123,B,CH1,
-R104,100k 0.1%,r0805,B,CH1,
-R105,33k 0.1%,r0805,B,CH1,
-R106,10k,r0805,B,CH1,
-C101,10nF,c0805,B,CH1,
-D102,BAT54S,sot23,B,CH1,
-R107,1k,r0805,B,CH1,
-C102,1nF,c0805,B,CH1,
-R108,10k,r0805,B,CH1,
-R109,10k 0.1%,r0805,B,CH1,
-R110,15k 0.1%,r0805,B,CH1,
-R111,2.2k 0.5W,r2010,B,CH1,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
-TP11,DAC1,testpoint,B,CH1,
-ENC2,FALL,encoder,F,CH2,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
-SW2,CH 2,button,F,CH2,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
-J4,TRIG2,jack,F,CH2,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-J5,CV2,jack,F,CH2,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-J6,OUT2,jack,F,CH2,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-R201,100k,r0805,B,CH2,
-R202,1M,r0805,B,CH2,
-R203,47k,r0805,B,CH2,
-Q2,MMBT3904,sot23,B,CH2,
-D201,1N4148W,sod123,B,CH2,
-R204,100k 0.1%,r0805,B,CH2,
-R205,33k 0.1%,r0805,B,CH2,
-R206,10k,r0805,B,CH2,
-C201,10nF,c0805,B,CH2,
-D202,BAT54S,sot23,B,CH2,
-R207,1k,r0805,B,CH2,
-C202,1nF,c0805,B,CH2,
-R208,10k,r0805,B,CH2,
-R209,10k 0.1%,r0805,B,CH2,
-R210,15k 0.1%,r0805,B,CH2,
-R211,2.2k 0.5W,r2010,B,CH2,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
-TP12,DAC2,testpoint,B,CH2,
-ENC3,SYMMETRY,encoder,F,CH3,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
-SW3,CH 3,button,F,CH3,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
-J7,TRIG3,jack,F,CH3,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-J8,CV3,jack,F,CH3,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-J9,OUT3,jack,F,CH3,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-R301,100k,r0805,B,CH3,
-R302,1M,r0805,B,CH3,
-R303,47k,r0805,B,CH3,
-Q3,MMBT3904,sot23,B,CH3,
-D301,1N4148W,sod123,B,CH3,
-R304,100k 0.1%,r0805,B,CH3,
-R305,33k 0.1%,r0805,B,CH3,
-R306,10k,r0805,B,CH3,
-C301,10nF,c0805,B,CH3,
-D302,BAT54S,sot23,B,CH3,
-R307,1k,r0805,B,CH3,
-C302,1nF,c0805,B,CH3,
-R308,10k,r0805,B,CH3,
-R309,10k 0.1%,r0805,B,CH3,
-R310,15k 0.1%,r0805,B,CH3,
-R311,2.2k 0.5W,r2010,B,CH3,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
-TP13,DAC3,testpoint,B,CH3,
-ENC4,LEVEL,encoder,F,CH4,"ALPS EC11E15244G1 candidate; shaft height, anti-rotation tab and E3 direction to verify."
-SW4,CH 4,button,F,CH4,"6x6 mm tact, 13 mm actuator candidate, 4 mm panel aperture; match actual actuator."
-J10,TRIG4,jack,F,CH4,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-J11,CV4,jack,F,CH4,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-J12,OUT4,jack,F,CH4,PJ398SM/WQP518MA; input normal contact grounded; central 3 mm NPTH added.
-R401,100k,r0805,B,CH4,
-R402,1M,r0805,B,CH4,
-R403,47k,r0805,B,CH4,
-Q4,MMBT3904,sot23,B,CH4,
-D401,1N4148W,sod123,B,CH4,
-R404,100k 0.1%,r0805,B,CH4,
-R405,33k 0.1%,r0805,B,CH4,
-R406,10k,r0805,B,CH4,
-C401,10nF,c0805,B,CH4,
-D402,BAT54S,sot23,B,CH4,
-R407,1k,r0805,B,CH4,
-C402,1nF,c0805,B,CH4,
-R408,10k,r0805,B,CH4,
-R409,10k 0.1%,r0805,B,CH4,
-R410,15k 0.1%,r0805,B,CH4,
-R411,2.2k 0.5W,r2010,B,CH4,Nominal 5 V open circuit; about 4.89 V into 100k. Check reverse patch and thermal behavior.
-TP14,DAC4,testpoint,B,CH4,
+Reference,Candidate value,Footprint,Board,X,Y,Notes
+JM,Panel link 2x20 candidate,header40,main,50.6,87,
+JP,Panel link 2x20 candidate,header40,panel,50.6,87,Stack height and connector polarity require physical review.
+E1,EC11 click candidate,encoder,panel,17.5,48,
+K1,6x6 tact height TBD,button,panel,17.5,67,
+J1,IN1 PJ398SM,jack,panel,17.5,80,Normals left open: must never ground a CTRL port used as output.
+J2,CTRL1 PJ398SM,jack,panel,17.5,95,Normals left open: must never ground a CTRL port used as output.
+J3,OUT1 PJ398SM,jack,panel,17.5,110,Normals left open: must never ground a CTRL port used as output.
+E2,EC11 click candidate,encoder,panel,39.5,48,
+K2,6x6 tact height TBD,button,panel,39.5,67,
+J4,IN2 PJ398SM,jack,panel,39.5,80,Normals left open: must never ground a CTRL port used as output.
+J5,CTRL2 PJ398SM,jack,panel,39.5,95,Normals left open: must never ground a CTRL port used as output.
+J6,OUT2 PJ398SM,jack,panel,39.5,110,Normals left open: must never ground a CTRL port used as output.
+E3,EC11 click candidate,encoder,panel,61.5,48,
+K3,6x6 tact height TBD,button,panel,61.5,67,
+J7,IN3 PJ398SM,jack,panel,61.5,80,Normals left open: must never ground a CTRL port used as output.
+J8,CTRL3 PJ398SM,jack,panel,61.5,95,Normals left open: must never ground a CTRL port used as output.
+J9,OUT3 PJ398SM,jack,panel,61.5,110,Normals left open: must never ground a CTRL port used as output.
+E4,EC11 click candidate,encoder,panel,83.5,48,
+K4,6x6 tact height TBD,button,panel,83.5,67,
+J10,IN4 PJ398SM,jack,panel,83.5,80,Normals left open: must never ground a CTRL port used as output.
+J11,CTRL4 PJ398SM,jack,panel,83.5,95,Normals left open: must never ground a CTRL port used as output.
+J12,OUT4 PJ398SM,jack,panel,83.5,110,Normals left open: must never ground a CTRL port used as output.
+J14,SSD1306 breakout raised,oled,panel,24,11,Assumed GND/VCC/SCL/SDA order; module dimensions unconfirmed.
+U1,Daisy Seed 3 / Seed2 DFM compatibility review,seed,main,70,24,Common 40-pin footprint candidate; onboard audio and 12-bit DAC unused. Check USB-C and DFM mechanical envelope.
+U2,AD7606C-18 candidate,lqfp64,main,36,33,"SOFTWARE mode OS[2:0]=111; select one DOUTA, bipolar ranges, bandwidth per channel. No audio HPF. Register/DMA driver missing."
+U3,"DAC8568B (gain 1, midscale reset) candidate",tssop16,main,48,36,"B grade matters: internal 2.5 V reference, output span 2.5 V, midscale reset; enable reference in software. 16-bit output, not a 24-bit codec."
+U4,MCP23017-E/SO candidate,soic28,main,22,36,I2C 0x20. Encoders A/B stay on MCU GPIO; only clicks/keys and static output requests use expander.
+U5,SN74LVC08A candidate,soic14,main,40,15,
+U6,SN74LVC08A candidate,soic14,main,48,22,
+U7,ADG5412FBRUZ candidate,tssop16,main,57,36,Not ADG5413F. IN=0 disconnects. Protected S faces jack; driver on D. Fault/power-off isolation needs bench qualification; not protection against every output collision.
+U8,ADG5412FBRUZ candidate,tssop16,main,66,36,Not ADG5413F. IN=0 disconnects. Protected S faces jack; driver on D. Fault/power-off isolation needs bench qualification; not protection against every output collision.
+RA1,10k 0.01% matched network TBD,r0805,main,85,29,
+RB1,40k 0.01% matched network TBD,r0805,main,89,29,
+RC1,10k 0.01% matched network TBD,r0805,main,73,34,
+RD1,40k 0.01% matched network TBD,r0805,main,77,34,
+RO1,100R 0.25W candidate,r0805,main,81,34,
+RE1,100k,r0805,main,85,34,
+RQ1,100k,r0805,main,89,34,
+RA2,10k 0.01% matched network TBD,r0805,main,93,34,
+RB2,40k 0.01% matched network TBD,r0805,main,6,37,
+RC2,10k 0.01% matched network TBD,r0805,main,10,37,
+RD2,40k 0.01% matched network TBD,r0805,main,73,37,
+RO2,100R 0.25W candidate,r0805,main,77,37,
+RE2,100k,r0805,main,81,37,
+RQ2,100k,r0805,main,85,37,
+RA3,10k 0.01% matched network TBD,r0805,main,89,37,
+RB3,40k 0.01% matched network TBD,r0805,main,93,37,
+RC3,10k 0.01% matched network TBD,r0805,main,6,40,
+RD3,40k 0.01% matched network TBD,r0805,main,10,40,
+RO3,100R 0.25W candidate,r0805,main,73,40,
+RE3,100k,r0805,main,77,40,
+RQ3,100k,r0805,main,81,40,
+RA4,10k 0.01% matched network TBD,r0805,main,85,40,
+RB4,40k 0.01% matched network TBD,r0805,main,89,40,
+RC4,10k 0.01% matched network TBD,r0805,main,93,40,
+RD4,40k 0.01% matched network TBD,r0805,main,45,41,
+RO4,100R 0.25W candidate,r0805,main,49,41,
+RE4,100k,r0805,main,53,41,
+RQ4,100k,r0805,main,57,41,
+RA5,10k 0.01% matched network TBD,r0805,main,61,41,
+RB5,40k 0.01% matched network TBD,r0805,main,65,41,
+RC5,10k 0.01% matched network TBD,r0805,main,69,41,
+RD5,40k 0.01% matched network TBD,r0805,main,31,42,
+RO5,100R 0.25W candidate,r0805,main,35,42,
+RE5,100k,r0805,main,39,42,
+RQ5,100k,r0805,main,6,43,
+RA6,10k 0.01% matched network TBD,r0805,main,10,43,
+RB6,40k 0.01% matched network TBD,r0805,main,73,43,
+RC6,10k 0.01% matched network TBD,r0805,main,77,43,
+RD6,40k 0.01% matched network TBD,r0805,main,81,43,
+RO6,100R 0.25W candidate,r0805,main,85,43,
+RE6,100k,r0805,main,89,43,
+RQ6,100k,r0805,main,93,43,
+RA7,10k 0.01% matched network TBD,r0805,main,43,44,
+RB7,40k 0.01% matched network TBD,r0805,main,47,44,
+RC7,10k 0.01% matched network TBD,r0805,main,51,44,
+RD7,40k 0.01% matched network TBD,r0805,main,55,44,
+RO7,100R 0.25W candidate,r0805,main,59,44,
+RE7,100k,r0805,main,63,44,
+RQ7,100k,r0805,main,67,44,
+RA8,10k 0.01% matched network TBD,r0805,main,31,45,
+RB8,40k 0.01% matched network TBD,r0805,main,35,45,
+RC8,10k 0.01% matched network TBD,r0805,main,39,45,
+RD8,40k 0.01% matched network TBD,r0805,main,6,46,
+RO8,100R 0.25W candidate,r0805,main,10,46,
+RE8,100k,r0805,main,71,46,
+RQ8,100k,r0805,main,75,46,
+U9,OPA4197ID candidate,soic14,main,56,22,"Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V."
+CP0P,100nF 50V,c0805,main,6,11,
+CP0N,100nF 50V,c0805,main,10,11,
+U10,OPA4197ID candidate,soic14,main,64,22,"Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V."
+CP1P,100nF 50V,c0805,main,14,11,
+CP1N,100nF 50V,c0805,main,62,11,
+U11,OPA4197ID candidate,soic14,main,72,22,"Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V."
+CP2P,100nF 50V,c0805,main,66,11,
+CP2N,100nF 50V,c0805,main,70,11,
+U12,SN74AHCT125 candidate,soic14,main,80,22,5 V powered TTL-input buffers; validate timing/skew at selected SPI clock. Not LVC125 at 5 V.
+CBUF0,100nF,c0805,main,74,11,
+U13,SN74AHCT125 candidate,soic14,main,88,22,5 V powered TTL-input buffers; validate timing/skew at selected SPI clock. Not LVC125 at 5 V.
+CBUF1,100nF,c0805,main,78,11,
+RREF1,10k 0.01% matched,r0805,main,79,46,
+RREF2,10k 0.01% matched,r0805,main,83,46,
+RI1,1k input protection candidate,r0805,main,87,46,
+CI1,1nF EMI only - NOT full antialias,c0805,main,82,11,
+RP1,10k,r0805,main,91,46,
+RI2,1k input protection candidate,r0805,main,95,46,
+CI2,1nF EMI only - NOT full antialias,c0805,main,86,11,
+RP2,10k,r0805,main,14,47,
+RI3,1k input protection candidate,r0805,main,18,47,
+CI3,1nF EMI only - NOT full antialias,c0805,main,90,11,
+RP3,10k,r0805,main,22,47,
+RI4,1k input protection candidate,r0805,main,26,47,
+CI4,1nF EMI only - NOT full antialias,c0805,main,94,11,
+RP4,10k,r0805,main,43,47,
+RI5,1k input protection candidate,r0805,main,47,47,
+CI5,1nF EMI only - NOT full antialias,c0805,main,62,14,
+RP5,10k,r0805,main,51,47,
+RI6,1k input protection candidate,r0805,main,55,47,
+CI6,1nF EMI only - NOT full antialias,c0805,main,66,14,
+RP6,10k,r0805,main,59,47,
+RI7,1k input protection candidate,r0805,main,63,47,
+CI7,1nF EMI only - NOT full antialias,c0805,main,70,14,
+RP7,10k,r0805,main,67,47,
+RI8,1k input protection candidate,r0805,main,30,48,
+CI8,1nF EMI only - NOT full antialias,c0805,main,74,14,
+RP8,10k,r0805,main,34,48,
+RK1,10k,r0805,main,38,48,
+RK2,10k,r0805,main,6,49,
+RK3,10k,r0805,main,10,49,
+RK4,10k,r0805,main,71,49,
+RK5,10k,r0805,main,75,49,
+RK6,10k,r0805,main,79,49,
+RK7,10k,r0805,main,83,49,
+RK8,10k,r0805,main,87,49,
+RU1,10k,r0805,main,91,49,
+RU2,10k,r0805,main,95,49,
+RU3,10k,r0805,main,14,50,
+RU4,10k,r0805,main,18,50,
+RU5,10k,r0805,main,22,50,
+RPERMIT,10k,r0805,main,26,50,
+RSCL,4.7k DNP,r0805,main,42,50,
+RSDA,4.7k DNP,r0805,main,46,50,
+JPOWER,Eurorack IDC10 keyed,idc10,main,10.5,24,
+DPOWERP,SS14,sma,main,48,12,
+DPOWERN,SS14,sma,main,56,12,
+UREG,5V >=1A module - selection OPEN,power_module,main,26,18,"Envelope placeholder, not an orderable/verified footprint. Compare converter ripple, startup and heat. No case +5V required."
+FB1,Ferrite 600R@100MHz candidate,r0805,main,50,50,
+C5D,47uF 10V,c0805,main,78,14,
+C5A,10uF 10V,c0805,main,82,14,
+CVDRV,100nF,c0805,main,86,14,
+CREG1,1uF,c0805,main,90,14,
+CREG2,1uF,c0805,main,94,14,
+CREFADC,100nF,c0805,main,94,19,
+CREFCAP,10uF low ESR,c0805,main,38,22,
+CREFDAC,100nF,c0805,main,42,22,
+CADC0,100nF,c0805,main,94,22,
+CADC1,100nF,c0805,main,94,25,
+CADC2,100nF,c0805,main,94,28,
+CADC3,100nF,c0805,main,45,29,
+CD1,100nF,c0805,main,49,29,
+CD2,100nF,c0805,main,53,29,
+CD3,100nF,c0805,main,57,29,
+CD4,100nF,c0805,main,61,29,
+CD5,100nF,c0805,main,65,29,
+CD6,100nF,c0805,main,69,29,
+CD7,100nF,c0805,main,73,29,
+CD8,100nF,c0805,main,77,29,
+CD9,100nF,c0805,main,81,29,
+TP1,GND,testpoint,main,14,37,
+TP2,+12VA,testpoint,main,14,40,
+TP3,-12VA,testpoint,main,14,43,
+TP4,+5D,testpoint,main,54,50,
+TP5,+5A,testpoint,main,57,50,
+TP6,REF_BUF,testpoint,main,60,50,

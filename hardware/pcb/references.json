@@ -1,0 +1,33 @@
+{
+  "accessed": "2026-10-24",
+  "sources": [
+    {
+      "name": "ad7606c-18",
+      "url": "https://www.analog.com/media/en/technical-documentation/data-sheets/ad7606c-18.pdf",
+      "sha256": "73b8892ab44ca4291b8c145df3e0d5d1abee2149c962be3a88e381c3e3e4f007",
+      "note": "Rev B. Pin table pp15-17; serial interface; ranges and bandwidth."
+    },
+    {
+      "name": "dac8568",
+      "url": "https://www.ti.com/lit/ds/symlink/dac8568.pdf",
+      "sha256": "d1ab4f63d58b4e3b7871dfa0b83fe379b8ae7313d645758bc1bf06a2e37a4455",
+      "note": "SBAS430F. Grade table, TSSOP16, VIH at 5 V, 32-bit protocol and settling."
+    },
+    {
+      "name": "adg5412f",
+      "url": "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG5412F_5413F.pdf",
+      "sha256": "ea3d12f983fc79a728d302675a0428a6d244e95828154bc4c970d34e23195a96",
+      "note": "Rev C. TSSOP16, 5412F active-high ON, protected source and power-off behavior."
+    },
+    {
+      "name": "Daisy Seed variants",
+      "url": "https://github.com/daisyaudio/libDaisy/blob/master/src/daisy_seed.h",
+      "note": "Seed3 and Seed2 DFM board types and common pin namespace."
+    },
+    {
+      "name": "SPI pin support and DMA",
+      "url": "https://github.com/daisyaudio/libDaisy/blob/master/src/per/spi.cpp",
+      "note": "SPI1/SPI3 alternate functions and byte-aligned DMA."
+    }
+  ]
+}
