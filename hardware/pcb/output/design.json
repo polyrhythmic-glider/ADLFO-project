@@ -1,6 +1,6 @@
 {
-  "revision": "C",
-  "status": "CONCEPT_UNROUTED_NOT_FOR_FABRICATION",
+  "revision": "D",
+  "status": "ROUTED_CAD_RELEASE_BLOCKED",
   "panel": {
     "width": 101.2,
     "height": 128.5,
@@ -192,7 +192,10 @@
     "ENC3_B": 20,
     "ENC4_A": 21,
     "ENC4_B": 22,
-    "IO_RESET": 23
+    "IO_RESET": 23,
+    "WATCHDOG": 24,
+    "FAULT_N": 25,
+    "OLED_RESET": 26
   },
   "rates": {
     "adc_hz": 96000,
@@ -205,8 +208,8 @@
   },
   "parts": [
     {
-      "ref": "JM",
-      "value": "Panel link 2x20 candidate",
+      "ref": "J13",
+      "value": "Samtec TSW-120-07-G-D",
       "footprint": "header40",
       "x": 50.6,
       "y": 87,
@@ -250,17 +253,21 @@
         "37": "GND",
         "38": "GND",
         "39": "GND",
-        "40": "GND"
+        "40": "OLED_RESET"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "PROCESSOR",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "JM"
     },
     {
-      "ref": "JP",
-      "value": "Panel link 2x20 candidate",
-      "footprint": "header40",
+      "ref": "J15",
+      "value": "Samtec SSW-120-02-G-D",
+      "footprint": "socket40",
       "x": 50.6,
       "y": 87,
       "pins": {
@@ -303,16 +310,20 @@
         "37": "GND",
         "38": "GND",
         "39": "GND",
-        "40": "GND"
+        "40": "OLED_RESET"
       },
       "board": "panel",
       "side": "B",
-      "note": "Stack height and connector polarity require physical review.",
-      "group": "SYSTEM"
+      "note": "Mirrored socket numbering mates to JM pin-for-pin.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "JP"
     },
     {
       "ref": "E1",
-      "value": "EC11 click candidate",
+      "value": "ALPS EC11E18244AU",
       "footprint": "encoder",
       "x": 17.5,
       "y": 48,
@@ -327,11 +338,15 @@
       "board": "panel",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "E1"
     },
     {
       "ref": "K1",
-      "value": "6x6 tact height TBD",
+      "value": "E-Switch TL1105DF160Q",
       "footprint": "button",
       "x": 17.5,
       "y": 67,
@@ -342,7 +357,11 @@
       "board": "panel",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "K1"
     },
     {
       "ref": "J1",
@@ -353,12 +372,16 @@
       "pins": {
         "S": "GND",
         "T": "IN1",
-        "TN": null
+        "TN": "GND"
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J1"
     },
     {
       "ref": "J2",
@@ -373,8 +396,12 @@
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J2"
     },
     {
       "ref": "J3",
@@ -389,12 +416,16 @@
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J3"
     },
     {
       "ref": "E2",
-      "value": "EC11 click candidate",
+      "value": "ALPS EC11E18244AU",
       "footprint": "encoder",
       "x": 39.5,
       "y": 48,
@@ -409,11 +440,15 @@
       "board": "panel",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "E2"
     },
     {
       "ref": "K2",
-      "value": "6x6 tact height TBD",
+      "value": "E-Switch TL1105DF160Q",
       "footprint": "button",
       "x": 39.5,
       "y": 67,
@@ -424,7 +459,11 @@
       "board": "panel",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "K2"
     },
     {
       "ref": "J4",
@@ -435,12 +474,16 @@
       "pins": {
         "S": "GND",
         "T": "IN2",
-        "TN": null
+        "TN": "GND"
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J4"
     },
     {
       "ref": "J5",
@@ -455,8 +498,12 @@
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J5"
     },
     {
       "ref": "J6",
@@ -471,12 +518,16 @@
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J6"
     },
     {
       "ref": "E3",
-      "value": "EC11 click candidate",
+      "value": "ALPS EC11E18244AU",
       "footprint": "encoder",
       "x": 61.5,
       "y": 48,
@@ -491,11 +542,15 @@
       "board": "panel",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "E3"
     },
     {
       "ref": "K3",
-      "value": "6x6 tact height TBD",
+      "value": "E-Switch TL1105DF160Q",
       "footprint": "button",
       "x": 61.5,
       "y": 67,
@@ -506,7 +561,11 @@
       "board": "panel",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "K3"
     },
     {
       "ref": "J7",
@@ -517,12 +576,16 @@
       "pins": {
         "S": "GND",
         "T": "IN3",
-        "TN": null
+        "TN": "GND"
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J7"
     },
     {
       "ref": "J8",
@@ -537,8 +600,12 @@
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J8"
     },
     {
       "ref": "J9",
@@ -553,12 +620,16 @@
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J9"
     },
     {
       "ref": "E4",
-      "value": "EC11 click candidate",
+      "value": "ALPS EC11E18244AU",
       "footprint": "encoder",
       "x": 83.5,
       "y": 48,
@@ -573,11 +644,15 @@
       "board": "panel",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "E4"
     },
     {
       "ref": "K4",
-      "value": "6x6 tact height TBD",
+      "value": "E-Switch TL1105DF160Q",
       "footprint": "button",
       "x": 83.5,
       "y": 67,
@@ -588,7 +663,11 @@
       "board": "panel",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "K4"
     },
     {
       "ref": "J10",
@@ -599,12 +678,16 @@
       "pins": {
         "S": "GND",
         "T": "IN4",
-        "TN": null
+        "TN": "GND"
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J10"
     },
     {
       "ref": "J11",
@@ -619,8 +702,12 @@
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J11"
     },
     {
       "ref": "J12",
@@ -635,32 +722,43 @@
       },
       "board": "panel",
       "side": "F",
-      "note": "Normals left open: must never ground a CTRL port used as output.",
-      "group": "SYSTEM"
+      "note": "Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J12"
     },
     {
       "ref": "J14",
-      "value": "SSD1306 breakout raised",
-      "footprint": "oled",
-      "x": 24,
+      "value": "Waveshare 0.96inch OLED Module (D), I2C",
+      "footprint": "oled7",
+      "x": 50.6,
       "y": 11,
       "pins": {
-        "1": "GND",
-        "2": "+3V3",
-        "3": "I2C_SCL",
-        "4": "I2C_SDA"
+        "1": "+3V3",
+        "2": "GND",
+        "3": "I2C_SDA",
+        "4": "I2C_SCL",
+        "5": null,
+        "6": "GND",
+        "7": "OLED_RESET"
       },
       "board": "panel",
       "side": "F",
-      "note": "Assumed GND/VCC/SCL/SDA order; module dimensions unconfirmed.",
-      "group": "SYSTEM"
+      "note": "Waveshare module (D), SSD1315, 26 x 26 mm; I2C hardware configuration required. Seven-pin order VCC/GND/DIN/CLK/CS/DC/RES.",
+      "group": "PANEL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "J14"
     },
     {
       "ref": "U1",
-      "value": "Daisy Seed 3 / Seed2 DFM compatibility review",
+      "value": "Daisy Seed 3",
       "footprint": "seed",
       "x": 70,
-      "y": 24,
+      "y": 27,
       "pins": {
         "1": "DAC_SYNC",
         "2": "DAC_LDAC",
@@ -692,9 +790,9 @@
         "28": "ENC4_A",
         "29": "ENC4_B",
         "30": "IO_RESET",
-        "31": null,
-        "32": null,
-        "33": null,
+        "31": "WATCHDOG",
+        "32": "FAULT_N",
+        "33": "OLED_RESET",
         "34": null,
         "35": null,
         "36": null,
@@ -705,15 +803,19 @@
       },
       "board": "main",
       "side": "B",
-      "note": "Common 40-pin footprint candidate; onboard audio and 12-bit DAC unused. Check USB-C and DFM mechanical envelope.",
-      "group": "SYSTEM"
+      "note": "Seed 3 40-pin carrier; onboard codec and MCU DAC unused. Verify physical USB access on the assembled stack.",
+      "group": "PROCESSOR",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "U1"
     },
     {
       "ref": "U2",
-      "value": "AD7606C-18 candidate",
+      "value": "AD7606C-18BSTZ",
       "footprint": "lqfp64",
-      "x": 36,
-      "y": 33,
+      "x": 33,
+      "y": 31,
       "pins": {
         "1": "+5A",
         "2": "GND",
@@ -726,7 +828,7 @@
         "9": "ADC_CONVST",
         "10": "GND",
         "11": "ADC_RESET",
-        "12": "ADC_SCK",
+        "12": "ADC_SCK_TERM",
         "13": "ADC_CS",
         "14": "ADC_BUSY",
         "15": null,
@@ -743,7 +845,7 @@
         "26": "GND",
         "27": null,
         "28": null,
-        "29": "ADC_MOSI",
+        "29": "ADC_MOSI_TERM",
         "30": "GND",
         "31": "GND",
         "32": "GND",
@@ -783,14 +885,18 @@
       "board": "main",
       "side": "F",
       "note": "SOFTWARE mode OS[2:0]=111; select one DOUTA, bipolar ranges, bandwidth per channel. No audio HPF. Register/DMA driver missing.",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "AD7606C-18BSTZ",
+      "manufacturer": "Analog Devices",
+      "datasheet": "https://www.analog.com/media/en/technical-documentation/data-sheets/ad7606c-18.pdf",
+      "id": "U2"
     },
     {
       "ref": "U3",
-      "value": "DAC8568B (gain 1, midscale reset) candidate",
+      "value": "DAC8568BPW",
       "footprint": "tssop16",
-      "x": 48,
-      "y": 36,
+      "x": 70,
+      "y": 44,
       "pins": {
         "1": "DAC_LDAC_5V",
         "2": "DAC_SYNC_5V",
@@ -812,113 +918,129 @@
       "board": "main",
       "side": "F",
       "note": "B grade matters: internal 2.5 V reference, output span 2.5 V, midscale reset; enable reference in software. 16-bit output, not a 24-bit codec.",
-      "group": "SYSTEM"
+      "group": "DAC",
+      "mpn": "DAC8568BPW",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/dac8568.pdf",
+      "id": "U3"
     },
     {
       "ref": "U4",
-      "value": "MCP23017-E/SO candidate",
+      "value": "MCP23017-E/SO",
       "footprint": "soic28",
-      "x": 22,
-      "y": 36,
+      "x": 30,
+      "y": 100,
       "pins": {
-        "1": "REQ5",
-        "2": "REQ6",
-        "3": "REQ7",
-        "4": "REQ8",
-        "5": "+3V3",
-        "6": "GND",
-        "7": null,
-        "8": "I2C_SCL",
-        "9": "I2C_SDA",
-        "10": null,
-        "11": "GND",
-        "12": "GND",
-        "13": "GND",
-        "14": "IO_RESET",
-        "15": null,
-        "16": null,
-        "17": "ENC1_CLICK",
-        "18": "ENC2_CLICK",
-        "19": "ENC3_CLICK",
-        "20": "ENC4_CLICK",
-        "21": "KEY1",
-        "22": "KEY2",
-        "23": "KEY3",
-        "24": "KEY4",
-        "25": "REQ1",
-        "26": "REQ2",
-        "27": "REQ3",
-        "28": "REQ4"
+        "1": "KEY4",
+        "2": "REQ1",
+        "3": "REQ2",
+        "4": "REQ3",
+        "5": "REQ4",
+        "6": "REQ5",
+        "7": "REQ6",
+        "8": "REQ7",
+        "9": "+3V3",
+        "10": "GND",
+        "11": null,
+        "12": "I2C_SCL",
+        "13": "I2C_SDA",
+        "14": null,
+        "15": "GND",
+        "16": "GND",
+        "17": "GND",
+        "18": "IO_RESET",
+        "19": null,
+        "20": null,
+        "21": "ENC1_CLICK",
+        "22": "ENC2_CLICK",
+        "23": "ENC3_CLICK",
+        "24": "ENC4_CLICK",
+        "25": "KEY1",
+        "26": "KEY2",
+        "27": "KEY3",
+        "28": "REQ8"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "I2C 0x20. Encoders A/B stay on MCU GPIO; only clicks/keys and static output requests use expander.",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "MCP23017-E/SO",
+      "manufacturer": "Microchip",
+      "datasheet": "https://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf",
+      "id": "U4"
     },
     {
       "ref": "U5",
-      "value": "SN74LVC08A candidate",
+      "value": "SN74LVC08ADR",
       "footprint": "soic14",
       "x": 40,
-      "y": 15,
+      "y": 58,
       "pins": {
         "7": "GND",
         "14": "+3V3",
         "1": "REQ1",
-        "2": "OUTPUT_PERMIT",
+        "2": "SAFE_PERMIT",
         "3": "SW_ON1",
         "4": "REQ2",
-        "5": "OUTPUT_PERMIT",
+        "5": "SAFE_PERMIT",
         "6": "SW_ON2",
         "9": "REQ3",
-        "10": "OUTPUT_PERMIT",
+        "10": "SAFE_PERMIT",
         "8": "SW_ON3",
         "12": "REQ4",
-        "13": "OUTPUT_PERMIT",
+        "13": "SAFE_PERMIT",
         "11": "SW_ON4"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "SN74LVC08ADR",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc08a.pdf",
+      "id": "U5"
     },
     {
       "ref": "U6",
-      "value": "SN74LVC08A candidate",
+      "value": "SN74LVC08ADR",
       "footprint": "soic14",
-      "x": 48,
-      "y": 22,
+      "x": 62,
+      "y": 58,
       "pins": {
         "7": "GND",
         "14": "+3V3",
         "1": "REQ5",
-        "2": "OUTPUT_PERMIT",
+        "2": "SAFE_PERMIT",
         "3": "SW_ON5",
         "4": "REQ6",
-        "5": "OUTPUT_PERMIT",
+        "5": "SAFE_PERMIT",
         "6": "SW_ON6",
         "9": "REQ7",
-        "10": "OUTPUT_PERMIT",
+        "10": "SAFE_PERMIT",
         "8": "SW_ON7",
         "12": "REQ8",
-        "13": "OUTPUT_PERMIT",
+        "13": "SAFE_PERMIT",
         "11": "SW_ON8"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "SN74LVC08ADR",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc08a.pdf",
+      "id": "U6"
     },
     {
       "ref": "U7",
-      "value": "ADG5412FBRUZ candidate",
+      "value": "ADG5412FBRUZ",
       "footprint": "tssop16",
-      "x": 57,
-      "y": 36,
+      "x": 80,
+      "y": 108,
       "pins": {
         "4": "-12VA",
         "5": "GND",
-        "12": "FAULT1",
+        "12": "SAFE_CLEAR_N",
         "13": "+12VA",
         "1": "SW_ON1",
         "2": "DRIVE1",
@@ -936,18 +1058,22 @@
       "board": "main",
       "side": "F",
       "note": "Not ADG5413F. IN=0 disconnects. Protected S faces jack; driver on D. Fault/power-off isolation needs bench qualification; not protection against every output collision.",
-      "group": "SYSTEM"
+      "group": "OUTPUT_SWITCHES",
+      "mpn": "ADG5412FBRUZ",
+      "manufacturer": "Analog Devices",
+      "datasheet": "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG5412F_5413F.pdf",
+      "id": "U7"
     },
     {
       "ref": "U8",
-      "value": "ADG5412FBRUZ candidate",
+      "value": "ADG5412FBRUZ",
       "footprint": "tssop16",
-      "x": 66,
-      "y": 36,
+      "x": 75,
+      "y": 85,
       "pins": {
         "4": "-12VA",
         "5": "GND",
-        "12": "FAULT2",
+        "12": "SAFE_CLEAR_N",
         "13": "+12VA",
         "1": "SW_ON5",
         "2": "DRIVE5",
@@ -965,14 +1091,18 @@
       "board": "main",
       "side": "F",
       "note": "Not ADG5413F. IN=0 disconnects. Protected S faces jack; driver on D. Fault/power-off isolation needs bench qualification; not protection against every output collision.",
-      "group": "SYSTEM"
+      "group": "OUTPUT_SWITCHES",
+      "mpn": "ADG5412FBRUZ",
+      "manufacturer": "Analog Devices",
+      "datasheet": "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG5412F_5413F.pdf",
+      "id": "U8"
     },
     {
       "ref": "RA1",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 85,
-      "y": 29,
+      "x": 50,
+      "y": 44,
       "pins": {
         "1": "DAC1",
         "2": "PLUS1"
@@ -980,14 +1110,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RA1"
     },
     {
       "ref": "RB1",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 89,
-      "y": 29,
+      "x": 50,
+      "y": 41,
       "pins": {
         "1": "PLUS1",
         "2": "GND"
@@ -995,14 +1129,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RB1"
     },
     {
       "ref": "RC1",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 73,
-      "y": 34,
+      "x": 54,
+      "y": 40,
       "pins": {
         "1": "REF_BUF",
         "2": "MINUS1"
@@ -1010,14 +1148,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RC1"
     },
     {
       "ref": "RD1",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 77,
-      "y": 34,
+      "x": 50,
+      "y": 38,
       "pins": {
         "1": "AMP1",
         "2": "MINUS1"
@@ -1025,59 +1167,75 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RD1"
     },
     {
       "ref": "RO1",
-      "value": "100R 0.25W candidate",
-      "footprint": "r0805",
-      "x": 81,
-      "y": 34,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 75,
+      "y": 80,
       "pins": {
-        "1": "AMP1",
+        "1": "OUT1F2_OUT",
         "2": "DRIVE1"
       },
       "board": "main",
       "side": "F",
-      "note": "",
-      "group": "SYSTEM"
+      "note": "Limits fault current; specify/calibrate the intended load. Not a load-independent pitch output.",
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RO1"
     },
     {
       "ref": "RE1",
       "value": "100k",
       "footprint": "r0805",
-      "x": 85,
-      "y": 34,
+      "x": 60,
+      "y": 83,
       "pins": {
         "1": "SW_ON1",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RE1"
     },
     {
       "ref": "RQ1",
       "value": "100k",
       "footprint": "r0805",
-      "x": 89,
-      "y": 34,
+      "x": 35,
+      "y": 79,
       "pins": {
         "1": "REQ1",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RQ1"
     },
     {
       "ref": "RA2",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 93,
-      "y": 34,
+      "x": 50,
+      "y": 50,
       "pins": {
         "1": "DAC2",
         "2": "PLUS2"
@@ -1085,14 +1243,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RA2"
     },
     {
       "ref": "RB2",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 6,
-      "y": 37,
+      "x": 50,
+      "y": 53,
       "pins": {
         "1": "PLUS2",
         "2": "GND"
@@ -1100,14 +1262,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RB2"
     },
     {
       "ref": "RC2",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 10,
-      "y": 37,
+      "x": 54,
+      "y": 54,
       "pins": {
         "1": "REF_BUF",
         "2": "MINUS2"
@@ -1115,14 +1281,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RC2"
     },
     {
       "ref": "RD2",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 73,
-      "y": 37,
+      "x": 50,
+      "y": 56,
       "pins": {
         "1": "AMP2",
         "2": "MINUS2"
@@ -1130,59 +1300,75 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RD2"
     },
     {
       "ref": "RO2",
-      "value": "100R 0.25W candidate",
-      "footprint": "r0805",
-      "x": 77,
-      "y": 37,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 82,
+      "y": 80,
       "pins": {
-        "1": "AMP2",
+        "1": "OUT2F2_OUT",
         "2": "DRIVE2"
       },
       "board": "main",
       "side": "F",
-      "note": "",
-      "group": "SYSTEM"
+      "note": "Limits fault current; specify/calibrate the intended load. Not a load-independent pitch output.",
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RO2"
     },
     {
       "ref": "RE2",
       "value": "100k",
       "footprint": "r0805",
-      "x": 81,
-      "y": 37,
+      "x": 60,
+      "y": 80,
       "pins": {
         "1": "SW_ON2",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RE2"
     },
     {
       "ref": "RQ2",
       "value": "100k",
       "footprint": "r0805",
-      "x": 85,
-      "y": 37,
+      "x": 35,
+      "y": 76,
       "pins": {
         "1": "REQ2",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RQ2"
     },
     {
       "ref": "RA3",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 89,
-      "y": 37,
+      "x": 62,
+      "y": 50,
       "pins": {
         "1": "DAC3",
         "2": "PLUS3"
@@ -1190,14 +1376,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RA3"
     },
     {
       "ref": "RB3",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 93,
-      "y": 37,
+      "x": 62,
+      "y": 53,
       "pins": {
         "1": "PLUS3",
         "2": "GND"
@@ -1205,14 +1395,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RB3"
     },
     {
       "ref": "RC3",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 6,
-      "y": 40,
+      "x": 58,
+      "y": 54,
       "pins": {
         "1": "REF_BUF",
         "2": "MINUS3"
@@ -1220,14 +1414,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RC3"
     },
     {
       "ref": "RD3",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 10,
-      "y": 40,
+      "x": 62,
+      "y": 56,
       "pins": {
         "1": "AMP3",
         "2": "MINUS3"
@@ -1235,58 +1433,74 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RD3"
     },
     {
       "ref": "RO3",
-      "value": "100R 0.25W candidate",
-      "footprint": "r0805",
-      "x": 73,
-      "y": 40,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 67,
+      "y": 105,
       "pins": {
-        "1": "AMP3",
+        "1": "OUT3F2_OUT",
         "2": "DRIVE3"
       },
       "board": "main",
       "side": "F",
-      "note": "",
-      "group": "SYSTEM"
+      "note": "Limits fault current; specify/calibrate the intended load. Not a load-independent pitch output.",
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RO3"
     },
     {
       "ref": "RE3",
       "value": "100k",
       "footprint": "r0805",
-      "x": 77,
-      "y": 40,
+      "x": 60,
+      "y": 86,
       "pins": {
         "1": "SW_ON3",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RE3"
     },
     {
       "ref": "RQ3",
       "value": "100k",
       "footprint": "r0805",
-      "x": 81,
-      "y": 40,
+      "x": 35,
+      "y": 82,
       "pins": {
         "1": "REQ3",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RQ3"
     },
     {
       "ref": "RA4",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 85,
+      "x": 59,
       "y": 40,
       "pins": {
         "1": "DAC4",
@@ -1295,13 +1509,17 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RA4"
     },
     {
       "ref": "RB4",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 89,
+      "x": 63,
       "y": 40,
       "pins": {
         "1": "PLUS4",
@@ -1310,14 +1528,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RB4"
     },
     {
       "ref": "RC4",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 93,
-      "y": 40,
+      "x": 59,
+      "y": 37,
       "pins": {
         "1": "REF_BUF",
         "2": "MINUS4"
@@ -1325,14 +1547,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RC4"
     },
     {
       "ref": "RD4",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 45,
-      "y": 41,
+      "x": 63,
+      "y": 37,
       "pins": {
         "1": "AMP4",
         "2": "MINUS4"
@@ -1340,59 +1566,75 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RD4"
     },
     {
       "ref": "RO4",
-      "value": "100R 0.25W candidate",
-      "footprint": "r0805",
-      "x": 49,
-      "y": 41,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 87,
+      "y": 101,
       "pins": {
-        "1": "AMP4",
+        "1": "OUT4F2_OUT",
         "2": "DRIVE4"
       },
       "board": "main",
       "side": "F",
-      "note": "",
-      "group": "SYSTEM"
+      "note": "Limits fault current; specify/calibrate the intended load. Not a load-independent pitch output.",
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RO4"
     },
     {
       "ref": "RE4",
       "value": "100k",
       "footprint": "r0805",
-      "x": 53,
-      "y": 41,
+      "x": 56,
+      "y": 83,
       "pins": {
         "1": "SW_ON4",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RE4"
     },
     {
       "ref": "RQ4",
       "value": "100k",
       "footprint": "r0805",
-      "x": 57,
-      "y": 41,
+      "x": 31,
+      "y": 79,
       "pins": {
         "1": "REQ4",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RQ4"
     },
     {
       "ref": "RA5",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 61,
-      "y": 41,
+      "x": 82,
+      "y": 45,
       "pins": {
         "1": "DAC5",
         "2": "PLUS5"
@@ -1400,14 +1642,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RA5"
     },
     {
       "ref": "RB5",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 65,
-      "y": 41,
+      "x": 82,
+      "y": 42,
       "pins": {
         "1": "PLUS5",
         "2": "GND"
@@ -1415,13 +1661,17 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RB5"
     },
     {
       "ref": "RC5",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 69,
+      "x": 86,
       "y": 41,
       "pins": {
         "1": "REF_BUF",
@@ -1430,14 +1680,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RC5"
     },
     {
       "ref": "RD5",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 31,
-      "y": 42,
+      "x": 82,
+      "y": 39,
       "pins": {
         "1": "AMP5",
         "2": "MINUS5"
@@ -1445,59 +1699,75 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RD5"
     },
     {
       "ref": "RO5",
-      "value": "100R 0.25W candidate",
-      "footprint": "r0805",
-      "x": 35,
-      "y": 42,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 76,
+      "y": 57,
       "pins": {
         "1": "AMP5",
         "2": "DRIVE5"
       },
       "board": "main",
       "side": "F",
-      "note": "",
-      "group": "SYSTEM"
+      "note": "Limits fault current; specify/calibrate the intended load. Not a load-independent pitch output.",
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RO5"
     },
     {
       "ref": "RE5",
       "value": "100k",
       "footprint": "r0805",
-      "x": 39,
-      "y": 42,
+      "x": 68,
+      "y": 71,
       "pins": {
         "1": "SW_ON5",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RE5"
     },
     {
       "ref": "RQ5",
       "value": "100k",
       "footprint": "r0805",
-      "x": 6,
-      "y": 43,
+      "x": 46,
+      "y": 79,
       "pins": {
         "1": "REQ5",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RQ5"
     },
     {
       "ref": "RA6",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 10,
-      "y": 43,
+      "x": 82,
+      "y": 51,
       "pins": {
         "1": "DAC6",
         "2": "PLUS6"
@@ -1505,14 +1775,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RA6"
     },
     {
       "ref": "RB6",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 73,
-      "y": 43,
+      "x": 82,
+      "y": 54,
       "pins": {
         "1": "PLUS6",
         "2": "GND"
@@ -1520,14 +1794,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RB6"
     },
     {
       "ref": "RC6",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 77,
-      "y": 43,
+      "x": 86,
+      "y": 55,
       "pins": {
         "1": "REF_BUF",
         "2": "MINUS6"
@@ -1535,14 +1813,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RC6"
     },
     {
       "ref": "RD6",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 81,
-      "y": 43,
+      "x": 82,
+      "y": 57,
       "pins": {
         "1": "AMP6",
         "2": "MINUS6"
@@ -1550,59 +1832,75 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RD6"
     },
     {
       "ref": "RO6",
-      "value": "100R 0.25W candidate",
-      "footprint": "r0805",
-      "x": 85,
-      "y": 43,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 87,
+      "y": 63,
       "pins": {
         "1": "AMP6",
         "2": "DRIVE6"
       },
       "board": "main",
       "side": "F",
-      "note": "",
-      "group": "SYSTEM"
+      "note": "Limits fault current; specify/calibrate the intended load. Not a load-independent pitch output.",
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RO6"
     },
     {
       "ref": "RE6",
       "value": "100k",
       "footprint": "r0805",
-      "x": 89,
-      "y": 43,
+      "x": 68,
+      "y": 74,
       "pins": {
         "1": "SW_ON6",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RE6"
     },
     {
       "ref": "RQ6",
       "value": "100k",
       "footprint": "r0805",
-      "x": 93,
-      "y": 43,
+      "x": 46,
+      "y": 76,
       "pins": {
         "1": "REQ6",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RQ6"
     },
     {
       "ref": "RA7",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 43,
-      "y": 44,
+      "x": 94,
+      "y": 51,
       "pins": {
         "1": "DAC7",
         "2": "PLUS7"
@@ -1610,14 +1908,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RA7"
     },
     {
       "ref": "RB7",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 47,
-      "y": 44,
+      "x": 94,
+      "y": 54,
       "pins": {
         "1": "PLUS7",
         "2": "GND"
@@ -1625,14 +1927,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RB7"
     },
     {
       "ref": "RC7",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 51,
-      "y": 44,
+      "x": 90,
+      "y": 55,
       "pins": {
         "1": "REF_BUF",
         "2": "MINUS7"
@@ -1640,14 +1946,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RC7"
     },
     {
       "ref": "RD7",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 55,
-      "y": 44,
+      "x": 94,
+      "y": 57,
       "pins": {
         "1": "AMP7",
         "2": "MINUS7"
@@ -1655,58 +1965,74 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RD7"
     },
     {
       "ref": "RO7",
-      "value": "100R 0.25W candidate",
-      "footprint": "r0805",
-      "x": 59,
-      "y": 44,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 88,
+      "y": 59,
       "pins": {
         "1": "AMP7",
         "2": "DRIVE7"
       },
       "board": "main",
       "side": "F",
-      "note": "",
-      "group": "SYSTEM"
+      "note": "Limits fault current; specify/calibrate the intended load. Not a load-independent pitch output.",
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RO7"
     },
     {
       "ref": "RE7",
       "value": "100k",
       "footprint": "r0805",
-      "x": 63,
-      "y": 44,
+      "x": 68,
+      "y": 68,
       "pins": {
         "1": "SW_ON7",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RE7"
     },
     {
       "ref": "RQ7",
       "value": "100k",
       "footprint": "r0805",
-      "x": 67,
-      "y": 44,
+      "x": 46,
+      "y": 82,
       "pins": {
         "1": "REQ7",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RQ7"
     },
     {
       "ref": "RA8",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 31,
+      "x": 94,
       "y": 45,
       "pins": {
         "1": "DAC8",
@@ -1715,14 +2041,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RA8"
     },
     {
       "ref": "RB8",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 35,
-      "y": 45,
+      "x": 94,
+      "y": 42,
       "pins": {
         "1": "PLUS8",
         "2": "GND"
@@ -1730,14 +2060,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RB8"
     },
     {
       "ref": "RC8",
-      "value": "10k 0.01% matched network TBD",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 39,
-      "y": 45,
+      "x": 90,
+      "y": 41,
       "pins": {
         "1": "REF_BUF",
         "2": "MINUS8"
@@ -1745,14 +2079,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RC8"
     },
     {
       "ref": "RD8",
-      "value": "40k 0.01% matched network TBD",
+      "value": "40k 0.1%",
       "footprint": "r0805",
-      "x": 6,
-      "y": 46,
+      "x": 94,
+      "y": 39,
       "pins": {
         "1": "AMP8",
         "2": "MINUS8"
@@ -1760,59 +2098,75 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RD8"
     },
     {
       "ref": "RO8",
-      "value": "100R 0.25W candidate",
-      "footprint": "r0805",
-      "x": 10,
-      "y": 46,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 94,
+      "y": 63,
       "pins": {
         "1": "AMP8",
         "2": "DRIVE8"
       },
       "board": "main",
       "side": "F",
-      "note": "",
-      "group": "SYSTEM"
+      "note": "Limits fault current; specify/calibrate the intended load. Not a load-independent pitch output.",
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RO8"
     },
     {
       "ref": "RE8",
       "value": "100k",
       "footprint": "r0805",
-      "x": 71,
-      "y": 46,
+      "x": 72,
+      "y": 71,
       "pins": {
         "1": "SW_ON8",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RE8"
     },
     {
       "ref": "RQ8",
       "value": "100k",
       "footprint": "r0805",
-      "x": 75,
-      "y": 46,
+      "x": 42,
+      "y": 79,
       "pins": {
         "1": "REQ8",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RQ8"
     },
     {
       "ref": "U9",
-      "value": "OPA4197ID candidate",
+      "value": "OPA4197ID",
       "footprint": "soic14",
       "x": 56,
-      "y": 22,
+      "y": 47,
       "pins": {
         "4": "+12VA",
         "11": "-12VA",
@@ -1832,14 +2186,18 @@
       "board": "main",
       "side": "F",
       "note": "Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V.",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "OPA4197ID",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/opa4197.pdf",
+      "id": "U9"
     },
     {
-      "ref": "CP0P",
+      "ref": "C1",
       "value": "100nF 50V",
       "footprint": "c0805",
-      "x": 6,
-      "y": 11,
+      "x": 50,
+      "y": 47,
       "pins": {
         "1": "+12VA",
         "2": "GND"
@@ -1847,14 +2205,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CP0P"
     },
     {
-      "ref": "CP0N",
+      "ref": "C2",
       "value": "100nF 50V",
       "footprint": "c0805",
-      "x": 10,
-      "y": 11,
+      "x": 62,
+      "y": 47,
       "pins": {
         "1": "-12VA",
         "2": "GND"
@@ -1862,14 +2224,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CP0N"
     },
     {
       "ref": "U10",
-      "value": "OPA4197ID candidate",
+      "value": "OPA4197ID",
       "footprint": "soic14",
-      "x": 64,
-      "y": 22,
+      "x": 88,
+      "y": 48,
       "pins": {
         "4": "+12VA",
         "11": "-12VA",
@@ -1889,14 +2255,18 @@
       "board": "main",
       "side": "F",
       "note": "Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V.",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "OPA4197ID",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/opa4197.pdf",
+      "id": "U10"
     },
     {
-      "ref": "CP1P",
+      "ref": "C3",
       "value": "100nF 50V",
       "footprint": "c0805",
-      "x": 14,
-      "y": 11,
+      "x": 82,
+      "y": 48,
       "pins": {
         "1": "+12VA",
         "2": "GND"
@@ -1904,14 +2274,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CP1P"
     },
     {
-      "ref": "CP1N",
+      "ref": "C4",
       "value": "100nF 50V",
       "footprint": "c0805",
-      "x": 62,
-      "y": 11,
+      "x": 94,
+      "y": 48,
       "pins": {
         "1": "-12VA",
         "2": "GND"
@@ -1919,14 +2293,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CP1N"
     },
     {
       "ref": "U11",
-      "value": "OPA4197ID candidate",
+      "value": "OPA4197ID",
       "footprint": "soic14",
-      "x": 72,
-      "y": 22,
+      "x": 50,
+      "y": 29,
       "pins": {
         "4": "+12VA",
         "11": "-12VA",
@@ -1946,14 +2324,18 @@
       "board": "main",
       "side": "F",
       "note": "Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V.",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "OPA4197ID",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/opa4197.pdf",
+      "id": "U11"
     },
     {
-      "ref": "CP2P",
+      "ref": "C5",
       "value": "100nF 50V",
       "footprint": "c0805",
-      "x": 66,
-      "y": 11,
+      "x": 44,
+      "y": 23,
       "pins": {
         "1": "+12VA",
         "2": "GND"
@@ -1961,14 +2343,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CP2P"
     },
     {
-      "ref": "CP2N",
+      "ref": "C6",
       "value": "100nF 50V",
       "footprint": "c0805",
-      "x": 70,
-      "y": 11,
+      "x": 56,
+      "y": 29,
       "pins": {
         "1": "-12VA",
         "2": "GND"
@@ -1976,14 +2362,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CP2N"
     },
     {
       "ref": "U12",
-      "value": "SN74AHCT125 candidate",
+      "value": "SN74AHCT125DR",
       "footprint": "soic14",
-      "x": 80,
-      "y": 22,
+      "x": 82,
+      "y": 47,
       "pins": {
         "1": "GND",
         "4": "GND",
@@ -1992,40 +2382,48 @@
         "13": "GND",
         "14": "+5A",
         "2": "DAC_SCK",
-        "3": "DAC_SCK_5V",
+        "3": "DAC_SCK_BUFFER",
         "5": "DAC_MOSI",
-        "6": "DAC_MOSI_5V",
+        "6": "DAC_MOSI_BUFFER",
         "9": "DAC_SYNC",
         "8": "DAC_SYNC_5V",
         "12": "DAC_LDAC",
         "11": "DAC_LDAC_5V"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "5 V powered TTL-input buffers; validate timing/skew at selected SPI clock. Not LVC125 at 5 V.",
-      "group": "SYSTEM"
+      "group": "DAC",
+      "mpn": "SN74AHCT125DR",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74ahct125.pdf",
+      "id": "U12"
     },
     {
       "ref": "CBUF0",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 74,
-      "y": 11,
+      "x": 79,
+      "y": 40,
       "pins": {
         "1": "+5A",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "DAC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CBUF0"
     },
     {
       "ref": "U13",
-      "value": "SN74AHCT125 candidate",
+      "value": "SN74AHCT125DR",
       "footprint": "soic14",
-      "x": 88,
-      "y": 22,
+      "x": 92,
+      "y": 47,
       "pins": {
         "1": "GND",
         "4": "GND",
@@ -2043,31 +2441,39 @@
         "11": null
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "5 V powered TTL-input buffers; validate timing/skew at selected SPI clock. Not LVC125 at 5 V.",
-      "group": "SYSTEM"
+      "group": "DAC",
+      "mpn": "SN74AHCT125DR",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74ahct125.pdf",
+      "id": "U13"
     },
     {
       "ref": "CBUF1",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 78,
-      "y": 11,
+      "x": 89,
+      "y": 40,
       "pins": {
         "1": "+5A",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "DAC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CBUF1"
     },
     {
       "ref": "RREF1",
-      "value": "10k 0.01% matched",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 79,
-      "y": 46,
+      "x": 48,
+      "y": 22,
       "pins": {
         "1": "REF2V5",
         "2": "REF_HALF"
@@ -2075,14 +2481,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RREF1"
     },
     {
       "ref": "RREF2",
-      "value": "10k 0.01% matched",
+      "value": "10k 0.1%",
       "footprint": "r0805",
-      "x": 83,
-      "y": 46,
+      "x": 52,
+      "y": 22,
       "pins": {
         "1": "REF_HALF",
         "2": "GND"
@@ -2090,29 +2500,37 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "OUTPUT_DRIVERS",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RREF2"
     },
     {
       "ref": "RI1",
-      "value": "1k input protection candidate",
-      "footprint": "r0805",
-      "x": 87,
-      "y": 46,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 30,
+      "y": 69,
       "pins": {
         "1": "IN1",
-        "2": "ADC_IN1"
+        "2": "INPUT_LIMIT1"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RI1"
     },
     {
       "ref": "CI1",
-      "value": "1nF EMI only - NOT full antialias",
+      "value": "100pF C0G",
       "footprint": "c0805",
-      "x": 82,
-      "y": 11,
+      "x": 33,
+      "y": 22,
       "pins": {
         "1": "ADC_IN1",
         "2": "GND"
@@ -2120,44 +2538,56 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CI1"
     },
     {
       "ref": "RP1",
       "value": "10k",
       "footprint": "r0805",
-      "x": 91,
-      "y": 46,
+      "x": 56,
+      "y": 57,
       "pins": {
         "1": "ENC1_A",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RP1"
     },
     {
       "ref": "RI2",
-      "value": "1k input protection candidate",
-      "footprint": "r0805",
-      "x": 95,
-      "y": 46,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 38,
+      "y": 74,
       "pins": {
         "1": "IN2",
-        "2": "ADC_IN2"
+        "2": "INPUT_LIMIT2"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RI2"
     },
     {
       "ref": "CI2",
-      "value": "1nF EMI only - NOT full antialias",
+      "value": "100pF C0G",
       "footprint": "c0805",
-      "x": 86,
-      "y": 11,
+      "x": 24,
+      "y": 31,
       "pins": {
         "1": "ADC_IN2",
         "2": "GND"
@@ -2165,44 +2595,56 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CI2"
     },
     {
       "ref": "RP2",
       "value": "10k",
       "footprint": "r0805",
-      "x": 14,
-      "y": 47,
+      "x": 56,
+      "y": 54,
       "pins": {
         "1": "ENC1_B",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RP2"
     },
     {
       "ref": "RI3",
-      "value": "1k input protection candidate",
-      "footprint": "r0805",
-      "x": 18,
-      "y": 47,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 37,
+      "y": 70,
       "pins": {
         "1": "IN3",
-        "2": "ADC_IN3"
+        "2": "INPUT_LIMIT3"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RI3"
     },
     {
       "ref": "CI3",
-      "value": "1nF EMI only - NOT full antialias",
+      "value": "100pF C0G",
       "footprint": "c0805",
-      "x": 90,
-      "y": 11,
+      "x": 36,
+      "y": 40,
       "pins": {
         "1": "ADC_IN3",
         "2": "GND"
@@ -2210,44 +2652,56 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CI3"
     },
     {
       "ref": "RP3",
       "value": "10k",
       "footprint": "r0805",
-      "x": 22,
-      "y": 47,
+      "x": 56,
+      "y": 60,
       "pins": {
         "1": "ENC2_A",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RP3"
     },
     {
       "ref": "RI4",
-      "value": "1k input protection candidate",
-      "footprint": "r0805",
-      "x": 26,
-      "y": 47,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 23,
+      "y": 69,
       "pins": {
         "1": "IN4",
-        "2": "ADC_IN4"
+        "2": "INPUT_LIMIT4"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RI4"
     },
     {
       "ref": "CI4",
-      "value": "1nF EMI only - NOT full antialias",
+      "value": "100pF C0G",
       "footprint": "c0805",
-      "x": 94,
-      "y": 11,
+      "x": 37,
+      "y": 22,
       "pins": {
         "1": "ADC_IN4",
         "2": "GND"
@@ -2255,44 +2709,56 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CI4"
     },
     {
       "ref": "RP4",
       "value": "10k",
       "footprint": "r0805",
-      "x": 43,
-      "y": 47,
+      "x": 63,
+      "y": 51,
       "pins": {
         "1": "ENC2_B",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RP4"
     },
     {
       "ref": "RI5",
-      "value": "1k input protection candidate",
-      "footprint": "r0805",
-      "x": 47,
-      "y": 47,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 43,
+      "y": 88,
       "pins": {
         "1": "CTRL1",
-        "2": "ADC_IN5"
+        "2": "INPUT_LIMIT5"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RI5"
     },
     {
       "ref": "CI5",
-      "value": "1nF EMI only - NOT full antialias",
+      "value": "1nF C0G",
       "footprint": "c0805",
-      "x": 62,
-      "y": 14,
+      "x": 42,
+      "y": 36,
       "pins": {
         "1": "ADC_IN5",
         "2": "GND"
@@ -2300,44 +2766,56 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CI5"
     },
     {
       "ref": "RP5",
       "value": "10k",
       "footprint": "r0805",
-      "x": 51,
-      "y": 47,
+      "x": 56,
+      "y": 63,
       "pins": {
         "1": "ENC3_A",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RP5"
     },
     {
       "ref": "RI6",
-      "value": "1k input protection candidate",
-      "footprint": "r0805",
-      "x": 55,
-      "y": 47,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 43,
+      "y": 84,
       "pins": {
         "1": "CTRL2",
-        "2": "ADC_IN6"
+        "2": "INPUT_LIMIT6"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RI6"
     },
     {
       "ref": "CI6",
-      "value": "1nF EMI only - NOT full antialias",
+      "value": "1nF C0G",
       "footprint": "c0805",
-      "x": 66,
-      "y": 14,
+      "x": 28,
+      "y": 40,
       "pins": {
         "1": "ADC_IN6",
         "2": "GND"
@@ -2345,44 +2823,56 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CI6"
     },
     {
       "ref": "RP6",
       "value": "10k",
       "footprint": "r0805",
-      "x": 59,
-      "y": 47,
+      "x": 68,
+      "y": 57,
       "pins": {
         "1": "ENC3_B",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RP6"
     },
     {
       "ref": "RI7",
-      "value": "1k input protection candidate",
-      "footprint": "r0805",
-      "x": 63,
-      "y": 47,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 43,
+      "y": 92,
       "pins": {
         "1": "CTRL3",
-        "2": "ADC_IN7"
+        "2": "INPUT_LIMIT7"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RI7"
     },
     {
       "ref": "CI7",
-      "value": "1nF EMI only - NOT full antialias",
+      "value": "1nF C0G",
       "footprint": "c0805",
-      "x": 70,
-      "y": 14,
+      "x": 32,
+      "y": 42,
       "pins": {
         "1": "ADC_IN7",
         "2": "GND"
@@ -2390,44 +2880,56 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CI7"
     },
     {
       "ref": "RP7",
       "value": "10k",
       "footprint": "r0805",
-      "x": 67,
-      "y": 47,
+      "x": 55,
+      "y": 51,
       "pins": {
         "1": "ENC4_A",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RP7"
     },
     {
       "ref": "RI8",
-      "value": "1k input protection candidate",
-      "footprint": "r0805",
-      "x": 30,
-      "y": 48,
+      "value": "1k 1W 1%",
+      "footprint": "r2010",
+      "x": 43,
+      "y": 80,
       "pins": {
         "1": "CTRL4",
-        "2": "ADC_IN8"
+        "2": "INPUT_LIMIT8"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "id": "RI8"
     },
     {
       "ref": "CI8",
-      "value": "1nF EMI only - NOT full antialias",
+      "value": "1nF C0G",
       "footprint": "c0805",
-      "x": 74,
-      "y": 14,
+      "x": 24,
+      "y": 38,
       "pins": {
         "1": "ADC_IN8",
         "2": "GND"
@@ -2435,269 +2937,341 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CI8"
     },
     {
       "ref": "RP8",
       "value": "10k",
       "footprint": "r0805",
-      "x": 34,
-      "y": 48,
+      "x": 60,
+      "y": 65,
       "pins": {
         "1": "ENC4_B",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RP8"
     },
     {
       "ref": "RK1",
       "value": "10k",
       "footprint": "r0805",
-      "x": 38,
-      "y": 48,
+      "x": 40,
+      "y": 93,
       "pins": {
         "1": "ENC1_CLICK",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RK1"
     },
     {
       "ref": "RK2",
       "value": "10k",
       "footprint": "r0805",
-      "x": 6,
-      "y": 49,
+      "x": 40,
+      "y": 96,
       "pins": {
         "1": "ENC2_CLICK",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RK2"
     },
     {
       "ref": "RK3",
       "value": "10k",
       "footprint": "r0805",
-      "x": 10,
-      "y": 49,
+      "x": 40,
+      "y": 90,
       "pins": {
         "1": "ENC3_CLICK",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RK3"
     },
     {
       "ref": "RK4",
       "value": "10k",
       "footprint": "r0805",
-      "x": 71,
-      "y": 49,
+      "x": 44,
+      "y": 93,
       "pins": {
         "1": "ENC4_CLICK",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RK4"
     },
     {
       "ref": "RK5",
       "value": "10k",
       "footprint": "r0805",
-      "x": 75,
-      "y": 49,
+      "x": 44,
+      "y": 96,
       "pins": {
         "1": "KEY1",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RK5"
     },
     {
       "ref": "RK6",
       "value": "10k",
       "footprint": "r0805",
-      "x": 79,
-      "y": 49,
+      "x": 44,
+      "y": 90,
       "pins": {
         "1": "KEY2",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RK6"
     },
     {
       "ref": "RK7",
       "value": "10k",
       "footprint": "r0805",
-      "x": 83,
-      "y": 49,
+      "x": 40,
+      "y": 99,
       "pins": {
         "1": "KEY3",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RK7"
     },
     {
       "ref": "RK8",
       "value": "10k",
       "footprint": "r0805",
-      "x": 87,
-      "y": 49,
+      "x": 36,
+      "y": 89,
       "pins": {
         "1": "KEY4",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RK8"
     },
     {
       "ref": "RU1",
       "value": "10k",
       "footprint": "r0805",
-      "x": 91,
-      "y": 49,
+      "x": 50,
+      "y": 38,
       "pins": {
         "1": "ADC_CS",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RU1"
     },
     {
       "ref": "RU2",
       "value": "10k",
       "footprint": "r0805",
-      "x": 95,
-      "y": 49,
+      "x": 75,
+      "y": 41,
       "pins": {
         "1": "DAC_SYNC",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RU2"
     },
     {
       "ref": "RU3",
       "value": "10k",
       "footprint": "r0805",
-      "x": 14,
-      "y": 50,
+      "x": 71,
+      "y": 41,
       "pins": {
         "1": "DAC_LDAC",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RU3"
     },
     {
       "ref": "RU4",
       "value": "10k",
       "footprint": "r0805",
-      "x": 18,
-      "y": 50,
+      "x": 76,
+      "y": 44,
       "pins": {
         "1": "DAC_CLR",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RU4"
     },
     {
       "ref": "RU5",
       "value": "10k",
       "footprint": "r0805",
-      "x": 22,
-      "y": 50,
+      "x": 50,
+      "y": 60,
       "pins": {
         "1": "IO_RESET",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RU5"
     },
     {
-      "ref": "RPERMIT",
+      "ref": "R1",
       "value": "10k",
       "footprint": "r0805",
-      "x": 26,
-      "y": 50,
+      "x": 62,
+      "y": 45,
       "pins": {
         "1": "OUTPUT_PERMIT",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RPERMIT"
     },
     {
-      "ref": "RSCL",
-      "value": "4.7k DNP",
+      "ref": "R2",
+      "value": "2.2k",
       "footprint": "r0805",
-      "x": 42,
-      "y": 50,
+      "x": 46,
+      "y": 71,
       "pins": {
         "1": "I2C_SCL",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RSCL"
     },
     {
-      "ref": "RSDA",
-      "value": "4.7k DNP",
+      "ref": "R3",
+      "value": "2.2k",
       "footprint": "r0805",
-      "x": 46,
-      "y": 50,
+      "x": 55,
+      "y": 71,
       "pins": {
         "1": "I2C_SDA",
         "2": "+3V3"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "CONTROL",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RSDA"
     },
     {
-      "ref": "JPOWER",
-      "value": "Eurorack IDC10 keyed",
+      "ref": "J16",
+      "value": "Wurth 61201021621 IDC10",
       "footprint": "idc10",
       "x": 10.5,
-      "y": 24,
+      "y": 28,
       "pins": {
         "1": "-12_IN",
         "2": "-12_IN",
@@ -2713,60 +3287,76 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "JPOWER"
     },
     {
-      "ref": "DPOWERP",
+      "ref": "D1",
       "value": "SS14",
       "footprint": "sma",
-      "x": 48,
-      "y": 12,
+      "x": 13,
+      "y": 43,
       "pins": {
         "1": "+12VA",
-        "2": "+12_IN"
+        "2": "+12_FUSED"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "DPOWERP"
     },
     {
-      "ref": "DPOWERN",
+      "ref": "D2",
       "value": "SS14",
       "footprint": "sma",
-      "x": 56,
-      "y": 12,
+      "x": 13,
+      "y": 49,
       "pins": {
-        "1": "-12_IN",
+        "1": "-12_FUSED",
         "2": "-12VA"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "DPOWERN"
     },
     {
-      "ref": "UREG",
-      "value": "5V >=1A module - selection OPEN",
-      "footprint": "power_module",
-      "x": 26,
-      "y": 18,
+      "ref": "U25",
+      "value": "R-78E5.0-1.0",
+      "footprint": "recom",
+      "x": 29,
+      "y": 17,
       "pins": {
         "1": "+12VA",
         "2": "GND",
         "3": "+5D"
       },
       "board": "main",
-      "side": "F",
-      "note": "Envelope placeholder, not an orderable/verified footprint. Compare converter ripple, startup and heat. No case +5V required.",
-      "group": "SYSTEM"
+      "side": "B",
+      "note": "RECOM R-78E5.0-1.0, 8-28 V input, 5 V/1 A output, SIP3; max capacitive load 220 uF.",
+      "group": "POWER",
+      "mpn": "R-78E5.0-1.0",
+      "manufacturer": "RECOM",
+      "datasheet": "https://recom-power.com/pdf/Innoline/R-78E-1.0.pdf",
+      "id": "UREG"
     },
     {
       "ref": "FB1",
-      "value": "Ferrite 600R@100MHz candidate",
+      "value": "BLM21PG601SN1D",
       "footprint": "r0805",
-      "x": 50,
-      "y": 50,
+      "x": 44,
+      "y": 17,
       "pins": {
         "1": "+5D",
         "2": "+5A"
@@ -2774,13 +3364,17 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "FB1"
     },
     {
-      "ref": "C5D",
+      "ref": "C7",
       "value": "47uF 10V",
       "footprint": "c0805",
-      "x": 78,
+      "x": 26,
       "y": 14,
       "pins": {
         "1": "+5D",
@@ -2789,14 +3383,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "C5D"
     },
     {
-      "ref": "C5A",
+      "ref": "C8",
       "value": "10uF 10V",
       "footprint": "c0805",
-      "x": 82,
-      "y": 14,
+      "x": 43,
+      "y": 20,
       "pins": {
         "1": "+5A",
         "2": "GND"
@@ -2804,14 +3402,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "C5A"
     },
     {
-      "ref": "CVDRV",
+      "ref": "C9",
       "value": "100nF",
-      "footprint": "c0805",
-      "x": 86,
-      "y": 14,
+      "footprint": "c0603",
+      "x": 32,
+      "y": 39,
       "pins": {
         "1": "+3V3",
         "2": "GND"
@@ -2819,74 +3421,94 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CVDRV"
     },
     {
       "ref": "CREG1",
       "value": "1uF",
-      "footprint": "c0805",
-      "x": 90,
-      "y": 14,
+      "footprint": "c0603",
+      "x": 39,
+      "y": 33,
       "pins": {
         "1": "REGCAP1",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CREG1"
     },
     {
       "ref": "CREG2",
       "value": "1uF",
-      "footprint": "c0805",
-      "x": 94,
-      "y": 14,
+      "footprint": "c0603",
+      "x": 39,
+      "y": 35,
       "pins": {
         "1": "REGCAP2",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CREG2"
     },
     {
-      "ref": "CREFADC",
+      "ref": "C10",
       "value": "100nF",
-      "footprint": "c0805",
-      "x": 94,
-      "y": 19,
+      "footprint": "c0603",
+      "x": 35,
+      "y": 32,
       "pins": {
         "1": "ADC_REF",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CREFADC"
     },
     {
-      "ref": "CREFCAP",
-      "value": "10uF low ESR",
-      "footprint": "c0805",
-      "x": 38,
-      "y": 22,
+      "ref": "C11",
+      "value": "10uF 25V X7R low ESR",
+      "footprint": "c1210",
+      "x": 39,
+      "y": 29,
       "pins": {
         "1": "ADC_REFCAP",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CREFCAP"
     },
     {
-      "ref": "CREFDAC",
+      "ref": "C12",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 42,
-      "y": 22,
+      "x": 66,
+      "y": 49,
       "pins": {
         "1": "REF2V5",
         "2": "GND"
@@ -2894,14 +3516,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "DAC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CREFDAC"
     },
     {
       "ref": "CADC0",
       "value": "100nF",
-      "footprint": "c0805",
-      "x": 94,
-      "y": 22,
+      "footprint": "c0603",
+      "x": 24,
+      "y": 26,
       "pins": {
         "1": "+5A",
         "2": "GND"
@@ -2909,14 +3535,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CADC0"
     },
     {
       "ref": "CADC1",
       "value": "100nF",
-      "footprint": "c0805",
-      "x": 94,
-      "y": 25,
+      "footprint": "c0603",
+      "x": 42,
+      "y": 33,
       "pins": {
         "1": "+5A",
         "2": "GND"
@@ -2924,14 +3554,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CADC1"
     },
     {
       "ref": "CADC2",
       "value": "100nF",
-      "footprint": "c0805",
-      "x": 94,
-      "y": 28,
+      "footprint": "c0603",
+      "x": 42,
+      "y": 31,
       "pins": {
         "1": "+5A",
         "2": "GND"
@@ -2939,14 +3573,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CADC2"
     },
     {
       "ref": "CADC3",
       "value": "100nF",
-      "footprint": "c0805",
-      "x": 45,
-      "y": 29,
+      "footprint": "c0603",
+      "x": 42,
+      "y": 26,
       "pins": {
         "1": "+5A",
         "2": "GND"
@@ -2954,14 +3592,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "ADC",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CADC3"
     },
     {
       "ref": "CD1",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 49,
-      "y": 29,
+      "x": 26,
+      "y": 20,
       "pins": {
         "1": "+5D",
         "2": "GND"
@@ -2969,14 +3611,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CD1"
     },
     {
       "ref": "CD2",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 53,
-      "y": 29,
+      "x": 63,
+      "y": 43,
       "pins": {
         "1": "+5A",
         "2": "GND"
@@ -2984,59 +3630,75 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CD2"
     },
     {
       "ref": "CD3",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 57,
-      "y": 29,
+      "x": 39,
+      "y": 103,
       "pins": {
         "1": "+3V3",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CD3"
     },
     {
       "ref": "CD4",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 61,
-      "y": 29,
+      "x": 37,
+      "y": 51,
       "pins": {
         "1": "+3V3",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CD4"
     },
     {
       "ref": "CD5",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 65,
-      "y": 29,
+      "x": 59,
+      "y": 51,
       "pins": {
         "1": "+3V3",
         "2": "GND"
       },
       "board": "main",
-      "side": "F",
+      "side": "B",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CD5"
     },
     {
       "ref": "CD6",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 69,
-      "y": 29,
+      "x": 87,
+      "y": 108,
       "pins": {
         "1": "+12VA",
         "2": "GND"
@@ -3044,14 +3706,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CD6"
     },
     {
       "ref": "CD7",
       "value": "100nF",
       "footprint": "c0805",
       "x": 73,
-      "y": 29,
+      "y": 108,
       "pins": {
         "1": "-12VA",
         "2": "GND"
@@ -3059,14 +3725,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CD7"
     },
     {
       "ref": "CD8",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 77,
-      "y": 29,
+      "x": 82,
+      "y": 85,
       "pins": {
         "1": "+12VA",
         "2": "GND"
@@ -3074,14 +3744,18 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CD8"
     },
     {
       "ref": "CD9",
       "value": "100nF",
       "footprint": "c0805",
-      "x": 81,
-      "y": 29,
+      "x": 68,
+      "y": 85,
       "pins": {
         "1": "-12VA",
         "2": "GND"
@@ -3089,91 +3763,2636 @@
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CD9"
     },
     {
       "ref": "TP1",
       "value": "GND",
       "footprint": "testpoint",
-      "x": 14,
-      "y": 37,
+      "x": 46,
+      "y": 63,
       "pins": {
         "1": "GND"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "TP1"
     },
     {
       "ref": "TP2",
       "value": "+12VA",
       "footprint": "testpoint",
-      "x": 14,
-      "y": 40,
+      "x": 46,
+      "y": 55,
       "pins": {
         "1": "+12VA"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "TP2"
     },
     {
       "ref": "TP3",
       "value": "-12VA",
       "footprint": "testpoint",
-      "x": 14,
-      "y": 43,
+      "x": 46,
+      "y": 66,
       "pins": {
         "1": "-12VA"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "TP3"
     },
     {
       "ref": "TP4",
       "value": "+5D",
       "footprint": "testpoint",
-      "x": 54,
-      "y": 50,
+      "x": 56,
+      "y": 65,
       "pins": {
         "1": "+5D"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "TP4"
     },
     {
       "ref": "TP5",
       "value": "+5A",
       "footprint": "testpoint",
-      "x": 57,
-      "y": 50,
+      "x": 43,
+      "y": 64,
       "pins": {
         "1": "+5A"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "TP5"
     },
     {
       "ref": "TP6",
       "value": "REF_BUF",
       "footprint": "testpoint",
-      "x": 60,
-      "y": 50,
+      "x": 70,
+      "y": 49,
       "pins": {
         "1": "REF_BUF"
       },
       "board": "main",
       "side": "F",
       "note": "",
-      "group": "SYSTEM"
+      "group": "POWER",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "TP6"
+    },
+    {
+      "ref": "U16",
+      "value": "SN74HCS74DR",
+      "footprint": "soic14",
+      "x": 46,
+      "y": 45,
+      "pins": {
+        "1": "SAFE_CLEAR_N",
+        "2": "+3V3",
+        "3": "OUTPUT_PERMIT",
+        "4": "+3V3",
+        "5": "SAFE_LATCH",
+        "6": null,
+        "7": "GND",
+        "8": null,
+        "9": null,
+        "10": "+3V3",
+        "11": "GND",
+        "12": "GND",
+        "13": "GND",
+        "14": "+3V3"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "SN74HCS74DR",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74hcs74.pdf",
+      "id": "U16"
+    },
+    {
+      "ref": "U17",
+      "value": "TPS3828-33DBVR",
+      "footprint": "sot23_5",
+      "x": 49,
+      "y": 15,
+      "pins": {
+        "1": "SAFE_CLEAR_N",
+        "2": "GND",
+        "3": "+3V3",
+        "4": "WATCHDOG",
+        "5": "+3V3"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "TPS3828-33DBVR",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/tps3828.pdf",
+      "id": "U17"
+    },
+    {
+      "ref": "U18",
+      "value": "TPS3808G01DBVR",
+      "footprint": "sot23_6",
+      "x": 57,
+      "y": 15,
+      "pins": {
+        "1": "SAFE_CLEAR_N",
+        "2": "GND",
+        "3": "+3V3",
+        "4": "RESET_DELAY",
+        "5": "SENSE_5A",
+        "6": "+3V3"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "TPS3808G01DBVR",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+      "id": "U18"
+    },
+    {
+      "ref": "U19",
+      "value": "LM393BDR",
+      "footprint": "soic8",
+      "x": 60,
+      "y": 40,
+      "pins": {
+        "1": "SAFE_CLEAR_N",
+        "2": "REF_MON",
+        "3": "SENSE_POS",
+        "4": "GND",
+        "5": "REF_MON",
+        "6": "SENSE_NEG",
+        "7": "SAFE_CLEAR_N",
+        "8": "+5A"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "LM393BDR",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/lm393b.pdf",
+      "id": "U19"
+    },
+    {
+      "ref": "U20",
+      "value": "SN74LVC1G08DBVR",
+      "footprint": "sot23_5",
+      "x": 65,
+      "y": 15,
+      "pins": {
+        "1": "SAFE_LATCH",
+        "2": "OUTPUT_PERMIT",
+        "3": "GND",
+        "4": "SAFE_PERMIT",
+        "5": "+3V3"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "SN74LVC1G08DBVR",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+      "id": "U20"
+    },
+    {
+      "ref": "R4",
+      "value": "0R",
+      "footprint": "r0805",
+      "x": 70,
+      "y": 16,
+      "pins": {
+        "1": "SAFE_CLEAR_N",
+        "2": "FAULT_N"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RFAULT_LINK"
+    },
+    {
+      "ref": "R5",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 50,
+      "y": 57,
+      "pins": {
+        "1": "SAFE_CLEAR_N",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RFAULT"
+    },
+    {
+      "ref": "R6",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 71,
+      "y": 13,
+      "pins": {
+        "1": "WATCHDOG",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RWDI"
+    },
+    {
+      "ref": "R7",
+      "value": "109k 0.1%",
+      "footprint": "r0805",
+      "x": 51,
+      "y": 11,
+      "pins": {
+        "1": "+5A",
+        "2": "SENSE_5A"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "R5MON1"
+    },
+    {
+      "ref": "R8",
+      "value": "10k 0.1%",
+      "footprint": "r0805",
+      "x": 44,
+      "y": 15,
+      "pins": {
+        "1": "SENSE_5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "R5MON2"
+    },
+    {
+      "ref": "RPMON1",
+      "value": "53.1k 0.1%",
+      "footprint": "r0805",
+      "x": 66,
+      "y": 38,
+      "pins": {
+        "1": "+12VA",
+        "2": "SENSE_POS"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RPMON1"
+    },
+    {
+      "ref": "RPMON2",
+      "value": "10k 0.1%",
+      "footprint": "r0805",
+      "x": 66,
+      "y": 44,
+      "pins": {
+        "1": "SENSE_POS",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RPMON2"
+    },
+    {
+      "ref": "RNMON1",
+      "value": "1M 0.1%",
+      "footprint": "r0805",
+      "x": 54,
+      "y": 44,
+      "pins": {
+        "1": "-12VA",
+        "2": "SENSE_NEG"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RNMON1"
+    },
+    {
+      "ref": "RNMON2",
+      "value": "137k 0.1%",
+      "footprint": "r0805",
+      "x": 58,
+      "y": 45,
+      "pins": {
+        "1": "+3V3",
+        "2": "SENSE_NEG"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RNMON2"
+    },
+    {
+      "ref": "RMONREF1",
+      "value": "10k 0.1%",
+      "footprint": "r0805",
+      "x": 60,
+      "y": 48,
+      "pins": {
+        "1": "+3V3",
+        "2": "REF_MON"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RMONREF1"
+    },
+    {
+      "ref": "RMONREF2",
+      "value": "10k 0.1%",
+      "footprint": "r0805",
+      "x": 56,
+      "y": 48,
+      "pins": {
+        "1": "REF_MON",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RMONREF2"
+    },
+    {
+      "ref": "D3",
+      "value": "BAT54WS",
+      "footprint": "sod323",
+      "x": 52,
+      "y": 47,
+      "pins": {
+        "1": "SENSE_NEG",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "Anode at GND; limits the negative comparator input if 3.3 V disappears before the negative rail.",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "DMONCLAMP"
+    },
+    {
+      "ref": "C13",
+      "value": "10nF",
+      "footprint": "c0805",
+      "x": 66,
+      "y": 41,
+      "pins": {
+        "1": "SENSE_POS",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CMONP"
+    },
+    {
+      "ref": "C14",
+      "value": "1nF",
+      "footprint": "c0805",
+      "x": 54,
+      "y": 41,
+      "pins": {
+        "1": "SENSE_NEG",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CMONN"
+    },
+    {
+      "ref": "CMON5",
+      "value": "10nF",
+      "footprint": "c0805",
+      "x": 59,
+      "y": 11,
+      "pins": {
+        "1": "SENSE_5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CMON5"
+    },
+    {
+      "ref": "C15",
+      "value": "10nF",
+      "footprint": "c0805",
+      "x": 67,
+      "y": 11,
+      "pins": {
+        "1": "RESET_DELAY",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CDELAY"
+    },
+    {
+      "ref": "CSAFE16",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 43,
+      "y": 38,
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CSAFE16"
+    },
+    {
+      "ref": "CSAFE17",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 47,
+      "y": 11,
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CSAFE17"
+    },
+    {
+      "ref": "CSAFE18",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 55,
+      "y": 11,
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CSAFE18"
+    },
+    {
+      "ref": "CSAFE20",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 63,
+      "y": 11,
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CSAFE20"
+    },
+    {
+      "ref": "CSAFE19",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 54,
+      "y": 38,
+      "pins": {
+        "1": "+5A",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "SAFETY",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CSAFE19"
+    },
+    {
+      "ref": "U14",
+      "value": "ADG5412FBRUZ",
+      "footprint": "tssop16",
+      "x": 10,
+      "y": 65,
+      "pins": {
+        "4": "-12VA",
+        "5": "GND",
+        "12": "SAFE_CLEAR_N",
+        "13": "+12VA",
+        "1": "+3V3",
+        "2": "PROTECTED1",
+        "3": "INPUT_LIMIT1",
+        "16": "+3V3",
+        "15": "PROTECTED2",
+        "14": "INPUT_LIMIT2",
+        "9": "+3V3",
+        "10": "PROTECTED3",
+        "11": "INPUT_LIMIT3",
+        "8": "+3V3",
+        "7": "PROTECTED4",
+        "6": "INPUT_LIMIT4"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "INPUT_PROTECTION",
+      "note": "",
+      "mpn": "ADG5412FBRUZ",
+      "manufacturer": "Analog Devices",
+      "datasheet": "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG5412F_5413F.pdf",
+      "id": "U14"
+    },
+    {
+      "ref": "C16",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 17,
+      "y": 65,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "INPUT_PROTECTION",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIP0P"
+    },
+    {
+      "ref": "C17",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 6,
+      "y": 60,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "INPUT_PROTECTION",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIP0N"
+    },
+    {
+      "ref": "U15",
+      "value": "ADG5412FBRUZ",
+      "footprint": "tssop16",
+      "x": 10,
+      "y": 91,
+      "pins": {
+        "4": "-12VA",
+        "5": "GND",
+        "12": "SAFE_CLEAR_N",
+        "13": "+12VA",
+        "1": "+3V3",
+        "2": "PROTECTED5",
+        "3": "INPUT_LIMIT5",
+        "16": "+3V3",
+        "15": "PROTECTED6",
+        "14": "INPUT_LIMIT6",
+        "9": "+3V3",
+        "10": "PROTECTED7",
+        "11": "INPUT_LIMIT7",
+        "8": "+3V3",
+        "7": "PROTECTED8",
+        "6": "INPUT_LIMIT8"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "INPUT_PROTECTION",
+      "note": "",
+      "mpn": "ADG5412FBRUZ",
+      "manufacturer": "Analog Devices",
+      "datasheet": "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG5412F_5413F.pdf",
+      "id": "U15"
+    },
+    {
+      "ref": "C18",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 17,
+      "y": 91,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "INPUT_PROTECTION",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIP1P"
+    },
+    {
+      "ref": "C19",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 6,
+      "y": 86,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "INPUT_PROTECTION",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIP1N"
+    },
+    {
+      "ref": "RIC5",
+      "value": "1k",
+      "footprint": "r0805",
+      "x": 32,
+      "y": 46,
+      "pins": {
+        "1": "PROTECTED5",
+        "2": "ADC_IN5"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "CTRL_INPUTS",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIC5"
+    },
+    {
+      "ref": "RIC6",
+      "value": "1k",
+      "footprint": "r0805",
+      "x": 20,
+      "y": 46,
+      "pins": {
+        "1": "PROTECTED6",
+        "2": "ADC_IN6"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "CTRL_INPUTS",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIC6"
+    },
+    {
+      "ref": "RIC7",
+      "value": "1k",
+      "footprint": "r0805",
+      "x": 25,
+      "y": 45,
+      "pins": {
+        "1": "PROTECTED7",
+        "2": "ADC_IN7"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "CTRL_INPUTS",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIC7"
+    },
+    {
+      "ref": "RIC8",
+      "value": "1k",
+      "footprint": "r0805",
+      "x": 16,
+      "y": 60,
+      "pins": {
+        "1": "PROTECTED8",
+        "2": "ADC_IN8"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "CTRL_INPUTS",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIC8"
+    },
+    {
+      "ref": "R9",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 24,
+      "y": 48,
+      "pins": {
+        "1": "PROTECTED1",
+        "2": "IN1F1_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN1F1A"
+    },
+    {
+      "ref": "R10",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 16,
+      "y": 53,
+      "pins": {
+        "1": "IN1F1_A",
+        "2": "IN1F1_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN1F1B"
+    },
+    {
+      "ref": "C20",
+      "value": "820pF C0G 1%",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 52,
+      "pins": {
+        "1": "IN1F1_A",
+        "2": "IN1F1_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN1F1A"
+    },
+    {
+      "ref": "C21",
+      "value": "680pF C0G 1%",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 49,
+      "pins": {
+        "1": "IN1F1_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN1F1B"
+    },
+    {
+      "ref": "R11",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 24,
+      "y": 62,
+      "pins": {
+        "1": "IN1F1_OUT",
+        "2": "IN1F2_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN1F2A"
+    },
+    {
+      "ref": "R12",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 16,
+      "y": 57,
+      "pins": {
+        "1": "IN1F2_A",
+        "2": "IN1F2_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN1F2B"
+    },
+    {
+      "ref": "C22",
+      "value": "1.8nF C0G 1%",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 58,
+      "pins": {
+        "1": "IN1F2_A",
+        "2": "IN1F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN1F2A"
+    },
+    {
+      "ref": "C23",
+      "value": "270pF C0G 1%",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 61,
+      "pins": {
+        "1": "IN1F2_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN1F2B"
+    },
+    {
+      "ref": "RADCF1",
+      "value": "47R",
+      "footprint": "r0805",
+      "x": 24,
+      "y": 41,
+      "pins": {
+        "1": "IN1F2_OUT",
+        "2": "ADC_IN1"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RADCF1"
+    },
+    {
+      "ref": "R13",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 28,
+      "y": 62,
+      "pins": {
+        "1": "PROTECTED2",
+        "2": "IN2F1_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN2F1A"
+    },
+    {
+      "ref": "R14",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 36,
+      "y": 57,
+      "pins": {
+        "1": "IN2F1_A",
+        "2": "IN2F1_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN2F1B"
+    },
+    {
+      "ref": "C24",
+      "value": "820pF C0G 1%",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 58,
+      "pins": {
+        "1": "IN2F1_A",
+        "2": "IN2F1_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN2F1A"
+    },
+    {
+      "ref": "C25",
+      "value": "680pF C0G 1%",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 61,
+      "pins": {
+        "1": "IN2F1_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN2F1B"
+    },
+    {
+      "ref": "R15",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 28,
+      "y": 48,
+      "pins": {
+        "1": "IN2F1_OUT",
+        "2": "IN2F2_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN2F2A"
+    },
+    {
+      "ref": "R16",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 36,
+      "y": 53,
+      "pins": {
+        "1": "IN2F2_A",
+        "2": "IN2F2_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN2F2B"
+    },
+    {
+      "ref": "C26",
+      "value": "1.8nF C0G 1%",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 52,
+      "pins": {
+        "1": "IN2F2_A",
+        "2": "IN2F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN2F2A"
+    },
+    {
+      "ref": "C27",
+      "value": "270pF C0G 1%",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 49,
+      "pins": {
+        "1": "IN2F2_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN2F2B"
+    },
+    {
+      "ref": "RADCF2",
+      "value": "47R",
+      "footprint": "r0805",
+      "x": 36,
+      "y": 43,
+      "pins": {
+        "1": "IN2F2_OUT",
+        "2": "ADC_IN2"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RADCF2"
+    },
+    {
+      "ref": "R17",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 24,
+      "y": 73,
+      "pins": {
+        "1": "PROTECTED3",
+        "2": "IN3F1_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN3F1A"
+    },
+    {
+      "ref": "R18",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 16,
+      "y": 78,
+      "pins": {
+        "1": "IN3F1_A",
+        "2": "IN3F1_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN3F1B"
+    },
+    {
+      "ref": "C28",
+      "value": "820pF C0G 1%",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 77,
+      "pins": {
+        "1": "IN3F1_A",
+        "2": "IN3F1_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN3F1A"
+    },
+    {
+      "ref": "C29",
+      "value": "680pF C0G 1%",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 74,
+      "pins": {
+        "1": "IN3F1_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN3F1B"
+    },
+    {
+      "ref": "R19",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 24,
+      "y": 87,
+      "pins": {
+        "1": "IN3F1_OUT",
+        "2": "IN3F2_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN3F2A"
+    },
+    {
+      "ref": "R20",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 16,
+      "y": 82,
+      "pins": {
+        "1": "IN3F2_A",
+        "2": "IN3F2_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN3F2B"
+    },
+    {
+      "ref": "C30",
+      "value": "1.8nF C0G 1%",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 83,
+      "pins": {
+        "1": "IN3F2_A",
+        "2": "IN3F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN3F2A"
+    },
+    {
+      "ref": "C31",
+      "value": "270pF C0G 1%",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 86,
+      "pins": {
+        "1": "IN3F2_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN3F2B"
+    },
+    {
+      "ref": "RADCF3",
+      "value": "47R",
+      "footprint": "r0805",
+      "x": 32,
+      "y": 64,
+      "pins": {
+        "1": "IN3F2_OUT",
+        "2": "ADC_IN3"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RADCF3"
+    },
+    {
+      "ref": "R21",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 28,
+      "y": 87,
+      "pins": {
+        "1": "PROTECTED4",
+        "2": "IN4F1_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN4F1A"
+    },
+    {
+      "ref": "R22",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 36,
+      "y": 82,
+      "pins": {
+        "1": "IN4F1_A",
+        "2": "IN4F1_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN4F1B"
+    },
+    {
+      "ref": "C32",
+      "value": "820pF C0G 1%",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 83,
+      "pins": {
+        "1": "IN4F1_A",
+        "2": "IN4F1_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN4F1A"
+    },
+    {
+      "ref": "C33",
+      "value": "680pF C0G 1%",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 86,
+      "pins": {
+        "1": "IN4F1_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN4F1B"
+    },
+    {
+      "ref": "R23",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 28,
+      "y": 73,
+      "pins": {
+        "1": "IN4F1_OUT",
+        "2": "IN4F2_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN4F2A"
+    },
+    {
+      "ref": "R24",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 36,
+      "y": 78,
+      "pins": {
+        "1": "IN4F2_A",
+        "2": "IN4F2_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RIN4F2B"
+    },
+    {
+      "ref": "C34",
+      "value": "1.8nF C0G 1%",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 77,
+      "pins": {
+        "1": "IN4F2_A",
+        "2": "IN4F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN4F2A"
+    },
+    {
+      "ref": "C35",
+      "value": "270pF C0G 1%",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 74,
+      "pins": {
+        "1": "IN4F2_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CIN4F2B"
+    },
+    {
+      "ref": "RADCF4",
+      "value": "47R",
+      "footprint": "r0805",
+      "x": 36,
+      "y": 50,
+      "pins": {
+        "1": "IN4F2_OUT",
+        "2": "ADC_IN4"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "IN4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RADCF4"
+    },
+    {
+      "ref": "R25",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 73,
+      "y": 62,
+      "pins": {
+        "1": "AMP1",
+        "2": "OUT1F1_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT1F1A"
+    },
+    {
+      "ref": "R26",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 65,
+      "y": 67,
+      "pins": {
+        "1": "OUT1F1_A",
+        "2": "OUT1F1_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT1F1B"
+    },
+    {
+      "ref": "C36",
+      "value": "820pF C0G 1%",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 66,
+      "pins": {
+        "1": "OUT1F1_A",
+        "2": "OUT1F1_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT1F1A"
+    },
+    {
+      "ref": "C37",
+      "value": "680pF C0G 1%",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 63,
+      "pins": {
+        "1": "OUT1F1_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT1F1B"
+    },
+    {
+      "ref": "R27",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 73,
+      "y": 76,
+      "pins": {
+        "1": "OUT1F1_OUT",
+        "2": "OUT1F2_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT1F2A"
+    },
+    {
+      "ref": "R28",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 65,
+      "y": 71,
+      "pins": {
+        "1": "OUT1F2_A",
+        "2": "OUT1F2_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT1F2B"
+    },
+    {
+      "ref": "C38",
+      "value": "1.8nF C0G 1%",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 72,
+      "pins": {
+        "1": "OUT1F2_A",
+        "2": "OUT1F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT1F2A"
+    },
+    {
+      "ref": "C39",
+      "value": "270pF C0G 1%",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 75,
+      "pins": {
+        "1": "OUT1F2_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT1_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT1F2B"
+    },
+    {
+      "ref": "R29",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 77,
+      "y": 76,
+      "pins": {
+        "1": "AMP2",
+        "2": "OUT2F1_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT2F1A"
+    },
+    {
+      "ref": "R30",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 71,
+      "pins": {
+        "1": "OUT2F1_A",
+        "2": "OUT2F1_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT2F1B"
+    },
+    {
+      "ref": "C40",
+      "value": "820pF C0G 1%",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 72,
+      "pins": {
+        "1": "OUT2F1_A",
+        "2": "OUT2F1_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT2F1A"
+    },
+    {
+      "ref": "C41",
+      "value": "680pF C0G 1%",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 75,
+      "pins": {
+        "1": "OUT2F1_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT2F1B"
+    },
+    {
+      "ref": "R31",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 77,
+      "y": 62,
+      "pins": {
+        "1": "OUT2F1_OUT",
+        "2": "OUT2F2_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT2F2A"
+    },
+    {
+      "ref": "R32",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 67,
+      "pins": {
+        "1": "OUT2F2_A",
+        "2": "OUT2F2_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT2F2B"
+    },
+    {
+      "ref": "C42",
+      "value": "1.8nF C0G 1%",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 66,
+      "pins": {
+        "1": "OUT2F2_A",
+        "2": "OUT2F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT2F2A"
+    },
+    {
+      "ref": "C43",
+      "value": "270pF C0G 1%",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 63,
+      "pins": {
+        "1": "OUT2F2_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT2_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT2F2B"
+    },
+    {
+      "ref": "R33",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 68,
+      "y": 89,
+      "pins": {
+        "1": "AMP3",
+        "2": "OUT3F1_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT3F1A"
+    },
+    {
+      "ref": "R34",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 65,
+      "y": 93,
+      "pins": {
+        "1": "OUT3F1_A",
+        "2": "OUT3F1_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT3F1B"
+    },
+    {
+      "ref": "C44",
+      "value": "820pF C0G 1%",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 92,
+      "pins": {
+        "1": "OUT3F1_A",
+        "2": "OUT3F1_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT3F1A"
+    },
+    {
+      "ref": "C45",
+      "value": "680pF C0G 1%",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 98,
+      "pins": {
+        "1": "OUT3F1_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT3F1B"
+    },
+    {
+      "ref": "R35",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 65,
+      "y": 97,
+      "pins": {
+        "1": "OUT3F1_OUT",
+        "2": "OUT3F2_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT3F2A"
+    },
+    {
+      "ref": "R36",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 65,
+      "y": 100,
+      "pins": {
+        "1": "OUT3F2_A",
+        "2": "OUT3F2_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT3F2B"
+    },
+    {
+      "ref": "C46",
+      "value": "1.8nF C0G 1%",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 101,
+      "pins": {
+        "1": "OUT3F2_A",
+        "2": "OUT3F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT3F2A"
+    },
+    {
+      "ref": "C47",
+      "value": "270pF C0G 1%",
+      "footprint": "c0805",
+      "x": 73,
+      "y": 102,
+      "pins": {
+        "1": "OUT3F2_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT3_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT3F2B"
+    },
+    {
+      "ref": "R37",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 77,
+      "y": 102,
+      "pins": {
+        "1": "AMP4",
+        "2": "OUT4F1_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT4F1A"
+    },
+    {
+      "ref": "R38",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 97,
+      "pins": {
+        "1": "OUT4F1_A",
+        "2": "OUT4F1_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT4F1B"
+    },
+    {
+      "ref": "C48",
+      "value": "820pF C0G 1%",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 98,
+      "pins": {
+        "1": "OUT4F1_A",
+        "2": "OUT4F1_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT4F1A"
+    },
+    {
+      "ref": "C49",
+      "value": "680pF C0G 1%",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 101,
+      "pins": {
+        "1": "OUT4F1_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT4F1B"
+    },
+    {
+      "ref": "R39",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 93,
+      "pins": {
+        "1": "OUT4F1_OUT",
+        "2": "OUT4F2_A"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT4F2A"
+    },
+    {
+      "ref": "R40",
+      "value": "11k 0.1%",
+      "footprint": "r0805",
+      "x": 86,
+      "y": 90,
+      "pins": {
+        "1": "OUT4F2_A",
+        "2": "OUT4F2_B"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "ROUT4F2B"
+    },
+    {
+      "ref": "C50",
+      "value": "1.8nF C0G 1%",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 92,
+      "pins": {
+        "1": "OUT4F2_A",
+        "2": "OUT4F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT4F2A"
+    },
+    {
+      "ref": "C51",
+      "value": "270pF C0G 1%",
+      "footprint": "c0805",
+      "x": 82,
+      "y": 89,
+      "pins": {
+        "1": "OUT4F2_B",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUT4_FILTER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "COUT4F2B"
+    },
+    {
+      "ref": "U21",
+      "value": "OPA4197ID",
+      "footprint": "soic14",
+      "x": 26,
+      "y": 55,
+      "pins": {
+        "4": "+12VA",
+        "11": "-12VA",
+        "3": "IN1F1_B",
+        "2": "IN1F1_OUT",
+        "1": "IN1F1_OUT",
+        "5": "IN1F2_B",
+        "6": "IN1F2_OUT",
+        "7": "IN1F2_OUT",
+        "10": "IN2F1_B",
+        "9": "IN2F1_OUT",
+        "8": "IN2F1_OUT",
+        "12": "IN2F2_B",
+        "13": "IN2F2_OUT",
+        "14": "IN2F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "INPUT_FILTER_AMPS",
+      "note": "",
+      "mpn": "OPA4197ID",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/opa4197.pdf",
+      "id": "U21"
+    },
+    {
+      "ref": "C52",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 55,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "FILTER_POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CFAMP21P"
+    },
+    {
+      "ref": "C53",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 55,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "FILTER_POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CFAMP21N"
+    },
+    {
+      "ref": "U22",
+      "value": "OPA4197ID",
+      "footprint": "soic14",
+      "x": 26,
+      "y": 80,
+      "pins": {
+        "4": "+12VA",
+        "11": "-12VA",
+        "3": "IN3F1_B",
+        "2": "IN3F1_OUT",
+        "1": "IN3F1_OUT",
+        "5": "IN3F2_B",
+        "6": "IN3F2_OUT",
+        "7": "IN3F2_OUT",
+        "10": "IN4F1_B",
+        "9": "IN4F1_OUT",
+        "8": "IN4F1_OUT",
+        "12": "IN4F2_B",
+        "13": "IN4F2_OUT",
+        "14": "IN4F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "INPUT_FILTER_AMPS",
+      "note": "",
+      "mpn": "OPA4197ID",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/opa4197.pdf",
+      "id": "U22"
+    },
+    {
+      "ref": "C54",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 20,
+      "y": 80,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "FILTER_POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CFAMP22P"
+    },
+    {
+      "ref": "C55",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 80,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "FILTER_POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CFAMP22N"
+    },
+    {
+      "ref": "U23",
+      "value": "OPA4197ID",
+      "footprint": "soic14",
+      "x": 75,
+      "y": 69,
+      "pins": {
+        "4": "+12VA",
+        "11": "-12VA",
+        "3": "OUT1F1_B",
+        "2": "OUT1F1_OUT",
+        "1": "OUT1F1_OUT",
+        "5": "OUT1F2_B",
+        "6": "OUT1F2_OUT",
+        "7": "OUT1F2_OUT",
+        "10": "OUT2F1_B",
+        "9": "OUT2F1_OUT",
+        "8": "OUT2F1_OUT",
+        "12": "OUT2F2_B",
+        "13": "OUT2F2_OUT",
+        "14": "OUT2F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUTPUT_FILTER_AMPS",
+      "note": "",
+      "mpn": "OPA4197ID",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/opa4197.pdf",
+      "id": "U23"
+    },
+    {
+      "ref": "C56",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 69,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "FILTER_POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CFAMP23P"
+    },
+    {
+      "ref": "C57",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 69,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "FILTER_POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CFAMP23N"
+    },
+    {
+      "ref": "U24",
+      "value": "OPA4197ID",
+      "footprint": "soic14",
+      "x": 75,
+      "y": 95,
+      "pins": {
+        "4": "+12VA",
+        "11": "-12VA",
+        "3": "OUT3F1_B",
+        "2": "OUT3F1_OUT",
+        "1": "OUT3F1_OUT",
+        "5": "OUT3F2_B",
+        "6": "OUT3F2_OUT",
+        "7": "OUT3F2_OUT",
+        "10": "OUT4F1_B",
+        "9": "OUT4F1_OUT",
+        "8": "OUT4F1_OUT",
+        "12": "OUT4F2_B",
+        "13": "OUT4F2_OUT",
+        "14": "OUT4F2_OUT"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "OUTPUT_FILTER_AMPS",
+      "note": "",
+      "mpn": "OPA4197ID",
+      "manufacturer": "Texas Instruments",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/opa4197.pdf",
+      "id": "U24"
+    },
+    {
+      "ref": "C58",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 69,
+      "y": 95,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "FILTER_POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CFAMP24P"
+    },
+    {
+      "ref": "C59",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 81,
+      "y": 95,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "FILTER_POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CFAMP24N"
+    },
+    {
+      "ref": "F1",
+      "value": "Littelfuse 1206L075/24YR",
+      "footprint": "fuse1206",
+      "x": 21,
+      "y": 35,
+      "pins": {
+        "1": "+12_IN",
+        "2": "+12_FUSED"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "FPOWERP"
+    },
+    {
+      "ref": "F2",
+      "value": "Littelfuse 1206L025/30YR",
+      "footprint": "fuse1206",
+      "x": 6,
+      "y": 42,
+      "pins": {
+        "1": "-12_IN",
+        "2": "-12_FUSED"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "FPOWERN"
+    },
+    {
+      "ref": "C60",
+      "value": "22uF 25V X7R",
+      "footprint": "c1210",
+      "x": 45,
+      "y": 59,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CBULKP"
+    },
+    {
+      "ref": "C61",
+      "value": "22uF 25V X7R",
+      "footprint": "c1210",
+      "x": 55,
+      "y": 59,
+      "pins": {
+        "1": "-12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CBULKN"
+    },
+    {
+      "ref": "C62",
+      "value": "100nF 50V",
+      "footprint": "c0805",
+      "x": 32,
+      "y": 14,
+      "pins": {
+        "1": "+12VA",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CREGIN"
+    },
+    {
+      "ref": "C63",
+      "value": "100nF",
+      "footprint": "c0805",
+      "x": 23,
+      "y": 17,
+      "pins": {
+        "1": "+5D",
+        "2": "GND"
+      },
+      "board": "main",
+      "side": "F",
+      "group": "POWER",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "CREGOUT"
+    },
+    {
+      "ref": "R41",
+      "value": "10k",
+      "footprint": "r0805",
+      "x": 68,
+      "y": 54,
+      "pins": {
+        "1": "OLED_RESET",
+        "2": "+3V3"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "PANEL_CONTROL",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RRESET_OLED"
+    },
+    {
+      "ref": "R42",
+      "value": "33R",
+      "footprint": "r0805",
+      "x": 75,
+      "y": 38,
+      "pins": {
+        "1": "ADC_SCK",
+        "2": "ADC_SCK_TERM"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "ADC",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RADC_SCK"
+    },
+    {
+      "ref": "R43",
+      "value": "33R",
+      "footprint": "r0805",
+      "x": 70,
+      "y": 38,
+      "pins": {
+        "1": "ADC_MOSI",
+        "2": "ADC_MOSI_TERM"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "ADC",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RADC_MOSI"
+    },
+    {
+      "ref": "R44",
+      "value": "33R",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 40,
+      "pins": {
+        "1": "DAC_SCK_BUFFER",
+        "2": "DAC_SCK_5V"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "DAC",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RDAC_SCK"
+    },
+    {
+      "ref": "R45",
+      "value": "33R",
+      "footprint": "r0805",
+      "x": 85,
+      "y": 54,
+      "pins": {
+        "1": "DAC_MOSI_BUFFER",
+        "2": "DAC_MOSI_5V"
+      },
+      "board": "main",
+      "side": "B",
+      "group": "DAC",
+      "note": "",
+      "mpn": "",
+      "manufacturer": "",
+      "datasheet": "",
+      "id": "RDAC_MOSI"
     }
   ],
   "holes": [
@@ -3347,11 +6566,16 @@
     }
   ],
   "blocking": [
-    "analog antialias/reconstruction filters",
-    "converter selection and supply budget",
-    "SPI8 DMA scheduling and clock proof",
-    "mechanical stack",
-    "native ERC/DRC",
-    "routing and bench tests"
-  ]
+    "ADC VDRIVE can exceed AVCC + 0.3 V with USB-only power or unequal rail decay; supply and host-signal isolation need a hardware revision.",
+    "R-78E output tolerance and TPS3808 threshold/hysteresis do not guarantee both ADC operating voltage and reset release.",
+    "The new ADC/DAC backend is absent; stock libDaisy clocks and shared SPI DMA cannot sustain the declared rates.",
+    "physical assembly verification",
+    "electrical and thermal bench qualification",
+    "calibration"
+  ],
+  "release_blockers": {
+    "ADC_SUPPLY_SEQUENCE": "ADC VDRIVE can exceed AVCC + 0.3 V with USB-only power or unequal rail decay; supply and host-signal isolation need a hardware revision.",
+    "5V_MONITOR_MARGIN": "R-78E output tolerance and TPS3808 threshold/hysteresis do not guarantee both ADC operating voltage and reset release.",
+    "CONVERTER_BACKEND": "The new ADC/DAC backend is absent; stock libDaisy clocks and shared SPI DMA cannot sustain the declared rates."
+  }
 }

@@ -1,0 +1,196 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-29T01:01:08",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.7",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1",
+            "violations": []
+        },
+        {
+            "path": "/PROCESSOR/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/9942b470-a866-574e-b981-92a8cec08216",
+            "violations": []
+        },
+        {
+            "path": "/ADC/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/9572925c-5e9a-5015-9e8d-a44797613f87",
+            "violations": []
+        },
+        {
+            "path": "/DAC/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/a61a25c5-d66e-5ae4-b5a4-d90abd8ac810",
+            "violations": []
+        },
+        {
+            "path": "/IO_EXPANDER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/d63ea526-0ecb-5245-8542-4615937ac585",
+            "violations": []
+        },
+        {
+            "path": "/OUTPUT_ENABLE/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/00bd5d03-59e2-5eb2-80fb-fa828c42ed91",
+            "violations": []
+        },
+        {
+            "path": "/OUTPUT_SWITCHES/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/dc031f20-5344-5ef6-bc6b-6403ee92d84c",
+            "violations": []
+        },
+        {
+            "path": "/OUT1_DRIVER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/1c8787a5-7afb-56df-9799-a8787b9e8a4c",
+            "violations": []
+        },
+        {
+            "path": "/OUT2_DRIVER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/5686280f-229d-56ae-aaa6-dc58cfe9e268",
+            "violations": []
+        },
+        {
+            "path": "/OUT3_DRIVER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/2ec0cc0c-87ad-53bb-9660-8d300caae610",
+            "violations": []
+        },
+        {
+            "path": "/OUT4_DRIVER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/2b3cf0d7-8b28-5095-a50e-8213fa4e22c3",
+            "violations": []
+        },
+        {
+            "path": "/OUT5_DRIVER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/6fda29ec-d44e-5ea2-bb68-98da998cea2e",
+            "violations": []
+        },
+        {
+            "path": "/OUT6_DRIVER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/26394724-6a82-5f3e-8bd3-a2b4df874c7a",
+            "violations": []
+        },
+        {
+            "path": "/OUT7_DRIVER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/2a05e4f4-092a-5de6-96d4-6f43f04d9edb",
+            "violations": []
+        },
+        {
+            "path": "/OUT8_DRIVER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/3944a77b-4f6f-5804-afd4-ad3f19805d72",
+            "violations": []
+        },
+        {
+            "path": "/ANALOG_DECOUPLING/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/cef3ba9d-0814-5d13-b7da-19ac7460d3ab",
+            "violations": []
+        },
+        {
+            "path": "/OUTPUT_DRIVERS/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/ab0e3acb-58bb-5a76-802e-c1bbc4f17c13",
+            "violations": []
+        },
+        {
+            "path": "/REFERENCE/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/72f1e0fd-e656-5f9a-a944-1f4164a13f38",
+            "violations": []
+        },
+        {
+            "path": "/POWER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/fc2ed233-5983-5a1b-8a7d-c7a35ee9e9b5",
+            "violations": []
+        },
+        {
+            "path": "/GPIO_BIASES/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/2bc1f5cd-5a5e-58e6-ac1a-cf0c580afefa",
+            "violations": []
+        },
+        {
+            "path": "/SAFETY/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/41d765bf-1fc6-5c9e-b520-0a8852be5ae8",
+            "violations": []
+        },
+        {
+            "path": "/INPUT_PROTECTION/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/94b30749-442b-5c1e-9556-cbdb4f6a8a49",
+            "violations": []
+        },
+        {
+            "path": "/CTRL_INPUTS/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/ec819403-8b8f-5caa-be55-a5950cedd699",
+            "violations": []
+        },
+        {
+            "path": "/IN1_FILTER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/8945bc60-385e-528f-aa52-342ab72f2824",
+            "violations": []
+        },
+        {
+            "path": "/IN2_FILTER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/be9663ee-b5f2-5b4e-9885-b9dd6a58401a",
+            "violations": []
+        },
+        {
+            "path": "/IN3_FILTER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/4948386c-b05a-5318-9e1c-8e581631cfaa",
+            "violations": []
+        },
+        {
+            "path": "/IN4_FILTER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/51b20d77-5c5c-5200-91d0-6bf9499a2d93",
+            "violations": []
+        },
+        {
+            "path": "/OUT1_FILTER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/6690a90d-5c2f-53d4-9163-77aba3398ab5",
+            "violations": []
+        },
+        {
+            "path": "/OUT2_FILTER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/9f20da19-028e-5833-8685-e787534e6efa",
+            "violations": []
+        },
+        {
+            "path": "/OUT3_FILTER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/58ee68eb-2195-59f2-b788-9e78696b0a02",
+            "violations": []
+        },
+        {
+            "path": "/OUT4_FILTER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/60362652-8893-5863-8cdf-c8a3b4342bb2",
+            "violations": []
+        },
+        {
+            "path": "/FILTER_POWER/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/330de0ac-45fa-5d61-9f3f-5abee1e50632",
+            "violations": []
+        },
+        {
+            "path": "/PANEL_CONTROL/",
+            "uuid_path": "/8ecfd7aa-e806-54a1-b7ce-035bb7e38dc1/8b2fc1ba-8cf8-5052-9f8f-0e59c7365bbb",
+            "violations": []
+        }
+    ],
+    "source": "Adolfo-main.kicad_sch"
+}

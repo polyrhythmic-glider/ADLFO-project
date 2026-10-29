@@ -1,0 +1,33 @@
+{
+  "input": {
+    "1000": -0.003,
+    "10000": -0.298,
+    "18000": -2.061,
+    "20000": -3.402,
+    "48000": -30.833,
+    "76000": -46.945,
+    "100000": -56.525,
+    "worst_corner_peak_db": -0.0
+  },
+  "output": {
+    "1000": -0.001,
+    "10000": -0.155,
+    "18000": -1.695,
+    "20000": -2.988,
+    "48000": -30.146,
+    "76000": -46.212,
+    "100000": -55.779,
+    "worst_corner_peak_db": -0.0
+  },
+  "rail_trip_nominal": {
+    "positive_v": 10.411499999999998,
+    "negative_v": -10.393795620437956,
+    "analog_5v": 4.819500000000001
+  },
+  "not_verified": [
+    "finite op-amp bandwidth/stability",
+    "noise and distortion",
+    "transient/fault response",
+    "component temperature drift"
+  ]
+}

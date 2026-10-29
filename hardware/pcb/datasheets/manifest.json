@@ -1,0 +1,95 @@
+{
+  "review_date": "2026-10-28",
+  "method": "Manual manufacturer downloads; electrical and mechanical citations in DESIGN_REVIEW_20HP.md and analysis notes. Not distributor sync.",
+  "files": {
+    "alps_ec11e.pdf": {
+      "sha256": "08dae9fa97a2a97d9c9954e87455aff6f0cc557be1fb84fcb0f11608937ba241",
+      "bytes": 234804
+    },
+    "crcwhpe3.pdf": {
+      "sha256": "c502383b607a7755342b2ed95d96d21984332eb357c91f23163fe3937cfc9288",
+      "bytes": 153511
+    },
+    "dac8568.pdf": {
+      "sha256": "d1ab4f63d58b4e3b7871dfa0b83fe379b8ae7313d645758bc1bf06a2e37a4455",
+      "bytes": 2074122
+    },
+    "daisy_seed3.pdf": {
+      "sha256": "c4c13c15713f8c32432917afb79a75c09c0d4f69d9cb48ee02cadcfb82fb2ede",
+      "bytes": 7058096
+    },
+    "lm393b.pdf": {
+      "sha256": "f28830c2f4cbd9ef6a1cd6788a840fa2b92caafee366d53385f88d1cf24e9456",
+      "bytes": 3289563
+    },
+    "mcp23017.pdf": {
+      "sha256": "14159c6f5655e943e93ed1e34947e46844f114ec893f305a889898828e4055cb",
+      "bytes": 865289
+    },
+    "opa4197.pdf": {
+      "sha256": "27653a7d5e965cbb2d23f7998919ebd774efd5cd3e126b8f0881469ae91166fd",
+      "bytes": 2174683
+    },
+    "r78e.pdf": {
+      "sha256": "be80e68802d70d388186dd3621941352e4b530169908882647be59c641afd2dc",
+      "bytes": 746615
+    },
+    "samtec_ssw.pdf": {
+      "sha256": "890f20796637b7947c7655aabf919d055b56988a01c20338b635f2daf35b051f",
+      "bytes": 491233
+    },
+    "samtec_ssw_double_footprint.pdf": {
+      "sha256": "e47be52ac32ad6ab48b471f1fb7891cddf01e1795538dd3b6ec4c84e3323ca3f",
+      "bytes": 13001
+    },
+    "samtec_tsw.pdf": {
+      "sha256": "047ecedcc921fb0aed7127f08b9ba0fc1200d92d33fb7ded1b311d0ed8f42063",
+      "bytes": 1075572
+    },
+    "sn74ahct125.pdf": {
+      "sha256": "66da72e586dbca7a1548164adf28e238484c5c1ad250fcb28ec972e4732c6fc2",
+      "bytes": 3496078
+    },
+    "sn74hc74.pdf": {
+      "sha256": "cc4b651f5ee3c441e0cc85991d649e624878cd1593c5b38549383de3187e413b",
+      "bytes": 2256544
+    },
+    "sn74hcs74.pdf": {
+      "sha256": "eac261a31ca71eed79dd051ed66a03bbd5d837f88087023fd864a3599cfa95fa",
+      "bytes": 2486490
+    },
+    "sn74lvc1g08.pdf": {
+      "sha256": "30b963cc44233cf3ca35c891ff987c8323a2244ecc765e23296ec96ca4b42666",
+      "bytes": 2837825
+    },
+    "tl1105.pdf": {
+      "sha256": "e7fc74ed909a7a608d5c6fc1442cace0e5d66aa58725bb1745de68721f46c22c",
+      "bytes": 486560
+    },
+    "tps3808.pdf": {
+      "sha256": "74d889c0f68af88032f1633c26381817cc03e10d9fd3b4c177a044ad3ed86eed",
+      "bytes": 2046179
+    },
+    "tps3828.pdf": {
+      "sha256": "178af015417c5e7beb7c6d3b824cead3910cd17c46cdac666660019cdf2ff575",
+      "bytes": 1187494
+    },
+    "waveshare_oled_schematic.pdf": {
+      "sha256": "3f9c13ecbe36f557b7b2782170c7ac4f04537a272916d327c7022626a9d4079e",
+      "bytes": 296991
+    },
+    "ss14_vishay.pdf": {
+      "sha256": "b32a2d93d2d2cf9f48d6cf678ab03713956b7501029c0424c6a554425df562da",
+      "bytes": 1174123
+    },
+    "sn74lvc08a.pdf": {
+      "sha256": "5edd5cd664dac4f3774c9c6fc7ad8310c8f2ca3da7f0e369aa69dfe2b1cc2ba4",
+      "bytes": 3451107
+    }
+  },
+  "missing_local_pdfs": [
+    "AD7606C-18",
+    "ADG5412F (manufacturer PDFs read via web)"
+  ],
+  "structured_extractions": false
+}

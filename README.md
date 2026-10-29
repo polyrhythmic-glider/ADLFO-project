@@ -15,10 +15,15 @@ Quattro encoder con click, quattro tasti e OLED. Alimentazione Eurorack IDC10 ±
 - **[Adolfo/](Adolfo/README.md)** è il firmware funzionante del prototipo
   Daisy + DAC Adafruit MCP4728, rinominato da DaisyMonoEnvelope. Motori e
   comandi sono conservati; il nome del binario diventa `Adolfo.bin`.
-- **[hardware/pcb/](hardware/pcb/README.md)** contiene la nuova architettura C:
-  due schede e conversione esterna DC coupled. È una proposta elettrica
-  non sbrogliata, con filtri e altri blocchi ancora da completare. Non è
-  pilotata dal firmware del prototipo e non è pronta per l'ordine.
+- **[hardware/pcb/](hardware/pcb/README.md)** contiene la nuova revisione D:
+  schema gerarchico, filtri analogici, supervisione e due PCB con conversione
+  esterna DC coupled. I rapporti CAD sono in `hardware/pcb/output/`.
+  Il firmware del prototipo non pilota questa scheda: backend e qualifica
+  al banco restano necessari prima dell'uso.
+
+La [revisione completa del branch 20 HP](hardware/pcb/DESIGN_REVIEW_20HP.md)
+individua inoltre blocchi di progetto su sequenziamento dell'ADC, supervisione
+5 V e backend SPI/DMA. Lo stato CAD superato non autorizza il rilascio hardware.
 
 Le vecchie PCB 24/20 HP per il solo AD/LFO, le diagnostiche separate e gli
 schemi breadboard superati sono stati rimossi dal branch. La storia Git conserva
@@ -33,13 +38,14 @@ il materiale precedente; [pulizia e conservazione](docs/CLEANUP.md).
 
 ## Generazione e controlli
 
-Python 3 con venv, compilatore C++ per i test locali. Per KiCad usare la versione
-9 o successiva; i controlli nativi non sostituiscono il collaudo.
+Python 3 con venv, compilatore C++ per i test locali. I file hardware sono
+verificati con KiCad 10.0.7. Per aprirli e ricostruirli seguire le
+[istruzioni hardware](hardware/pcb/README.md): `make pcb` da solo rigenera
+il posizionamento e sostituisce le piste; non completa il processo di routing.
 
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -r hardware/pcb/requirements.txt
-make pcb
 make check
 make test
 ```

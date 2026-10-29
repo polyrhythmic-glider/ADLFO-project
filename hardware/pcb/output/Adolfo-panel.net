@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\LENOVO\OneDrive\Documenti\Github\ADLFO-Project\hardware\pcb\output\Adolfo-panel.kicad_sch</source>
+    <date>2026-10-28T09:56:18</date>
+    <tool>Eeschema 10.0.7</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>ADOLFO / PANEL / schematic index</title>
+        <company/>
+        <rev>D ENGINEERING</rev>
+        <date/>
+        <source>Adolfo-panel.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/">
+      <title_block>
+        <title>ADOLFO / JACKS_AND_LINK</title>
+        <company/>
+        <rev>D ENGINEERING</rev>
+        <date/>
+        <source>Adolfo-panel-jacks_and_link.kicad_sch</source>
+        <comment number="1" value="DC-coupled universal carrier / physical validation required"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/">
+      <title_block>
+        <title>ADOLFO / FRONT_CONTROLS</title>
+        <company/>
+        <rev>D ENGINEERING</rev>
+        <date/>
+        <source>Adolfo-panel-front_controls.kicad_sch</source>
+        <comment number="1" value="DC-coupled universal carrier / physical validation required"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J1">
+      <value>IN1 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>456954c8-81f4-5a37-8945-5b4a6a8710ae</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J2">
+      <value>CTRL1 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>61b93723-0e3d-538c-a068-2d08a0ff32cb</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J3">
+      <value>OUT1 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>95d3c29e-1784-5fda-b243-752ca9f3e677</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J4">
+      <value>IN2 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>51cfa1bc-e326-5b8e-a6d9-c8268a711bec</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J5">
+      <value>CTRL2 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>4946c76b-eec6-5520-8b15-635e7c9abcd7</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J6">
+      <value>OUT2 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>b0c66815-1bf3-570e-a212-d67a48152a54</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J7">
+      <value>IN3 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>3a25f546-e43b-543e-9b8e-a6f5d2e6418f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J8">
+      <value>CTRL3 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>f17a24a9-29ca-5269-ab28-0e0d4c828327</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J9">
+      <value>OUT3 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>ca433025-21a9-505e-8831-7276feda5f4d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J10">
+      <value>IN4 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>84fdd0d2-8363-526b-9998-cb64f8c1f252</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J11">
+      <value>CTRL4 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>8b885667-18fe-5bc9-9a69-ca1d5eae2916</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J12">
+      <value>OUT4 PJ398SM</value>
+      <footprint>ADOLFO:jack</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output.</field>
+        <field name="Footprint">ADOLFO:jack</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="PJ398SM" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Fixed IN normal grounded for a defined unpatched input; CTRL/OUT normals open to avoid shorting an output."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>cf838cfe-24d6-5de6-8e12-1ef5b532aeb6</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="T"/>
+            <pin num="TN"/>
+            <pin num="S"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J15">
+      <value>Samtec SSW-120-02-G-D</value>
+      <footprint>ADOLFO:socket40</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Mirrored socket numbering mates to JM pin-for-pin.</field>
+        <field name="Footprint">ADOLFO:socket40</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="Conn_02x20_Odd_Even" description="Generic connector, double row, 02x20, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Mirrored socket numbering mates to JM pin-for-pin."/>
+      <property name="Sheetname" value="JACKS_AND_LINK"/>
+      <property name="Sheetfile" value="Adolfo-panel-jacks_and_link.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_2x??_*"/>
+      <sheetpath names="/JACKS_AND_LINK/" tstamps="/caaddb07-f5c2-500a-bced-7bfc68d03053/"/>
+      <tstamps>2017e156-482c-5eb7-9e5a-dd7f76afa05c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="3"/>
+            <pin num="5"/>
+            <pin num="7"/>
+            <pin num="9"/>
+            <pin num="11"/>
+            <pin num="13"/>
+            <pin num="15"/>
+            <pin num="17"/>
+            <pin num="19"/>
+            <pin num="21"/>
+            <pin num="23"/>
+            <pin num="25"/>
+            <pin num="27"/>
+            <pin num="29"/>
+            <pin num="31"/>
+            <pin num="33"/>
+            <pin num="35"/>
+            <pin num="37"/>
+            <pin num="39"/>
+            <pin num="2"/>
+            <pin num="4"/>
+            <pin num="6"/>
+            <pin num="8"/>
+            <pin num="10"/>
+            <pin num="12"/>
+            <pin num="14"/>
+            <pin num="16"/>
+            <pin num="18"/>
+            <pin num="20"/>
+            <pin num="22"/>
+            <pin num="24"/>
+            <pin num="26"/>
+            <pin num="28"/>
+            <pin num="30"/>
+            <pin num="32"/>
+            <pin num="34"/>
+            <pin num="36"/>
+            <pin num="38"/>
+            <pin num="40"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="E1">
+      <value>ALPS EC11E18244AU</value>
+      <footprint>ADOLFO:encoder</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments"/>
+        <field name="Footprint">ADOLFO:encoder</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="EC11" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value=""/>
+      <property name="Sheetname" value="FRONT_CONTROLS"/>
+      <property name="Sheetfile" value="Adolfo-panel-front_controls.kicad_sch"/>
+      <sheetpath names="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/"/>
+      <tstamps>b2ea1cac-6a8d-5869-abf2-ebcab41fe384</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="A"/>
+            <pin num="B"/>
+            <pin num="C"/>
+            <pin num="S1"/>
+            <pin num="S2"/>
+            <pin num="MP"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="E2">
+      <value>ALPS EC11E18244AU</value>
+      <footprint>ADOLFO:encoder</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments"/>
+        <field name="Footprint">ADOLFO:encoder</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="EC11" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value=""/>
+      <property name="Sheetname" value="FRONT_CONTROLS"/>
+      <property name="Sheetfile" value="Adolfo-panel-front_controls.kicad_sch"/>
+      <sheetpath names="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/"/>
+      <tstamps>b0669ccf-1ae0-5ada-b6f5-05112b3d2931</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="A"/>
+            <pin num="B"/>
+            <pin num="C"/>
+            <pin num="S1"/>
+            <pin num="S2"/>
+            <pin num="MP"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="E3">
+      <value>ALPS EC11E18244AU</value>
+      <footprint>ADOLFO:encoder</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments"/>
+        <field name="Footprint">ADOLFO:encoder</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="EC11" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value=""/>
+      <property name="Sheetname" value="FRONT_CONTROLS"/>
+      <property name="Sheetfile" value="Adolfo-panel-front_controls.kicad_sch"/>
+      <sheetpath names="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/"/>
+      <tstamps>e4852e85-d6d7-580f-b1b6-658d32675f59</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="A"/>
+            <pin num="B"/>
+            <pin num="C"/>
+            <pin num="S1"/>
+            <pin num="S2"/>
+            <pin num="MP"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="E4">
+      <value>ALPS EC11E18244AU</value>
+      <footprint>ADOLFO:encoder</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments"/>
+        <field name="Footprint">ADOLFO:encoder</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="EC11" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value=""/>
+      <property name="Sheetname" value="FRONT_CONTROLS"/>
+      <property name="Sheetfile" value="Adolfo-panel-front_controls.kicad_sch"/>
+      <sheetpath names="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/"/>
+      <tstamps>16c7b291-c57d-5fba-845c-c86503c7f56f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="A"/>
+            <pin num="B"/>
+            <pin num="C"/>
+            <pin num="S1"/>
+            <pin num="S2"/>
+            <pin num="MP"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J14">
+      <value>Waveshare 0.96inch OLED Module (D), I2C</value>
+      <footprint>ADOLFO:oled7</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments">Waveshare module (D), SSD1315, 26 x 26 mm; I2C hardware configuration required. Seven-pin order VCC/GND/DIN/CLK/CS/DC/RES.</field>
+        <field name="Footprint">ADOLFO:oled7</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="OLED_Waveshare" description=""/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value="Waveshare module (D), SSD1315, 26 x 26 mm; I2C hardware configuration required. Seven-pin order VCC/GND/DIN/CLK/CS/DC/RES."/>
+      <property name="Sheetname" value="FRONT_CONTROLS"/>
+      <property name="Sheetfile" value="Adolfo-panel-front_controls.kicad_sch"/>
+      <sheetpath names="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/"/>
+      <tstamps>15b32d6e-0832-5672-b9ee-0ed390b6a0e2</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="K1">
+      <value>E-Switch TL1105DF160Q</value>
+      <footprint>ADOLFO:button</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments"/>
+        <field name="Footprint">ADOLFO:button</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value=""/>
+      <property name="Sheetname" value="FRONT_CONTROLS"/>
+      <property name="Sheetfile" value="Adolfo-panel-front_controls.kicad_sch"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/"/>
+      <tstamps>c4804df0-728c-5a08-95fc-cca2f7de9c79</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="K2">
+      <value>E-Switch TL1105DF160Q</value>
+      <footprint>ADOLFO:button</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments"/>
+        <field name="Footprint">ADOLFO:button</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value=""/>
+      <property name="Sheetname" value="FRONT_CONTROLS"/>
+      <property name="Sheetfile" value="Adolfo-panel-front_controls.kicad_sch"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/"/>
+      <tstamps>0b840b85-6983-5c6d-b3f1-03be6ccbadd4</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="K3">
+      <value>E-Switch TL1105DF160Q</value>
+      <footprint>ADOLFO:button</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments"/>
+        <field name="Footprint">ADOLFO:button</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value=""/>
+      <property name="Sheetname" value="FRONT_CONTROLS"/>
+      <property name="Sheetfile" value="Adolfo-panel-front_controls.kicad_sch"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/"/>
+      <tstamps>3b8fcc7d-54de-5bd4-ab01-0e25a468487b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="K4">
+      <value>E-Switch TL1105DF160Q</value>
+      <footprint>ADOLFO:button</footprint>
+      <fields>
+        <field name="MPN"/>
+        <field name="Manufacturer"/>
+        <field name="BOM Comments"/>
+        <field name="Footprint">ADOLFO:button</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="ADOLFO" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="MPN" value=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="BOM Comments" value=""/>
+      <property name="Sheetname" value="FRONT_CONTROLS"/>
+      <property name="Sheetfile" value="Adolfo-panel-front_controls.kicad_sch"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/FRONT_CONTROLS/" tstamps="/1e79c4d7-1f49-56b3-81c2-420bc7bcfe55/"/>
+      <tstamps>3da08d0b-dd14-5ad0-b109-e8ceb81716d5</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="ADOLFO" part="Conn_02x20_Odd_Even">
+      <description>Generic connector, double row, 02x20, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <footprints>
+        <fp>Connector*:*_2x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_02x20_Odd_Even</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Generic connector, double row, 02x20, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="9" name="Pin_9" type="passive"/>
+        <pin num="10" name="Pin_10" type="passive"/>
+        <pin num="11" name="Pin_11" type="passive"/>
+        <pin num="12" name="Pin_12" type="passive"/>
+        <pin num="13" name="Pin_13" type="passive"/>
+        <pin num="14" name="Pin_14" type="passive"/>
+        <pin num="15" name="Pin_15" type="passive"/>
+        <pin num="16" name="Pin_16" type="passive"/>
+        <pin num="17" name="Pin_17" type="passive"/>
+        <pin num="18" name="Pin_18" type="passive"/>
+        <pin num="19" name="Pin_19" type="passive"/>
+        <pin num="20" name="Pin_20" type="passive"/>
+        <pin num="21" name="Pin_21" type="passive"/>
+        <pin num="22" name="Pin_22" type="passive"/>
+        <pin num="23" name="Pin_23" type="passive"/>
+        <pin num="24" name="Pin_24" type="passive"/>
+        <pin num="25" name="Pin_25" type="passive"/>
+        <pin num="26" name="Pin_26" type="passive"/>
+        <pin num="27" name="Pin_27" type="passive"/>
+        <pin num="28" name="Pin_28" type="passive"/>
+        <pin num="29" name="Pin_29" type="passive"/>
+        <pin num="30" name="Pin_30" type="passive"/>
+        <pin num="31" name="Pin_31" type="passive"/>
+        <pin num="32" name="Pin_32" type="passive"/>
+        <pin num="33" name="Pin_33" type="passive"/>
+        <pin num="34" name="Pin_34" type="passive"/>
+        <pin num="35" name="Pin_35" type="passive"/>
+        <pin num="36" name="Pin_36" type="passive"/>
+        <pin num="37" name="Pin_37" type="passive"/>
+        <pin num="38" name="Pin_38" type="passive"/>
+        <pin num="39" name="Pin_39" type="passive"/>
+        <pin num="40" name="Pin_40" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ADOLFO" part="EC11">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">EC11</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="A" name="A" type="passive"/>
+        <pin num="B" name="B" type="passive"/>
+        <pin num="C" name="C" type="passive"/>
+        <pin num="MP" name="CASE" type="passive"/>
+        <pin num="S1" name="SW1" type="passive"/>
+        <pin num="S2" name="SW2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ADOLFO" part="OLED_Waveshare">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">OLED_Waveshare</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="VCC" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="DIN_SDA" type="bidirectional"/>
+        <pin num="4" name="CLK_SCL" type="input"/>
+        <pin num="5" name="CS" type="input"/>
+        <pin num="6" name="DC_ADDR" type="input"/>
+        <pin num="7" name="RESET_N" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="ADOLFO" part="PJ398SM">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">PJ398SM</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="S" name="SLEEVE" type="passive"/>
+        <pin num="T" name="TIP" type="passive"/>
+        <pin num="TN" name="TIP_NORMAL" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ADOLFO" part="SW_Push">
+      <description>Push button switch, generic, two pins</description>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Push button switch, generic, two pins</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="ADOLFO">
+      <uri>${KIPRJMOD}/ADOLFO.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3V3" class="Default">
+      <node ref="J14" pin="1" pinfunction="VCC_1" pintype="power_in"/>
+      <node ref="J15" pin="31" pinfunction="Pin_31_31" pintype="passive"/>
+    </net>
+    <net code="2" name="CTRL1" class="Default">
+      <node ref="J15" pin="5" pinfunction="Pin_5_5" pintype="passive"/>
+      <node ref="J2" pin="T" pinfunction="TIP_T" pintype="passive"/>
+    </net>
+    <net code="3" name="CTRL2" class="Default">
+      <node ref="J15" pin="6" pinfunction="Pin_6_6" pintype="passive"/>
+      <node ref="J5" pin="T" pinfunction="TIP_T" pintype="passive"/>
+    </net>
+    <net code="4" name="CTRL3" class="Default">
+      <node ref="J15" pin="7" pinfunction="Pin_7_7" pintype="passive"/>
+      <node ref="J8" pin="T" pinfunction="TIP_T" pintype="passive"/>
+    </net>
+    <net code="5" name="CTRL4" class="Default">
+      <node ref="J11" pin="T" pinfunction="TIP_T" pintype="passive"/>
+      <node ref="J15" pin="8" pinfunction="Pin_8_8" pintype="passive"/>
+    </net>
+    <net code="6" name="ENC1_A" class="Default">
+      <node ref="E1" pin="A" pinfunction="A_A" pintype="passive"/>
+      <node ref="J15" pin="13" pinfunction="Pin_13_13" pintype="passive"/>
+    </net>
+    <net code="7" name="ENC1_B" class="Default">
+      <node ref="E1" pin="B" pinfunction="B_B" pintype="passive"/>
+      <node ref="J15" pin="14" pinfunction="Pin_14_14" pintype="passive"/>
+    </net>
+    <net code="8" name="ENC1_CLICK" class="Default">
+      <node ref="E1" pin="S1" pinfunction="SW1_S1" pintype="passive"/>
+      <node ref="J15" pin="15" pinfunction="Pin_15_15" pintype="passive"/>
+    </net>
+    <net code="9" name="ENC2_A" class="Default">
+      <node ref="E2" pin="A" pinfunction="A_A" pintype="passive"/>
+      <node ref="J15" pin="16" pinfunction="Pin_16_16" pintype="passive"/>
+    </net>
+    <net code="10" name="ENC2_B" class="Default">
+      <node ref="E2" pin="B" pinfunction="B_B" pintype="passive"/>
+      <node ref="J15" pin="17" pinfunction="Pin_17_17" pintype="passive"/>
+    </net>
+    <net code="11" name="ENC2_CLICK" class="Default">
+      <node ref="E2" pin="S1" pinfunction="SW1_S1" pintype="passive"/>
+      <node ref="J15" pin="18" pinfunction="Pin_18_18" pintype="passive"/>
+    </net>
+    <net code="12" name="ENC3_A" class="Default">
+      <node ref="E3" pin="A" pinfunction="A_A" pintype="passive"/>
+      <node ref="J15" pin="19" pinfunction="Pin_19_19" pintype="passive"/>
+    </net>
+    <net code="13" name="ENC3_B" class="Default">
+      <node ref="E3" pin="B" pinfunction="B_B" pintype="passive"/>
+      <node ref="J15" pin="20" pinfunction="Pin_20_20" pintype="passive"/>
+    </net>
+    <net code="14" name="ENC3_CLICK" class="Default">
+      <node ref="E3" pin="S1" pinfunction="SW1_S1" pintype="passive"/>
+      <node ref="J15" pin="21" pinfunction="Pin_21_21" pintype="passive"/>
+    </net>
+    <net code="15" name="ENC4_A" class="Default">
+      <node ref="E4" pin="A" pinfunction="A_A" pintype="passive"/>
+      <node ref="J15" pin="22" pinfunction="Pin_22_22" pintype="passive"/>
+    </net>
+    <net code="16" name="ENC4_B" class="Default">
+      <node ref="E4" pin="B" pinfunction="B_B" pintype="passive"/>
+      <node ref="J15" pin="23" pinfunction="Pin_23_23" pintype="passive"/>
+    </net>
+    <net code="17" name="ENC4_CLICK" class="Default">
+      <node ref="E4" pin="S1" pinfunction="SW1_S1" pintype="passive"/>
+      <node ref="J15" pin="24" pinfunction="Pin_24_24" pintype="passive"/>
+    </net>
+    <net code="18" name="GND" class="Default">
+      <node ref="E1" pin="C" pinfunction="C_C" pintype="passive"/>
+      <node ref="E1" pin="MP" pinfunction="CASE_MP" pintype="passive"/>
+      <node ref="E1" pin="S2" pinfunction="SW2_S2" pintype="passive"/>
+      <node ref="E2" pin="C" pinfunction="C_C" pintype="passive"/>
+      <node ref="E2" pin="MP" pinfunction="CASE_MP" pintype="passive"/>
+      <node ref="E2" pin="S2" pinfunction="SW2_S2" pintype="passive"/>
+      <node ref="E3" pin="C" pinfunction="C_C" pintype="passive"/>
+      <node ref="E3" pin="MP" pinfunction="CASE_MP" pintype="passive"/>
+      <node ref="E3" pin="S2" pinfunction="SW2_S2" pintype="passive"/>
+      <node ref="E4" pin="C" pinfunction="C_C" pintype="passive"/>
+      <node ref="E4" pin="MP" pinfunction="CASE_MP" pintype="passive"/>
+      <node ref="E4" pin="S2" pinfunction="SW2_S2" pintype="passive"/>
+      <node ref="J1" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J1" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive"/>
+      <node ref="J10" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J10" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive"/>
+      <node ref="J11" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J12" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J14" pin="2" pinfunction="GND_2" pintype="power_in"/>
+      <node ref="J14" pin="6" pinfunction="DC_ADDR_6" pintype="input"/>
+      <node ref="J15" pin="32" pinfunction="Pin_32_32" pintype="passive"/>
+      <node ref="J15" pin="33" pinfunction="Pin_33_33" pintype="passive"/>
+      <node ref="J15" pin="34" pinfunction="Pin_34_34" pintype="passive"/>
+      <node ref="J15" pin="35" pinfunction="Pin_35_35" pintype="passive"/>
+      <node ref="J15" pin="36" pinfunction="Pin_36_36" pintype="passive"/>
+      <node ref="J15" pin="37" pinfunction="Pin_37_37" pintype="passive"/>
+      <node ref="J15" pin="38" pinfunction="Pin_38_38" pintype="passive"/>
+      <node ref="J15" pin="39" pinfunction="Pin_39_39" pintype="passive"/>
+      <node ref="J2" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J3" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J4" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J4" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive"/>
+      <node ref="J5" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J6" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J7" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J7" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive"/>
+      <node ref="J8" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="J9" pin="S" pinfunction="SLEEVE_S" pintype="passive"/>
+      <node ref="K1" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="K2" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="K3" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="K4" pin="2" pinfunction="2_2" pintype="passive"/>
+    </net>
+    <net code="19" name="I2C_SCL" class="Default">
+      <node ref="J14" pin="4" pinfunction="CLK_SCL_4" pintype="input"/>
+      <node ref="J15" pin="29" pinfunction="Pin_29_29" pintype="passive"/>
+    </net>
+    <net code="20" name="I2C_SDA" class="Default">
+      <node ref="J14" pin="3" pinfunction="DIN_SDA_3" pintype="bidirectional"/>
+      <node ref="J15" pin="30" pinfunction="Pin_30_30" pintype="passive"/>
+    </net>
+    <net code="21" name="IN1" class="Default">
+      <node ref="J1" pin="T" pinfunction="TIP_T" pintype="passive"/>
+      <node ref="J15" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+    </net>
+    <net code="22" name="IN2" class="Default">
+      <node ref="J15" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="J4" pin="T" pinfunction="TIP_T" pintype="passive"/>
+    </net>
+    <net code="23" name="IN3" class="Default">
+      <node ref="J15" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
+      <node ref="J7" pin="T" pinfunction="TIP_T" pintype="passive"/>
+    </net>
+    <net code="24" name="IN4" class="Default">
+      <node ref="J10" pin="T" pinfunction="TIP_T" pintype="passive"/>
+      <node ref="J15" pin="4" pinfunction="Pin_4_4" pintype="passive"/>
+    </net>
+    <net code="25" name="KEY1" class="Default">
+      <node ref="J15" pin="25" pinfunction="Pin_25_25" pintype="passive"/>
+      <node ref="K1" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="26" name="KEY2" class="Default">
+      <node ref="J15" pin="26" pinfunction="Pin_26_26" pintype="passive"/>
+      <node ref="K2" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="27" name="KEY3" class="Default">
+      <node ref="J15" pin="27" pinfunction="Pin_27_27" pintype="passive"/>
+      <node ref="K3" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="28" name="KEY4" class="Default">
+      <node ref="J15" pin="28" pinfunction="Pin_28_28" pintype="passive"/>
+      <node ref="K4" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="29" name="OLED_RESET" class="Default">
+      <node ref="J14" pin="7" pinfunction="RESET_N_7" pintype="input"/>
+      <node ref="J15" pin="40" pinfunction="Pin_40_40" pintype="passive"/>
+    </net>
+    <net code="30" name="OUT1" class="Default">
+      <node ref="J15" pin="9" pinfunction="Pin_9_9" pintype="passive"/>
+      <node ref="J3" pin="T" pinfunction="TIP_T" pintype="passive"/>
+    </net>
+    <net code="31" name="OUT2" class="Default">
+      <node ref="J15" pin="10" pinfunction="Pin_10_10" pintype="passive"/>
+      <node ref="J6" pin="T" pinfunction="TIP_T" pintype="passive"/>
+    </net>
+    <net code="32" name="OUT3" class="Default">
+      <node ref="J15" pin="11" pinfunction="Pin_11_11" pintype="passive"/>
+      <node ref="J9" pin="T" pinfunction="TIP_T" pintype="passive"/>
+    </net>
+    <net code="33" name="OUT4" class="Default">
+      <node ref="J12" pin="T" pinfunction="TIP_T" pintype="passive"/>
+      <node ref="J15" pin="12" pinfunction="Pin_12_12" pintype="passive"/>
+    </net>
+    <net code="34" name="unconnected-(J2-TIP_NORMAL-PadTN)" class="Default">
+      <node ref="J2" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive+no_connect"/>
+    </net>
+    <net code="35" name="unconnected-(J3-TIP_NORMAL-PadTN)" class="Default">
+      <node ref="J3" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive+no_connect"/>
+    </net>
+    <net code="36" name="unconnected-(J5-TIP_NORMAL-PadTN)" class="Default">
+      <node ref="J5" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive+no_connect"/>
+    </net>
+    <net code="37" name="unconnected-(J6-TIP_NORMAL-PadTN)" class="Default">
+      <node ref="J6" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive+no_connect"/>
+    </net>
+    <net code="38" name="unconnected-(J8-TIP_NORMAL-PadTN)" class="Default">
+      <node ref="J8" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive+no_connect"/>
+    </net>
+    <net code="39" name="unconnected-(J9-TIP_NORMAL-PadTN)" class="Default">
+      <node ref="J9" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive+no_connect"/>
+    </net>
+    <net code="40" name="unconnected-(J11-TIP_NORMAL-PadTN)" class="Default">
+      <node ref="J11" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive+no_connect"/>
+    </net>
+    <net code="41" name="unconnected-(J12-TIP_NORMAL-PadTN)" class="Default">
+      <node ref="J12" pin="TN" pinfunction="TIP_NORMAL_TN" pintype="passive+no_connect"/>
+    </net>
+    <net code="42" name="unconnected-(J14-CS-Pad5)" class="Default">
+      <node ref="J14" pin="5" pinfunction="CS_5" pintype="input+no_connect"/>
+    </net>
+  </nets>
+</export>

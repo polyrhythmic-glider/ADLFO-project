@@ -1,0 +1,2 @@
+# Preserve native export bytes, including generated whitespace, for SHA256 checks.
+hardware/pcb/output/** -text -whitespace

@@ -1,0 +1,198 @@
+[
+  {
+    "detector": "deep_review",
+    "category": "power_supervision",
+    "severity": "error",
+    "confidence": "high",
+    "summary": "5 V power tolerance and supervisor hysteresis do not guarantee release or valid ADC operation.",
+    "description": "U25 R-78E5.0-1.0 permits 4.75 V static (5 V minus 5%) before ripple; U18 TPS3808G01 with R7/R8 nominally trips at 4.8195 V. Including +/-2% VIT, 3% max hysteresis, 0.1% resistors and +/-25 nA sense current yields falling threshold 4.711744..4.927632 V and worst release 5.075379 V. Thus a compliant regulator may never release reset, and low supervisor corners permit operation below the ADC 4.75 V minimum. No single resistor change fixes both limits.",
+    "recommendation": "Redesign the 5A regulator/supervisor tolerance budget together; release gate must remain blocked until minimum rail exceeds maximum release while minimum trip exceeds ADC minimum. TPS3808E retains broad accuracy/hysteresis and is not a complete fix.",
+    "components": [
+      "U25",
+      "U18",
+      "R7",
+      "R8",
+      "U2"
+    ],
+    "nets": [
+      "+5D",
+      "+5A",
+      "SAFE_CLEAR_N"
+    ],
+    "pins": [
+      "U18.5",
+      "U18.1"
+    ],
+    "evidence": {
+      "components": [
+        "U25",
+        "U18",
+        "R7",
+        "R8",
+        "U2"
+      ],
+      "nets": [
+        "+5D",
+        "+5A",
+        "SAFE_CLEAR_N"
+      ],
+      "datasheet": [
+        {
+          "mpn": "tps3808",
+          "page": 6,
+          "quote": "Negative-going input threshold accuracy"
+        }
+      ],
+      "computation": {
+        "description": "Enumerate resistor and IC threshold corners, bias and output-collision currents using the saved design values. Limits exclude unknown resistor TCR/rail PCB voltage drops and transient timing.",
+        "script": "hardware/pcb/analysis/power_safety/check_current.py",
+        "result": "5A falling 4.711743948776225..4.927632319594594 V; release max 5.075379457432432 V; at V33=3.3 V +12 trip 10.355750603551451..10.4679124157586 V and -12 trip -10.514930763610325..-10.318781277248807 V; output +/-5 V against opposite 12 V: 17.171717171717173 mA and 0.2919191919191919 W; full 24 V fault: 0.5818181818181818 W."
+      }
+    }
+  },
+  {
+    "detector": "deep_review",
+    "category": "rail_monitors",
+    "severity": "warning",
+    "confidence": "high",
+    "summary": "The +/-12 V monitor thresholds depend on the 3.3 V rail; nominal thresholds are not fixed guarantees.",
+    "description": "U19 compares divided rails to REF_MON=V33/2. At V33=3.300 V resistor0.1%, LM393B offset+/-4mV and input bias0..50nA give +12 trip10.35575..10.46791 V and -12 trip-10.51493..-10.31878 V. TPS3828-33 can wait until2.86 V before asserting; at V33=2.86 V these become +8.97127..9.07598 V and -9.12405..-8.93797 V. The design has no fixed independent reference, no specified Seed3 3V3 tolerance or explicit comparator hysteresis.",
+    "recommendation": "State the ratios and rail bounds accurately; qualify brownout ramps and add a stable reference/tighter monitor if a fixed ~10.4 V threshold is required.",
+    "components": [
+      "U19",
+      "U17",
+      "RMONREF1",
+      "RMONREF2",
+      "RPMON1",
+      "RPMON2",
+      "RNMON1",
+      "RNMON2"
+    ],
+    "nets": [
+      "REF_MON",
+      "+3V3",
+      "SENSE_POS",
+      "SENSE_NEG",
+      "SAFE_CLEAR_N"
+    ],
+    "evidence": {
+      "components": [
+        "U19",
+        "U17"
+      ],
+      "nets": [
+        "REF_MON",
+        "+3V3",
+        "SAFE_CLEAR_N"
+      ],
+      "datasheet": [
+        {
+          "mpn": "lm393b",
+          "page": 6,
+          "quote": "Input offset voltage"
+        },
+        {
+          "mpn": "tps3828",
+          "page": 6,
+          "quote": "Negative-going input threshold voltage"
+        }
+      ],
+      "computation": {
+        "description": "Enumerate resistor and IC threshold corners, bias and output-collision currents using the saved design values. Limits exclude unknown resistor TCR/rail PCB voltage drops and transient timing.",
+        "script": "hardware/pcb/analysis/power_safety/check_current.py",
+        "result": "5A falling 4.711743948776225..4.927632319594594 V; release max 5.075379457432432 V; at V33=3.3 V +12 trip 10.355750603551451..10.4679124157586 V and -12 trip -10.514930763610325..-10.318781277248807 V; output +/-5 V against opposite 12 V: 17.171717171717173 mA and 0.2919191919191919 W; full 24 V fault: 0.5818181818181818 W."
+      }
+    }
+  },
+  {
+    "detector": "deep_review",
+    "category": "output_fault_power",
+    "severity": "warning",
+    "confidence": "high",
+    "summary": "Generic 0.5 W jack resistors lack continuous margin for an amplifier rail fault against an opposite external rail.",
+    "description": "Normal +/-5 V command versus opposite +/-12 V gives at most0.29192 W with Rmin990ohm, so0.5W is plausible for normal collisions. An internal output saturation at11.5 V against opposite12 V produces0.55783 W; a conservative24 V differential produces0.58182 W. No exact resistor MPN or local thermal qualification exists in the original source.",
+    "recommendation": "Specify Vishay CRCW20101K00FKEFHP, 2010 1k 1% HP, conservative P70=1W; preserve thermal qualification and155C film limit. Apply consistently to RI1..8 and RO1..8 with unchanged footprint and resistance.",
+    "components": [
+      "RO1",
+      "RO2",
+      "RO3",
+      "RO4",
+      "RO5",
+      "RO6",
+      "RO7",
+      "RO8"
+    ],
+    "nets": [
+      "DRIVE1",
+      "OUT1"
+    ],
+    "evidence": {
+      "components": [
+        "RO1",
+        "RO2",
+        "RO3",
+        "RO4",
+        "RO5",
+        "RO6",
+        "RO7",
+        "RO8"
+      ],
+      "nets": [
+        "DRIVE1",
+        "OUT1"
+      ],
+      "computation": {
+        "description": "Enumerate resistor and IC threshold corners, bias and output-collision currents using the saved design values. Limits exclude unknown resistor TCR/rail PCB voltage drops and transient timing.",
+        "script": "hardware/pcb/analysis/power_safety/check_current.py",
+        "result": "5A falling 4.711743948776225..4.927632319594594 V; release max 5.075379457432432 V; at V33=3.3 V +12 trip 10.355750603551451..10.4679124157586 V and -12 trip -10.514930763610325..-10.318781277248807 V; output +/-5 V against opposite 12 V: 17.171717171717173 mA and 0.2919191919191919 W; full 24 V fault: 0.5818181818181818 W."
+      }
+    }
+  },
+  {
+    "detector": "deep_review",
+    "category": "fault_latch_edges",
+    "severity": "warning",
+    "confidence": "medium",
+    "summary": "Use a Schmitt-input fault latch for the shared open-drain reset bus.",
+    "description": "U16 SN74HC74 has a maximum input-transition requirement; SAFE_CLEAR_N rises through10k with four switch flags, two supervisors, comparator outputs and MCU input. Bus capacitance/rise time has not been qualified. Pin-compatible SN74HCS74DR explicitly supports slow/noisy signals and retains pinout/function.",
+    "recommendation": "Replace U16 with SN74HCS74DR, update schematic/BOM/export values and docs. No routing or package change required. Firmware must still honor reset release and recovery before permit edge.",
+    "components": [
+      "U16",
+      "R5",
+      "U7",
+      "U8",
+      "U14",
+      "U15"
+    ],
+    "nets": [
+      "SAFE_CLEAR_N",
+      "OUTPUT_PERMIT"
+    ],
+    "pins": [
+      "U16.1",
+      "U16.3"
+    ],
+    "evidence": {
+      "components": [
+        "U16",
+        "R5"
+      ],
+      "nets": [
+        "SAFE_CLEAR_N",
+        "OUTPUT_PERMIT"
+      ],
+      "datasheet": [
+        {
+          "mpn": "sn74hc74",
+          "page": 4,
+          "quote": "Input transition rise and fall rate"
+        },
+        {
+          "mpn": "sn74hcs74",
+          "page": 1,
+          "quote": "All inputs include Schmitt triggers"
+        }
+      ]
+    }
+  }
+]

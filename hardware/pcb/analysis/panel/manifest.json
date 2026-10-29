@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "project": "Adolfo-main.kicad_pro",
+  "current": "2026-10-28_0943",
+  "runs": {
+    "2026-10-28_0943": {
+      "source_hashes": {
+        "Adolfo-panel.kicad_sch": "sha256:e2c43267f124bdf3cfadbe5dcfb373ce9af3102ecd7ee5c272d9cd2e67eb0ee1",
+        "Adolfo-panel.kicad_pcb": "sha256:e1be1f86a093f4ac29e4494b39b7e660a1d5c1ad58f08f9d54c8943bcee7a5be",
+        "schematic.json": "sha256:e6a51b4269e597ed50bc489209db06f36bc5347186be00ec1286971fe9f30a03",
+        "pcb.json": "sha256:e52eb7475b271ac122e10f58d8413afc854600f74d475e72655a464947c94391"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json",
+        "cross_analysis": "cross_analysis.json",
+        "emc": "emc.json",
+        "thermal": "thermal.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py Adolfo-panel.kicad_sch"
+      },
+      "generated": "2026-10-28T10:29:09+01:00",
+      "pinned": false
+    }
+  }
+}

@@ -1,0 +1,9 @@
+Adapter self-check: 3.3V divider
+V1 in 0 3.3
+R1 in out 10k
+R2 out 0 10k
+.control
+op
+print v(out)
+.endc
+.end

@@ -1,5 +1,5 @@
 {
-  "accessed": "2026-10-24",
+  "accessed": "2026-10-28",
   "sources": [
     {
       "name": "ad7606c-18",
@@ -28,6 +28,142 @@
       "name": "SPI pin support and DMA",
       "url": "https://github.com/daisyaudio/libDaisy/blob/master/src/per/spi.cpp",
       "note": "SPI1/SPI3 alternate functions and byte-aligned DMA."
+    },
+    {
+      "name": "MCP23017 SOIC pinout",
+      "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf",
+      "note": "SOIC28 pinout differs from QFN28."
+    },
+    {
+      "name": "MCP23017 GPA7/GPB7 restriction",
+      "url": "https://support.microchip.com/s/article/GPA7---GPB7-Cannot-Be-Used-as-Inputs-In-MCP23017",
+      "note": "A7 and B7 assigned only to output requests."
+    },
+    {
+      "name": "TPS3828 watchdog",
+      "url": "https://www.ti.com/lit/ds/symlink/tps3828.pdf",
+      "note": "TPS3828-33DBVR SOT23-5 pinout and open-drain reset."
+    },
+    {
+      "name": "TPS3808 rail supervisor",
+      "url": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+      "note": "G01 adjustable sense threshold and SOT23-6 pinout."
+    },
+    {
+      "name": "RECOM R-78E 1 A",
+      "url": "https://recom-power.com/pdf/Innoline/R-78E-1.0.pdf",
+      "note": "5 V variant; SIP3 geometry, input range and output capacitor limit."
+    },
+    {
+      "name": "Waveshare OLED",
+      "url": "https://www.waveshare.com/wiki/0.96inch_OLED_Module",
+      "note": "Module D, SSD1315, seven pins; configure hardware for I2C."
+    },
+    {
+      "name": "ALPS EC11E",
+      "url": "https://tech.alpsalpine.com/e/products/category/encorders/sub/01/series/ec11e/",
+      "note": "EC11E18244AU selected."
+    },
+    {
+      "name": "Samtec stack socket",
+      "url": "https://www.samtec.com/products/ssw-120-02-g-d",
+      "note": "Socket40 footprint mirrored on rear of front PCB."
+    },
+    {
+      "name": "Daisy Seed 3 datasheet",
+      "url": "https://daisy.nyc3.cdn.digitaloceanspaces.com/products/seed3/Daisy_Seed3_datasheet.pdf",
+      "note": "VIN range, both ground pins and USB power protection."
+    },
+    {
+      "name": "Freerouting local CLI",
+      "url": "https://github.com/freerouting/freerouting/releases/tag/v2.0.1",
+      "note": "Java 21; headless local router with -da analytics disabled."
+    },
+    {
+      "name": "EC11E18244AU mechanical drawing",
+      "url": "https://tech.alpsalpine.com/cms.media/product_catalog_ec_01_ec11e_en_611f078659.pdf",
+      "note": "Drawing 2: flat 20 mm shaft, switch, 36 detents and 18 pulses."
+    },
+    {
+      "name": "E-Switch TL1105 manufacturer catalog",
+      "url": "https://configured-product-images.s3.amazonaws.com/Datasheets/TL1105.pdf",
+      "note": "Manufacturer catalog mirrored by the distributor; D actuator height is 13 mm."
+    },
+    {
+      "name": "OPA4197",
+      "url": "https://www.ti.com/lit/ds/symlink/opa4197.pdf",
+      "note": "Consulted during 2026-10-28 deep review.",
+      "local_file": "datasheets/opa4197.pdf",
+      "sha256": "27653a7d5e965cbb2d23f7998919ebd774efd5cd3e126b8f0881469ae91166fd"
+    },
+    {
+      "name": "AHCT125",
+      "url": "https://www.ti.com/lit/ds/symlink/sn74ahct125.pdf",
+      "note": "Consulted during 2026-10-28 deep review.",
+      "local_file": "datasheets/sn74ahct125.pdf",
+      "sha256": "66da72e586dbca7a1548164adf28e238484c5c1ad250fcb28ec972e4732c6fc2"
+    },
+    {
+      "name": "LM393B",
+      "url": "https://www.ti.com/lit/ds/symlink/lm393b.pdf",
+      "note": "Consulted during 2026-10-28 deep review.",
+      "local_file": "datasheets/lm393b.pdf",
+      "sha256": "f28830c2f4cbd9ef6a1cd6788a840fa2b92caafee366d53385f88d1cf24e9456"
+    },
+    {
+      "name": "Schmitt fault latch",
+      "url": "https://www.ti.com/lit/ds/symlink/sn74hcs74.pdf",
+      "note": "Consulted during 2026-10-28 deep review.",
+      "local_file": "datasheets/sn74hcs74.pdf",
+      "sha256": "eac261a31ca71eed79dd051ed66a03bbd5d837f88087023fd864a3599cfa95fa"
+    },
+    {
+      "name": "Vishay high-power jack resistor",
+      "url": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "note": "Consulted during 2026-10-28 deep review.",
+      "local_file": "datasheets/crcwhpe3.pdf",
+      "sha256": "c502383b607a7755342b2ed95d96d21984332eb357c91f23163fe3937cfc9288"
+    },
+    {
+      "name": "Samtec SSW mechanical drawing",
+      "url": "https://suddendocs.samtec.com/prints/ssw-1xx-xx-xxx-x-xx-xxx-xx-mkt.pdf",
+      "note": "Consulted during 2026-10-28 deep review.",
+      "local_file": "datasheets/samtec_ssw.pdf",
+      "sha256": "890f20796637b7947c7655aabf919d055b56988a01c20338b635f2daf35b051f"
+    },
+    {
+      "name": "Samtec TSW mechanical drawing",
+      "url": "https://suddendocs.samtec.com/prints/tsw-xxx-xx-xxx-x-xx-xxx-mkt.pdf",
+      "note": "Consulted during 2026-10-28 deep review.",
+      "local_file": "datasheets/samtec_tsw.pdf",
+      "sha256": "047ecedcc921fb0aed7127f08b9ba0fc1200d92d33fb7ded1b311d0ed8f42063"
+    },
+    {
+      "name": "Waveshare OLED schematic",
+      "url": "https://files.waveshare.com/upload/8/8f/0.96inch_OLED_Module_Schematic.pdf",
+      "note": "Consulted during 2026-10-28 deep review.",
+      "local_file": "datasheets/waveshare_oled_schematic.pdf",
+      "sha256": "3f9c13ecbe36f557b7b2782170c7ac4f04537a272916d327c7022626a9d4079e"
+    },
+    {
+      "name": "Wurth IDC10 drawing",
+      "url": "https://www.we-online.com/components/products/datasheet/61201021621.pdf",
+      "note": "Consulted during 2026-10-28 deep review."
+    },
+    {
+      "name": "SS14 family polarity and ratings",
+      "url": "https://www.vishay.com/docs/88746/ss12.pdf",
+      "sha256": "b32a2d93d2d2cf9f48d6cf678ab03713956b7501029c0424c6a554425df562da",
+      "local_file": "datasheets/ss14_vishay.pdf",
+      "note": "Doc88746 Rev23-Apr-2020 pp1-2; family check, exact purchased manufacturer/MPN still unspecified in design."
+    },
+    {
+      "name": "SN74LVC08A AND gates",
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc08a.pdf",
+      "local_file": "datasheets/sn74lvc08a.pdf",
+      "sha256": "5edd5cd664dac4f3774c9c6fc7ad8310c8f2ca3da7f0e369aa69dfe2b1cc2ba4",
+      "note": "SCAS283W July2024 pp4,6-7: SOIC14 pinout, operating range and electrical characteristics."
     }
-  ]
+  ],
+  "review": "DESIGN_REVIEW_20HP.md"
 }

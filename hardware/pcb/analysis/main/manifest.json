@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "project": "Adolfo-main.kicad_pro",
+  "current": "2026-10-28_1029",
+  "runs": {
+    "2026-10-28_0942": {
+      "source_hashes": {
+        "Adolfo-main.kicad_sch": "sha256:693f207a012df4e15320363c30242b912af953ac1d17f6d1b000a8729fb7d347",
+        "Adolfo-main.kicad_pcb": "sha256:d3075a830e378ca2dcfe147f985c854d845a79870788fa1ae041f6f0a6af6753",
+        "schematic.json": "sha256:f3b17fd3bf3b4460d6c4a2455e1225ec9dd6544558167a5dd0f90ab53167f471",
+        "pcb.json": "sha256:8d836e8c19b54b97ea394c5680c2a32e17c33e6843191ddf3f1f965340f5c91c"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json",
+        "cross_analysis": "cross_analysis.json",
+        "emc": "emc.json",
+        "thermal": "thermal.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py Adolfo-main.kicad_sch"
+      },
+      "generated": "2026-10-28T09:47:43+01:00",
+      "pinned": false
+    },
+    "2026-10-28_0958": {
+      "source_hashes": {
+        "Adolfo-main.kicad_sch": "sha256:693f207a012df4e15320363c30242b912af953ac1d17f6d1b000a8729fb7d347"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json",
+        "cross_analysis": "cross_analysis.json",
+        "emc": "emc.json",
+        "thermal": "thermal.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py Adolfo-main.kicad_sch"
+      },
+      "generated": "2026-10-28T09:58:30+01:00",
+      "pinned": false
+    },
+    "2026-10-28_0959": {
+      "source_hashes": {
+        "Adolfo-main.kicad_pcb": "sha256:072acb53a0dff92976f9c9aa621e7e228359d8e9c16702df0c99972ab3c07dea",
+        "schematic.json": "sha256:822eb66bd66c56500d6f28bb83a3fa99ccbda09041d41e6ef43ffe97d6a187fb",
+        "pcb.json": "sha256:5894f6c512ca684134541874fa44f78e1582e96ed3ef7faccc60ec7a7de18d15"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json",
+        "cross_analysis": "cross_analysis.json",
+        "emc": "emc.json",
+        "thermal": "thermal.json"
+      },
+      "scripts": {
+        "pcb": "analyze_pcb.py Adolfo-main.kicad_pcb"
+      },
+      "generated": "2026-10-28T10:29:26+01:00",
+      "pinned": false
+    },
+    "2026-10-28_1029": {
+      "source_hashes": {
+        "schematic.json": "sha256:822eb66bd66c56500d6f28bb83a3fa99ccbda09041d41e6ef43ffe97d6a187fb",
+        "pcb.json": "sha256:8dd81acfff7efbeaddc9f5f8804dad5102524953e7def98c6ad48efaca2e1ff4"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json",
+        "cross_analysis": "cross_analysis.json",
+        "emc": "emc.json",
+        "thermal": "thermal.json"
+      },
+      "scripts": {
+        "emc": "analyze_emc.py"
+      },
+      "generated": "2026-10-28T10:29:27+01:00",
+      "pinned": false
+    }
+  }
+}

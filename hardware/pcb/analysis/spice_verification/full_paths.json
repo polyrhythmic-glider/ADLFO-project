@@ -1,0 +1,405 @@
+{
+  "simulator": "ngspice-46 shared library bundled with KiCad 10.0",
+  "source": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\output\\design.json",
+  "source_sha256": "b189d8e681db8d1648315c43e1318cdf3c1ef4419ac59d9f4c293175b58f3d0e",
+  "results": [
+    {
+      "path": "IN1",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.0030133,
+        "10000": -0.298536,
+        "18000": -2.06153,
+        "20000": -3.40254,
+        "48000": -30.8335,
+        "76000": -46.945,
+        "100000": -56.5251
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "IN2",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.0030133,
+        "10000": -0.298536,
+        "18000": -2.06153,
+        "20000": -3.40254,
+        "48000": -30.8335,
+        "76000": -46.945,
+        "100000": -56.5251
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "IN3",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.0030133,
+        "10000": -0.298536,
+        "18000": -2.06153,
+        "20000": -3.40254,
+        "48000": -30.8335,
+        "76000": -46.945,
+        "100000": -56.5251
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "IN4",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.0030133,
+        "10000": -0.298536,
+        "18000": -2.06153,
+        "20000": -3.40254,
+        "48000": -30.8335,
+        "76000": -46.945,
+        "100000": -56.5251
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "OUT1",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.00112483,
+        "10000": -0.154813,
+        "18000": -1.695,
+        "20000": -2.98768,
+        "48000": -30.1455,
+        "76000": -46.2116,
+        "100000": -55.7789
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "OUT2",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.00112483,
+        "10000": -0.154813,
+        "18000": -1.695,
+        "20000": -2.98768,
+        "48000": -30.1455,
+        "76000": -46.2116,
+        "100000": -55.7789
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "OUT3",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.00112483,
+        "10000": -0.154813,
+        "18000": -1.695,
+        "20000": -2.98768,
+        "48000": -30.1455,
+        "76000": -46.2116,
+        "100000": -55.7789
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "OUT4",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.00112483,
+        "10000": -0.154813,
+        "18000": -1.695,
+        "20000": -2.98768,
+        "48000": -30.1455,
+        "76000": -46.2116,
+        "100000": -55.7789
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "IN1",
+      "model": "dominant_pole",
+      "db_at_hz": {
+        "1000": -0.0028693,
+        "10000": -0.284598,
+        "18000": -2.04457,
+        "20000": -3.39838,
+        "48000": -30.8956,
+        "76000": -47.0094,
+        "100000": -56.5903
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "IN2",
+      "model": "dominant_pole",
+      "db_at_hz": {
+        "1000": -0.0028693,
+        "10000": -0.284598,
+        "18000": -2.04457,
+        "20000": -3.39838,
+        "48000": -30.8956,
+        "76000": -47.0094,
+        "100000": -56.5903
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "IN3",
+      "model": "dominant_pole",
+      "db_at_hz": {
+        "1000": -0.0028693,
+        "10000": -0.284598,
+        "18000": -2.04457,
+        "20000": -3.39838,
+        "48000": -30.8956,
+        "76000": -47.0094,
+        "100000": -56.5903
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "IN4",
+      "model": "dominant_pole",
+      "db_at_hz": {
+        "1000": -0.0028693,
+        "10000": -0.284598,
+        "18000": -2.04457,
+        "20000": -3.39838,
+        "48000": -30.8956,
+        "76000": -47.0094,
+        "100000": -56.5903
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "OUT1",
+      "model": "dominant_pole",
+      "db_at_hz": {
+        "1000": -0.000985271,
+        "10000": -0.140928,
+        "18000": -1.6776,
+        "20000": -2.98297,
+        "48000": -30.2072,
+        "76000": -46.2758,
+        "100000": -55.844
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "OUT2",
+      "model": "dominant_pole",
+      "db_at_hz": {
+        "1000": -0.000985271,
+        "10000": -0.140928,
+        "18000": -1.6776,
+        "20000": -2.98297,
+        "48000": -30.2072,
+        "76000": -46.2758,
+        "100000": -55.844
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "OUT3",
+      "model": "dominant_pole",
+      "db_at_hz": {
+        "1000": -0.000985271,
+        "10000": -0.140928,
+        "18000": -1.6776,
+        "20000": -2.98297,
+        "48000": -30.2072,
+        "76000": -46.2758,
+        "100000": -55.844
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "OUT4",
+      "model": "dominant_pole",
+      "db_at_hz": {
+        "1000": -0.000985271,
+        "10000": -0.140928,
+        "18000": -1.6776,
+        "20000": -2.98297,
+        "48000": -30.2072,
+        "76000": -46.2758,
+        "100000": -55.844
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "AMP1",
+      "model": "ideal",
+      "status": "pass",
+      "dac_input_v": [
+        0,
+        0.625,
+        1.25,
+        1.875,
+        2.5
+      ],
+      "amp_output_v": [
+        -5.0,
+        -2.5,
+        0.0,
+        2.5,
+        5.0
+      ]
+    },
+    {
+      "path": "AMP2",
+      "model": "ideal",
+      "status": "pass",
+      "dac_input_v": [
+        0,
+        0.625,
+        1.25,
+        1.875,
+        2.5
+      ],
+      "amp_output_v": [
+        -5.0,
+        -2.5,
+        0.0,
+        2.5,
+        5.0
+      ]
+    },
+    {
+      "path": "AMP3",
+      "model": "ideal",
+      "status": "pass",
+      "dac_input_v": [
+        0,
+        0.625,
+        1.25,
+        1.875,
+        2.5
+      ],
+      "amp_output_v": [
+        -5.0,
+        -2.5,
+        0.0,
+        2.5,
+        5.0
+      ]
+    },
+    {
+      "path": "AMP4",
+      "model": "ideal",
+      "status": "pass",
+      "dac_input_v": [
+        0,
+        0.625,
+        1.25,
+        1.875,
+        2.5
+      ],
+      "amp_output_v": [
+        -5.0,
+        -2.5,
+        0.0,
+        2.5,
+        5.0
+      ]
+    },
+    {
+      "path": "AMP5",
+      "model": "ideal",
+      "status": "pass",
+      "dac_input_v": [
+        0,
+        0.625,
+        1.25,
+        1.875,
+        2.5
+      ],
+      "amp_output_v": [
+        -5.0,
+        -2.5,
+        0.0,
+        2.5,
+        5.0
+      ]
+    },
+    {
+      "path": "AMP6",
+      "model": "ideal",
+      "status": "pass",
+      "dac_input_v": [
+        0,
+        0.625,
+        1.25,
+        1.875,
+        2.5
+      ],
+      "amp_output_v": [
+        -5.0,
+        -2.5,
+        0.0,
+        2.5,
+        5.0
+      ]
+    },
+    {
+      "path": "AMP7",
+      "model": "ideal",
+      "status": "pass",
+      "dac_input_v": [
+        0,
+        0.625,
+        1.25,
+        1.875,
+        2.5
+      ],
+      "amp_output_v": [
+        -5.0,
+        -2.5,
+        0.0,
+        2.5,
+        5.0
+      ]
+    },
+    {
+      "path": "AMP8",
+      "model": "ideal",
+      "status": "pass",
+      "dac_input_v": [
+        0,
+        0.625,
+        1.25,
+        1.875,
+        2.5
+      ],
+      "amp_output_v": [
+        -5.0,
+        -2.5,
+        0.0,
+        2.5,
+        5.0
+      ]
+    }
+  ],
+  "limits": [
+    "Ideal passives; 10 ohm ADG RON is an assumption.",
+    "ADC input loading approximated as 1 Mohm to 2 V.",
+    "Dominant-pole model uses nominal 10 MHz GBW, not the manufacturer macromodel.",
+    "No slew, saturation, leakage, thermal, short-circuit, noise or full stability validation."
+  ]
+}

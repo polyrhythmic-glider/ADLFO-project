@@ -1,0 +1,1518 @@
+{
+  "analyzer_type": "spice",
+  "schema_version": "1.4.0",
+  "summary": {
+    "total": 63,
+    "total_findings": 0,
+    "pass": 59,
+    "warn": 0,
+    "fail": 0,
+    "skip": 4,
+    "by_severity": {
+      "error": 0,
+      "warning": 0,
+      "info": 63
+    }
+  },
+  "findings": [],
+  "simulation_results": [
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RNMON1",
+        "C14"
+      ],
+      "filter_type": "low-pass",
+      "expected": {
+        "cutoff_hz": 159.15,
+        "type": "low-pass"
+      },
+      "simulated": {
+        "cutoff_hz": 158.778,
+        "phase_at_fc_deg": -0.784179
+      },
+      "delta": {
+        "fc_error_pct": 0.23
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RNMON1_C14.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RNMON1_C14.log",
+      "elapsed_s": 0.188,
+      "reference": "RNMON1/C14"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RNMON2",
+        "C14"
+      ],
+      "filter_type": "low-pass",
+      "expected": {
+        "cutoff_hz": 1161.71,
+        "type": "low-pass"
+      },
+      "simulated": {
+        "cutoff_hz": 1158.96,
+        "phase_at_fc_deg": -0.784197
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RNMON2_C14.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RNMON2_C14.log",
+      "elapsed_s": 0.172,
+      "reference": "RNMON2/C14"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R10",
+        "C20"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 9645.75,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 9622.88,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R10_C20.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R10_C20.log",
+      "elapsed_s": 0.203,
+      "reference": "R10/C20"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R11",
+        "C20"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R11_C20.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R11_C20.log",
+      "elapsed_s": 0.187,
+      "reference": "R11/C20"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R9",
+        "C20"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R9_C20.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R9_C20.log",
+      "elapsed_s": 0.172,
+      "reference": "R9/C20"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R11",
+        "C22"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 8038.13,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 8019.06,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R11_C22.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R11_C22.log",
+      "elapsed_s": 0.203,
+      "reference": "R11/C22"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R12",
+        "C22"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 6989.68,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 6973.1,
+        "phase_at_fc_deg": -0.784198
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R12_C22.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R12_C22.log",
+      "elapsed_s": 0.203,
+      "reference": "R12/C22"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RADCF1",
+        "C22"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 1782250.2,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 1778020.0,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RADCF1_C22.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RADCF1_C22.log",
+      "elapsed_s": 0.219,
+      "reference": "RADCF1/C22"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R13",
+        "C24"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R13_C24.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R13_C24.log",
+      "elapsed_s": 0.187,
+      "reference": "R13/C24"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R14",
+        "C24"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 9645.75,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 9622.88,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R14_C24.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R14_C24.log",
+      "elapsed_s": 0.156,
+      "reference": "R14/C24"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R15",
+        "C24"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R15_C24.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R15_C24.log",
+      "elapsed_s": 0.156,
+      "reference": "R15/C24"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R15",
+        "C26"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 8038.13,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 8019.06,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R15_C26.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R15_C26.log",
+      "elapsed_s": 0.157,
+      "reference": "R15/C26"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R16",
+        "C26"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 6989.68,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 6973.1,
+        "phase_at_fc_deg": -0.784198
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R16_C26.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R16_C26.log",
+      "elapsed_s": 0.141,
+      "reference": "R16/C26"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RADCF2",
+        "C26"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 1782250.2,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 1778020.0,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RADCF2_C26.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RADCF2_C26.log",
+      "elapsed_s": 0.156,
+      "reference": "RADCF2/C26"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R17",
+        "C28"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R17_C28.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R17_C28.log",
+      "elapsed_s": 0.188,
+      "reference": "R17/C28"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R18",
+        "C28"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 9645.75,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 9622.88,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R18_C28.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R18_C28.log",
+      "elapsed_s": 0.187,
+      "reference": "R18/C28"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R19",
+        "C28"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R19_C28.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R19_C28.log",
+      "elapsed_s": 0.188,
+      "reference": "R19/C28"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R19",
+        "C30"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 8038.13,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 8019.06,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R19_C30.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R19_C30.log",
+      "elapsed_s": 0.171,
+      "reference": "R19/C30"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R20",
+        "C30"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 6989.68,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 6973.1,
+        "phase_at_fc_deg": -0.784198
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R20_C30.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R20_C30.log",
+      "elapsed_s": 0.172,
+      "reference": "R20/C30"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RADCF3",
+        "C30"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 1782250.2,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 1778020.0,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RADCF3_C30.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RADCF3_C30.log",
+      "elapsed_s": 0.203,
+      "reference": "RADCF3/C30"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R21",
+        "C32"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R21_C32.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R21_C32.log",
+      "elapsed_s": 0.188,
+      "reference": "R21/C32"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R22",
+        "C32"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 9645.75,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 9622.88,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R22_C32.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R22_C32.log",
+      "elapsed_s": 0.187,
+      "reference": "R22/C32"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R23",
+        "C32"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R23_C32.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R23_C32.log",
+      "elapsed_s": 0.141,
+      "reference": "R23/C32"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R23",
+        "C34"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 8038.13,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 8019.06,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R23_C34.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R23_C34.log",
+      "elapsed_s": 0.156,
+      "reference": "R23/C34"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R24",
+        "C34"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 6989.68,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 6973.1,
+        "phase_at_fc_deg": -0.784198
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R24_C34.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R24_C34.log",
+      "elapsed_s": 0.156,
+      "reference": "R24/C34"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RADCF4",
+        "C34"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 1782250.2,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 1778020.0,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RADCF4_C34.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RADCF4_C34.log",
+      "elapsed_s": 0.156,
+      "reference": "RADCF4/C34"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R25",
+        "C36"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R25_C36.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R25_C36.log",
+      "elapsed_s": 0.172,
+      "reference": "R25/C36"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R26",
+        "C36"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 9645.75,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 9622.88,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R26_C36.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R26_C36.log",
+      "elapsed_s": 0.172,
+      "reference": "R26/C36"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R27",
+        "C36"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R27_C36.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R27_C36.log",
+      "elapsed_s": 0.203,
+      "reference": "R27/C36"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R27",
+        "C38"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 8038.13,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 8019.06,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R27_C38.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R27_C38.log",
+      "elapsed_s": 0.172,
+      "reference": "R27/C38"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R28",
+        "C38"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 6989.68,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 6973.1,
+        "phase_at_fc_deg": -0.784198
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R28_C38.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R28_C38.log",
+      "elapsed_s": 0.172,
+      "reference": "R28/C38"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RO1",
+        "C38"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 88419.41,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 88209.7,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RO1_C38.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RO1_C38.log",
+      "elapsed_s": 0.172,
+      "reference": "RO1/C38"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R29",
+        "C40"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R29_C40.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R29_C40.log",
+      "elapsed_s": 0.171,
+      "reference": "R29/C40"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R30",
+        "C40"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 9645.75,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 9622.88,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R30_C40.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R30_C40.log",
+      "elapsed_s": 0.188,
+      "reference": "R30/C40"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R31",
+        "C40"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R31_C40.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R31_C40.log",
+      "elapsed_s": 0.171,
+      "reference": "R31/C40"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R31",
+        "C42"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 8038.13,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 8019.06,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R31_C42.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R31_C42.log",
+      "elapsed_s": 0.157,
+      "reference": "R31/C42"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R32",
+        "C42"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 6989.68,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 6973.1,
+        "phase_at_fc_deg": -0.784198
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R32_C42.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R32_C42.log",
+      "elapsed_s": 0.156,
+      "reference": "R32/C42"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RO2",
+        "C42"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 88419.41,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 88209.7,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RO2_C42.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RO2_C42.log",
+      "elapsed_s": 0.156,
+      "reference": "RO2/C42"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R33",
+        "C44"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R33_C44.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R33_C44.log",
+      "elapsed_s": 0.156,
+      "reference": "R33/C44"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R34",
+        "C44"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 9645.75,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 9622.88,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R34_C44.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R34_C44.log",
+      "elapsed_s": 0.172,
+      "reference": "R34/C44"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R35",
+        "C44"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R35_C44.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R35_C44.log",
+      "elapsed_s": 0.172,
+      "reference": "R35/C44"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R35",
+        "C46"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 8038.13,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 8019.06,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R35_C46.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R35_C46.log",
+      "elapsed_s": 0.203,
+      "reference": "R35/C46"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R36",
+        "C46"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 6989.68,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 6973.1,
+        "phase_at_fc_deg": -0.784198
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R36_C46.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R36_C46.log",
+      "elapsed_s": 0.188,
+      "reference": "R36/C46"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RO3",
+        "C46"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 88419.41,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 88209.7,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RO3_C46.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RO3_C46.log",
+      "elapsed_s": 0.172,
+      "reference": "RO3/C46"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R37",
+        "C48"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R37_C48.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R37_C48.log",
+      "elapsed_s": 0.172,
+      "reference": "R37/C48"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R38",
+        "C48"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 9645.75,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 9622.88,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R38_C48.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R38_C48.log",
+      "elapsed_s": 0.203,
+      "reference": "R38/C48"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R39",
+        "C48"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 17644.67,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 17602.8,
+        "phase_at_fc_deg": -0.7842
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R39_C48.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R39_C48.log",
+      "elapsed_s": 0.203,
+      "reference": "R39/C48"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R39",
+        "C50"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 8038.13,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 8019.06,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R39_C50.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R39_C50.log",
+      "elapsed_s": 0.188,
+      "reference": "R39/C50"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "R40",
+        "C50"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 6989.68,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 6973.1,
+        "phase_at_fc_deg": -0.784198
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R40_C50.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_R40_C50.log",
+      "elapsed_s": 0.156,
+      "reference": "R40/C50"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RO4",
+        "C50"
+      ],
+      "filter_type": "RC-network",
+      "expected": {
+        "cutoff_hz": 88419.41,
+        "type": "RC-network"
+      },
+      "simulated": {
+        "cutoff_hz": 88209.7,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RO4_C50.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RO4_C50.log",
+      "elapsed_s": 0.172,
+      "reference": "RO4/C50"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RIC5",
+        "CI5"
+      ],
+      "filter_type": "low-pass",
+      "expected": {
+        "cutoff_hz": 159154.94,
+        "type": "low-pass"
+      },
+      "simulated": {
+        "cutoff_hz": 158765.0,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.25
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RIC5_CI5.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RIC5_CI5.log",
+      "elapsed_s": 0.156,
+      "reference": "RIC5/CI5"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RIC6",
+        "CI6"
+      ],
+      "filter_type": "low-pass",
+      "expected": {
+        "cutoff_hz": 159154.94,
+        "type": "low-pass"
+      },
+      "simulated": {
+        "cutoff_hz": 158763.0,
+        "phase_at_fc_deg": -0.784197
+      },
+      "delta": {
+        "fc_error_pct": 0.25
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RIC6_CI6.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RIC6_CI6.log",
+      "elapsed_s": 0.171,
+      "reference": "RIC6/CI6"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RIC7",
+        "CI7"
+      ],
+      "filter_type": "low-pass",
+      "expected": {
+        "cutoff_hz": 159154.94,
+        "type": "low-pass"
+      },
+      "simulated": {
+        "cutoff_hz": 158766.0,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.24
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RIC7_CI7.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RIC7_CI7.log",
+      "elapsed_s": 0.172,
+      "reference": "RIC7/CI7"
+    },
+    {
+      "subcircuit_type": "rc_filter",
+      "components": [
+        "RIC8",
+        "CI8"
+      ],
+      "filter_type": "low-pass",
+      "expected": {
+        "cutoff_hz": 159154.94,
+        "type": "low-pass"
+      },
+      "simulated": {
+        "cutoff_hz": 158761.0,
+        "phase_at_fc_deg": -0.784199
+      },
+      "delta": {
+        "fc_error_pct": 0.25
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RIC8_CI8.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\rc-filter_RIC8_CI8.log",
+      "elapsed_s": 0.187,
+      "reference": "RIC8/CI8"
+    },
+    {
+      "subcircuit_type": "voltage_divider",
+      "components": [
+        "R7",
+        "R8"
+      ],
+      "expected": {
+        "ratio": 0.084034,
+        "vout_V": 0.27731219999999995
+      },
+      "simulated": {
+        "vout_V": 0.277311
+      },
+      "delta": {
+        "vout_error_pct": 0.0
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\voltage-divider_R7_R8.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\voltage-divider_R7_R8.log",
+      "elapsed_s": 0.188,
+      "reference": "R7/R8"
+    },
+    {
+      "subcircuit_type": "voltage_divider",
+      "components": [
+        "RMONREF1",
+        "RMONREF2"
+      ],
+      "expected": {
+        "ratio": 0.5,
+        "vout_V": 1.65
+      },
+      "simulated": {
+        "vout_V": 1.65
+      },
+      "delta": {
+        "vout_error_pct": 0.0
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\voltage-divider_RMONREF1_RMONREF2.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\voltage-divider_RMONREF1_RMONREF2.log",
+      "elapsed_s": 0.187,
+      "reference": "RMONREF1/RMONREF2"
+    },
+    {
+      "subcircuit_type": "voltage_divider",
+      "components": [
+        "RPMON1",
+        "RPMON2"
+      ],
+      "expected": {
+        "ratio": 0.158479,
+        "vout_V": 1.901748
+      },
+      "simulated": {
+        "vout_V": 1.90174
+      },
+      "delta": {
+        "vout_error_pct": 0.0
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\voltage-divider_RPMON1_RPMON2.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\voltage-divider_RPMON1_RPMON2.log",
+      "elapsed_s": 0.172,
+      "reference": "RPMON1/RPMON2"
+    },
+    {
+      "subcircuit_type": "voltage_divider",
+      "components": [
+        "RREF1",
+        "RREF2"
+      ],
+      "expected": {
+        "ratio": 0.5,
+        "vout_V": 1.65
+      },
+      "simulated": {
+        "vout_V": 1.65
+      },
+      "delta": {
+        "vout_error_pct": 0.0
+      },
+      "status": "pass",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\voltage-divider_RREF1_RREF2.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\voltage-divider_RREF1_RREF2.log",
+      "elapsed_s": 0.187,
+      "reference": "RREF1/RREF2"
+    },
+    {
+      "subcircuit_type": "decoupling",
+      "components": [
+        "C1",
+        "C3",
+        "C5",
+        "CD6",
+        "CD8"
+      ],
+      "rail": "+12VA",
+      "cap_count": 13,
+      "expected": {},
+      "simulated": {
+        "z_min_ohms": 0.0031,
+        "f_at_zmin_hz": 22646400.0,
+        "z_at_1MHz_ohms": 0.0063,
+        "z_at_100kHz_ohms": 0.0685
+      },
+      "delta": {},
+      "model_note": "generic ESR + parasitic L from self-resonant frequency",
+      "status": "pass",
+      "note": "Z=0.006\u03a9 at 1MHz",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\decoupling_C1_C3_C5_CD6_CD8.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\decoupling_C1_C3_C5_CD6_CD8.log",
+      "elapsed_s": 0.187,
+      "reference": "C1/C3/C5/CD6/CD8"
+    },
+    {
+      "subcircuit_type": "decoupling",
+      "components": [
+        "C7",
+        "CD1",
+        "C63"
+      ],
+      "status": "skip",
+      "note": "Simulation failed",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\decoupling_C7_CD1_C63.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\decoupling_C7_CD1_C63.log",
+      "elapsed_s": 0.172,
+      "reference": "C7/CD1/C63"
+    },
+    {
+      "subcircuit_type": "decoupling",
+      "components": [
+        "CADC0",
+        "CADC1",
+        "CADC2",
+        "CADC3",
+        "CBUF0"
+      ],
+      "status": "skip",
+      "note": "Simulation failed",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\decoupling_CADC0_CADC1_CADC2_CADC3_CBUF0.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\decoupling_CADC0_CADC1_CADC2_CADC3_CBUF0.log",
+      "elapsed_s": 0.172,
+      "reference": "CADC0/CADC1/CADC2/CADC3/CBUF0"
+    },
+    {
+      "subcircuit_type": "decoupling",
+      "components": [
+        "C9",
+        "CD3",
+        "CD4",
+        "CD5",
+        "CSAFE16"
+      ],
+      "status": "skip",
+      "note": "Simulation failed",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\decoupling_C9_CD3_CD4_CD5_CSAFE16.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\decoupling_C9_CD3_CD4_CD5_CSAFE16.log",
+      "elapsed_s": 0.171,
+      "reference": "C9/CD3/CD4/CD5/CSAFE16"
+    },
+    {
+      "subcircuit_type": "inrush",
+      "components": [],
+      "status": "skip",
+      "note": "Simulation failed",
+      "cir_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\inrush_idx0.cir",
+      "log_file": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work\\inrush_idx0.log",
+      "elapsed_s": 0.172,
+      "reference": ""
+    }
+  ],
+  "trust_summary": {
+    "total_findings": 0,
+    "trust_level": "high",
+    "by_confidence": {
+      "deterministic": 0,
+      "heuristic": 0,
+      "datasheet_backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 0,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": null
+  },
+  "workdir": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\spice_verification\\detected_work",
+  "total_elapsed_s": 11.106,
+  "simulator": null,
+  "ngspice": null,
+  "backend": "ngspice-46 KiCad shared DLL, isolated worker per circuit",
+  "input_schematic_analysis": "C:\\Users\\LENOVO\\OneDrive\\Documenti\\Github\\ADLFO-Project\\hardware\\pcb\\analysis\\main\\2026-10-28_1029\\schematic.json",
+  "input_sha256": "822eb66bd66c56500d6f28bb83a3fa99ccbda09041d41e6ef43ffe97d6a187fb",
+  "adapter_self_check": {
+    "expected_v": 1.65,
+    "measured_v": 1.65,
+    "status": "pass"
+  }
+}

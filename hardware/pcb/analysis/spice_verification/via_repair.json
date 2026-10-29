@@ -1,0 +1,15 @@
+{
+  "before_sha256": "f63b1d60d30f47c909ac331ae495f4170f451d8d978c2ff4b093acc8300666ad",
+  "after_sha256": "072acb53a0dff92976f9c9aa621e7e228359d8e9c16702df0c99972ab3c07dea",
+  "native_drc": "hardware\\pcb\\build\\via-layout-candidate\\drc-main.json",
+  "drc_violations": 0,
+  "unconnected": 0,
+  "schematic_parity": 0,
+  "changes": [
+    "F.Cu +3V3 under ADC: vertical junctions x36.815 -> x36.0",
+    "GND via (37.475,28.25) -> (36.6,28.25)",
+    "GND via (37.475,29.75) -> (36.6,29.75)",
+    "Removed GND via (36.55,36.675), kept track junction, added F.Cu link to existing GND via (37.75,40)"
+  ],
+  "remaining_drill_smd_intersections": 0
+}

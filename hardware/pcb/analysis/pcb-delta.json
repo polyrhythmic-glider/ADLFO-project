@@ -1,0 +1,209 @@
+{
+  "diff_version": "1.0",
+  "analyzer_type": "pcb",
+  "base_file": "hardware/pcb/analysis/main/2026-10-28_0942/pcb.json",
+  "head_file": "hardware/pcb/analysis/main/2026-10-28_1029/pcb.json",
+  "has_changes": true,
+  "summary": {
+    "total_changes": 17,
+    "added": 0,
+    "removed": 0,
+    "modified": 17,
+    "severity": "major"
+  },
+  "diff": {
+    "statistics": {
+      "statistics.track_segments": {
+        "base": 4104,
+        "head": 4105,
+        "delta": 1
+      },
+      "statistics.via_count": {
+        "base": 426,
+        "head": 425,
+        "delta": -1
+      },
+      "statistics.total_track_length_mm": {
+        "base": 9028.49,
+        "head": 9035.7,
+        "delta": 7.210000000000946
+      }
+    },
+    "footprints": {
+      "added": [],
+      "removed": [],
+      "modified": [
+        {
+          "reference": "RI1",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RO7",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RI8",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RO1",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RI7",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RO2",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RI4",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RI2",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RI6",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RO5",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RI3",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RO6",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RO8",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RO4",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RI5",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "RO3",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            }
+          ]
+        },
+        {
+          "reference": "U16",
+          "changes": [
+            {
+              "field": "value",
+              "base": "SN74HC74DR",
+              "head": "SN74HCS74DR"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

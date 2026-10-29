@@ -10,3 +10,17 @@
 *-backups/
 fp-info-cache
 
+# Manufacturer PDFs/text and disposable simulator work stay available locally.
+hardware/pcb/datasheets/*.pdf
+hardware/pcb/datasheets/*.txt
+hardware/pcb/datasheets/*.html
+hardware/pcb/analysis/spice_verification/*.cir
+hardware/pcb/analysis/spice_verification/*.log
+hardware/pcb/analysis/spice_verification/*.out
+hardware/pcb/analysis/spice_verification/detected_work/
+hardware/pcb/analysis/spice_verification/image_work/
+!hardware/pcb/analysis/spice_verification/self_check.cir
+hardware/pcb/analysis/spice_verification/*_run.txt
+hardware/pcb/analysis/digital_analog/*.png
+hardware/pcb/analysis/power_safety/*.txt
+

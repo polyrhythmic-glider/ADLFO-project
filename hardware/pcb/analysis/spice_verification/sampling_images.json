@@ -1,0 +1,133 @@
+{
+  "results": [
+    {
+      "path": "IN1",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.0030133,
+        "20000": -3.40254,
+        "24000": -7.41771,
+        "28000": -12.1123,
+        "48000": -30.8335,
+        "76000": -46.945,
+        "96000": -55.1014
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "IN2",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.0030133,
+        "20000": -3.40254,
+        "24000": -7.41771,
+        "28000": -12.1123,
+        "48000": -30.8335,
+        "76000": -46.945,
+        "96000": -55.1014
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "IN3",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.0030133,
+        "20000": -3.40254,
+        "24000": -7.41771,
+        "28000": -12.1123,
+        "48000": -30.8335,
+        "76000": -46.945,
+        "96000": -55.1014
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "IN4",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.0030133,
+        "20000": -3.40254,
+        "24000": -7.41771,
+        "28000": -12.1123,
+        "48000": -30.8335,
+        "76000": -46.945,
+        "96000": -55.1014
+      },
+      "status": "pass",
+      "source_resistance_ohm": 1010
+    },
+    {
+      "path": "OUT1",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.00112483,
+        "20000": -2.98768,
+        "24000": -6.92265,
+        "28000": -11.5574,
+        "48000": -30.1455,
+        "76000": -46.2116,
+        "96000": -54.3567
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "OUT2",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.00112483,
+        "20000": -2.98768,
+        "24000": -6.92265,
+        "28000": -11.5574,
+        "48000": -30.1455,
+        "76000": -46.2116,
+        "96000": -54.3567
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "OUT3",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.00112483,
+        "20000": -2.98768,
+        "24000": -6.92265,
+        "28000": -11.5574,
+        "48000": -30.1455,
+        "76000": -46.2116,
+        "96000": -54.3567
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    },
+    {
+      "path": "OUT4",
+      "model": "ideal",
+      "db_at_hz": {
+        "1000": -0.00112483,
+        "20000": -2.98768,
+        "24000": -6.92265,
+        "28000": -11.5574,
+        "48000": -30.1455,
+        "76000": -46.2116,
+        "96000": -54.3567
+      },
+      "status": "pass",
+      "source_resistance_ohm": 0
+    }
+  ],
+  "audio_dac_sample_rate_hz": 48000,
+  "tone_hz": 20000,
+  "first_image_hz": 28000,
+  "analog_output_gain_db": -2.98768,
+  "analog_first_image_gain_db": -11.5574,
+  "first_image_relative_dbc_with_ideal_zoh": -11.49228071356476,
+  "adc_76khz_alias_to_20khz_relative_db": -43.54246,
+  "model": "Ideal voltage-output DAC with zero-order hold; ideal active analog filters; no digital interpolation.",
+  "interpretation": "The present four-pole 20 kHz network alone is not a high-rejection 48 kHz DAC reconstruction filter. Define an audio image/alias rejection requirement before release."
+}

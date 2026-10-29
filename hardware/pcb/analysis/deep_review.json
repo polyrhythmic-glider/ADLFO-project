@@ -1,0 +1,395 @@
+{
+  "schema_version": "1.0",
+  "produced_for_run_id": "main:2026-10-28_1029;panel:2026-10-28_0943",
+  "produced_at": "2026-10-28T13:58:55.100809+00:00",
+  "board_runs": {
+    "main": "2026-10-28_1029",
+    "panel": "2026-10-28_0943"
+  },
+  "findings": [
+    {
+      "detector": "deep_review",
+      "category": "digital_timing",
+      "severity": "error",
+      "confidence": "high",
+      "summary": "Target conversion rates exceed stock libDaisy clock and shared DMA capacity",
+      "description": "Both SPI handles use DMA2_Stream2/3 and one static active-peripheral gate. At target 25MHz, serialized ADC and DAC payloads consume 104.448% of time before any overhead. Default libDaisy further uses PLL2P=25MHz for SPI123, and /2 minimum prescaler gives 12.5MHz SCK: the ADC alone needs 11.52us for a 10.417us sample period.",
+      "recommendation": "Keep the new backend explicitly pending. Specify and test SPI kernel clocks, DMA ownership and a valid burst schedule. A future 100MHz kernel with ADC /2 and DAC /4 reduces average payload to 76.8%, but requires ADC reads interleaved between DAC words and does not prove timing closure.",
+      "evidence": {
+        "components": [
+          "U1",
+          "U2",
+          "U3"
+        ],
+        "computation": {
+          "description": "Payload lower bound using design.json rates; libDaisy spi.cpp InitDma/IsDmaBusy and system.cpp PLL2 settings; ST HAL SPI123 clock mux uses PLL2 P output.",
+          "script": "hardware/pcb/analysis/digital_analog/check_digital_budget.py",
+          "result": "Current payload occupancy with globally serialized SPI DMA: 104.448%"
+        }
+      },
+      "evidence_checked": "full",
+      "components": [
+        "U1",
+        "U2",
+        "U3"
+      ],
+      "finding_id": "deep_review:5199224b7e0b"
+    },
+    {
+      "detector": "deep_review",
+      "category": "fault_latch_edges",
+      "severity": "info",
+      "confidence": "medium",
+      "summary": "Resolved: Schmitt-input SN74HCS74DR replaces the HC74 fault latch.",
+      "description": "U16 SN74HC74 has a maximum input-transition requirement; SAFE_CLEAR_N rises through10k with four switch flags, two supervisors, comparator outputs and MCU input. Bus capacitance/rise time has not been qualified. Pin-compatible SN74HCS74DR explicitly supports slow/noisy signals and retains pinout/function. The replacement is applied in source, schematic, PCB and BOM.",
+      "recommendation": "Replace U16 with SN74HCS74DR, update schematic/BOM/export values and docs. No routing or package change required. Firmware must still honor reset release and recovery before permit edge.",
+      "evidence": {
+        "components": [
+          "U16",
+          "R5"
+        ],
+        "nets": [
+          "SAFE_CLEAR_N",
+          "OUTPUT_PERMIT"
+        ],
+        "datasheet": [
+          {
+            "mpn": "sn74hc74",
+            "page": 4,
+            "quote": "Input transition rise and fall rate"
+          },
+          {
+            "mpn": "sn74hcs74",
+            "page": 1,
+            "quote": "All inputs include Schmitt triggers"
+          }
+        ]
+      },
+      "status": "resolved",
+      "evidence_checked": "partial",
+      "components": [
+        "U16",
+        "R5"
+      ],
+      "nets": [
+        "SAFE_CLEAR_N",
+        "OUTPUT_PERMIT"
+      ],
+      "finding_id": "deep_review:64daff837d12"
+    },
+    {
+      "detector": "deep_review",
+      "category": "manufacturing",
+      "severity": "info",
+      "confidence": "high",
+      "status": "resolved",
+      "summary": "Resolved: three drilled vias no longer intersect C11/U2 SMD lands.",
+      "evidence": {
+        "components": [
+          "U2",
+          "C11"
+        ],
+        "nets": [
+          "GND"
+        ],
+        "computation": {
+          "description": "Native geometric test of every drilled via against every SMD land after local rerouting. Former positions and exact edits recorded in via_repair.json.",
+          "script": "hardware/pcb/analysis/check_layout.py",
+          "result": "smd_via_overlaps: []"
+        }
+      },
+      "evidence_checked": "full",
+      "components": [
+        "U2",
+        "C11"
+      ],
+      "nets": [
+        "GND"
+      ],
+      "finding_id": "deep_review:24487c7e1b9e"
+    },
+    {
+      "detector": "deep_review",
+      "category": "output_fault_power",
+      "severity": "info",
+      "confidence": "high",
+      "summary": "Resolved: sixteen jack resistors now specify CRCW20101K00FKEFHP, 1 W at 70 C.",
+      "description": "Normal +/-5 V command versus opposite +/-12 V gives at most0.29192 W with Rmin990ohm, so0.5W is plausible for normal collisions. An internal output saturation at11.5 V against opposite12 V produces0.55783 W; a conservative24 V differential produces0.58182 W. No exact resistor MPN or local thermal qualification exists in the original source. Updated all RI1..8 and RO1..8 to the specified 1 W MPN; thermal derating remains required.",
+      "recommendation": "Specify Vishay CRCW20101K00FKEFHP, 2010 1k 1% HP, conservative P70=1W; preserve thermal qualification and155C film limit. Apply consistently to RI1..8 and RO1..8 with unchanged footprint and resistance.",
+      "evidence": {
+        "components": [
+          "RO1",
+          "RO2",
+          "RO3",
+          "RO4",
+          "RO5",
+          "RO6",
+          "RO7",
+          "RO8"
+        ],
+        "nets": [
+          "DRIVE1",
+          "OUT1"
+        ],
+        "computation": {
+          "description": "Enumerate resistor and IC threshold corners, bias and output-collision currents using the saved design values. Limits exclude unknown resistor TCR/rail PCB voltage drops and transient timing.",
+          "script": "hardware/pcb/analysis/power_safety/check_current.py",
+          "result": "5A falling 4.711743948776225..4.927632319594594 V; release max 5.075379457432432 V; at V33=3.3 V +12 trip 10.355750603551451..10.4679124157586 V and -12 trip -10.514930763610325..-10.318781277248807 V; output +/-5 V against opposite 12 V: 17.171717171717173 mA and 0.2919191919191919 W; full 24 V fault: 0.5818181818181818 W."
+        }
+      },
+      "status": "resolved",
+      "evidence_checked": "full",
+      "components": [
+        "RO1",
+        "RO2",
+        "RO3",
+        "RO4",
+        "RO5",
+        "RO6",
+        "RO7",
+        "RO8"
+      ],
+      "nets": [
+        "DRIVE1",
+        "OUT1"
+      ],
+      "finding_id": "deep_review:20766713fe80"
+    },
+    {
+      "detector": "deep_review",
+      "category": "power_sequencing",
+      "severity": "error",
+      "confidence": "high",
+      "summary": "USB-only power puts ADC VDRIVE above its absolute maximum relative to AVCC",
+      "description": "U1 exports +3V3 while USB powers Seed3 without carrier +5A. U2.23 is tied to +3V3 but U2 AVCC pins 1/37/38/48 are on +5A. Thus VDRIVE=3.3V, AVCC=0V violates the AVCC+0.3V maximum. Different shutdown decay times create a similar sequencing risk. The output permit does not protect supply pins.",
+      "recommendation": "Resolve ADC supply sequencing and powered-off host signal injection before USB-only use; do not treat the Seed VIN reverse protection as carrier-wide power isolation. Qualify all power-up/down orders.",
+      "evidence": {
+        "components": [
+          "U1",
+          "U2"
+        ],
+        "pins": [
+          "U2.23",
+          "U1.38"
+        ],
+        "computation": {
+          "description": "AD7606C-18 Rev B p14 Table6 limits VDRIVE to AVCC+0.3V; Seed3 v2.1 p10 states USB powers board regulators. Source URLs in review notes.",
+          "script": "hardware/pcb/analysis/digital_analog/check_digital_budget.py",
+          "result": "USB-only: VDRIVE=3.3V and AVCC=0V; allowed VDRIVE<=AVCC+0.3V gives 3.000V excess"
+        }
+      },
+      "evidence_checked": "full",
+      "components": [
+        "U1",
+        "U2"
+      ],
+      "pins": [
+        "U2.23",
+        "U1.38"
+      ],
+      "finding_id": "deep_review:cc5be2d296b7"
+    },
+    {
+      "detector": "deep_review",
+      "category": "power_supervision",
+      "severity": "error",
+      "confidence": "high",
+      "summary": "5 V power tolerance and supervisor hysteresis do not guarantee release or valid ADC operation.",
+      "description": "U25 R-78E5.0-1.0 permits 4.75 V static (5 V minus 5%) before ripple; U18 TPS3808G01 with R7/R8 nominally trips at 4.8195 V. Including +/-2% VIT, 3% max hysteresis, 0.1% resistors and +/-25 nA sense current yields falling threshold 4.711744..4.927632 V and worst release 5.075379 V. Thus a compliant regulator may never release reset, and low supervisor corners permit operation below the ADC 4.75 V minimum. No single resistor change fixes both limits.",
+      "recommendation": "Redesign the 5A regulator/supervisor tolerance budget together; release gate must remain blocked until minimum rail exceeds maximum release while minimum trip exceeds ADC minimum. TPS3808E retains broad accuracy/hysteresis and is not a complete fix.",
+      "evidence": {
+        "components": [
+          "U25",
+          "U18",
+          "R7",
+          "R8",
+          "U2"
+        ],
+        "nets": [
+          "+5D",
+          "+5A",
+          "SAFE_CLEAR_N"
+        ],
+        "datasheet": [
+          {
+            "mpn": "tps3808",
+            "page": 6,
+            "quote": "Negative-going input threshold accuracy"
+          }
+        ],
+        "computation": {
+          "description": "Enumerate resistor and IC threshold corners, bias and output-collision currents using the saved design values. Limits exclude unknown resistor TCR/rail PCB voltage drops and transient timing.",
+          "script": "hardware/pcb/analysis/power_safety/check_current.py",
+          "result": "5A falling 4.711743948776225..4.927632319594594 V; release max 5.075379457432432 V; at V33=3.3 V +12 trip 10.355750603551451..10.4679124157586 V and -12 trip -10.514930763610325..-10.318781277248807 V; output +/-5 V against opposite 12 V: 17.171717171717173 mA and 0.2919191919191919 W; full 24 V fault: 0.5818181818181818 W."
+        }
+      },
+      "evidence_checked": "partial",
+      "components": [
+        "U25",
+        "U18",
+        "R7",
+        "R8",
+        "U2"
+      ],
+      "nets": [
+        "+5D",
+        "+5A",
+        "SAFE_CLEAR_N"
+      ],
+      "finding_id": "deep_review:bb831230b739"
+    },
+    {
+      "detector": "deep_review",
+      "category": "rail_monitors",
+      "severity": "warning",
+      "confidence": "high",
+      "summary": "The +/-12 V monitor thresholds depend on the 3.3 V rail; nominal thresholds are not fixed guarantees.",
+      "description": "U19 compares divided rails to REF_MON=V33/2. At V33=3.300 V resistor0.1%, LM393B offset+/-4mV and input bias0..50nA give +12 trip10.35575..10.46791 V and -12 trip-10.51493..-10.31878 V. TPS3828-33 can wait until2.86 V before asserting; at V33=2.86 V these become +8.97127..9.07598 V and -9.12405..-8.93797 V. The design has no fixed independent reference, no specified Seed3 3V3 tolerance or explicit comparator hysteresis.",
+      "recommendation": "State the ratios and rail bounds accurately; qualify brownout ramps and add a stable reference/tighter monitor if a fixed ~10.4 V threshold is required.",
+      "evidence": {
+        "components": [
+          "U19",
+          "U17"
+        ],
+        "nets": [
+          "REF_MON",
+          "+3V3",
+          "SAFE_CLEAR_N"
+        ],
+        "datasheet": [
+          {
+            "mpn": "lm393b",
+            "page": 6,
+            "quote": "Input offset voltage"
+          },
+          {
+            "mpn": "tps3828",
+            "page": 6,
+            "quote": "Negative-going input threshold voltage"
+          }
+        ],
+        "computation": {
+          "description": "Enumerate resistor and IC threshold corners, bias and output-collision currents using the saved design values. Limits exclude unknown resistor TCR/rail PCB voltage drops and transient timing.",
+          "script": "hardware/pcb/analysis/power_safety/check_current.py",
+          "result": "5A falling 4.711743948776225..4.927632319594594 V; release max 5.075379457432432 V; at V33=3.3 V +12 trip 10.355750603551451..10.4679124157586 V and -12 trip -10.514930763610325..-10.318781277248807 V; output +/-5 V against opposite 12 V: 17.171717171717173 mA and 0.2919191919191919 W; full 24 V fault: 0.5818181818181818 W."
+        }
+      },
+      "evidence_checked": "partial",
+      "components": [
+        "U19",
+        "U17"
+      ],
+      "nets": [
+        "REF_MON",
+        "+3V3",
+        "SAFE_CLEAR_N"
+      ],
+      "finding_id": "deep_review:795f35cbe154"
+    },
+    {
+      "detector": "deep_review",
+      "category": "sampling",
+      "severity": "warning",
+      "confidence": "high",
+      "summary": "External input filter provides 43.54 dB relative rejection of 76 kHz interference that aliases to 20 kHz at 96 kHz sampling.",
+      "description": "Targeted ideal SPICE of the populated input filters, 1 kohm input resistance, assumed 10 ohm ADG on-resistance, 47 ohm ADC series resistor, 100 pF cap and 1 Mohm ADC input gives -3.40254 dB at 20 kHz and -46.945 dB at 76 kHz. The external analog filter's relative rejection is 43.54246 dB. Digital decimation cannot undo an alias already generated by the ADC. The ADC's internal filter and actual source spectrum must be included before setting an end-to-end rejection claim.",
+      "recommendation": "Specify maximum out-of-band input spectrum and acceptable alias level. Include the ADC internal analog bandwidth and the final digital decimator in the error budget; tighten analog filtering or raise ADC rate if the budget demands it.",
+      "evidence": {
+        "components": [
+          "U2",
+          "U21",
+          "U22"
+        ],
+        "nets": [
+          "ADC_IN1"
+        ],
+        "computation": {
+          "description": "ngspice-46 complete input-path AC response, comparing a 76 kHz interferer and its 20 kHz alias at the planned 96 kHz sampling rate.",
+          "script": "hardware/pcb/analysis/spice_verification/check_sampling_images.py",
+          "result": "ADC 96 kHz: external-filter rejection of 76 kHz aliased onto 20 kHz is -43.5425 dB relative to 20 kHz gain."
+        }
+      },
+      "evidence_checked": "full",
+      "components": [
+        "U2",
+        "U21",
+        "U22"
+      ],
+      "nets": [
+        "ADC_IN1"
+      ],
+      "finding_id": "deep_review:1c0a8540b4ca"
+    },
+    {
+      "detector": "deep_review",
+      "category": "sampling",
+      "severity": "warning",
+      "confidence": "high",
+      "summary": "48 kHz DAC update and four-pole 20 kHz filter leave a 20 kHz tone's first image near -11.49 dBc.",
+      "description": "Targeted SPICE of all four output filter paths gives -2.98768 dB at 20 kHz and -11.5574 dB at 28 kHz. With an ideal zero-order-hold DAC updated at 48 kHz and no digital interpolation, the image at 48-20=28 kHz is -11.4923 dBc relative to the wanted tone. A high-rejection audio reconstruction response is not established by the present four-pole cutoff check.",
+      "recommendation": "Specify required reconstruction-image rejection. Reconcile DAC oversampling/digital interpolation or a more selective analog filter with the SPI/DMA budget, then simulate and bench-test the final chain.",
+      "evidence": {
+        "components": [
+          "U3",
+          "U23",
+          "U24"
+        ],
+        "nets": [
+          "OUT1F2_OUT"
+        ],
+        "computation": {
+          "description": "ngspice-46 simulation of the populated two-stage Sallen-Key networks, plus ideal zero-order-hold image/fundamental amplitude ratio.",
+          "script": "hardware/pcb/analysis/spice_verification/check_sampling_images.py",
+          "result": "DAC 48 kHz, 20 kHz tone: first 28 kHz image -11.4923 dBc including ideal ZOH and analog filter."
+        }
+      },
+      "evidence_checked": "full",
+      "components": [
+        "U3",
+        "U23",
+        "U24"
+      ],
+      "nets": [
+        "OUT1F2_OUT"
+      ],
+      "finding_id": "deep_review:5942ec8282df"
+    },
+    {
+      "detector": "deep_review",
+      "category": "analog_inputs",
+      "severity": "info",
+      "confidence": "high",
+      "summary": "Resolved: fixed IN1-IN4 jack normals now ground unpatched inputs.",
+      "description": "J1/J4/J7/J10 TN are now GND; CTRL/OUT TN remain open. Source, compiled schematic and PCB pad nets are checked together.",
+      "recommendation": "Ground only the fixed input jack normals. Keep bidirectional CTRL and OUT normals open, and update the all-jack-normal assertion accordingly. Open CTRL inputs also need an explicit firmware policy; their ADC input is not a zero-volt pull-down.",
+      "evidence": {
+        "components": [
+          "J1",
+          "J4",
+          "J7",
+          "J10"
+        ],
+        "computation": {
+          "description": "DC topology: capacitors open and op-amp inputs are high impedance; inspected design.py complete_circuit and saved design.json. OPA4197 RevC p1 low-input-bias specification supplies real-part context.",
+          "script": "hardware/pcb/analysis/digital_analog/check_digital_budget.py",
+          "result": "J1 IN1 normal contact: 'GND'"
+        }
+      },
+      "status": "resolved",
+      "evidence_checked": "full",
+      "components": [
+        "J1",
+        "J4",
+        "J7",
+        "J10"
+      ],
+      "finding_id": "deep_review:8c822afa42a1"
+    }
+  ],
+  "quarantined": [],
+  "gate_inputs": [
+    "deep_review_main.json",
+    "deep_review_panel.json"
+  ],
+  "note": "Combined report only: evidence gates ran separately against each board analysis directory."
+}

@@ -1,0 +1,137 @@
+(kicad_sch (version 20231120) (generator eeschema)
+
+  (uuid 7b182483-2c2b-53c0-a5a0-0a2690185727)
+
+  (paper "A1")
+
+  (title_block
+    (title "ADOLFO / PANEL / schematic index")
+    (rev "D ENGINEERING")
+  )
+
+  (lib_symbols
+    (symbol "ADOLFO:PWR_FLAG" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+      (property "Reference" "#FLG" (at 0 1.905 0) (show_name)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "PWR_FLAG" (at 0 3.81 0) (show_name)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0) (show_name)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Datasheet" "" (at 0 0 0) (show_name)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Description" "Special symbol for telling ERC where power comes from" (at 0 0 0) (show_name)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "ki_keywords" "flag power" (at 0 0 0) (show_name)
+        (effects (font (size 1.27 1.27)))
+      )
+      (symbol "PWR_FLAG_0_0"
+        (pin power_out line (at 0 0 90) (length 0)
+          (name "" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+      (symbol "PWR_FLAG_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 1.27)
+            (xy -1.016 1.905)
+            (xy 0 2.54)
+            (xy 1.016 1.905)
+            (xy 0 1.27)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+    )
+  )
+
+  (global_label "GND" (shape input) (at 25.4 25.4 0)
+    (effects (font (size 1 1)) (justify left))
+    (uuid 9efe360e-bb62-59d6-b1cc-6e35c0818b45)
+  )
+  (global_label "+3V3" (shape input) (at 66.03999999999999 25.4 0)
+    (effects (font (size 1 1)) (justify left))
+    (uuid c50b0a74-e59f-5424-bf68-67e6baaf4790)
+  )
+
+  (symbol (lib_id "ADOLFO:PWR_FLAG") (at 25.4 25.4 0) (unit 1)
+    (in_bom no) (on_board no)
+    (uuid a31b17a8-912a-50d0-a145-694ebc1c1471)
+    (property "Reference" "#FLG01" (at 25.4 17.779999999999998 0)
+      (effects (font (size 1 1)) hide)
+    )
+    (property "Value" "PWR_FLAG" (at 25.4 20.32 0)
+      (effects (font (size 1 1)))
+    )
+    (instances
+      (project "Adolfo-panel"
+        (path "/7b182483-2c2b-53c0-a5a0-0a2690185727"
+          (reference "#FLG01") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "ADOLFO:PWR_FLAG") (at 66.03999999999999 25.4 0) (unit 1)
+    (in_bom no) (on_board no)
+    (uuid 51ee5b60-8478-5669-857e-bafd0082480a)
+    (property "Reference" "#FLG02" (at 66.03999999999999 17.779999999999998 0)
+      (effects (font (size 1 1)) hide)
+    )
+    (property "Value" "PWR_FLAG" (at 66.03999999999999 20.32 0)
+      (effects (font (size 1 1)))
+    )
+    (instances
+      (project "Adolfo-panel"
+        (path "/7b182483-2c2b-53c0-a5a0-0a2690185727"
+          (reference "#FLG02") (unit 1)
+        )
+      )
+    )
+  )
+
+  (sheet (at 25.4 55.88) (size 152.4 30.48)
+    (stroke (width .254) (type default))
+    (fill (color 0 0 0 0.0000))
+    (uuid caaddb07-f5c2-500a-bced-7bfc68d03053)
+    (property "Sheetname" "JACKS_AND_LINK" (at 25.4 54.61 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "Adolfo-panel-jacks_and_link.kicad_sch" (at 25.4 87.63 0)
+      (effects (font (size 1 1)) (justify left top))
+    )
+    (instances
+      (project "Adolfo-panel"
+        (path "/7b182483-2c2b-53c0-a5a0-0a2690185727" (page "2"))
+      )
+    )
+  )
+
+  (sheet (at 203.20000000000002 55.88) (size 152.4 30.48)
+    (stroke (width .254) (type default))
+    (fill (color 0 0 0 0.0000))
+    (uuid 1e79c4d7-1f49-56b3-81c2-420bc7bcfe55)
+    (property "Sheetname" "FRONT_CONTROLS" (at 203.20000000000002 54.61 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "Adolfo-panel-front_controls.kicad_sch" (at 203.20000000000002 87.63 0)
+      (effects (font (size 1 1)) (justify left top))
+    )
+    (instances
+      (project "Adolfo-panel"
+        (path "/7b182483-2c2b-53c0-a5a0-0a2690185727" (page "3"))
+      )
+    )
+  )
+
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)

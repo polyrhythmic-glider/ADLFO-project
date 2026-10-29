@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "produced_for_run_id": "2026-10-28_0943",
+  "produced_at": "2026-10-28T09:27:18.833040+00:00",
+  "findings": [
+    {
+      "detector": "deep_review",
+      "category": "analog_inputs",
+      "severity": "info",
+      "confidence": "high",
+      "summary": "Resolved: fixed IN1-IN4 jack normals now ground unpatched inputs.",
+      "description": "J1/J4/J7/J10 TN are now GND; CTRL/OUT TN remain open. Source, compiled schematic and PCB pad nets are checked together.",
+      "recommendation": "Ground only the fixed input jack normals. Keep bidirectional CTRL and OUT normals open, and update the all-jack-normal assertion accordingly. Open CTRL inputs also need an explicit firmware policy; their ADC input is not a zero-volt pull-down.",
+      "evidence": {
+        "components": [
+          "J1",
+          "J4",
+          "J7",
+          "J10"
+        ],
+        "computation": {
+          "description": "DC topology: capacitors open and op-amp inputs are high impedance; inspected design.py complete_circuit and saved design.json. OPA4197 RevC p1 low-input-bias specification supplies real-part context.",
+          "script": "hardware/pcb/analysis/digital_analog/check_digital_budget.py",
+          "result": "J1 IN1 normal contact: 'GND'"
+        }
+      },
+      "status": "resolved",
+      "evidence_checked": "full",
+      "components": [
+        "J1",
+        "J4",
+        "J7",
+        "J10"
+      ],
+      "finding_id": "deep_review:8c822afa42a1"
+    }
+  ],
+  "quarantined": []
+}

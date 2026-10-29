@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-28",
+  "branch": "pcb/rev-b-20hp-eurorack",
+  "cad_status": "PASS",
+  "release_status": "BLOCKED",
+  "checks": 2026,
+  "parts": 301,
+  "release_blockers": {
+    "ADC_SUPPLY_SEQUENCE": "ADC VDRIVE can exceed AVCC + 0.3 V with USB-only power or unequal rail decay; supply and host-signal isolation need a hardware revision.",
+    "5V_MONITOR_MARGIN": "R-78E output tolerance and TPS3808 threshold/hysteresis do not guarantee both ADC operating voltage and reset release.",
+    "CONVERTER_BACKEND": "The new ADC/DAC backend is absent; stock libDaisy clocks and shared SPI DMA cannot sustain the declared rates."
+  },
+  "erc_drc_violations": 0,
+  "unconnected": 0,
+  "schematic_parity": 0,
+  "via_smd_intersections": 0,
+  "spice": {
+    "total": 63,
+    "total_findings": 0,
+    "pass": 59,
+    "warn": 0,
+    "fail": 0,
+    "skip": 4,
+    "by_severity": {
+      "error": 0,
+      "warning": 0,
+      "info": 63
+    }
+  },
+  "targeted_spice_cases": 24,
+  "host_tests": [
+    "ports PASS",
+    "converter PASS",
+    "prototype-output PASS"
+  ],
+  "lifecycle": "14 unknown: source does not expose lifecycle",
+  "source_hashes_checked": 73,
+  "links_checked": "PASS",
+  "fresh_generation_preparation": "PASS; no full autoroute rebuild",
+  "not_performed": [
+    "physical bench/mechanical qualification",
+    "complete ARM build and UI test",
+    "manufacturing Gerbers absent",
+    "complete passive purchase MPN qualification"
+  ]
+}

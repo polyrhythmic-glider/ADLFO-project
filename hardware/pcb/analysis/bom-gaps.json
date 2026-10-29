@@ -1,0 +1,1553 @@
+{
+  "schematic": "hardware\\pcb\\output\\Adolfo-main.kicad_sch",
+  "convention": {
+    "field_mapping": {
+      "mpn": "MPN",
+      "manufacturer": "Manufacturer"
+    },
+    "populated_counts": {
+      "mpn": 88,
+      "manufacturer": 88
+    },
+    "preferred_distributor": null,
+    "names_canonical": true,
+    "suggested_fields": [
+      "MPN",
+      "Manufacturer"
+    ]
+  },
+  "stats": {
+    "schematic_files": [
+      "hardware\\pcb\\output\\Adolfo-main.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-processor.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-adc.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-dac.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-io_expander.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-output_enable.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-output_switches.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out1_driver.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out2_driver.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out3_driver.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out4_driver.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out5_driver.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out6_driver.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out7_driver.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out8_driver.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-analog_decoupling.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-output_drivers.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-reference.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-power.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-gpio_biases.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-safety.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-input_protection.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-ctrl_inputs.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-in1_filter.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-in2_filter.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-in3_filter.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-in4_filter.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out1_filter.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out2_filter.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out3_filter.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-out4_filter.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-filter_power.kicad_sch",
+      "hardware\\pcb\\output\\Adolfo-main-panel_control.kicad_sch"
+    ],
+    "total_bom_lines": 52,
+    "total_components": 273,
+    "dnp_lines": 0,
+    "active_lines": 52,
+    "active_components": 273,
+    "with_mpn": 14,
+    "without_mpn": 38,
+    "with_datasheet": 14,
+    "without_datasheet": 38,
+    "with_digikey": 0,
+    "without_digikey": 52,
+    "with_mouser": 0,
+    "without_mouser": 52,
+    "with_lcsc": 0,
+    "without_lcsc": 52,
+    "with_element14": 0,
+    "without_element14": 52
+  },
+  "bom": [
+    {
+      "value": "100nF 50V",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C62",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C52",
+        "C53",
+        "C54",
+        "C55",
+        "C56",
+        "C57",
+        "C58",
+        "C59"
+      ],
+      "quantity": 19,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "47uF 10V",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C7"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "10uF 10V",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C8"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "100nF",
+      "footprint": "ADOLFO:c0603",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C9",
+        "C10",
+        "CADC0",
+        "CADC1",
+        "CADC2",
+        "CADC3"
+      ],
+      "quantity": 6,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "10uF 25V X7R low ESR",
+      "footprint": "ADOLFO:c1210",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C11"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "10nF",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C13",
+        "CMON5",
+        "C15"
+      ],
+      "quantity": 3,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "1nF",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C14"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "820pF C0G 1%",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C20",
+        "C24",
+        "C28",
+        "C32",
+        "C36",
+        "C40",
+        "C44",
+        "C48"
+      ],
+      "quantity": 8,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "680pF C0G 1%",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C21",
+        "C25",
+        "C29",
+        "C33",
+        "C37",
+        "C41",
+        "C45",
+        "C49"
+      ],
+      "quantity": 8,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "1.8nF C0G 1%",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C22",
+        "C26",
+        "C30",
+        "C34",
+        "C38",
+        "C42",
+        "C46",
+        "C50"
+      ],
+      "quantity": 8,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "270pF C0G 1%",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C23",
+        "C27",
+        "C31",
+        "C35",
+        "C39",
+        "C43",
+        "C47",
+        "C51"
+      ],
+      "quantity": 8,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "22uF 25V X7R",
+      "footprint": "ADOLFO:c1210",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "C60",
+        "C61"
+      ],
+      "quantity": 2,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "100nF",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "CBUF0",
+        "CBUF1",
+        "C12",
+        "CD1",
+        "CD2",
+        "CD3",
+        "CD4",
+        "CD5",
+        "CD6",
+        "CD7",
+        "CD8",
+        "CD9",
+        "C63",
+        "CSAFE16",
+        "CSAFE17",
+        "CSAFE18",
+        "CSAFE20",
+        "CSAFE19"
+      ],
+      "quantity": 18,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "100pF C0G",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "CI1",
+        "CI2",
+        "CI3",
+        "CI4"
+      ],
+      "quantity": 4,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "1nF C0G",
+      "footprint": "ADOLFO:c0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "CI5",
+        "CI6",
+        "CI7",
+        "CI8"
+      ],
+      "quantity": 4,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "1uF",
+      "footprint": "ADOLFO:c0603",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "CREG1",
+        "CREG2"
+      ],
+      "quantity": 2,
+      "dnp": false,
+      "type": "capacitor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "SS14",
+      "footprint": "ADOLFO:sma",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "D1",
+        "D2"
+      ],
+      "quantity": 2,
+      "dnp": false,
+      "type": "diode",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "BAT54WS",
+      "footprint": "ADOLFO:sod323",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [
+        "Anode at GND; limits the negative comparator input if 3.3 V disappears before the negative rail."
+      ],
+      "references": [
+        "D3"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "diode",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "Littelfuse 1206L075/24YR",
+      "footprint": "ADOLFO:fuse1206",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "F1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "fuse",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "Littelfuse 1206L025/30YR",
+      "footprint": "ADOLFO:fuse1206",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "F2"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "fuse",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "BLM21PG601SN1D",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "FB1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ferrite_bead",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "Samtec TSW-120-07-G-D",
+      "footprint": "ADOLFO:header40",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "J13"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "connector",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "Wurth 61201021621 IDC10",
+      "footprint": "ADOLFO:idc10",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "J16"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "connector",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "2.2k",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "R2",
+        "R3"
+      ],
+      "quantity": 2,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "0R",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "R4"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "109k 0.1%",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "R7"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "11k 0.1%",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "R9",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33",
+        "R34",
+        "R35",
+        "R36",
+        "R37",
+        "R38",
+        "R39",
+        "R40"
+      ],
+      "quantity": 32,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "33R",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "R42",
+        "R43",
+        "R44",
+        "R45"
+      ],
+      "quantity": 4,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "10k 0.1%",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "RA1",
+        "RC1",
+        "RA2",
+        "RC2",
+        "RA3",
+        "RC3",
+        "RA4",
+        "RC4",
+        "RA5",
+        "RC5",
+        "RA6",
+        "RC6",
+        "RA7",
+        "RC7",
+        "RA8",
+        "RC8",
+        "RREF1",
+        "RREF2",
+        "R8",
+        "RPMON2",
+        "RMONREF1",
+        "RMONREF2"
+      ],
+      "quantity": 22,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "47R",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "RADCF1",
+        "RADCF2",
+        "RADCF3",
+        "RADCF4"
+      ],
+      "quantity": 4,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "40k 0.1%",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "RB1",
+        "RD1",
+        "RB2",
+        "RD2",
+        "RB3",
+        "RD3",
+        "RB4",
+        "RD4",
+        "RB5",
+        "RD5",
+        "RB6",
+        "RD6",
+        "RB7",
+        "RD7",
+        "RB8",
+        "RD8"
+      ],
+      "quantity": 16,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "100k",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "RE1",
+        "RQ1",
+        "RE2",
+        "RQ2",
+        "RE3",
+        "RQ3",
+        "RE4",
+        "RQ4",
+        "RE5",
+        "RQ5",
+        "RE6",
+        "RQ6",
+        "RE7",
+        "RQ7",
+        "RE8",
+        "RQ8"
+      ],
+      "quantity": 16,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "1k",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "RIC5",
+        "RIC6",
+        "RIC7",
+        "RIC8"
+      ],
+      "quantity": 4,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "10k",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "RK1",
+        "RK2",
+        "RK3",
+        "RK4",
+        "RK5",
+        "RK6",
+        "RK7",
+        "RK8",
+        "RP1",
+        "RP2",
+        "RP3",
+        "RP4",
+        "RP5",
+        "RP6",
+        "RP7",
+        "RP8",
+        "RU1",
+        "RU2",
+        "RU3",
+        "RU4",
+        "RU5",
+        "R1",
+        "R5",
+        "R6",
+        "R41"
+      ],
+      "quantity": 25,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "1M 0.1%",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "RNMON1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "137k 0.1%",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "RNMON2"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "1k 1W 1%",
+      "footprint": "ADOLFO:r2010",
+      "mpn": "CRCW20101K00FKEFHP",
+      "manufacturer": "Vishay",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+      "description": "",
+      "bom_comments": [
+        "Limits fault current; specify/calibrate the intended load. Not a load-independent pitch output."
+      ],
+      "references": [
+        "RO1",
+        "RO2",
+        "RO3",
+        "RO4",
+        "RO5",
+        "RO6",
+        "RO7",
+        "RO8",
+        "RI1",
+        "RI2",
+        "RI3",
+        "RI4",
+        "RI5",
+        "RI6",
+        "RI7",
+        "RI8"
+      ],
+      "quantity": 16,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": []
+    },
+    {
+      "value": "53.1k 0.1%",
+      "footprint": "ADOLFO:r0805",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "RPMON1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "resistor",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "GND",
+      "footprint": "ADOLFO:testpoint",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "TP1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point",
+      "gaps": []
+    },
+    {
+      "value": "+12VA",
+      "footprint": "ADOLFO:testpoint",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "TP2"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point",
+      "gaps": []
+    },
+    {
+      "value": "-12VA",
+      "footprint": "ADOLFO:testpoint",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "TP3"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point",
+      "gaps": []
+    },
+    {
+      "value": "+5D",
+      "footprint": "ADOLFO:testpoint",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "TP4"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point",
+      "gaps": []
+    },
+    {
+      "value": "+5A",
+      "footprint": "ADOLFO:testpoint",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "TP5"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point",
+      "gaps": []
+    },
+    {
+      "value": "REF_BUF",
+      "footprint": "ADOLFO:testpoint",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "TP6"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point",
+      "gaps": []
+    },
+    {
+      "value": "Daisy Seed 3",
+      "footprint": "ADOLFO:seed",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "bom_comments": [
+        "Seed 3 40-pin carrier; onboard codec and MCU DAC unused. Verify physical USB access on the assembled stack."
+      ],
+      "references": [
+        "U1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": [
+        "mpn"
+      ]
+    },
+    {
+      "value": "AD7606C-18BSTZ",
+      "footprint": "ADOLFO:lqfp64",
+      "mpn": "AD7606C-18BSTZ",
+      "manufacturer": "Analog Devices",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.analog.com/media/en/technical-documentation/data-sheets/ad7606c-18.pdf",
+      "description": "",
+      "bom_comments": [
+        "SOFTWARE mode OS[2:0]=111; select one DOUTA, bipolar ranges, bandwidth per channel. No audio HPF. Register/DMA driver missing."
+      ],
+      "references": [
+        "U2"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "DAC8568BPW",
+      "footprint": "ADOLFO:tssop16",
+      "mpn": "DAC8568BPW",
+      "manufacturer": "Texas Instruments",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/dac8568.pdf",
+      "description": "",
+      "bom_comments": [
+        "B grade matters: internal 2.5 V reference, output span 2.5 V, midscale reset; enable reference in software. 16-bit output, not a 24-bit codec."
+      ],
+      "references": [
+        "U3"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "MCP23017-E/SO",
+      "footprint": "ADOLFO:soic28",
+      "mpn": "MCP23017-E/SO",
+      "manufacturer": "Microchip",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf",
+      "description": "",
+      "bom_comments": [
+        "I2C 0x20. Encoders A/B stay on MCU GPIO; only clicks/keys and static output requests use expander."
+      ],
+      "references": [
+        "U4"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "SN74LVC08ADR",
+      "footprint": "ADOLFO:soic14",
+      "mpn": "SN74LVC08ADR",
+      "manufacturer": "Texas Instruments",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc08a.pdf",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "U5",
+        "U6"
+      ],
+      "quantity": 2,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "ADG5412FBRUZ",
+      "footprint": "ADOLFO:tssop16",
+      "mpn": "ADG5412FBRUZ",
+      "manufacturer": "Analog Devices",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG5412F_5413F.pdf",
+      "description": "",
+      "bom_comments": [
+        "Not ADG5413F. IN=0 disconnects. Protected S faces jack; driver on D. Fault/power-off isolation needs bench qualification; not protection against every output collision."
+      ],
+      "references": [
+        "U7",
+        "U8",
+        "U14",
+        "U15"
+      ],
+      "quantity": 4,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "OPA4197ID",
+      "footprint": "ADOLFO:soic14",
+      "mpn": "OPA4197ID",
+      "manufacturer": "Texas Instruments",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/opa4197.pdf",
+      "description": "",
+      "bom_comments": [
+        "Candidate: verify offset, stability, noise, output protection and matched ratios. 4*Vdac - 4*Vref gives approximately +/-5 V."
+      ],
+      "references": [
+        "U9",
+        "U10",
+        "U11",
+        "U21",
+        "U22",
+        "U23",
+        "U24"
+      ],
+      "quantity": 7,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "SN74AHCT125DR",
+      "footprint": "ADOLFO:soic14",
+      "mpn": "SN74AHCT125DR",
+      "manufacturer": "Texas Instruments",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74ahct125.pdf",
+      "description": "",
+      "bom_comments": [
+        "5 V powered TTL-input buffers; validate timing/skew at selected SPI clock. Not LVC125 at 5 V."
+      ],
+      "references": [
+        "U12",
+        "U13"
+      ],
+      "quantity": 2,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "SN74HCS74DR",
+      "footprint": "ADOLFO:soic14",
+      "mpn": "SN74HCS74DR",
+      "manufacturer": "Texas Instruments",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74hcs74.pdf",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "U16"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "TPS3828-33DBVR",
+      "footprint": "ADOLFO:sot23_5",
+      "mpn": "TPS3828-33DBVR",
+      "manufacturer": "Texas Instruments",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/tps3828.pdf",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "U17"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "TPS3808G01DBVR",
+      "footprint": "ADOLFO:sot23_6",
+      "mpn": "TPS3808G01DBVR",
+      "manufacturer": "Texas Instruments",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "U18"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "LM393BDR",
+      "footprint": "ADOLFO:soic8",
+      "mpn": "LM393BDR",
+      "manufacturer": "Texas Instruments",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/lm393b.pdf",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "U19"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "SN74LVC1G08DBVR",
+      "footprint": "ADOLFO:sot23_5",
+      "mpn": "SN74LVC1G08DBVR",
+      "manufacturer": "Texas Instruments",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+      "description": "",
+      "bom_comments": [],
+      "references": [
+        "U20"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    },
+    {
+      "value": "R-78E5.0-1.0",
+      "footprint": "ADOLFO:recom",
+      "mpn": "R-78E5.0-1.0",
+      "manufacturer": "RECOM",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "https://recom-power.com/pdf/Innoline/R-78E-1.0.pdf",
+      "description": "",
+      "bom_comments": [
+        "RECOM R-78E5.0-1.0, 8-28 V input, 5 V/1 A output, SIP3; max capacitive load 220 uF."
+      ],
+      "references": [
+        "U25"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "ic",
+      "gaps": []
+    }
+  ],
+  "unrecognized_fields": null
+}

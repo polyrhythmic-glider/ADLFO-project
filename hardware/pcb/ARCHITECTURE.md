@@ -1,153 +1,167 @@
-# Architettura C: dodici jack universali
+# Architettura D
 
-## Specifiche di progetto, non prestazioni già collaudate
+Il circuito passa la continua. IN1–4 sono ingressi audio/CV/gate/trigger;
+OUT1–4 sono uscite audio/CV/envelope/LFO/gate/trigger. CTRL1–4 possono essere
+configurati come ingresso oppure uscita CV/gate/trigger, mantenendo la lettura
+ADC anche quando il driver è abilitato. Il codec integrato della Daisy non è
+usato per queste porte.
 
-| Gruppo | Quantità | Direzione | Modi |
-| --- | --- | --- | --- |
-| IN | 4 | ingresso | audio, CV, gate, trigger |
-| OUT | 4 | uscita | audio, CV, envelope, LFO, gate, trigger |
-| CTRL | 4 | selezionabile | CV/gate/trigger in oppure out |
-
-Tutti i percorsi passano la continua. IN1–4 possono lavorare insieme a OUT1–4
-in audio, lasciando quattro controlli. CTRL non sono specificate per audio.
-Il pannello non assegna nomi fissi di parametri agli encoder: preset e firmware
-ne cambiano la funzione. Il nome del progetto è Adolfo.
-
-Proposta: ingressi con campo nominale ±10 V; uscite circa ±5 V, con envelope,
-gate e trigger unipolari 0…5 V. Valori definitivi subordinati a filtri, guadagni,
-carichi e misure. Non assumere che 16 bit nominali garantiscano precisione V/oct.
-
-## Percorsi analogici
+## Conversione e analogica
 
 ```text
-IN1–4 ── protezione + filtro DA COMPLETARE ── ADC canali 1–4
-CTRL1–4 ─ protezione + filtro DA COMPLETARE ─ ADC canali 5–8
-                                                  │ SPI1
-                                             Daisy Seed
-                                                  │ SPI3 + level shift
-                                             DAC 8 canali
-                                                  │
-                                  8 stadi bipolari + filtro DA COMPLETARE
-                                                  │
-                       8 switch protetti ───── OUT1–4 e CTRL1–4
+IN1–4 → 1 kΩ → ADG5412F → filtro attivo 4 poli → 47 Ω → ADC CH1–4
+CTRL1–4 → 1 kΩ → ADG5412F → RC 1 kΩ / 1 nF → ADC CH5–8
+
+Daisy SPI1 ↔ AD7606C-18                 Daisy SPI3 → AHCT125 → DAC8568B
+                                                               ↓
+                         8 amplificatori differenziali, 4×VDAC − 4×VREF_HALF
+                                                               ↓
+                               OUT1–4: filtro attivo 4 poli; CTRL: diretto
+                                                               ↓
+                                   1 kΩ → ADG5412F → OUT1–4 / CTRL1–4
 ```
 
-**ADC candidato: AD7606C-18**, 8 canali simultanei a 18 bit, ingresso bipolare,
-impedenza minima 1 MΩ, 5 V analogici e VDRIVE 3,3 V. Il modello **C-18** conta:
-il precedente AD7606B è stato scartato per la banda d'ingresso. La famiglia
-C-18 consente 25/220 kHz per canale. Per audio si valuta il modo 220 kHz con
-filtri esterni e sovracampionamento; il solo RC 1 kΩ/1 nF disegnato è EMI,
-**non** un filtro antialias adeguato. CRC e status header disabilitati nel formato
-iniziale; configurare software mode e una sola linea DOUTA prima di leggere.
+ADC AD7606C-18BSTZ: AVCC 5 V, VDRIVE 3,3 V, otto canali simultanei. Il firmware
+nuovo dovrà selezionare software mode, range nominale ±10 V, banda 220 kHz,
+una sola linea DOUTA e il formato senza CRC/header previsto dal protocollo host.
+Ogni ingresso negativo è a massa. REFIN usa il riferimento interno; REFCAP,
+REGCAP1/2 e ciascun AVCC hanno condensatori locali.
 
-**DAC candidato: DAC8568B**, 8 canali a 16 bit. Grado B: span 2,5 V con riferimento
-interno, reset a metà scala. Non sostituire con A/C/D senza cambiare progetto.
-Span 2,5 V lascia margine sul rail analogico 5 V; gli stadi OPA4197 candidati
-realizzano `Vjack ≈ 4 × Vdac − 4 × 1,25 V`. Il riferimento 1,25 V è ottenuto
-con divisore abbinato dal riferimento 2,5 V e follower dedicato. Gli altri tre
-opamp inutilizzati del terzo quad sono chiusi a follower a massa.
+DAC DAC8568BPW: span 0…2,5 V con riferimento interno attivato via software,
+reset a metà scala. Due SN74AHCT125 a 5 V adattano clock, dati, SYNC, LDAC e CLR.
+Le resistenze serie da 33 Ω sono sul clock/dati ADC e DAC. LDAC aggiorna gli
+otto canali dopo il caricamento delle rispettive parole.
 
-Il riferimento interno del grado B non ha la deriva dei gradi C/D: per pitch
-accurato serve qualificare deriva, linearità, rapporti resistivi, calibrazione
-ed eventualmente un riferimento esterno. Il carico vede anche 100 Ω serie e
-la resistenza dello switch: correggere solo offset/guadagno a vuoto non elimina
-la caduta dipendente dal carico. Non promettere un'uscita pitch precisa prima
-del collaudo a carichi e temperature diversi.
+Otto stadi OPA4197 con rapporti resistivi 10 kΩ / 40 kΩ producono circa ±5 V
+a vuoto da 0…2,5 V. Un follower separato genera 1,25 V dal riferimento DAC.
+Le tre sezioni inutilizzate sono chiuse a follower con ingresso a massa.
+Resistori 0,1% e calibrazione sono necessari; il progetto non garantisce V/oct.
+La resistenza serie di uscita da 1 kΩ più lo switch introduce errore sotto carico
+(circa 1% già con un carico da 100 kΩ, prima degli altri errori).
 
-DAC alimentato a 5 V: il requisito VIH può essere 0,7 × AVDD. Perciò cinque
-segnali SPI/controllo passano attraverso **SN74AHCT125** a 5 V, con ingressi TTL.
-Non collegarli direttamente a 3,3 V e non sostituire AHCT con LVC alimentata a 5 V.
-I buffer richiedono verifica di ritardi e skew sul clock reale.
+Gli otto percorsi audio (quattro ingressi, quattro uscite) hanno due sezioni
+Sallen–Key a guadagno unitario, con R1=R2=11 kΩ 0,1%. Prima sezione:
+Cfeedback=820 pF, Cground=680 pF; seconda: 1,8 nF / 270 pF, tutti C0G 1%.
+La risposta ideale è circa −3 dB a 20 kHz in uscita, −3,4 dB in ingresso
+(inclusa la resistenza serie). `analog_check.py` verifica topologia, valori e
+256 combinazioni delle tolleranze per percorso. Non simula il comportamento
+reale degli operazionali, distorsione o stabilità. CTRL usa solo il filtro EMI.
 
-## Porte configurabili e stato sicuro
+## Protezione e consenso
 
-Due **ADG5412FBRUZ** candidati disconnettono gli otto driver, inclusi i quattro
-OUT fissi, fino al consenso software/hardware. Usare **5412F**, non 5413F:
-controllo basso = aperto. Il terminale protetto **S va al jack**; D va al driver.
-La specifica ±55 V riguarda i terminali protetti del componente nelle condizioni
-del datasheet, non è una specifica garantita dell'intero modulo.
+Quattro ADG5412F, due per gli ingressi e due per le uscite. I terminali protetti
+S guardano i jack; D guarda il circuito. Gli ingressi hanno 1 kΩ / 1 W prima
+dello switch; le uscite hanno 1 kΩ / 1 W fra amplificatore/filtro e switch.
+Il circuito non attribuisce al modulo intero il limite ±55 V del solo IC.
+I normali dei soli IN1–4 sono a massa per fissare lo stato senza patch.
+I normali di CTRL e OUT restano aperti: non devono cortocircuitare un'uscita.
 
-CTRL rimane collegato al proprio ADC anche in uscita: utile per feedback e
-rilevamento di anomalie. Un semplice GPIO tri-state non sostituisce lo switch.
-Il contatto normalizzato dei dodici jack è lasciato aperto: non mettere a massa
-quello di un CTRL che può essere usato come uscita.
+Le otto richieste REQ passano attraverso AND SN74LVC08. Il consenso comune è
+`SAFE_PERMIT = SAFE_LATCH AND OUTPUT_PERMIT`. Il GPIO OUTPUT_PERMIT ha pull-down;
+richieste e comandi degli switch hanno pull-down dedicati.
 
-Otto richieste statiche da MCP23017 passano attraverso AND SN74LVC08 con un
-**OUTPUT_PERMIT diretto dalla Daisy e pull-down hardware**. Richieste e comandi
-degli switch hanno pull-down. Reset della Daisy o GPIO non inizializzati lasciano
-i driver disconnessi; non affidarsi ai soli valori salvati nei preset.
+Una sezione SN74HCS74 con ingressi Schmitt memorizza l'abilitazione sul fronte crescente del permit.
+`SAFE_CLEAR_N` cancella il latch quando intervengono watchdog TPS3828, monitor
+5 V TPS3808, comparatori dei rail ±12 V oppure un fault degli ADG. Dopo un fault
+il ritorno dei rail non riattiva le uscite: serve un nuovo fronte di permit.
+Portare permit basso apre sempre gli switch, anche se il latch conserva lo stato.
 
-Sequenza prevista: permit basso → richieste a zero → verificare rail e reset
-ADC/DAC → attivare riferimento e impostare zero volt → attendere stabilizzazione
-→ calibrazione valida → abilitare solo le porte richieste. Prima di cambiare
-modo/direzione: aprire lo switch interessato, preparare il valore, attendere
-settling e infine richiuderlo. Per fault, watchdog o ripristino preset, disarmare.
-La policy in `platform/` è testata su host, ma il backend hardware che la applica
-non è ancora implementato. Supervisione brownout/rails e watchdog hardware esterno
-restano da progettare: un blocco del firmware con GPIO alto non è risolto dalle AND.
+Soglie nominali dei monitor: +12VA sotto 10,41 V, −12VA meno negativo di −10,39 V,
++5A sotto 4,82 V; il watchdog supervisiona anche il 3,3 V. Il riferimento dei
+comparatori è un divisore del 3,3 V, indipendente dal riferimento DAC. Le soglie
+reali comprendono tolleranze, deriva e tempi di avvio: vanno misurate.
+Il TPS3808G01 con il divisore presente può intervenire fra 4,712 e 4,928 V
+e richiedere fino a 5,075 V per rilasciare reset; il RECOM ammette ±5%.
+Questo è un problema di dimensionamento ancora aperto: serve rivedere insieme
+regolazione e supervisione. Abbassare soltanto la soglia non garantisce il
+minimo AVCC di 4,75 V dell'ADC. I monitor ±12 V dipendono dal 3,3 V e non
+stabiliscono soglie assolute indipendenti dalla sua variazione.
 
-## Risorse Daisy e pinout nuovo
+Sequenza del backend da implementare: permit basso, REQ a zero, inizializzazione
+ADC/DAC e riferimento, zero volt su ogni DAC, attesa di assestamento, verifica
+dei monitor e calibrazione valida, selezione REQ, poi fronte di permit.
+Al primo avvio l'AD7606C-18 richiede complessivamente oltre 2 s fra power-up
+e device setup (Rev B, tabella 3, nota 3); il solo tempo di reset successivo
+non descrive questa condizione.
+A ogni cambio direzione: aprire la porta, preparare il valore e attendere prima
+di richiuderla. Alimentare periodicamente WATCHDOG dal percorso che verifica
+il funzionamento della conversione, evitando un interrupt indipendente che
+continui a farlo anche quando l'elaborazione è bloccata.
 
-La Daisy fornisce CPU, RAM, memoria, USB, GPIO, timer, SPI e I²C. Il codec integrato
-2-in/2-out e il DAC interno non sono usati come porte universali: non coprono da
-soli il requisito 4+4 e cambiano fra revisioni. L'attuale libDaisy riconosce Seed 3
-(TAC5242/USB-C) e Seed 2 DFM (PCM3060). Usare il firmware/libDaisy corretti per
-la propria scheda. La compatibilità meccanica e di alimentazione va verificata
-sui due esemplari; non usare i pin extra D31/D32 esclusivi DFM.
+## Collegamenti digitali
 
-| Risorsa | Segnali / pin Daisy |
+| Funzione | Pin Daisy |
 | --- | --- |
-| SPI1 ADC | SCK D8, MISO D9, MOSI D10, CS D7 |
-| ADC controllo | CONVST D4 (candidato timer PC8/TIM8_CH3), BUSY D3, RESET D5 |
-| SPI3 DAC | SCK D2, MOSI D6, SYNC D0 |
-| DAC controllo | LDAC D1, CLR D13, tramite level shift |
-| I²C1 | SCL D11, SDA D12; OLED e MCP23017 0x20 |
-| Consenso uscite | OUTPUT_PERMIT D14 |
-| Encoder A/B | E1 D15/D16, E2 D17/D18, E3 D19/D20, E4 D21/D22 |
-| Expander reset | D23 |
-| Click e tasti | MCP23017 port A: click 1–4, poi tasti 1–4 |
-| Richieste uscite | MCP23017 port B: OUT1–4, poi CTRL1–4 |
+| DAC SPI3 | SYNC D0, LDAC D1, SCK D2, MOSI D6, CLR D13 |
+| ADC SPI1 | BUSY D3, CONVST D4, RESET D5, CS D7, SCK D8, MISO D9, MOSI D10 |
+| I²C1 | SCL D11, SDA D12 |
+| OUTPUT_PERMIT | D14 |
+| Encoder A/B | E1 D15/D16; E2 D17/D18; E3 D19/D20; E4 D21/D22 |
+| Reset MCP23017 | D23 |
+| WATCHDOG | D24 |
+| FAULT_N / SAFE_CLEAR_N | D25 |
+| OLED RESET | D26 |
 
-A/B degli encoder restano su MCU per evitare dipendenza dal traffico OLED.
-MCP23017 gestisce solo click/tasti e richieste statiche. I²C non trasporta audio.
-Pull-up aggiuntive I²C DNP finché non si misurano quelle dell'OLED; tutte a 3,3 V.
-Il DAC Adafruit non occupa più il bus sulla nuova PCB.
+MCP23017 a 0x20, package **SOIC28**. GPA0–3 sono click E1–4, GPA4–6 tasti K1–3,
+GPB0 è K4. GPB1–7 comandano REQ1–7; GPA7 comanda REQ8. GPA7/GPB7 sono usati
+solo come uscite, rispettando la limitazione del produttore. La mappa precedente
+QFN e la precedente assegnazione di un tasto a GPA7 sono state corrette.
+I pull-up I²C da 2,2 kΩ sono montati: verificare il parallelo con quelli presenti
+sul display. OLED SSD1315 a 0x3c, predisposto fisicamente per I²C.
 
-## Budget temporale da dimostrare su hardware
+Il connettore 2×20 porta segnali analogici e comandi al pannello; i pin 1…40
+hanno identiche coordinate fisiche sulle schede sovrapposte. Il socket posteriore
+ha numerazione specchiata rispetto all'header: non scambiare impronte o lato.
 
-Obiettivo: ADC 96 kframe/s, audio elaborato a 48 kHz con filtro digitale e
-conversione di frequenza 2:1; CTRL aggiornati a circa 1 kHz. Non usare una semplice
-selezione di un campione ogni due senza filtro digitale antialias.
+## Tempi e firmware
 
-SPI ADC a 25 MHz: 8 × 18 = **144 clock = 5,76 µs** per lettura; il periodo ADC è
-10,417 µs. In software mode CS può restare basso per l'intero frame: SPI a 8 bit
-legge **18 byte**, poi si ricostruiscono otto valori signed a 18 bit. Non impostare
-alla cieca DMA a 18 bit: libDaisy configura l'allineamento DMA SPI per byte.
-`ConverterProtocol.h` verifica questo formato su host, non i timing reali.
-Aggiungere conversione BUSY, comandi, DMA/cache, IRQ e margini al conto di banda.
+Target ADC: 96 kframe/s; audio elaborato: 48 kHz; CTRL: circa 1 kHz.
+ADC: 8×18 bit = 18 byte = 5,76 µs a 25 MHz, contro un periodo di 10,417 µs.
+DAC: 8×32 bit = 10,24 µs a 25 MHz, contro 20,833 µs a 48 kHz.
+Questi conti coprono solo il payload: conversione/BUSY, intervalli SYNC,
+settling, DMA/cache e jitter richiedono misure. Due periferiche SPI separate
+non garantiscono DMA simultaneo: il driver libDaisy standard condivide gli
+stream DMA e serializza le richieste. A 25 MHz i soli payload richiedono il
+104,448% del tempo; inoltre il clock standard SPI123 da 25 MHz con prescaler
+minimo /2 produce 12,5 MHz di SCK. Il solo frame ADC richiede allora 11,52 µs,
+oltre il periodo disponibile di 10,417 µs. Il backend deve configurare clock,
+risorse DMA e uno schedule dimostrabile; questi target non sono impostazioni
+già funzionanti. Serve anche il filtro digitale per decimare 96→48 kHz.
 
-DAC a 25 MHz: ogni parola è 32 bit, 1,28 µs; otto parole richiedono **10,24 µs**
-più intervalli SYNC. LDAC aggiorna simultaneamente i canali dopo il caricamento.
-48 kHz significa 20,833 µs per frame. Il settling può arrivare a 10 µs nelle
-condizioni del datasheet; scheduling e filtri richiedono collaudo, soprattutto
-per transizioni grandi. Questo non è un codec 24 bit con filtri audio integrati.
+La simulazione completa dei filtri dà −3,403 dB in ingresso e −2,988 dB in
+uscita a 20 kHz. Senza interpolazione DAC, a 48 kHz l'immagine di un tono
+20 kHz compare a 28 kHz a circa −11,49 dBc, includendo ZOH e filtro analogico.
+Un disturbo a 76 kHz che aliasa a 20 kHz nell'ADC riceve circa 43,54 dB di
+reiezione relativa dal solo filtro esterno. Occorre fissare banda utile e
+reiezioni richieste, poi dimensionare insieme filtri, frequenze e traffico SPI.
 
-SPI1 e SPI3 devono operare su DMA separati; testare cache e priorità. Clock esatto,
-timer, latenza, jitter, rumore e carico CPU sono ancora aperti. Gate/trigger
-riconosciuti dall'ADC hanno latenza di campionamento/elaborazione, non sono ingressi
-asincroni a latenza zero. Prevedere isteresi e test degli impulsi minimi.
+`platform/` contiene policy e protocollo verificabili su host. `Adolfo/` rimane
+il firmware del prototipo con DAC MCP4728: **non pilota questa PCB**. La nuova
+scheda richiede backend, temporizzazione e collaudo prima di un uso musicale.
+Gate/trigger letti via ADC hanno latenza e una durata minima da qualificare.
 
-## Alimentazione e meccanica
+## Alimentazione e layout
 
-IDC10 ±12 V: pin 1/2 −12 V, 3–8 GND, 9/10 +12 V. Convertitore locale 5 V con
-obiettivo almeno 1 A, poi ramo analogico filtrato; niente +5 V richiesto al case.
-Il convertitore specifico, il fusibile e il filtraggio finale NON sono selezionati:
-`UREG` è un envelope, non una distinta d'acquisto. Verificare dropout, ripple,
-consumo e spunto, e aggiungere protezione di corrente dimensionata. Considerare
-il bilancio di potenza del case, non solo la corrente di uscita del convertitore.
-Per ora scollegare Eurorack prima di USB: coesistenza delle fonti non validata.
+IDC10: pin 1/2 −12 V, 3…8 GND, 9/10 +12 V. Fusibili ripristinabili e diodi serie
+proteggono i due rail. RECOM R-78E5.0-1.0 genera +5D dal positivo; la ferrite
+BLM21PG601SN1D separa il ramo +5A. La Daisy genera +3V3. Non serve +5 V dal case.
+Il budget preliminare assegna fino a circa 0,7 A al ramo 5 V: consumi reali,
+spunto, ripple, caduta sui fusibili e termica devono essere misurati.
+La protezione USB/VIN della Seed non risolve il sequenziamento dell'ADC:
+con USB e case spento, VDRIVE può essere a 3,3 V mentre AVCC è a zero,
+superando il limite AVCC + 0,3 V. Anche lo spegnimento dei rail va analizzato.
+Non collegare USB con il carrier spento prima di risolvere alimentazione e
+iniezione dai segnali host; il permit delle uscite non protegge questi pin.
+Il rilascio resta bloccato su questo punto: una procedura di accensione non
+sostituisce un circuito che rispetta i limiti in tutte le sequenze previste.
 
-Due PCB da 96,2 × 110,5 mm dietro un pannello proposto da 101,2 × 128,5 mm
-(20 HP nominali 101,6 mm). Quote reali dei frontali da misurare. Connettore 2×20
-con pin corrispondenti sulle due schede: verso di innesto/chiave e stack height
-ancora da verificare. Nessuna scala automatica delle impronte.
+Principale a quattro strati: F.Cu prevalentemente analogica, In1.Cu piano GND,
+In2.Cu e B.Cu per gli altri percorsi; logica, Daisy e regolatore sul retro.
+Il router non usa il piano GND per piste di segnale. Frontale a due strati.
+Piste normali, +3V3 e +5A 0,20 mm; dorsali dei rail da 0,30 a 0,50 mm, distanze minime native 0,15 mm,
+via 0,60 / foro 0,30 mm; il router usa un piccolo margine sulle distanze.
+I condensatori critici di riferimento/REGCAP sono sotto l'ADC; la validazione
+controlla la vicinanza al pin, oltre alla correttezza dei collegamenti.
+
+Le misure e il montaggio nominale sono in [PARTS.md](PARTS.md). Una verifica CAD
+non dimostra ingombro fisico, rumore, comportamento ai corti o stabilità analogica.

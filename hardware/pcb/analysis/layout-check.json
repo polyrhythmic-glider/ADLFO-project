@@ -1,0 +1,1017 @@
+{
+  "board_sha256": "072acb53a0dff92976f9c9aa621e7e228359d8e9c16702df0c99972ab3c07dea",
+  "method": "Trace midpoint samples at <=2 mm intervals against native In1.Cu filled GND, exact and within 0.5 mm. Not an impedance or full-wave model.",
+  "plane_samples": {
+    "ADC_BUSY": {
+      "count": 45,
+      "exact_pct": 95.56,
+      "within_0_5mm_pct": 97.78
+    },
+    "ADC_CONVST": {
+      "count": 39,
+      "exact_pct": 94.87,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_CS": {
+      "count": 46,
+      "exact_pct": 93.48,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_IN1": {
+      "count": 28,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_IN2": {
+      "count": 31,
+      "exact_pct": 96.77,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_IN3": {
+      "count": 39,
+      "exact_pct": 92.31,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_IN4": {
+      "count": 24,
+      "exact_pct": 95.83,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_IN5": {
+      "count": 24,
+      "exact_pct": 83.33,
+      "within_0_5mm_pct": 95.83
+    },
+    "ADC_IN6": {
+      "count": 25,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_IN7": {
+      "count": 21,
+      "exact_pct": 90.48,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_IN8": {
+      "count": 29,
+      "exact_pct": 89.66,
+      "within_0_5mm_pct": 96.55
+    },
+    "ADC_MISO": {
+      "count": 27,
+      "exact_pct": 92.59,
+      "within_0_5mm_pct": 96.3
+    },
+    "ADC_MOSI": {
+      "count": 4,
+      "exact_pct": 75.0,
+      "within_0_5mm_pct": 75.0
+    },
+    "ADC_MOSI_TERM": {
+      "count": 31,
+      "exact_pct": 96.77,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_REF": {
+      "count": 5,
+      "exact_pct": 80.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_REFCAP": {
+      "count": 6,
+      "exact_pct": 66.67,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_RESET": {
+      "count": 35,
+      "exact_pct": 97.14,
+      "within_0_5mm_pct": 100.0
+    },
+    "ADC_SCK": {
+      "count": 3,
+      "exact_pct": 66.67,
+      "within_0_5mm_pct": 66.67
+    },
+    "ADC_SCK_TERM": {
+      "count": 37,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "AMP1": {
+      "count": 46,
+      "exact_pct": 95.65,
+      "within_0_5mm_pct": 100.0
+    },
+    "AMP2": {
+      "count": 49,
+      "exact_pct": 87.76,
+      "within_0_5mm_pct": 95.92
+    },
+    "AMP3": {
+      "count": 31,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "AMP4": {
+      "count": 51,
+      "exact_pct": 94.12,
+      "within_0_5mm_pct": 100.0
+    },
+    "AMP5": {
+      "count": 22,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "AMP6": {
+      "count": 12,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "AMP7": {
+      "count": 13,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "AMP8": {
+      "count": 21,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "CTRL1": {
+      "count": 48,
+      "exact_pct": 77.08,
+      "within_0_5mm_pct": 93.75
+    },
+    "CTRL2": {
+      "count": 35,
+      "exact_pct": 77.14,
+      "within_0_5mm_pct": 88.57
+    },
+    "CTRL3": {
+      "count": 55,
+      "exact_pct": 83.64,
+      "within_0_5mm_pct": 90.91
+    },
+    "CTRL4": {
+      "count": 29,
+      "exact_pct": 82.76,
+      "within_0_5mm_pct": 89.66
+    },
+    "DAC1": {
+      "count": 18,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC2": {
+      "count": 40,
+      "exact_pct": 87.5,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC3": {
+      "count": 8,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC4": {
+      "count": 12,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC5": {
+      "count": 22,
+      "exact_pct": 90.91,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC6": {
+      "count": 14,
+      "exact_pct": 92.86,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC7": {
+      "count": 24,
+      "exact_pct": 95.83,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC8": {
+      "count": 18,
+      "exact_pct": 77.78,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_CLR": {
+      "count": 30,
+      "exact_pct": 90.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_CLR_5V": {
+      "count": 22,
+      "exact_pct": 95.45,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_LDAC": {
+      "count": 22,
+      "exact_pct": 95.45,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_LDAC_5V": {
+      "count": 13,
+      "exact_pct": 92.31,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_MOSI": {
+      "count": 15,
+      "exact_pct": 80.0,
+      "within_0_5mm_pct": 93.33
+    },
+    "DAC_MOSI_5V": {
+      "count": 16,
+      "exact_pct": 93.75,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_MOSI_BUFFER": {
+      "count": 4,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_SCK": {
+      "count": 10,
+      "exact_pct": 80.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_SCK_5V": {
+      "count": 11,
+      "exact_pct": 90.91,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_SCK_BUFFER": {
+      "count": 6,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DAC_SYNC": {
+      "count": 30,
+      "exact_pct": 86.67,
+      "within_0_5mm_pct": 96.67
+    },
+    "DAC_SYNC_5V": {
+      "count": 15,
+      "exact_pct": 86.67,
+      "within_0_5mm_pct": 100.0
+    },
+    "DRIVE1": {
+      "count": 17,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DRIVE2": {
+      "count": 18,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DRIVE3": {
+      "count": 12,
+      "exact_pct": 75.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DRIVE4": {
+      "count": 15,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DRIVE5": {
+      "count": 21,
+      "exact_pct": 80.95,
+      "within_0_5mm_pct": 100.0
+    },
+    "DRIVE6": {
+      "count": 15,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DRIVE7": {
+      "count": 20,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "DRIVE8": {
+      "count": 32,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "ENC1_A": {
+      "count": 45,
+      "exact_pct": 71.11,
+      "within_0_5mm_pct": 75.56
+    },
+    "ENC1_B": {
+      "count": 46,
+      "exact_pct": 86.96,
+      "within_0_5mm_pct": 100.0
+    },
+    "ENC1_CLICK": {
+      "count": 31,
+      "exact_pct": 96.77,
+      "within_0_5mm_pct": 96.77
+    },
+    "ENC2_A": {
+      "count": 66,
+      "exact_pct": 93.94,
+      "within_0_5mm_pct": 98.48
+    },
+    "ENC2_B": {
+      "count": 55,
+      "exact_pct": 85.45,
+      "within_0_5mm_pct": 96.36
+    },
+    "ENC2_CLICK": {
+      "count": 31,
+      "exact_pct": 80.65,
+      "within_0_5mm_pct": 93.55
+    },
+    "ENC3_A": {
+      "count": 48,
+      "exact_pct": 93.75,
+      "within_0_5mm_pct": 97.92
+    },
+    "ENC3_B": {
+      "count": 66,
+      "exact_pct": 93.94,
+      "within_0_5mm_pct": 98.48
+    },
+    "ENC3_CLICK": {
+      "count": 27,
+      "exact_pct": 88.89,
+      "within_0_5mm_pct": 100.0
+    },
+    "ENC4_A": {
+      "count": 51,
+      "exact_pct": 92.16,
+      "within_0_5mm_pct": 98.04
+    },
+    "ENC4_B": {
+      "count": 54,
+      "exact_pct": 90.74,
+      "within_0_5mm_pct": 94.44
+    },
+    "ENC4_CLICK": {
+      "count": 22,
+      "exact_pct": 77.27,
+      "within_0_5mm_pct": 90.91
+    },
+    "FAULT_N": {
+      "count": 5,
+      "exact_pct": 60.0,
+      "within_0_5mm_pct": 80.0
+    },
+    "I2C_SCL": {
+      "count": 67,
+      "exact_pct": 89.55,
+      "within_0_5mm_pct": 95.52
+    },
+    "I2C_SDA": {
+      "count": 57,
+      "exact_pct": 89.47,
+      "within_0_5mm_pct": 98.25
+    },
+    "IN1": {
+      "count": 18,
+      "exact_pct": 94.44,
+      "within_0_5mm_pct": 94.44
+    },
+    "IN1F1_A": {
+      "count": 13,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN1F1_B": {
+      "count": 8,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN1F1_OUT": {
+      "count": 12,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN1F2_A": {
+      "count": 11,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN1F2_B": {
+      "count": 9,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN1F2_OUT": {
+      "count": 16,
+      "exact_pct": 93.75,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN2": {
+      "count": 16,
+      "exact_pct": 81.25,
+      "within_0_5mm_pct": 81.25
+    },
+    "IN2F1_A": {
+      "count": 8,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN2F1_B": {
+      "count": 16,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN2F1_OUT": {
+      "count": 15,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN2F2_A": {
+      "count": 14,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN2F2_B": {
+      "count": 20,
+      "exact_pct": 80.0,
+      "within_0_5mm_pct": 95.0
+    },
+    "IN2F2_OUT": {
+      "count": 13,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN3": {
+      "count": 10,
+      "exact_pct": 90.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN3F1_A": {
+      "count": 15,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN3F1_B": {
+      "count": 11,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN3F1_OUT": {
+      "count": 12,
+      "exact_pct": 91.67,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN3F2_A": {
+      "count": 16,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN3F2_B": {
+      "count": 9,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN3F2_OUT": {
+      "count": 20,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN4": {
+      "count": 22,
+      "exact_pct": 90.91,
+      "within_0_5mm_pct": 90.91
+    },
+    "IN4F1_A": {
+      "count": 11,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN4F1_B": {
+      "count": 12,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN4F1_OUT": {
+      "count": 20,
+      "exact_pct": 95.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN4F2_A": {
+      "count": 8,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN4F2_B": {
+      "count": 16,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "IN4F2_OUT": {
+      "count": 29,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "INPUT_LIMIT1": {
+      "count": 18,
+      "exact_pct": 94.44,
+      "within_0_5mm_pct": 100.0
+    },
+    "INPUT_LIMIT2": {
+      "count": 21,
+      "exact_pct": 95.24,
+      "within_0_5mm_pct": 100.0
+    },
+    "INPUT_LIMIT3": {
+      "count": 18,
+      "exact_pct": 88.89,
+      "within_0_5mm_pct": 100.0
+    },
+    "INPUT_LIMIT4": {
+      "count": 16,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "INPUT_LIMIT5": {
+      "count": 26,
+      "exact_pct": 92.31,
+      "within_0_5mm_pct": 100.0
+    },
+    "INPUT_LIMIT6": {
+      "count": 25,
+      "exact_pct": 92.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "INPUT_LIMIT7": {
+      "count": 26,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "INPUT_LIMIT8": {
+      "count": 27,
+      "exact_pct": 92.59,
+      "within_0_5mm_pct": 100.0
+    },
+    "IO_RESET": {
+      "count": 84,
+      "exact_pct": 85.71,
+      "within_0_5mm_pct": 91.67
+    },
+    "KEY1": {
+      "count": 21,
+      "exact_pct": 95.24,
+      "within_0_5mm_pct": 100.0
+    },
+    "KEY2": {
+      "count": 29,
+      "exact_pct": 82.76,
+      "within_0_5mm_pct": 93.1
+    },
+    "KEY3": {
+      "count": 23,
+      "exact_pct": 95.65,
+      "within_0_5mm_pct": 100.0
+    },
+    "KEY4": {
+      "count": 20,
+      "exact_pct": 80.0,
+      "within_0_5mm_pct": 95.0
+    },
+    "MINUS1": {
+      "count": 16,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "MINUS2": {
+      "count": 14,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "MINUS3": {
+      "count": 9,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "MINUS4": {
+      "count": 13,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "MINUS5": {
+      "count": 7,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "MINUS6": {
+      "count": 11,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "MINUS7": {
+      "count": 8,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "MINUS8": {
+      "count": 11,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OLED_RESET": {
+      "count": 60,
+      "exact_pct": 91.67,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT1": {
+      "count": 39,
+      "exact_pct": 87.18,
+      "within_0_5mm_pct": 97.44
+    },
+    "OUT1F1_A": {
+      "count": 14,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT1F1_B": {
+      "count": 13,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT1F1_OUT": {
+      "count": 13,
+      "exact_pct": 84.62,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT1F2_A": {
+      "count": 17,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT1F2_B": {
+      "count": 9,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT1F2_OUT": {
+      "count": 10,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT2": {
+      "count": 33,
+      "exact_pct": 87.88,
+      "within_0_5mm_pct": 93.94
+    },
+    "OUT2F1_A": {
+      "count": 11,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT2F1_B": {
+      "count": 12,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT2F1_OUT": {
+      "count": 19,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT2F2_A": {
+      "count": 6,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT2F2_B": {
+      "count": 11,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT2F2_OUT": {
+      "count": 31,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT3": {
+      "count": 36,
+      "exact_pct": 88.89,
+      "within_0_5mm_pct": 97.22
+    },
+    "OUT3F1_A": {
+      "count": 6,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT3F1_B": {
+      "count": 9,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT3F1_OUT": {
+      "count": 18,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT3F2_A": {
+      "count": 7,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT3F2_B": {
+      "count": 17,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT3F2_OUT": {
+      "count": 9,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT4": {
+      "count": 34,
+      "exact_pct": 97.06,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT4F1_A": {
+      "count": 8,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT4F1_B": {
+      "count": 13,
+      "exact_pct": 84.62,
+      "within_0_5mm_pct": 92.31
+    },
+    "OUT4F1_OUT": {
+      "count": 9,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT4F2_A": {
+      "count": 8,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT4F2_B": {
+      "count": 13,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUT4F2_OUT": {
+      "count": 18,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "OUTPUT_PERMIT": {
+      "count": 37,
+      "exact_pct": 78.38,
+      "within_0_5mm_pct": 91.89
+    },
+    "PLUS1": {
+      "count": 7,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PLUS2": {
+      "count": 6,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PLUS3": {
+      "count": 9,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PLUS4": {
+      "count": 7,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PLUS5": {
+      "count": 6,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PLUS6": {
+      "count": 16,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PLUS7": {
+      "count": 10,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PLUS8": {
+      "count": 8,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PROTECTED1": {
+      "count": 28,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PROTECTED2": {
+      "count": 11,
+      "exact_pct": 90.91,
+      "within_0_5mm_pct": 90.91
+    },
+    "PROTECTED3": {
+      "count": 10,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PROTECTED4": {
+      "count": 22,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "PROTECTED5": {
+      "count": 39,
+      "exact_pct": 94.87,
+      "within_0_5mm_pct": 100.0
+    },
+    "PROTECTED6": {
+      "count": 30,
+      "exact_pct": 96.67,
+      "within_0_5mm_pct": 100.0
+    },
+    "PROTECTED7": {
+      "count": 34,
+      "exact_pct": 94.12,
+      "within_0_5mm_pct": 100.0
+    },
+    "PROTECTED8": {
+      "count": 28,
+      "exact_pct": 85.71,
+      "within_0_5mm_pct": 100.0
+    },
+    "REF2V5": {
+      "count": 32,
+      "exact_pct": 87.5,
+      "within_0_5mm_pct": 100.0
+    },
+    "REF_BUF": {
+      "count": 97,
+      "exact_pct": 88.66,
+      "within_0_5mm_pct": 98.97
+    },
+    "REF_HALF": {
+      "count": 7,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "REF_MON": {
+      "count": 10,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "REGCAP1": {
+      "count": 3,
+      "exact_pct": 33.33,
+      "within_0_5mm_pct": 100.0
+    },
+    "REGCAP2": {
+      "count": 6,
+      "exact_pct": 66.67,
+      "within_0_5mm_pct": 100.0
+    },
+    "REQ1": {
+      "count": 32,
+      "exact_pct": 93.75,
+      "within_0_5mm_pct": 100.0
+    },
+    "REQ2": {
+      "count": 27,
+      "exact_pct": 92.59,
+      "within_0_5mm_pct": 100.0
+    },
+    "REQ3": {
+      "count": 26,
+      "exact_pct": 92.31,
+      "within_0_5mm_pct": 100.0
+    },
+    "REQ4": {
+      "count": 30,
+      "exact_pct": 93.33,
+      "within_0_5mm_pct": 100.0
+    },
+    "REQ5": {
+      "count": 53,
+      "exact_pct": 92.45,
+      "within_0_5mm_pct": 100.0
+    },
+    "REQ6": {
+      "count": 44,
+      "exact_pct": 93.18,
+      "within_0_5mm_pct": 95.45
+    },
+    "REQ7": {
+      "count": 55,
+      "exact_pct": 92.73,
+      "within_0_5mm_pct": 98.18
+    },
+    "REQ8": {
+      "count": 64,
+      "exact_pct": 82.81,
+      "within_0_5mm_pct": 98.44
+    },
+    "RESET_DELAY": {
+      "count": 13,
+      "exact_pct": 92.31,
+      "within_0_5mm_pct": 100.0
+    },
+    "SAFE_CLEAR_N": {
+      "count": 194,
+      "exact_pct": 92.78,
+      "within_0_5mm_pct": 100.0
+    },
+    "SAFE_LATCH": {
+      "count": 28,
+      "exact_pct": 92.86,
+      "within_0_5mm_pct": 100.0
+    },
+    "SAFE_PERMIT": {
+      "count": 76,
+      "exact_pct": 97.37,
+      "within_0_5mm_pct": 100.0
+    },
+    "SENSE_5A": {
+      "count": 20,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "SENSE_NEG": {
+      "count": 13,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "SENSE_POS": {
+      "count": 11,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "SW_ON1": {
+      "count": 44,
+      "exact_pct": 88.64,
+      "within_0_5mm_pct": 90.91
+    },
+    "SW_ON2": {
+      "count": 46,
+      "exact_pct": 93.48,
+      "within_0_5mm_pct": 100.0
+    },
+    "SW_ON3": {
+      "count": 46,
+      "exact_pct": 95.65,
+      "within_0_5mm_pct": 95.65
+    },
+    "SW_ON4": {
+      "count": 60,
+      "exact_pct": 96.67,
+      "within_0_5mm_pct": 100.0
+    },
+    "SW_ON5": {
+      "count": 25,
+      "exact_pct": 88.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "SW_ON6": {
+      "count": 26,
+      "exact_pct": 96.15,
+      "within_0_5mm_pct": 100.0
+    },
+    "SW_ON7": {
+      "count": 31,
+      "exact_pct": 96.77,
+      "within_0_5mm_pct": 100.0
+    },
+    "SW_ON8": {
+      "count": 31,
+      "exact_pct": 96.77,
+      "within_0_5mm_pct": 100.0
+    },
+    "UNUSED_FB14": {
+      "count": 1,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "UNUSED_FB7": {
+      "count": 1,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "UNUSED_FB8": {
+      "count": 1,
+      "exact_pct": 100.0,
+      "within_0_5mm_pct": 100.0
+    },
+    "WATCHDOG": {
+      "count": 24,
+      "exact_pct": 91.67,
+      "within_0_5mm_pct": 100.0
+    }
+  },
+  "drilled_vias_intersecting_smd_lands": []
+}

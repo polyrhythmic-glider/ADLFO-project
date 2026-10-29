@@ -1,0 +1,534 @@
+{
+  "diff_version": "1.0",
+  "analyzer_type": "schematic",
+  "base_file": "hardware/pcb/analysis/main/2026-10-28_0942/schematic.json",
+  "head_file": "hardware/pcb/analysis/main/2026-10-28_1029/schematic.json",
+  "has_changes": true,
+  "summary": {
+    "total_changes": 40,
+    "added": 0,
+    "removed": 0,
+    "modified": 40,
+    "severity": "major"
+  },
+  "diff": {
+    "components": {
+      "added": [],
+      "removed": [],
+      "modified": [
+        {
+          "reference": "U2",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "AD7606C-18BSTZ"
+            }
+          ]
+        },
+        {
+          "reference": "U3",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "DAC8568BPW"
+            }
+          ]
+        },
+        {
+          "reference": "U12",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "SN74AHCT125DR"
+            }
+          ]
+        },
+        {
+          "reference": "U13",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "SN74AHCT125DR"
+            }
+          ]
+        },
+        {
+          "reference": "U4",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "MCP23017-E/SO"
+            }
+          ]
+        },
+        {
+          "reference": "U5",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "SN74LVC08ADR"
+            }
+          ]
+        },
+        {
+          "reference": "U6",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "SN74LVC08ADR"
+            }
+          ]
+        },
+        {
+          "reference": "U7",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "ADG5412FBRUZ"
+            }
+          ]
+        },
+        {
+          "reference": "U8",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "ADG5412FBRUZ"
+            }
+          ]
+        },
+        {
+          "reference": "RO1",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "U9",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "OPA4197ID"
+            }
+          ]
+        },
+        {
+          "reference": "RO2",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RO3",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RO4",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RO5",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "U10",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "OPA4197ID"
+            }
+          ]
+        },
+        {
+          "reference": "RO6",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RO7",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RO8",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "U11",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "OPA4197ID"
+            }
+          ]
+        },
+        {
+          "reference": "U21",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "OPA4197ID"
+            }
+          ]
+        },
+        {
+          "reference": "U22",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "OPA4197ID"
+            }
+          ]
+        },
+        {
+          "reference": "U23",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "OPA4197ID"
+            }
+          ]
+        },
+        {
+          "reference": "U24",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "OPA4197ID"
+            }
+          ]
+        },
+        {
+          "reference": "RI1",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RI2",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RI3",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RI4",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RI5",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RI6",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RI7",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "RI8",
+          "changes": [
+            {
+              "field": "value",
+              "base": "1k 0.5W 1%",
+              "head": "1k 1W 1%"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "CRCW20101K00FKEFHP"
+            }
+          ]
+        },
+        {
+          "reference": "U25",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "R-78E5.0-1.0"
+            }
+          ]
+        },
+        {
+          "reference": "U16",
+          "changes": [
+            {
+              "field": "value",
+              "base": "SN74HC74DR",
+              "head": "SN74HCS74DR"
+            },
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "SN74HCS74DR"
+            }
+          ]
+        },
+        {
+          "reference": "U17",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "TPS3828-33DBVR"
+            }
+          ]
+        },
+        {
+          "reference": "U18",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "TPS3808G01DBVR"
+            }
+          ]
+        },
+        {
+          "reference": "U19",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "LM393BDR"
+            }
+          ]
+        },
+        {
+          "reference": "U20",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "SN74LVC1G08DBVR"
+            }
+          ]
+        },
+        {
+          "reference": "U14",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "ADG5412FBRUZ"
+            }
+          ]
+        },
+        {
+          "reference": "U15",
+          "changes": [
+            {
+              "field": "mpn",
+              "base": "",
+              "head": "ADG5412FBRUZ"
+            }
+          ]
+        }
+      ]
+    },
+    "bom": {
+      "added": [
+        {
+          "value": "1k 1W 1%",
+          "footprint": "ADOLFO:r2010",
+          "quantity": 16
+        },
+        {
+          "value": "SN74HCS74DR",
+          "footprint": "ADOLFO:soic14",
+          "quantity": 1
+        }
+      ],
+      "removed": [
+        {
+          "value": "1k 0.5W 1%",
+          "footprint": "ADOLFO:r2010",
+          "quantity": 16
+        },
+        {
+          "value": "SN74HC74DR",
+          "footprint": "ADOLFO:soic14",
+          "quantity": 1
+        }
+      ],
+      "quantity_changes": []
+    }
+  }
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "detector": "deep_review",
+    "category": "power_sequencing",
+    "severity": "error",
+    "confidence": "high",
+    "summary": "USB-only power puts ADC VDRIVE above its absolute maximum relative to AVCC",
+    "description": "U1 exports +3V3 while USB powers Seed3 without carrier +5A. U2.23 is tied to +3V3 but U2 AVCC pins 1/37/38/48 are on +5A. Thus VDRIVE=3.3V, AVCC=0V violates the AVCC+0.3V maximum. Different shutdown decay times create a similar sequencing risk. The output permit does not protect supply pins.",
+    "recommendation": "Resolve ADC supply sequencing and powered-off host signal injection before USB-only use; do not treat the Seed VIN reverse protection as carrier-wide power isolation. Qualify all power-up/down orders.",
+    "components": ["U1", "U2"],
+    "nets": ["+3V3", "+5A"],
+    "pins": ["U2.23", "U2.1", "U2.37", "U2.38", "U2.48", "U1.38"],
+    "evidence": {
+      "components": ["U1", "U2"],
+      "pins": ["U2.23", "U1.38"],
+      "computation": {
+        "description": "AD7606C-18 Rev B p14 Table6 limits VDRIVE to AVCC+0.3V; Seed3 v2.1 p10 states USB powers board regulators. Source URLs in review notes.",
+        "script": "hardware/pcb/analysis/digital_analog/check_digital_budget.py",
+        "result": "USB-only: VDRIVE=3.3V and AVCC=0V; allowed VDRIVE<=AVCC+0.3V gives 3.000V excess"
+      }
+    }
+  },
+  {
+    "detector": "deep_review",
+    "category": "digital_timing",
+    "severity": "error",
+    "confidence": "high",
+    "summary": "Target conversion rates exceed stock libDaisy clock and shared DMA capacity",
+    "description": "Both SPI handles use DMA2_Stream2/3 and one static active-peripheral gate. At target 25MHz, serialized ADC and DAC payloads consume 104.448% of time before any overhead. Default libDaisy further uses PLL2P=25MHz for SPI123, and /2 minimum prescaler gives 12.5MHz SCK: the ADC alone needs 11.52us for a 10.417us sample period.",
+    "recommendation": "Keep the new backend explicitly pending. Specify and test SPI kernel clocks, DMA ownership and a valid burst schedule. A future 100MHz kernel with ADC /2 and DAC /4 reduces average payload to 76.8%, but requires ADC reads interleaved between DAC words and does not prove timing closure.",
+    "components": ["U1", "U2", "U3"],
+    "nets": ["ADC_SCK", "DAC_SCK"],
+    "evidence": {
+      "components": ["U1", "U2", "U3"],
+      "computation": {
+        "description": "Payload lower bound using design.json rates; libDaisy spi.cpp InitDma/IsDmaBusy and system.cpp PLL2 settings; ST HAL SPI123 clock mux uses PLL2 P output.",
+        "script": "hardware/pcb/analysis/digital_analog/check_digital_budget.py",
+        "result": "Current payload occupancy with globally serialized SPI DMA: 104.448%"
+      }
+    }
+  },
+  {
+    "detector": "deep_review",
+    "category": "analog_inputs",
+    "severity": "warning",
+    "confidence": "high",
+    "summary": "Fixed IN1-IN4 inputs have no defined DC state when unpatched",
+    "description": "J1/J4/J7/J10 tip normals are open. Their Sallen-Key networks have only capacitors to ground and the high-impedance OPA4197 input; the ADC is isolated behind a follower. There is no passive DC return for an unpatched input. Leakage/initial charge therefore sets its voltage, and an unused input can generate arbitrary CV/gate/trigger readings.",
+    "recommendation": "Ground only the fixed input jack normals. Keep bidirectional CTRL and OUT normals open, and update the all-jack-normal assertion accordingly. Open CTRL inputs also need an explicit firmware policy; their ADC input is not a zero-volt pull-down.",
+    "components": ["J1", "J4", "J7", "J10", "U21", "U22"],
+    "nets": ["IN1", "IN2", "IN3", "IN4"],
+    "evidence": {
+      "components": ["J1", "J4", "J7", "J10", "U21", "U22"],
+      "computation": {
+        "description": "DC topology: capacitors open and op-amp inputs are high impedance; inspected design.py complete_circuit and saved design.json. OPA4197 RevC p1 low-input-bias specification supplies real-part context.",
+        "script": "hardware/pcb/analysis/digital_analog/check_digital_budget.py",
+        "result": "J1 IN1 normal contact: None"
+      }
+    }
+  }
+]
