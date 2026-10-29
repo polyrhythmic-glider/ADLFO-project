@@ -4,7 +4,7 @@ from pathlib import Path
 from copy import deepcopy
 from dataclasses import fields,is_dataclass
 from uuid import uuid5,NAMESPACE_URL
-import csv,json,math,xml.etree.ElementTree as ET
+import csv,json,math
 from kiutils.board import Board
 from kiutils.footprint import Footprint,Pad,DrillDefinition
 from kiutils.items.common import Position as P,Net,Effects,Font,TitleBlock
@@ -248,15 +248,6 @@ def main():
         w=csv.writer(f,lineterminator='\n');w.writerow(['Reference','Circuit role','Value / part','Footprint','Board','Side','X','Y','Notes','MPN','Manufacturer','Datasheet']);w.writerows([p[k] for k in ['ref','id','value','footprint','board','side','x','y','note','mpn','manufacturer','datasheet']] for p in parts)
     with (OUT/'panel-holes.csv').open('w',newline='') as f:
         w=csv.writer(f,lineterminator='\n');w.writerow(['Reference','X_mm','Y_mm','Diameter_mm']);w.writerows([p[k] for k in ['ref','x','y','diameter']] for p in holes())
-    root=ET.Element('export',version='D');comps=ET.SubElement(root,'components');ns=ET.SubElement(root,'nets')
-    for p in parts:
-        c=ET.SubElement(comps,'comp',ref=p['ref']);ET.SubElement(c,'value').text=p['value'];ET.SubElement(c,'footprint').text='ADOLFO:'+p['footprint']
-    for name in names:
-        n=ET.SubElement(ns,'net',name=name,code=str(nets[name].number))
-        for p in parts:
-            for pin,net in p['pins'].items():
-                if net==name:ET.SubElement(n,'node',ref=p['ref'],pin=pin)
-    ET.indent(root);ET.ElementTree(root).write(OUT/'Adolfo.net',encoding='utf-8',xml_declaration=True)
     import export_mechanical
     from visuals import render
     render(parts)

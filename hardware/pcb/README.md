@@ -24,10 +24,15 @@ Aprire con **KiCad 10**:
 - [output/Adolfo-main.kicad_pro](output/Adolfo-main.kicad_pro): progetto principale, schema gerarchico e PCB a quattro strati.
 - [output/Adolfo-panel.kicad_pro](output/Adolfo-panel.kicad_pro): comandi, jack, display e PCB frontale a due strati.
 - [output/index.html](output/index.html): viste 2D e distinta ricercabile.
+- [output/front.svg](output/front.svg): frontale aggiornato con display centrale.
+- [output/drill.svg](output/drill.svg) e [DXF](output/panel-concept.dxf): dima e taglio nominali aggiornati.
 - [output/bom.csv](output/bom.csv): valori, codici scelti, lato e coordinate.
 - [output/validation.json](output/validation.json): esito dei controlli sulla revisione salvata.
 
 Le librerie locali sono incluse: tenere tutta la cartella `output` insieme.
+Le viste correnti sono SVG; le vecchie copie PNG/PDF della revisione C e la
+netlist unica del vecchio progetto sono state rimosse. Le netlist native correnti
+sono `Adolfo-main.net` e `Adolfo-panel.net`.
 In KiCad, dal gestore progetto aprire lo schema oppure l'editor PCB. Le piste
 visibili nell'editor sono rame reale del file PCB. Non è inclusa un'immagine 3D.
 
