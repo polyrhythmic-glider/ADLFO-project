@@ -51,6 +51,12 @@ def run():
     check(all(pins(f'RE{n}')=={'1':f'SW_ON{n}','2':'GND'} for n in range(1,9)),'All output switches default disconnected')
     check('R-78E5.0-1.0' in byid['UREG']['value'] and byid['UREG']['footprint']=='recom','Exact 1 A regulator and footprint')
     check(pins('JPOWER')=={'1':'-12_IN','2':'-12_IN','3':'GND','4':'GND','5':'GND','6':'GND','7':'GND','8':'GND','9':'+12_IN','10':'+12_IN'},'Eurorack IDC10 polarity')
+    check(pins('FPOWERP')=={'1':'+12_IN','2':'+12_FUSED'},'Eurorack positive rail passes through its fuse')
+    check(pins('FPOWERN')=={'1':'-12_IN','2':'-12_FUSED'},'Eurorack negative rail passes through its fuse')
+    check(pins('DPOWERP')=={'1':'+12VA','2':'+12_FUSED'} and pins('DPOWERN')=={'1':'-12_FUSED','2':'-12VA'},'Both Eurorack rails pass through polarity protection')
+    check(pins('UREG')=={'1':'+12VA','2':'GND','3':'+5D'},'Five-volt converter powered by Eurorack positive rail')
+    check(all(pins('U1')[str(n)]==net for n,net in ((39,'+5D'),(20,'GND'),(40,'GND'))),'Daisy VIN and grounds powered from the Eurorack converter')
+    check(pins('FB1')=={'1':'+5D','2':'+5A'},'Analog five-volt branch derived from the Eurorack converter')
     check(pins('U2')['23']=='+3V3' and all(pins('U2')[str(n)]=='+5A' for n in (1,37,38,48)),'ADC supply and logic domains')
     for n in range(1,9):
         check(pins('U2')[str(47+2*n)]==f'ADC_IN{n}' and pins('U2')[str(48+2*n)]=='GND',f'ADC input pair {n}')

@@ -145,6 +145,10 @@ Gate/trigger letti via ADC hanno latenza e una durata minima da qualificare.
 IDC10: pin 1/2 −12 V, 3…8 GND, 9/10 +12 V. Fusibili ripristinabili e diodi serie
 proteggono i due rail. RECOM R-78E5.0-1.0 genera +5D dal positivo; la ferrite
 BLM21PG601SN1D separa il ramo +5A. La Daisy genera +3V3. Non serve +5 V dal case.
+L'ingresso previsto per il modulo assemblato è solo IDC10 Eurorack: +5D va
+al pin VIN 39 della Daisy, non alla sua USB-C. Lasciare USB-C scollegata;
+per programmare via USB estrarre la Seed dal carrier a case spento e scollegato.
+Il carrier non può disabilitare il circuito USB di alimentazione interno alla Seed.
 Il budget preliminare assegna fino a circa 0,7 A al ramo 5 V: consumi reali,
 spunto, ripple, caduta sui fusibili e termica devono essere misurati.
 La protezione USB/VIN della Seed non risolve il sequenziamento dell'ADC:

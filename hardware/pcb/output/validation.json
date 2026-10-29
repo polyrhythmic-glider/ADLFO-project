@@ -7,7 +7,7 @@
     "5V_MONITOR_MARGIN": "R-78E output tolerance and TPS3808 threshold/hysteresis do not guarantee both ADC operating voltage and reset release.",
     "CONVERTER_BACKEND": "The new ADC/DAC backend is absent; stock libDaisy clocks and shared SPI DMA cannot sustain the declared rates."
   },
-  "checks": 2027,
+  "checks": 2033,
   "parts": 301,
   "revision": "D",
   "routing": {
@@ -218,6 +218,12 @@
     "All output switches default disconnected",
     "Exact 1 A regulator and footprint",
     "Eurorack IDC10 polarity",
+    "Eurorack positive rail passes through its fuse",
+    "Eurorack negative rail passes through its fuse",
+    "Both Eurorack rails pass through polarity protection",
+    "Five-volt converter powered by Eurorack positive rail",
+    "Daisy VIN and grounds powered from the Eurorack converter",
+    "Analog five-volt branch derived from the Eurorack converter",
     "ADC supply and logic domains",
     "ADC input pair 1",
     "ADC input pair 2",

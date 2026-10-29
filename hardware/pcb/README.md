@@ -4,6 +4,15 @@ Due PCB per un modulo Eurorack da 20 HP: 4 IN, 4 OUT, 4 CTRL bidirezionali,
 quattro encoder con click, quattro tasti e OLED. La revisione D completa lo schema
 funzionale, i filtri, l'alimentazione, la supervisione e le piste delle due schede.
 
+**Alimentazione dal connettore Eurorack IDC10, senza USB-C:** il +12 V del case,
+attraverso fusibile e protezione di polarità, alimenta il convertitore RECOM a 5 V.
+Questi 5 V alimentano VIN della Daisy (pin 39) e il ramo analogico filtrato;
+la Daisy genera i 3,3 V. Il −12 V alimenta il ramo analogico negativo.
+Non serve il +5 V del case. Lasciare scollegata la USB-C della Seed nel modulo
+assemblato: la Seed standard può alimentarsi da USB e il carrier non interrompe
+quel percorso interno. Per programmare via USB, estrarre la Seed dal carrier
+con il case spento e scollegato.
+
 **Rilascio bloccato dalla [revisione completa](DESIGN_REVIEW_20HP.md):** sequenziamento
 AVCC/VDRIVE dell'ADC, margini del monitor 5 V e backend SPI/DMA da riprogettare.
 Il superamento dei controlli CAD non risolve questi problemi elettrici.

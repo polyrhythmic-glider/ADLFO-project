@@ -236,7 +236,7 @@ Dopo autorizzazione esplicita dell'utente è stato eseguito `lifecycle_audit.py 
 | `analyze_thermal.py --ambient 50` | Eseguito; modello U25 scartato, pannello senza potenze quantificabili |
 | `extract_parasitics.py` e `simulate_subcircuits.py` | Eseguiti, più simulazioni complete mirate |
 | ERC, DRC, refill, parità e SVG nativi | Eseguiti: tutti a zero segnalazioni |
-| Audit nativo e `validate.py` | **2.027 controlli superati**, compresi centratura OLED, pad, campi e assenza di via nei pad SMD |
+| Audit nativo e `validate.py` | **2.033 controlli superati**, compresi percorso di alimentazione Eurorack, centratura OLED, pad, campi e assenza di via nei pad SMD |
 | Generazione e preparazione da sorgenti | Provate in `build/rebuild-review-check/`: 133 vie GND iniziali, nessun foro dentro pad SMD, tutti i 40 pin dello stack coincidenti. Non ripetuto lo sbroglio completo da zero; le PCB consegnate sono quelle controllate sopra. |
 | Test C++ porte, converter, uscite prototipo | Superati con C++14, warning come errori |
 | `deep_review_gate.py` | Eseguito per entrambe le schede; 10 rilievi accettati, 3 con evidenza parziale |
